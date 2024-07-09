@@ -7,18 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A435414F2C3B71EE00B32BC1 /* ViewModelLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435414E2C3B71EE00B32BC1 /* ViewModelLogin.swift */; };
+		A43541512C3B8C7B00B32BC1 /* ComponentMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541502C3B8C7B00B32BC1 /* ComponentMap.swift */; };
+		A43541532C3B8F3100B32BC1 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541522C3B8F3100B32BC1 /* Login.swift */; };
+		A4A7ACF42C3B3BE100EE9B48 /* ViewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A7ACF32C3B3BE100EE9B48 /* ViewLogin.swift */; };
+		A4A7ACF72C3B432900EE9B48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A7ACF62C3B432900EE9B48 /* LocationManager.swift */; };
 		A4D407262B4D100D00D97AB1 /* orbfinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D407252B4D100D00D97AB1 /* orbfinApp.swift */; };
-		A4D407282B4D100D00D97AB1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D407272B4D100D00D97AB1 /* ContentView.swift */; };
-		A4D4072A2B4D100D00D97AB1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D407292B4D100D00D97AB1 /* Item.swift */; };
 		A4D4072C2B4D100F00D97AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4D4072B2B4D100F00D97AB1 /* Assets.xcassets */; };
 		A4D407302B4D100F00D97AB1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4D4072F2B4D100F00D97AB1 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A435414E2C3B71EE00B32BC1 /* ViewModelLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelLogin.swift; sourceTree = "<group>"; };
+		A43541502C3B8C7B00B32BC1 /* ComponentMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentMap.swift; sourceTree = "<group>"; };
+		A43541522C3B8F3100B32BC1 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		A43541562C3BAB4F00B32BC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A4A7ACF32C3B3BE100EE9B48 /* ViewLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLogin.swift; sourceTree = "<group>"; };
+		A4A7ACF62C3B432900EE9B48 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A4D407222B4D100D00D97AB1 /* orbfin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orbfin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4D407252B4D100D00D97AB1 /* orbfinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orbfinApp.swift; sourceTree = "<group>"; };
-		A4D407272B4D100D00D97AB1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A4D407292B4D100D00D97AB1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		A4D4072B2B4D100F00D97AB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4D4072D2B4D100F00D97AB1 /* orbfin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = orbfin.entitlements; sourceTree = "<group>"; };
 		A4D4072F2B4D100F00D97AB1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -35,6 +42,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4A7ACEA2C3B3ADC00EE9B48 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A4A7ACF32C3B3BE100EE9B48 /* ViewLogin.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A4A7ACEB2C3B3AFB00EE9B48 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A435414E2C3B71EE00B32BC1 /* ViewModelLogin.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A4A7ACEC2C3B3B0A00EE9B48 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A4A7ACED2C3B3B4600EE9B48 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				A4A7ACF52C3B42FF00EE9B48 /* Location */,
+				A4A7ACEF2C3B3B5900EE9B48 /* Storage */,
+				A4A7ACEE2C3B3B5000EE9B48 /* Network */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		A4A7ACEE2C3B3B5000EE9B48 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A4A7ACEF2C3B3B5900EE9B48 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		A4A7ACF02C3B3B6B00EE9B48 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A4A7ACF12C3B3B7600EE9B48 /* Buttons */,
+				A43541502C3B8C7B00B32BC1 /* ComponentMap.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A4A7ACF12C3B3B7600EE9B48 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		A4A7ACF22C3B3B9A00EE9B48 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A43541522C3B8F3100B32BC1 /* Login.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		A4A7ACF52C3B42FF00EE9B48 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				A4A7ACF62C3B432900EE9B48 /* LocationManager.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		A4D407192B4D100D00D97AB1 = {
 			isa = PBXGroup;
 			children = (
@@ -54,9 +140,14 @@
 		A4D407242B4D100D00D97AB1 /* orbfin */ = {
 			isa = PBXGroup;
 			children = (
+				A43541562C3BAB4F00B32BC1 /* Info.plist */,
+				A4A7ACF22C3B3B9A00EE9B48 /* Features */,
+				A4A7ACF02C3B3B6B00EE9B48 /* Components */,
+				A4A7ACED2C3B3B4600EE9B48 /* Layers */,
+				A4A7ACEC2C3B3B0A00EE9B48 /* Models */,
+				A4A7ACEB2C3B3AFB00EE9B48 /* ViewModels */,
+				A4A7ACEA2C3B3ADC00EE9B48 /* Views */,
 				A4D407252B4D100D00D97AB1 /* orbfinApp.swift */,
-				A4D407272B4D100D00D97AB1 /* ContentView.swift */,
-				A4D407292B4D100D00D97AB1 /* Item.swift */,
 				A4D4072B2B4D100F00D97AB1 /* Assets.xcassets */,
 				A4D4072D2B4D100F00D97AB1 /* orbfin.entitlements */,
 				A4D4072E2B4D100F00D97AB1 /* Preview Content */,
@@ -100,7 +191,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1510;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					A4D407212B4D100D00D97AB1 = {
 						CreatedOnToolsVersion = 15.1;
@@ -142,8 +233,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4D407282B4D100D00D97AB1 /* ContentView.swift in Sources */,
-				A4D4072A2B4D100D00D97AB1 /* Item.swift in Sources */,
+				A435414F2C3B71EE00B32BC1 /* ViewModelLogin.swift in Sources */,
+				A43541512C3B8C7B00B32BC1 /* ComponentMap.swift in Sources */,
+				A4A7ACF72C3B432900EE9B48 /* LocationManager.swift in Sources */,
+				A43541532C3B8F3100B32BC1 /* Login.swift in Sources */,
+				A4A7ACF42C3B3BE100EE9B48 /* ViewLogin.swift in Sources */,
 				A4D407262B4D100D00D97AB1 /* orbfinApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +279,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -206,6 +301,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -246,6 +342,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -261,6 +358,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -273,9 +371,13 @@
 				CODE_SIGN_ENTITLEMENTS = orbfin/orbfin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"orbfin/Preview Content\"";
+				DEVELOPMENT_TEAM = Q79VJT7NHS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = orbfin/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is required at multiple points through out the app.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -285,7 +387,6 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -309,9 +410,13 @@
 				CODE_SIGN_ENTITLEMENTS = orbfin/orbfin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"orbfin/Preview Content\"";
+				DEVELOPMENT_TEAM = Q79VJT7NHS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = orbfin/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is required at multiple points through out the app.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -321,7 +426,6 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
