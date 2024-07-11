@@ -14,7 +14,7 @@ struct InputTextField: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-            SecureField("", text: $text)
+            TextField("", text: $text)
                 .padding()
                 .background(Color("Input"))
                 .foregroundColor(Color("InputFont"))

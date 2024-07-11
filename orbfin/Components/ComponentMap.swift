@@ -10,7 +10,7 @@ import MapKit
 
 struct ComponentMap: View {
     @State var position: MapCameraPosition = .userLocation(fallback: .automatic)
-    @StateObject var locationManager = LocationManager()
+    @StateObject var locationManager = LocationManager.instance
 
     var body: some View {
         ZStack {

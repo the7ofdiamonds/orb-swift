@@ -2,7 +2,7 @@ import CoreLocation
 import MapKit
 
 @Observable class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    static var instance = LocationManager.self
+    static var instance = LocationManager()
     
     private var locationManager = CLLocationManager()
     
@@ -10,7 +10,7 @@ import MapKit
     var location: Coordinates?
     var region: MKCoordinateRegion? = nil
     
-    override init() {
+    private override init() {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest

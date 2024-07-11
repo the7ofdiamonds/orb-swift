@@ -13,14 +13,16 @@ struct ViewLogin: View {
     @State private var password: String = ""
     
     @StateObject private var vm: ViewModelLogin
-    
+    @StateObject private var vmLogout: ViewModelLogout
+
     init() {
-        _vm = StateObject(wrappedValue: ViewModelLogin(locationManager: LocationManager()))
+        _vm = StateObject(wrappedValue: ViewModelLogin(locationManager: LocationManager.instance))
+        _vmLogout = StateObject(wrappedValue:ViewModelLogout(locationManager: LocationManager.instance))
     }
     
     var body: some View {
         ZStack {
-            if vm.locationManager.location != nil {
+            if vm.successfulLogin {
                 ComponentMap()
             }
             
@@ -41,6 +43,7 @@ struct ViewLogin: View {
                         
                     Button(action: {
                         vm.login(username, password)
+//                        vmLogout.logout()
                     }) {
                         Text("Login")
                             .textCase(.uppercase)
@@ -69,6 +72,9 @@ struct ViewLogin: View {
                         message: Text("\(vm.errorMessage)").foregroundColor(Color("Error")),
                         dismissButton: .default(Text("OK"))
                     )
+                }
+                .onAppear{
+                    vm.loginCheck()
                 }
             }
             
