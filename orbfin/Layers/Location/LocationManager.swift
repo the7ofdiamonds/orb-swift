@@ -7,9 +7,7 @@ import MapKit
     private var locationManager = CLLocationManager()
     
     var locations: [CLLocation] = []
-    var location: CLLocationCoordinate2D? = nil
-    var userLocation: CLLocation? = nil
-//    var userLocation: CLLocationCoordinate2D? = nil
+    var location: Coordinates?
     var region: MKCoordinateRegion? = nil
     
     override init() {
@@ -24,14 +22,11 @@ import MapKit
         self.locations = locations
 
         if let location = locations.last {
-            self.location = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            self.userLocation = location
-//            self.userLocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            self.location = Coordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             self.region = MKCoordinateRegion(
                 center: location.coordinate,
                 span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
             )
-            print("User's location: \(location.coordinate.latitude), \(location.coordinate.longitude)")
         }
     }
     

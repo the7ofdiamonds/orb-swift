@@ -11,59 +11,74 @@ import MapKit
 struct ViewLogin: View {
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var isLoginSuccessful: Bool = false
-    @State private var showingAlert: Bool = false
-
-    @StateObject var locationManager = LocationManager()
-
-    private var vm: ViewModelLogin = ViewModelLogin(locationManager: LocationManager())
+    
+    @StateObject private var vm: ViewModelLogin
+    
+    init() {
+        _vm = StateObject(wrappedValue: ViewModelLogin(locationManager: LocationManager()))
+    }
     
     var body: some View {
         ZStack {
-            ComponentMap()
-            
-            VStack {
-                Spacer()
-                
-                Text("ORB")
-                    .font(.largeTitle)
-                    .padding()
-                
-                TextField("Username", text: $username)
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(8)
-                    .padding(.horizontal, 20)
-                
-                SecureField("Password", text: $password)
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(8)
-                    .padding(.horizontal, 20)
-                
-                Button(action: {
-                    vm.login(username, password)
-                }) {
-                    Text("Login")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(width: 220, height: 50)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                }
-                .padding()
-                
-                Spacer()
+            if vm.locationManager.location != nil {
+                ComponentMap()
             }
-            .background()
-            .frame(width: 300, height: 300)
-            .alert(isPresented: $showingAlert) {
-                Alert(
-                    title: Text("Login Failed"),
-                    message: Text("Incorrect username or password"),
-                    dismissButton: .default(Text("OK"))
-                )
+            
+            if !vm.successfulLogin {
+                VStack {
+                    Spacer()
+                    
+                    Text("ORB")
+                        .kerning(Styling.kerning)
+                        .font(Styling.H1)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    
+                    InputUsername(username: $username)
+                        .padding(.vertical, 10)
+                    
+                    InputPassword(password: $password)
+                        .padding(.vertical, 10)
+                        
+                    Button(action: {
+                        vm.login(username, password)
+                    }) {
+                        Text("Login")
+                            .textCase(.uppercase)
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .kerning(Styling.kerning)
+                            .padding()
+                            .background(Color("Button"))
+                            .foregroundColor(Color("ButtonFont"))
+                            .cornerRadius(Styling.cornerRadius)
+                            .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
+                    }
+                    
+                    Spacer()
+                }
+                .frame(maxWidth: 300, maxHeight: 300)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 20)
+                .background(Color("Card"))
+                .foregroundColor(Color("CardFont"))
+                .cornerRadius(Styling.cornerRadius)
+                .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
+                .alert(isPresented: $vm.showingAlert) {
+                    Alert(
+                        title: Text("Login Failed").foregroundColor(.red),
+                        message: Text("\(vm.errorMessage)").foregroundColor(Color("Error")),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
+            }
+            
+            if !vm.successMessage.isEmpty {
+                HStack{
+                    Text("\(vm.successMessage)")
+                        .foregroundColor(Color("Success"))
+                        .padding()
+                }
+                .background(Color("Card"))
             }
         }
     }
