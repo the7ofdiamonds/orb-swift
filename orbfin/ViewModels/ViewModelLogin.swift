@@ -12,15 +12,10 @@ class ViewModelLogin: ObservableObject {
     @Published var successMessage: String = ""
     @Published var errorMessage: String = ""
     @Published var showingAlert: Bool = false
-    @Published var successfulLogin: Bool = false
+    @Published var isLoggedIn: Bool? = nil
     
-    var authenticationSaved: Bool = false
-    
-    var locationManager: LocationManager
-
-    init(locationManager: LocationManager) {
-        self.locationManager = locationManager
-    }
+    let locationManager: LocationManager = LocationManager.instance
+    let authentication: Authentication = Authentication.instance
     
     func login(_ username: String, _ password: String) {
         guard !username.isEmpty else {
@@ -39,12 +34,12 @@ class ViewModelLogin: ObservableObject {
             Task {
                 let login: ResponseLogin = await Login().user(requestLogin: requestLogin)
 
-                self.loginSave(responseLogin: login)
+                let authenticationSaved: Bool = await authentication.saveAuthentication(responseLogin: login)
                 
                 if authenticationSaved {
                     if let successMessage = login.successMessage {
                         self.successMessage = successMessage
-                        self.successfulLogin = true
+                        self.isLoggedIn = await authentication.getAuthentication().isValid
                     }
                 }
                 
@@ -52,24 +47,6 @@ class ViewModelLogin: ObservableObject {
                     self.errorMessage = errorMessage
                     self.showingAlert = true
                 }
-            }
-        }
-    }
-    
-    func loginSave(responseLogin: ResponseLogin) {
-        Task {
-            self.authenticationSaved = await StorageUserDefaults.instance.saveAuthentication(responseLogin: responseLogin)
-        }
-    }
-    
-    func loginCheck() {
-        Task {
-            let authentication: Authentication = await StorageUserDefaults.instance.getAuthentication()
-            
-            if let _ = authentication.accessToken,
-               let _ = authentication.refreshToken,
-               let _ = authentication.username {
-                self.successfulLogin = true
             }
         }
     }

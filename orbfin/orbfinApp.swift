@@ -14,7 +14,7 @@ struct orbfinApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ViewLogin()
+            ViewHome()
         }
     }
 }

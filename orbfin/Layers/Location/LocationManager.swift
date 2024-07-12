@@ -2,9 +2,9 @@ import CoreLocation
 import MapKit
 
 @Observable class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    static var instance = LocationManager()
+    public static let instance = LocationManager()
     
-    private var locationManager = CLLocationManager()
+    private let locationManager = CLLocationManager()
     
     var locations: [CLLocation] = []
     var location: Coordinates?

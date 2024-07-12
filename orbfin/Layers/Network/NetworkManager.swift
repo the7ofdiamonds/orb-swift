@@ -14,16 +14,16 @@ actor NetworkManager {
     
     private init() {
         Task {
-            let authentication: Authentication = await StorageUserDefaults.instance.getAuthentication()
-            await self.useHeaders(authentication: authentication)
+            let authentication: AuthenticationCredentials = await Authentication.instance.getAuthentication()
+            await self.useHeaders(authenticationCredentials: authentication)
         }
     }
     
-    private func useHeaders(authentication: Authentication) async {
-        if let accessToken: String = authentication.accessToken,
-           let refreshToken = authentication.refreshToken {
+    private func useHeaders(authenticationCredentials: AuthenticationCredentials) async {
+        if let accessToken: String = authenticationCredentials.accessToken,
+           let refreshToken = authenticationCredentials.refreshToken {
             self.headers = [
-                "Authentication": accessToken,
+                "Authentication": "Bearer \(accessToken)",
                 "refreshToken": refreshToken
             ]
         }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 actor Login {
     var locationManager: LocationManager = LocationManager.instance

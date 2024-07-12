@@ -32,29 +32,4 @@ actor StorageUserDefaults {
     func delete(_ key: String) {
         UserDefaults.standard.removeObject(forKey: key)
     }
-    
-    func saveAuthentication(responseLogin: ResponseLogin) -> Bool {
-        if let accessToken = responseLogin.accessToken,
-           let refreshToken = responseLogin.refreshToken,
-           let username = responseLogin.username {
-            let accessTokenSaved = self.set(key: "access_token", value: accessToken)
-            let refreshTokenSaved = self.set(key: "refresh_token", value: refreshToken)
-            let usernameSaved = self.set(key: "username", value: username)
-            
-            if accessTokenSaved && refreshTokenSaved && usernameSaved {
-                return true
-            }
-        }
-        
-        return false
-    }
-
-    func getAuthentication() -> Authentication {
-        var authentication = Authentication()
-        authentication.accessToken = self.get("access_token") as? String
-        authentication.refreshToken = self.get("refresh_token") as? String
-        authentication.username = self.get("username") as? String
-
-        return authentication
-    }
 }

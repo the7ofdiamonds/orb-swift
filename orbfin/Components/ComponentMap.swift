@@ -11,14 +11,17 @@ import MapKit
 struct ComponentMap: View {
     @State var position: MapCameraPosition = .userLocation(fallback: .automatic)
     @StateObject var locationManager = LocationManager.instance
-
+    
+    let isLoggedIn: Bool = AuthenticationCredentials().isValid
+    
     var body: some View {
-        ZStack {
-            Map(position: $position)
-        }
-        .onAppear {
-            locationManager.checkLocationAuthorization()
-        }
+//        if let location = locationManager.location {
+            
+//            ZStack {
+                Map(position: $position)
+            .ignoresSafeArea()
+//            }
+//        }
     }
 }
 
