@@ -10,41 +10,43 @@ import SwiftUI
 @MainActor
 class ViewModelForgot: ObservableObject {
     @Published var successMessage: String = ""
+    @Published var email: String = ""
+    @Published var error: Error?
     @Published var errorMessage: String = ""
     @Published var showingAlert: Bool = false
-    @Published var successfulLogin: Bool = false
+    @Published var isLoggedIn: Bool = AuthenticationCredentials().isValid
     
-    var locationManager: LocationManager
-
-    init(locationManager: LocationManager) {
-        self.locationManager = locationManager
-    }
+    let locationManager: LocationManager = LocationManager.instance
+    let authentication: Authentication = Authentication.instance
     
-    func login(_ username: String, _ password: String) {
-                guard !username.isEmpty else {
-                    print("Username is empty")
-                    return
-                }
+    func password(username: String, email: String) {
+        guard !username.isEmpty || !email.isEmpty else {
+            self.errorMessage = "Either an Username or Email is required"
+            return
+        }
         
-                guard !password.isEmpty else {
-                    print("Password is empty")
-                    return
-                }
-        
-        if let location = locationManager.location {
-            let requestLogin: RequestLogin = RequestLogin(username: username, password: password, location: location)
+        if let _ = locationManager.location {
+            let requestForgot: RequestForgot = RequestForgot(username: username, email: email)
             
             Task {
-                let login: ResponseLogin = await Login().user(requestLogin: requestLogin)
+                do {
+                    let responseForgot: ResponseForgot = try await Forgot().password(requestForgot: requestForgot)
 
-                if let successMessage = login.successMessage {
-                    self.successMessage = successMessage
-                    self.successfulLogin = true
-                }
-                
-                if let errorMessage = login.errorMessage {
-                    self.errorMessage = errorMessage
-                    self.showingAlert = true
+                    if let email = responseForgot.email {
+                        self.email = email
+                    }
+                    
+                    if let successMessage = responseForgot.successMessage {
+                        self.successMessage = successMessage
+                        self.errorMessage = ""
+                    }
+                    
+                    if let errorMessage = responseForgot.errorMessage {
+                        self.errorMessage = errorMessage
+                        self.successMessage = ""
+                    }
+                } catch {
+                    self.error = error
                 }
             }
         }

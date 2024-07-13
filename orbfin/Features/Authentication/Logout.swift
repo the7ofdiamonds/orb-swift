@@ -8,7 +8,7 @@
 import Foundation
 
 actor Logout {
-    var locationManager: LocationManager = LocationManager.instance
+    @MainActor var locationManager: LocationManager = LocationManager.instance
     
     @Published var successMessage: String = ""
     @Published var errorMessage: String = ""

@@ -9,10 +9,14 @@ import SwiftUI
 import MapKit
 
 struct ViewHome: View {
+    @StateObject private var vm: ViewModelHome
+
     @StateObject private var navigation = Navigation.instance
+        
+    init() {
+        _vm = StateObject(wrappedValue: ViewModelHome())
+    }
     
-    @State var isLoggedIn: Bool = AuthenticationCredentials().isValid
-       
     var body: some View {
         
     ZStack {
@@ -39,19 +43,20 @@ struct ViewHome: View {
         VStack {
             Spacer()
             ComponentBar {
-                if !isLoggedIn {
+                if !vm.isLoggedIn {
                     ComponentButtonBar(label: "Login", icon: "key")
                     ComponentButtonBar(label: "Signup", icon: "plus.circle")
                 }
                 
                 ComponentButtonBar(label: "Forgot", icon: "questionmark.circle")
                 
-                if isLoggedIn {
+                if vm.isLoggedIn {
                     ComponentButtonBar(label: "Logout", icon: "key.slash")
                 }
             }
         }
         .ignoresSafeArea()
+
         }
     }
 }

@@ -23,7 +23,7 @@ struct ComponentButtonBar: View {
             }
         })
         .padding()
-        .foregroundColor(Color("BarFont"))
+        .foregroundColor(Styling.color(.BarFont))
     }
 }
 

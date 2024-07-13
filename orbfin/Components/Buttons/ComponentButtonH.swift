@@ -31,8 +31,8 @@ struct ComponentButtonH: View {
         .fontWeight(.bold)
         .kerning(Styling.kerning)
         .padding()
-        .background(Color("Button"))
-        .foregroundColor(Color("ButtonFont"))
+        .background(Styling.color(.Button))
+        .foregroundColor(Styling.color(.ButtonFont))
         .cornerRadius(Styling.cornerRadius)
         .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
     }
@@ -40,6 +40,5 @@ struct ComponentButtonH: View {
 
 #Preview {
     ComponentButtonH(label: "Home", icon: "house") {
-        Text("Button Action")
     }
 }

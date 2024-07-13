@@ -9,15 +9,13 @@ import SwiftUI
 
 struct ViewLogout: View {
     @StateObject private var vm: ViewModelLogout
-    
-    @State var isLoggedIn: Bool = AuthenticationCredentials().isValid
-    
+        
     init() {
         _vm = StateObject(wrappedValue: ViewModelLogout())
     }
     
     var body: some View {
-//        if isLoggedIn {
+        if vm.isLoggedIn {
             ComponentCard {
                 Button(action: {
                     vm.logout()
@@ -28,8 +26,8 @@ struct ViewLogout: View {
                         .fontWeight(.bold)
                         .kerning(Styling.kerning)
                         .padding()
-                        .background(Color("Button"))
-                        .foregroundColor(Color("ButtonFont"))
+                        .background(Styling.color(.Button))
+                        .foregroundColor(Styling.color(.Button))
                         .cornerRadius(Styling.cornerRadius)
                         .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
                 }
@@ -41,7 +39,15 @@ struct ViewLogout: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
-//        }
+        }
+        
+        if !vm.successMessage.isEmpty {
+            StatusBar(message: vm.successMessage, type: .success)
+        }
+        
+        if !vm.errorMessage.isEmpty {
+            StatusBar(message: vm.errorMessage, type: .error)
+        }
     }
 }
 

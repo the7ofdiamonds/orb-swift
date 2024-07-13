@@ -21,8 +21,8 @@ struct ComponentBar<Content: View>: View {
             
         }
         .frame(maxWidth: .infinity)
-        .background(Color("Bar"))
-        .foregroundColor(Color("BarFont"))
+        .background(Styling.color(.Bar))
+        .foregroundColor(Styling.color(.BarFont))
         .ignoresSafeArea()
         .cornerRadius(Styling.cornerRadius)
         .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)

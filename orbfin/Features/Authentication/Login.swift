@@ -11,7 +11,7 @@ import CoreLocation
 actor Login {
     var locationManager: LocationManager = LocationManager.instance
     
-    func user(requestLogin: RequestLogin) async -> ResponseLogin {
+    func user(requestLogin: RequestLogin) async throws -> ResponseLogin {
         guard let url = URL(string: BackendURLs.login) else {
             return ResponseLogin(errorMessage: "Invalid URL")
         }
@@ -29,7 +29,7 @@ actor Login {
             
             return responseLogin
         } catch {
-            return ResponseLogin(errorMessage: "\(error.localizedDescription)")
+            throw error
         }
     }
 }

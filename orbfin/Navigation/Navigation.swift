@@ -17,6 +17,5 @@ class Navigation: ObservableObject {
     
     func change(view: String) {
         self.isView = view
-        print(view)
     }
 }

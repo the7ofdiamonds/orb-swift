@@ -12,8 +12,6 @@ struct ViewLogin: View {
     @State private var username: String = ""
     @State private var password: String = ""
     
-    let isLoggedIn: Bool = AuthenticationCredentials().isValid
-
     @StateObject private var vm: ViewModelLogin
 
     init() {
@@ -22,7 +20,7 @@ struct ViewLogin: View {
     
     var body: some View {
             
-        if !isLoggedIn {
+        if !vm.isLoggedIn {
             ComponentCard {
                 Text("ORB")
                     .kerning(Styling.kerning)
@@ -41,20 +39,19 @@ struct ViewLogin: View {
             }
             .alert(isPresented: $vm.showingAlert) {
                 Alert(
-                    title: Text("Login Failed").foregroundColor(.red),
-                    message: Text("\(vm.errorMessage)").foregroundColor(Color("Error")),
+                    title: Text("Login Failed"),
+                    message: Text("\(vm.error?.localizedDescription ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
                     dismissButton: .default(Text("OK"))
                 )
             }
         }
         
         if !vm.successMessage.isEmpty {
-            HStack{
-                Text("\(vm.successMessage)")
-                    .foregroundColor(Color("Success"))
-                    .padding()
-            }
-            .background(Color("Card"))
+            StatusBar(message: vm.successMessage, type: .success)
+        }
+        
+        if !vm.errorMessage.isEmpty {
+            StatusBar(message: vm.errorMessage, type: .error)
         }
     }
 }

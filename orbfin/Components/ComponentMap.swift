@@ -15,13 +15,12 @@ struct ComponentMap: View {
     let isLoggedIn: Bool = AuthenticationCredentials().isValid
     
     var body: some View {
-//        if let location = locationManager.location {
+        if let _ = locationManager.location {
             
-//            ZStack {
+            ZStack {
                 Map(position: $position)
-            .ignoresSafeArea()
-//            }
-//        }
+            }
+        }
     }
 }
 

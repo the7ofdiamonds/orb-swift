@@ -16,15 +16,15 @@ struct InputTextField: View {
         ZStack(alignment: .leading) {
             TextField("", text: $text)
                 .padding()
-                .background(Color("Input"))
-                .foregroundColor(Color("InputFont"))
+                .background(Styling.color(.Input))
+                .foregroundColor(Styling.color(.InputFont))
                 .cornerRadius(Styling.cornerRadius)
                 .textInputAutocapitalization(.never)
                 .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
             
             if text.isEmpty {
                 Text(placeholder)
-                    .foregroundColor(Color("InputFont"))
+                    .foregroundColor(Styling.color(.InputFont))
                     .padding(.leading, 10)
             }
         }

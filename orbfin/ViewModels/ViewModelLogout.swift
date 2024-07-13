@@ -12,7 +12,7 @@ class ViewModelLogout: ObservableObject {
     @Published var successMessage: String = ""
     @Published var errorMessage: String = ""
     @Published var showingAlert: Bool = false
-    @Published var isLoggedIn: Bool? = nil
+    @Published var isLoggedIn: Bool = AuthenticationCredentials().isValid
     
     let locationManager: LocationManager = LocationManager.instance
     let authentication: Authentication = Authentication.instance

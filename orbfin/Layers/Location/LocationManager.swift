@@ -1,14 +1,14 @@
 import CoreLocation
 import MapKit
 
-@Observable class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     public static let instance = LocationManager()
     
     private let locationManager = CLLocationManager()
     
-    var locations: [CLLocation] = []
-    var location: Coordinates?
-    var region: MKCoordinateRegion? = nil
+    @Published var locations: [CLLocation] = []
+    @Published var location: Coordinates?
+    @Published var region: MKCoordinateRegion? = nil
     
     private override init() {
         super.init()
@@ -35,26 +35,28 @@ import MapKit
         checkLocationAuthorization()
     }
     
-    func checkLocationAuthorization(){
-        print("Checking location authorization status...")
+    func checkLocationAuthorization() {
         switch locationManager.authorizationStatus {
         case .notDetermined:
             print("Location authorization status: Not Determined")
-            locationManager.requestWhenInUseAuthorization()
+            return locationManager.requestWhenInUseAuthorization()
         case .restricted:
             print("Location authorization status: Restricted")
             print("Your location is restricted.")
+            return
         case .denied:
             print("Location authorization status: Denied")
             print("You have denied the app location permission.")
+            return
         case .authorizedAlways:
             print("Location authorization status: Authorized Always")
-            locationManager.startUpdatingLocation()
+            return locationManager.startUpdatingLocation()
         case .authorizedWhenInUse:
             print("Location authorization status: Authorized When In Use")
-            locationManager.startUpdatingLocation()
+            return locationManager.startUpdatingLocation()
         @unknown default:
             print("Location authorization status: Unknown")
+            return
         }
     }
 }

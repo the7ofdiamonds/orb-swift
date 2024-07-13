@@ -25,8 +25,8 @@ struct ComponentCard<Content: View>: View {
         .frame(maxWidth: 300, maxHeight: 300)
         .padding(.horizontal, 20)
         .padding(.vertical, 20)
-        .background(Color("Card"))
-        .foregroundColor(Color("CardFont"))
+        .background(Styling.color(.Card))
+        .foregroundColor(Styling.color(.CardFont))
         .cornerRadius(Styling.cornerRadius)
         .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
     }
@@ -36,7 +36,7 @@ struct ComponentCard<Content: View>: View {
     ComponentCard {
         Text("Hello, World!")
                     .padding()
-                    .background(Color.white)
+                    .foregroundColor(Styling.color(.CardFont))
                     .cornerRadius(Styling.cornerRadius)
     }
 }

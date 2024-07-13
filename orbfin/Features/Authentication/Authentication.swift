@@ -10,6 +10,8 @@ import Foundation
 actor Authentication {
     static let instance = Authentication()
     
+    @Published var isLoggedIn: Bool = AuthenticationCredentials().isValid
+
     let uDStorage = StorageUserDefaults.instance
     
     var isValid: Bool? = nil
@@ -45,7 +47,6 @@ actor Authentication {
         authentication.refreshToken = refreshToken
         authentication.username = username
 
-        self.isValid = authentication.isValid
         
         return authentication
     }

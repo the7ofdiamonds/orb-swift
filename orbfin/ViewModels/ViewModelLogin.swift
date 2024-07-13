@@ -10,9 +10,10 @@ import SwiftUI
 @MainActor
 class ViewModelLogin: ObservableObject {
     @Published var successMessage: String = ""
+    @Published var error: Error?
     @Published var errorMessage: String = ""
     @Published var showingAlert: Bool = false
-    @Published var isLoggedIn: Bool? = nil
+    @Published var isLoggedIn: Bool = AuthenticationCredentials().isValid
     
     let locationManager: LocationManager = LocationManager.instance
     let authentication: Authentication = Authentication.instance
@@ -32,22 +33,29 @@ class ViewModelLogin: ObservableObject {
             let requestLogin: RequestLogin = RequestLogin(username: username, password: password, location: location)
             
             Task {
-                let login: ResponseLogin = await Login().user(requestLogin: requestLogin)
-
-                let authenticationSaved: Bool = await authentication.saveAuthentication(responseLogin: login)
-                
-                if authenticationSaved {
-                    if let successMessage = login.successMessage {
-                        self.successMessage = successMessage
-                        self.isLoggedIn = await authentication.getAuthentication().isValid
+                do {
+                    let login: ResponseLogin = try await Login().user(requestLogin: requestLogin)
+                    
+                    let authenticationSaved: Bool = await authentication.saveAuthentication(responseLogin: login)
+                    
+                    if authenticationSaved {
+                        if let successMessage = login.successMessage {
+                            self.successMessage = successMessage
+                            self.isLoggedIn = await authentication.getAuthentication().isValid
+                        }
                     }
-                }
-                
-                if let errorMessage = login.errorMessage {
-                    self.errorMessage = errorMessage
+                    
+                    if let errorMessage = login.errorMessage {
+                        self.errorMessage = errorMessage
+                        self.showingAlert = true
+                    }
+                } catch {
+                    self.error = error
                     self.showingAlert = true
                 }
             }
+        } else {
+            locationManager.checkLocationAuthorization()
         }
     }
 }
