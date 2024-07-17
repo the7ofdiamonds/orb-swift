@@ -9,6 +9,8 @@ import SwiftUI
 import MapKit
 
 struct ViewLogin: View {
+    @EnvironmentObject var authentication: Authentication
+
     @State private var username: String = ""
     @State private var password: String = ""
     
@@ -20,7 +22,7 @@ struct ViewLogin: View {
     
     var body: some View {
             
-        if !vm.isLoggedIn {
+        if !(vm.isLoggedIn ?? true) {
             ComponentCard {
                 Text("ORB")
                     .kerning(Styling.kerning)
@@ -34,13 +36,20 @@ struct ViewLogin: View {
                     .padding(.vertical, 10)
                 
                 ComponentButtonH(label: "Login", icon: "key") {
-                    vm.login(username, password)
+                    Task {
+                        await vm.login(username, password)
+                    }
+                }
+                
+                HStack {
+                    ComponentButtonBar(page: .signup)
+                    ComponentButtonBar(page: .forgot)
                 }
             }
             .alert(isPresented: $vm.showingAlert) {
                 Alert(
-                    title: Text("Login Failed"),
-                    message: Text("\(vm.error?.localizedDescription ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
+                    title: Text(vm.error?.title ?? "An Error has occured."),
+                    message: Text("\(vm.error?.message ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
                     dismissButton: .default(Text("OK"))
                 )
             }

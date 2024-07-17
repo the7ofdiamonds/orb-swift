@@ -9,34 +9,48 @@ import SwiftUI
 
 @MainActor
 class ViewModelLogout: ObservableObject {
+    @ObservedObject var authentication: Authentication = Authentication()
+    
+    @Published var isLoggedIn: Bool? = nil
     @Published var successMessage: String = ""
     @Published var errorMessage: String = ""
+    @Published var error: NetworkError?
     @Published var showingAlert: Bool = false
-    @Published var isLoggedIn: Bool = AuthenticationCredentials().isValid
+        
+    init(){
+        self.isLoggedIn = authentication.checkAuthentication()
+    }
     
-    let locationManager: LocationManager = LocationManager.instance
-    let authentication: Authentication = Authentication.instance
-    
-    func logout() {
-        Task {
-            let authCreds: AuthenticationCredentials = await authentication.getAuthentication()
+    func logout() async throws {
+        do {
+            let authCreds: AuthenticationCredentials = AuthenticationCredentials()
             
-            if let accessToken = authCreds.accessToken,
+            if authCreds.isValid,
+               let accessToken = authCreds.accessToken,
                let refreshToken = authCreds.refreshToken {
                 let requestLogout: RequestLogout = RequestLogout(accessToken: accessToken, refreshToken: refreshToken)
-                let logout: ResponseLogout = await Logout().user(requestLogout: requestLogout)
                 
-                await StorageUserDefaults.instance.delete("access_token")
-                await StorageUserDefaults.instance.delete("refresh_token")
+                authCreds.accessToken = nil
+                authCreds.refreshToken = nil
                 
-                if authCreds.accessToken == nil && authCreds.refreshToken == nil {
-                    if let successMessage = logout.successMessage {
-                        self.successMessage = successMessage
-                    }
-                    
-                    self.isLoggedIn = await authentication.getAuthentication().isValid
+                if !authentication.checkAuthentication() {
+                    authentication.isLoggedIn = true
+                }
+                
+                let logout: ResponseLogout = try await Logout().user(requestLogout: requestLogout)
+                
+                if let successMessage = logout.successMessage {
+                    self.successMessage = successMessage
+                    self.errorMessage = ""
+                }
+                
+                if let errorMessage = logout.errorMessage {
+                    self.errorMessage = errorMessage
                 }
             }
+        } catch {
+            self.error = error as? NetworkError
+            self.showingAlert = true
         }
     }
 }

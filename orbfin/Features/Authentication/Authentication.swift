@@ -5,49 +5,48 @@
 //  Created by Jamel Lyons on 7/12/24.
 //
 
-import Foundation
+import SwiftUI
 
-actor Authentication {
-    static let instance = Authentication()
+@MainActor
+class Authentication: ObservableObject {
+    @Published var isLoggedIn: Bool? = nil
     
-    @Published var isLoggedIn: Bool = AuthenticationCredentials().isValid
-
-    let uDStorage = StorageUserDefaults.instance
+    init() {
+        self.isLoggedIn = checkAuthentication()
+    }
     
-    var isValid: Bool? = nil
+    func checkAuthentication() -> Bool {
+        let credentials = AuthenticationCredentials()
+        self.isLoggedIn = credentials.isValid
+        return credentials.isValid
+    }
     
     func saveAuthentication(responseLogin: ResponseLogin) async -> Bool {
         if let accessToken = responseLogin.accessToken,
            let refreshToken = responseLogin.refreshToken,
            let username = responseLogin.username {
-            let accessTokenSaved = await uDStorage.set(key: "access_token", value: accessToken)
-            let refreshTokenSaved = await uDStorage.set(key: "refresh_token", value: refreshToken)
-            let usernameSaved = await uDStorage.set(key: "username", value: username)
+            let credentials = AuthenticationCredentials()
+
+            credentials.accessToken = accessToken
+            credentials.refreshToken = refreshToken
+            credentials.username = username
             
-            if accessTokenSaved && refreshTokenSaved && usernameSaved {
-                return true
-            }
+            self.isLoggedIn = credentials.isValid
+            
+            return credentials.isValid
         }
         
         return false
     }
+    
+    func removeAuthentication() async -> Bool {
+        let credentials = AuthenticationCredentials()
 
-    func getAuthentication() async -> AuthenticationCredentials {
-        let authentication = AuthenticationCredentials()
+        credentials.accessToken = nil
+        credentials.refreshToken = nil
         
-        let uDStorage = StorageUserDefaults.instance
-        
-        guard let accessToken = await uDStorage.get("access_token") as? String,
-              let refreshToken = await uDStorage.get("refresh_token") as? String,
-              let username = await uDStorage.get("username") as? String else {
-            return authentication
-        }
-        
-        authentication.accessToken = accessToken
-        authentication.refreshToken = refreshToken
-        authentication.username = username
+        self.isLoggedIn = credentials.isValid
 
-        
-        return authentication
+        return credentials.isValid
     }
 }

@@ -9,21 +9,28 @@ import SwiftUI
 
 @MainActor
 class ViewModelLogin: ObservableObject {
+    @ObservedObject var authentication: Authentication = Authentication()
+
+    @Published var isLoggedIn: Bool? = nil
     @Published var successMessage: String = ""
-    @Published var error: Error?
+    @Published var error: NetworkError?
     @Published var errorMessage: String = ""
     @Published var showingAlert: Bool = false
-    @Published var isLoggedIn: Bool = AuthenticationCredentials().isValid
+    
+    
+    init(){
+        self.isLoggedIn = authentication.checkAuthentication()
+    }
     
     let locationManager: LocationManager = LocationManager.instance
-    let authentication: Authentication = Authentication.instance
-    
-    func login(_ username: String, _ password: String) {
+    let navigation: Navigation = Navigation.instance
+
+    func login(_ username: String, _ password: String) async {
         guard !username.isEmpty else {
             self.errorMessage = "Username is empty"
             return
         }
-
+        
         guard !password.isEmpty else {
             self.errorMessage = "Password is empty"
             return
@@ -32,27 +39,24 @@ class ViewModelLogin: ObservableObject {
         if let location = locationManager.location {
             let requestLogin: RequestLogin = RequestLogin(username: username, password: password, location: location)
             
-            Task {
-                do {
-                    let login: ResponseLogin = try await Login().user(requestLogin: requestLogin)
-                    
-                    let authenticationSaved: Bool = await authentication.saveAuthentication(responseLogin: login)
-                    
-                    if authenticationSaved {
-                        if let successMessage = login.successMessage {
-                            self.successMessage = successMessage
-                            self.isLoggedIn = await authentication.getAuthentication().isValid
-                        }
+            do {
+                let login: ResponseLogin = try await Login().user(requestLogin: requestLogin)
+                
+                if await authentication.saveAuthentication(responseLogin: login) {
+                    if let successMessage = login.successMessage {
+                        self.isLoggedIn = authentication.checkAuthentication()
+                        self.successMessage = successMessage
+                        navigation.isView = .home
                     }
-                    
-                    if let errorMessage = login.errorMessage {
-                        self.errorMessage = errorMessage
-                        self.showingAlert = true
-                    }
-                } catch {
-                    self.error = error
+                }
+                
+                if let errorMessage = login.errorMessage {
+                    self.errorMessage = errorMessage
                     self.showingAlert = true
                 }
+            } catch {
+                self.error = error as? NetworkError
+                self.showingAlert = true
             }
         } else {
             locationManager.checkLocationAuthorization()

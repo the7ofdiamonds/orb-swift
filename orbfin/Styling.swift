@@ -26,6 +26,7 @@ enum ColorName {
     case CautionFont
     case Error
     case ErrorFont
+    case Font
     case Info
     case InfoFont
     case Input
@@ -64,6 +65,8 @@ struct Styling {
             return Color("Error")
         case .ErrorFont:
             return Color("ErrorFont")
+        case .Font:
+            return Color("Font")
         case .Info:
             return Color("Info")
         case .InfoFont:

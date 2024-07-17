@@ -12,7 +12,7 @@ struct ViewForgot: View {
     @State private var email: String = ""
     
     @StateObject private var vm: ViewModelForgot
-
+    
     init() {
         _vm = StateObject(wrappedValue: ViewModelForgot())
     }
@@ -25,6 +25,13 @@ struct ViewForgot: View {
             
             ComponentButtonH(label: "Forgot", icon: "questionmark.circle") {
                 vm.password(username: username, email: email)
+            }
+            
+            HStack {
+                if !(vm.isLoggedIn ?? true) {
+                    ComponentButtonBar(page: .login)
+                    ComponentButtonBar(page: .signup)
+                }
             }
         }
         

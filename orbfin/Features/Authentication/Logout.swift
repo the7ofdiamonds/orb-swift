@@ -8,32 +8,20 @@
 import Foundation
 
 actor Logout {
-    @MainActor var locationManager: LocationManager = LocationManager.instance
     
-    @Published var successMessage: String = ""
-    @Published var errorMessage: String = ""
-    
-    func user(requestLogout: RequestLogout) async -> ResponseLogout {
+    func user(requestLogout: RequestLogout) async throws -> ResponseLogout {
         guard let url = URL(string: BackendURLs.logout) else {
-            return ResponseLogout(errorMessage: "Invalid URL")
+            throw NetworkError.invalidURL
         }
+                
+        let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: nil)
         
         do {
-            let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: nil)
-                        
-            let responseLogout = try JSONDecoder().decode(ResponseLogout.self, from: serverResponse.data)
-            
-            if let successMessage = responseLogout.successMessage {
-                self.successMessage = successMessage
-            }
-            
-            if let errorMessage = responseLogout.errorMessage {
-                self.errorMessage = errorMessage
-            }
-            
+           let responseLogout = try JSONDecoder().decode(ResponseLogout.self, from: serverResponse.data)
+
             return responseLogout
         } catch {
-            return ResponseLogout(errorMessage: "\(error.localizedDescription)")
+            throw NetworkError.decodingError(error: error)
         }
     }
 }

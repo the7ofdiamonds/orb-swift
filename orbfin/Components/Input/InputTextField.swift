@@ -19,7 +19,6 @@ struct InputTextField: View {
                 .background(Styling.color(.Input))
                 .foregroundColor(Styling.color(.InputFont))
                 .cornerRadius(Styling.cornerRadius)
-                .textInputAutocapitalization(.never)
                 .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
             
             if text.isEmpty {

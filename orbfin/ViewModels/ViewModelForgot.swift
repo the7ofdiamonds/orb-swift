@@ -9,15 +9,16 @@ import SwiftUI
 
 @MainActor
 class ViewModelForgot: ObservableObject {
+    @ObservedObject var authentication: Authentication = Authentication()
+
+    @Published var isLoggedIn: Bool? = nil
     @Published var successMessage: String = ""
     @Published var email: String = ""
     @Published var error: Error?
     @Published var errorMessage: String = ""
     @Published var showingAlert: Bool = false
-    @Published var isLoggedIn: Bool = AuthenticationCredentials().isValid
     
     let locationManager: LocationManager = LocationManager.instance
-    let authentication: Authentication = Authentication.instance
     
     func password(username: String, email: String) {
         guard !username.isEmpty || !email.isEmpty else {

@@ -10,11 +10,15 @@ import SwiftData
 
 @main
 struct orbfinApp: App {
-    init() {}
-    
     var body: some Scene {
         WindowGroup {
             ViewHome()
+                .environmentObject(Authentication())
         }
     }
+}
+
+#Preview {
+    ViewHome()
+        .environmentObject(Authentication())
 }

@@ -6,9 +6,22 @@
 //
 
 import Foundation
+import SwiftUI
 
 @MainActor
 class ViewModelHome: ObservableObject {
-    @Published var isLoggedIn: Bool = AuthenticationCredentials().isValid
+    @ObservedObject var authentication: Authentication = Authentication()
 
+    @Published var isLoggedIn: Bool?
+    
+    init(isLoggedIn: Bool? = nil) {
+        self.isLoggedIn = authentication.checkAuthentication()
+        print("isLoggedIn: \(self.isLoggedIn ?? false)")
+    }
+    
+    func checkAuthenticationStatus() -> Bool {
+            let credentials = AuthenticationCredentials()
+            self.isLoggedIn = credentials.isValid
+        return authentication.checkAuthentication()
+    }
 }

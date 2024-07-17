@@ -14,16 +14,16 @@ actor NetworkManager {
     
     private init() {
         Task {
-            let authentication: AuthenticationCredentials = await Authentication.instance.getAuthentication()
+            let authentication: AuthenticationCredentials = AuthenticationCredentials()
             await self.useHeaders(authenticationCredentials: authentication)
         }
     }
     
     private func useHeaders(authenticationCredentials: AuthenticationCredentials) async {
         if let accessToken: String = authenticationCredentials.accessToken,
-           let refreshToken = authenticationCredentials.refreshToken {
+           let refreshToken: String = authenticationCredentials.refreshToken {
             self.headers = [
-                "Authentication": "Bearer \(accessToken)",
+                "Authorization": "Bearer \(accessToken)",
                 "refreshToken": refreshToken
             ]
         }
@@ -34,14 +34,32 @@ actor NetworkManager {
             let (data, response) = try await URLSession.shared.data(for: request)
             
             if data.isEmpty {
-                throw NetworkError.noResponse(message: "No data has been received from this server.")
+                throw NetworkError.noData(message: "No data has been received from this server.")
             }
             
             guard let urlResponse = response as? HTTPURLResponse else {
                 throw NetworkError.noResponse(message: "No response has been received from this server.")
             }
-            
-            return ResponseServer(data: data, response: urlResponse)
+            print(data)
+            print(response)
+//            switch urlResponse.statusCode {
+//                    case 200...299:
+//                        return ResponseServer(data: data, response: urlResponse)
+//                    case 300...399:
+//                        let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown redirection error"
+//                        throw NetworkError.clientError(statusCode: urlResponse.statusCode, message: "Redirection error: \(serverMessage)")
+//                    case 400...499:
+//                        let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown client error"
+//                        throw NetworkError.clientError(statusCode: urlResponse.statusCode, message: "Client error: \(serverMessage)")
+//                    case 500...599:
+//                        let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown server error"
+//                        throw NetworkError.serverError(statusCode: urlResponse.statusCode, message: "Server error: \(serverMessage)")
+//                    default:
+//                        let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
+//                        throw NetworkError.unknownError(error: NSError(domain: "", code: urlResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: serverMessage]))
+//                    }
+                                    return ResponseServer(data: data, response: urlResponse)
+
         } catch {
             throw error
         }
@@ -64,7 +82,7 @@ actor NetworkManager {
             
             return try await self.request(request: request)
         } catch {
-            throw error
+            throw NetworkError.serverError(error: error)
         }
     }
     

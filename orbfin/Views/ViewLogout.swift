@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ViewLogout: View {
+    @EnvironmentObject var authentication: Authentication
+
     @StateObject private var vm: ViewModelLogout
-        
+    
     init() {
         _vm = StateObject(wrappedValue: ViewModelLogout())
     }
     
     var body: some View {
-        if vm.isLoggedIn {
+//        if (vm.isLoggedIn ?? false) {
             ComponentCard {
                 Button(action: {
-                    vm.logout()
+                    Task{
+                        try await vm.logout()
+                    }
                 }) {
                     Text("Logout")
                         .textCase(.uppercase)
@@ -27,19 +31,24 @@ struct ViewLogout: View {
                         .kerning(Styling.kerning)
                         .padding()
                         .background(Styling.color(.Button))
-                        .foregroundColor(Styling.color(.Button))
+                        .foregroundColor(Styling.color(.ButtonFont))
                         .cornerRadius(Styling.cornerRadius)
                         .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
+                }
+                
+                HStack {
+                    ComponentButtonBar(page: .signup)
+                    ComponentButtonBar(page: .forgot)
                 }
             }
             .alert(isPresented: $vm.showingAlert) {
                 Alert(
-                    title: Text("Login Failed").foregroundColor(.red),
-                    message: Text("\(vm.errorMessage)").foregroundColor(Color("Error")),
+                    title: Text(vm.error?.title ?? "An Error has occured."),
+                    message: Text("\(vm.error?.message ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
                     dismissButton: .default(Text("OK"))
                 )
             }
-        }
+//        }
         
         if !vm.successMessage.isEmpty {
             StatusBar(message: vm.successMessage, type: .success)

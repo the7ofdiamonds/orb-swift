@@ -9,7 +9,14 @@ import SwiftUI
 
 struct ViewSignUp: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ComponentCard {
+            Text("Signup")
+            HStack {
+                ComponentButtonBar(page: .login)
+                ComponentButtonBar(page: .forgot)
+            }
+        }
+        
         
 //        if !vm.successMessage.isEmpty {
 //            StatusBar(message: vm.successMessage, type: .success)

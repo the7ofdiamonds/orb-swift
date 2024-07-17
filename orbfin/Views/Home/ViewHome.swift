@@ -9,58 +9,74 @@ import SwiftUI
 import MapKit
 
 struct ViewHome: View {
+    @EnvironmentObject var authentication: Authentication
+    
+    @StateObject private var navigation = Navigation.instance
+    
     @StateObject private var vm: ViewModelHome
 
-    @StateObject private var navigation = Navigation.instance
-        
     init() {
         _vm = StateObject(wrappedValue: ViewModelHome())
     }
     
     var body: some View {
         
-    ZStack {
-        ComponentMap()
-        
-        VStack {
-            if navigation.isView == "Login" {
-                ViewLogin()
-            }
+        ZStack {
+            ComponentMap()
             
-            if navigation.isView == "Signup" {
-                ViewSignUp()
-            }
-            
-            if navigation.isView == "Forgot" {
-                ViewForgot()
-            }
-            
-            if navigation.isView == "Logout" {
-                ViewLogout()
-            }
-        }
-
-        VStack {
-            Spacer()
-            ComponentBar {
-                if !vm.isLoggedIn {
-                    ComponentButtonBar(label: "Login", icon: "key")
-                    ComponentButtonBar(label: "Signup", icon: "plus.circle")
+            VStack {
+                switch navigation.isView {
+                case .forgot:
+                    ViewForgot()
+                case .logout:
+                    ViewLogout()
+                case .manage:
+                    ViewManage()
+                case .income:
+                    ViewManageIncome()
+                case .revenue:
+                    ViewManageRevenue()
+                case .expenses:
+                    ViewManageExpenses()
+                case .assets:
+                    ViewManageAssets()
+                case .liabilities:
+                    ViewManageLiabilities()
+                case .personal:
+                    ViewManagePersonal()
+                case .personaltransactions:
+                    ViewManagePersonalTransactions()
+                case .business:
+                    ViewManageBusiness()
+                case .businesstransactions:
+                    ViewManageBusinessTransactions()
+                case .invest:
+                    ViewInvest()
+                case .services:
+                    ViewServices()
+                default:
+                    EmptyView()
                 }
-                
-                ComponentButtonBar(label: "Forgot", icon: "questionmark.circle")
-                
-                if vm.isLoggedIn {
-                    ComponentButtonBar(label: "Logout", icon: "key.slash")
+            }
+            
+            VStack {
+                Spacer()
+                if (authentication.isLoggedIn ?? false) {
+                    ComponentBar {
+                        ComponentButtonBar(page: .manage)
+                        ComponentButtonBar(page: .invest)
+                        ComponentButtonBar(page: .services)
+                    }
                 }
             }
+            .ignoresSafeArea()
         }
-        .ignoresSafeArea()
-
-        }
+//        .onAppear {
+//                    vm.checkAuthenticationStatus()
+//                }
     }
 }
 
-#Preview {
-    ViewHome()
-}
+//#Preview {
+//    ViewHome(ViewModelHome())
+//}

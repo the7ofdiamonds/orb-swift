@@ -9,15 +9,14 @@ import Foundation
 import CoreLocation
 
 actor Login {
-    var locationManager: LocationManager = LocationManager.instance
     
     func user(requestLogin: RequestLogin) async throws -> ResponseLogin {
         guard let url = URL(string: BackendURLs.login) else {
-            return ResponseLogin(errorMessage: "Invalid URL")
+            throw NetworkError.invalidURL
         }
         
         guard let requestLoginDict = requestLogin.dictionary else {
-            return ResponseLogin(errorMessage: "Invalid Data")
+            throw NetworkError.invalidData
         }
         
         do {
