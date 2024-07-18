@@ -6,31 +6,37 @@
 //
 
 import Foundation
+import SwiftUI
 
-enum Page: String {
-    case home = "home"
-    case login = "login"
-    case signup = "signup"
-    case forgot = "forgot"
-    case logout = "logout"
-    case manage = "manage"
-    case invest = "invest"
-    case services = "services"
-    case realestate = "realestate"
-    case tangibleassets = "tangibleassets"
-    case paperassets = "paperassets"
-    case transactions = "transactions"
-    case income = "income"
-    case expenses = "expenses"
-    case assets = "assets"
-    case liabilities = "liabilities"
-    case notary = "notary"
-    case settings = "settings"
-    case personal = "personal"
-    case business = "business"
-    case revenue = "revenue"
-    case personaltransactions = "personaltransactions"
-    case businesstransactions = "businesstransactions"
+enum Page: CaseIterable {
+    case home
+    case login
+    case signup
+    case forgot
+    case logout
+    case manage
+    case invest
+    case services
+    case realestate
+    case tangibleassets
+    case paperassets
+    case transactions
+    case income
+    case expenses
+    case assets
+    case liabilities
+    case notary
+    case settings
+    case personal
+    case business
+    case revenue
+    case personaltransactions
+    case businesstransactions
+    case commercial
+    case residential
+}
+
+extension Page: ProtocolViewType {
     
     var label: String {
         switch self {
@@ -80,6 +86,10 @@ enum Page: String {
             return "Personal Transactions"
         case .businesstransactions:
             return "Business Transactions"
+        case .commercial:
+            return "Commercial"
+        case .residential:
+            return "Residential"
         }
     }
     
@@ -131,6 +141,106 @@ enum Page: String {
             return "personaltransactions"
         case .businesstransactions:
             return "businesstransactions"
+        case .commercial:
+            return "building"
+        case .residential:
+            return "house"
         }
     }
 }
+
+extension Page {
+    @ViewBuilder
+    var body: some View {
+        switch self {
+        case .forgot:
+            ViewForgot()
+        case .logout:
+            ViewLogout()
+        case .manage:
+            ViewManage()
+        case .income:
+            ViewManageIncome()
+        case .revenue:
+            ViewManageRevenue()
+        case .expenses:
+            ViewManageExpenses()
+        case .assets:
+            ViewManageAssets()
+        case .liabilities:
+            ViewManageLiabilities()
+        case .personal:
+            ViewManagePersonal()
+        case .personaltransactions:
+            ViewManagePersonalTransactions()
+        case .business:
+            ViewManageBusiness()
+        case .businesstransactions:
+            ViewManageBusinessTransactions()
+        case .invest:
+            ViewInvest()
+        case .services:
+            ViewServices()
+        default:
+            EmptyView()
+        }
+    }
+}
+
+extension Page {
+    init?(label: String) {
+        switch label {
+        case "Home":
+            self = .home
+        case "Login":
+            self = .login
+        case "Signup":
+            self = .signup
+        case "Forgot":
+            self = .forgot
+        case "Logout":
+            self = .logout
+        case "Manage":
+            self = .manage
+        case "Invest":
+            self = .invest
+        case "Services":
+            self = .services
+        case "Real Estate":
+            self = .realestate
+        case "Tangible Assets":
+            self = .tangibleassets
+        case "Paper Assets":
+            self = .paperassets
+        case "Transactions":
+            self = .transactions
+        case "Income":
+            self = .income
+        case "Expenses":
+            self = .expenses
+        case "Assets":
+            self = .assets
+        case "Liabilities":
+            self = .liabilities
+        case "Notary":
+            self = .notary
+        case "Settings":
+            self = .settings
+        case "Personal":
+            self = .personal
+        case "Business":
+            self = .business
+        case "Revenue":
+            self = .revenue
+        case "Personal Transactions":
+            self = .personaltransactions
+        case "Business Transactions":
+            self = .businesstransactions
+        
+        default:
+            return nil
+        }
+    }
+}
+
+

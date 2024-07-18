@@ -15,68 +15,54 @@ struct ViewHome: View {
     
     @StateObject private var vm: ViewModelHome
 
+    @State private var isLoggedIn: Bool?
+    @State private var selectedMenu: Menu? = nil
+    @State private var selectedContentMenu: ViewType? = nil
+    @State private var selectedDetailView: (any View)? = nil
+    
     init() {
         _vm = StateObject(wrappedValue: ViewModelHome())
     }
     
     var body: some View {
+//        NavigationStack() {
+//            Page.body
+//        }
         
-        ZStack {
-            ComponentMap()
-            
-            VStack {
-                switch navigation.isView {
-                case .forgot:
-                    ViewForgot()
-                case .logout:
-                    ViewLogout()
-                case .manage:
-                    ViewManage()
-                case .income:
-                    ViewManageIncome()
-                case .revenue:
-                    ViewManageRevenue()
-                case .expenses:
-                    ViewManageExpenses()
-                case .assets:
-                    ViewManageAssets()
-                case .liabilities:
-                    ViewManageLiabilities()
-                case .personal:
-                    ViewManagePersonal()
-                case .personaltransactions:
-                    ViewManagePersonalTransactions()
-                case .business:
-                    ViewManageBusiness()
-                case .businesstransactions:
-                    ViewManageBusinessTransactions()
-                case .invest:
-                    ViewInvest()
-                case .services:
-                    ViewServices()
-                default:
-                    EmptyView()
+        NavigationSplitView {
+            List {
+                ForEach(Menu.allCases, id: \.label) { menu in
+                    Button(action: {
+                        selectedMenu = menu
+                    }, label: {
+                        Text(menu.label)
+                    })
                 }
             }
-            
-            VStack {
-                Spacer()
-                if (authentication.isLoggedIn ?? false) {
-                    ComponentBar {
-                        ComponentButtonBar(page: .manage)
-                        ComponentButtonBar(page: .invest)
-                        ComponentButtonBar(page: .services)
+        } content: {
+            if let selectedMenu {
+                List {
+                    ForEach(selectedMenu.submenu, id: \.label) { submenu in
+                        Button(action: {
+                            selectedContentMenu = submenu
+                        }, label: {
+                            Text(submenu.label)
+                        })
                     }
                 }
             }
-            .ignoresSafeArea()
+        } detail: {
+            if let selectedContentMenu {
+                selectedContentMenu.body
+            } else if let selectedMenu {
+                selectedMenu.body
+            }
         }
-//        .onAppear {
-//                    vm.checkAuthenticationStatus()
-//                }
+
     }
 }
 
-//#Preview {
-//    ViewHome(ViewModelHome())
-//}
+
+#Preview {
+    ViewHome()
+}

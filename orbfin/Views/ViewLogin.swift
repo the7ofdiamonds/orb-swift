@@ -42,8 +42,8 @@ struct ViewLogin: View {
                 }
                 
                 HStack {
-                    ComponentButtonBar(page: .signup)
-                    ComponentButtonBar(page: .forgot)
+                    ComponentButtonBar(viewType: .page(.signup))
+                    ComponentButtonBar(viewType: .page(.forgot))
                 }
             }
             .alert(isPresented: $vm.showingAlert) {

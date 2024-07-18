@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 class Authentication: ObservableObject {
-    @Published var isLoggedIn: Bool? = nil
+    @Published var isLoggedIn: Bool = false
     
     init() {
         self.isLoggedIn = checkAuthentication()

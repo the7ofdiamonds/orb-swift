@@ -15,20 +15,20 @@ class Navigation: ObservableObject {
     
     @AppStorage("lastView") private var lastView: String?
     
-    @Published var isView: Page?
+    @Published var isView: any View = Page.login.body
     
     init() {
         self.authentication = authentication
         
-        if let savedView = lastView, let page = Page(rawValue: savedView) {
-            self.isView = authentication.checkAuthentication() ? page : .login
-        } else {
-            self.isView = authentication.checkAuthentication() ? .home : .login
+        if let savedView = lastView,
+           let page = Page(label: savedView) {
+            self.isView = authentication.checkAuthentication() ? page.body : Page.login.body
         }
     }
     
-    func change(view: Page) {
-        self.isView = view
-        self.lastView = view.rawValue
+    func change(view: ViewType) {
+        self.isView = view.body
+//        self.lastView = viewType.rawValue
+//        print(viewType.self)
     }
 }

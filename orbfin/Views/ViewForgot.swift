@@ -29,8 +29,8 @@ struct ViewForgot: View {
             
             HStack {
                 if !(vm.isLoggedIn ?? true) {
-                    ComponentButtonBar(page: .login)
-                    ComponentButtonBar(page: .signup)
+                    ComponentButtonBar(viewType: .page(.login))
+                    ComponentButtonBar(viewType: .page(.signup))
                 }
             }
         }

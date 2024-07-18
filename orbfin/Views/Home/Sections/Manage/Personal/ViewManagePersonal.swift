@@ -13,25 +13,24 @@ struct ViewManagePersonal: View {
             VStack(alignment: .center) {
                 Grid(verticalSpacing: 20) {
                     GridRow {
-                        ComponentButtonDoubleH(page: .income, value: "$100,000.00")
+                        ComponentButtonDoubleH(viewType: .page(.income), value: "$100,000.00")
                     }
                     
                     GridRow {
-                        ComponentButtonDoubleH(page: .expenses, value: "-$100,000.00")
+                        ComponentButtonDoubleH(viewType: .page(.expenses), value: "-$100,000.00")
                     }
                     
                     GridRow {
-                        ComponentButtonDoubleH(page: .assets, value: "-$100,000.00")
+                        ComponentButtonDoubleH(viewType: .page(.assets), value: "-$100,000.00")
                     }
                     
                     GridRow {
-                        ComponentButtonDoubleH(page: .liabilities, value: "-$100,000.00")
+                        ComponentButtonDoubleH(viewType: .page(.liabilities), value: "-$100,000.00")
                     }
                 }
                 
                 VStack {
-                    ComponentButtonBar(page: .personaltransactions)
-//                    Transactions table
+                    ComponentButtonBar(viewType: .page(.personaltransactions))
                 }
             }        }
     }

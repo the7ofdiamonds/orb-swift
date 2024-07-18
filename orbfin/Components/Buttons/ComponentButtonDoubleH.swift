@@ -10,20 +10,20 @@ import SwiftUI
 struct ComponentButtonDoubleH: View {
     @StateObject private var navigation = Navigation.instance
 
-    var page: Page
+    var viewType: ViewType
     var value: String
     
     private var label: String
     
-    init(page: Page, value: String) {
-        self.page = page
-        self.label = page.label
+    init(viewType: ViewType, value: String) {
+        self.viewType = viewType
+        self.label = viewType.label
         self.value = value
     }
     
     var body: some View {
         Button(action: {
-            navigation.change(view: page)
+            navigation.change(view: viewType)
         }, label: {
             VStack{
                 Text(label)
@@ -42,5 +42,5 @@ struct ComponentButtonDoubleH: View {
 }
 
 #Preview {
-    ComponentButtonDoubleH(page: Page.income, value: "$100,000")
+    ComponentButtonDoubleH(viewType: .page(.income), value: "$100,000")
 }

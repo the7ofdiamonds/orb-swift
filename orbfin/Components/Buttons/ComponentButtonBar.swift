@@ -10,15 +10,15 @@ import SwiftUI
 struct ComponentButtonBar: View {
     @StateObject private var navigation = Navigation.instance
 
-    var page: Page
+    var viewType: ViewType
     
     var body: some View {
         Button(action: {
-            navigation.change(view: page)
+            navigation.change(view: viewType)
         }, label: {
             VStack {
-                Image(systemName: page.icon)
-                Text(page.label)
+                Image(systemName: viewType.icon)
+                Text(viewType.label)
             }
         })
         .padding()
@@ -27,5 +27,5 @@ struct ComponentButtonBar: View {
 }
 
 #Preview {
-    ComponentButtonBar(page: .home)
+    ComponentButtonBar(viewType: .page(.home))
 }
