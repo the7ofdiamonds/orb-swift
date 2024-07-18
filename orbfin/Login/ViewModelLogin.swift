@@ -46,7 +46,7 @@ class ViewModelLogin: ObservableObject {
                     if let successMessage = login.successMessage {
                         self.isLoggedIn = authentication.checkAuthentication()
                         self.successMessage = successMessage
-                        navigation.isView = Page.home.body
+                        navigation.isView = AnyView(Page.home.body)
                     }
                 }
                 

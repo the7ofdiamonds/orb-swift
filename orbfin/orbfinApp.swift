@@ -12,13 +12,14 @@ import SwiftData
 struct orbfinApp: App {
     var body: some Scene {
         WindowGroup {
-            ViewHome()
+            ContentView()
                 .environmentObject(Authentication())
+                .environmentObject(Navigation())
         }
     }
 }
 
-#Preview {
-    ViewHome()
-        .environmentObject(Authentication())
-}
+//#Preview {
+//    ViewHome()
+//        .environmentObject(Authentication())
+//}

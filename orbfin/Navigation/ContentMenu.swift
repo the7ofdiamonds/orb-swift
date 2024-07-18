@@ -115,8 +115,23 @@ extension ContentMenu: ProtocolViewType {
 
 extension ContentMenu {
     @ViewBuilder
-    var body: some View {
-        ViewHome()
+    var body: any View {
+        switch self {
+        case .personal:
+            ViewManagePersonal()
+        case .business:
+            ViewManageBusiness()
+        case .income:
+            ViewManageIncome()
+        case .expenses:
+            ViewManageExpenses()
+        case .assets:
+            ViewManageLiabilities()
+        case .liabilities:
+            ViewManageLiabilities()
+        case .revenue:
+            ViewManageRevenue()
+        }
     }
 }
 

@@ -11,8 +11,8 @@ import SwiftUI
 protocol ProtocolViewType {
     var label: String { get }
     var icon: String { get }
-    associatedtype Content
-    @ViewBuilder var body: Content { get }
+    var submenu: [ViewType] { get }
+    @ViewBuilder var body: any View { get }
 }
 
 enum ViewType {
@@ -30,7 +30,6 @@ extension ViewType {
             return contentMenu.label
         case .page(let page):
             return page.label
-        
         }
     }
     var icon: String {
@@ -43,6 +42,18 @@ extension ViewType {
             return page.icon
         }
     }
+   
+    var submenu: [ViewType] {
+        switch self {
+        case .menu(let menu):
+            return menu.submenu
+        case .contentMenu(let contentMenu):
+            return contentMenu.submenu
+        case .page(let page):
+            return page.submenu
+        }
+    }
+    
     var body: any View {
         switch self {
         case .menu(let menu):

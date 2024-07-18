@@ -147,11 +147,14 @@ extension Page: ProtocolViewType {
             return "house"
         }
     }
+    
+    var submenu: [ViewType] {
+        []
+    }
 }
 
 extension Page {
-    @ViewBuilder
-    var body: some View {
+    var body: any View {
         switch self {
         case .forgot:
             ViewForgot()
@@ -181,8 +184,28 @@ extension Page {
             ViewInvest()
         case .services:
             ViewServices()
-        default:
-            EmptyView()
+        case .home:
+            ViewHome()
+        case .login:
+            ViewLogin()
+        case .signup:
+            ViewSignUp()
+        case .realestate:
+            ViewInvest()
+        case .tangibleassets:
+            ViewInvest()
+        case .paperassets:
+            ViewInvest()
+        case .transactions:
+            ViewInvest()
+        case .notary:
+            ViewInvest()
+        case .settings:
+            ViewInvest()
+        case .commercial:
+            ViewInvest()
+        case .residential:
+            ViewInvest()
         }
     }
 }

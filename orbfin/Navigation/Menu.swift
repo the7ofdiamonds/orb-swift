@@ -19,7 +19,6 @@ enum Menu: CaseIterable {
 }
 
 extension Menu: ProtocolViewType {
-    
     var label: String {
         switch self {
         case .home:
@@ -105,7 +104,7 @@ extension Menu: ProtocolViewType {
 
 extension Menu {
     @ViewBuilder
-    var body: some View {
+    var body: any View {
         switch self {
         case .home:
             ViewHome()
