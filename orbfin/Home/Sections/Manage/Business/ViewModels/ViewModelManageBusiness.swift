@@ -9,6 +9,7 @@ import Foundation
 
 @MainActor
 class ViewModelManageBusiness: ObservableObject {
+    @Published var currency: String?
     @Published var revenue: Float = 0
     @Published var expenses: Float = 0
     @Published var assets: Float = 0
@@ -16,7 +17,7 @@ class ViewModelManageBusiness: ObservableObject {
     @Published var transactions: [Transaction] = []
     @Published var profit: Float = 0
     @Published var equity: Float = 0
-    
+        
     init() {
         self.revenue = 100000.00
         self.expenses = -100000.00

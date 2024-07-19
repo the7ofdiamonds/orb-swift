@@ -19,6 +19,10 @@ enum Page: CaseIterable {
     case services
     case realestate
     case tangibleassets
+    case tangibleassetsrealestate
+    case tangibleassetscommercial
+    case tangibleassetsresidential
+    case tangibleassetsbusiness
     case paperassets
     case transactions
     case income
@@ -60,6 +64,12 @@ extension Page: ProtocolViewType {
             return "Real Estate"
         case .tangibleassets:
             return "Tangible Assets"
+        case .tangibleassetscommercial:
+            return "Commercial"
+        case .tangibleassetsresidential:
+            return "Residential"
+        case .tangibleassetsbusiness:
+            return "Business"
         case .paperassets:
             return "Paper Assets"
         case .transactions:
@@ -90,6 +100,8 @@ extension Page: ProtocolViewType {
             return "Commercial"
         case .residential:
             return "Residential"
+        case .tangibleassetsrealestate:
+            return "Real Estate"
         }
     }
     
@@ -113,7 +125,11 @@ extension Page: ProtocolViewType {
             return "wrench"
         case .realestate:
             return "house"
-        case .tangibleassets:
+        case .tangibleassetscommercial:
+            return "building"
+        case .tangibleassetsresidential:
+            return "building"
+        case .tangibleassetsbusiness:
             return "building"
         case .paperassets:
             return "chart.line.uptrend.xyaxis"
@@ -145,6 +161,10 @@ extension Page: ProtocolViewType {
             return "building"
         case .residential:
             return "house"
+        case .tangibleassets:
+            return "tangible"
+        case .tangibleassetsrealestate:
+            return "building"
         }
     }
     
@@ -191,21 +211,29 @@ extension Page {
         case .signup:
             ViewSignUp()
         case .realestate:
-            ViewInvest()
+            ViewRealEstate()
         case .tangibleassets:
-            ViewInvest()
+            ViewTangibleAssets()
+        case .tangibleassetscommercial:
+            ViewTangibleAssetsBusiness()
+        case .tangibleassetsresidential:
+            ViewTangibleAssetsBusiness()
         case .paperassets:
             ViewInvest()
         case .transactions:
             ViewInvest()
         case .notary:
-            ViewInvest()
+            ViewNotary()
         case .settings:
-            ViewInvest()
+            ViewSettings()
         case .commercial:
-            ViewInvest()
+            ViewCommercial()
         case .residential:
-            ViewInvest()
+            ViewResidential()
+        case .tangibleassetsbusiness:
+            ViewTangibleAssetsBusiness()
+        case .tangibleassetsrealestate:
+            ViewTangibleAssetsRealEstate()
         }
     }
 }
@@ -231,8 +259,12 @@ extension Page {
             self = .services
         case "Real Estate":
             self = .realestate
-        case "Tangible Assets":
-            self = .tangibleassets
+        case "Tangible Assets Commercial":
+            self = .tangibleassetscommercial
+        case "Tangible Assets Residential":
+            self = .tangibleassetsresidential
+        case "Tangible Assets Business":
+            self = .tangibleassetsbusiness
         case "Paper Assets":
             self = .paperassets
         case "Transactions":
@@ -259,7 +291,6 @@ extension Page {
             self = .personaltransactions
         case "Business Transactions":
             self = .businesstransactions
-        
         default:
             return nil
         }

@@ -75,8 +75,8 @@ extension Menu: ProtocolViewType {
             ]
         case .invest:
             return [
-                 .menu(.realestate),
-                 .menu(.tangibleassets),
+                 .page(.realestate),
+                 .page(.tangibleassets),
              ]
         case .services:
             return [

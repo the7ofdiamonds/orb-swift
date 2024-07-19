@@ -13,8 +13,8 @@ struct ViewInvest: View {
             Text("Invest")
             
             HStack {
-                ComponentButtonBar(viewType: .menu(.realestate))
-                ComponentButtonBar(viewType: .menu(.tangibleassets))
+                ComponentButtonHNav(viewType: .page(.realestate))
+                ComponentButtonHNav(viewType: .page(.tangibleassets))
             }
         }
     }

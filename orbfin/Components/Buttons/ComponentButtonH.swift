@@ -18,6 +18,12 @@ struct ComponentButtonH: View {
         self.action = action
     }
     
+//    init(viewType: ViewType) {
+//        self.label = viewType.label
+//        self.icon = viewType.icon
+//        self.action = viewType.body
+//    }
+    
     var body: some View {
         Button(action: {
             _ = action()
