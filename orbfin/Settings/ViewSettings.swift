@@ -6,15 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ViewSettings: View {
+    @State private var settings = Settings()
+    @Binding var selectedLayoutExperience: LayoutExperienceSetting?
+    
     var body: some View {
         ComponentCard {
-            Text("Settings")
+            #if !os(macOS)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    ViewLayoutExperience(selectedLayoutExperience: $selectedLayoutExperience)
+                }
+            #endif
         }
     }
 }
 
-#Preview {
-    ViewSettings()
-}
+//#Preview {
+//    ViewSettings(settings: Settings(), selectedLayoutExperience: .constant(.threeColumn.rawValue))
+//}

@@ -22,7 +22,7 @@ struct ViewLogin: View {
     
     var body: some View {
             
-        if !(vm.isLoggedIn ?? true) {
+        if !(authentication.checkAuthentication()) {
             ComponentCard {
                 Text("ORB")
                     .kerning(Styling.kerning)
@@ -52,6 +52,10 @@ struct ViewLogin: View {
                     message: Text("\(vm.error?.message ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
                     dismissButton: .default(Text("OK"))
                 )
+            }
+        } else {
+            ViewHome {
+                AnyView(ViewHomeMenu())
             }
         }
         

@@ -9,15 +9,15 @@ import SwiftUI
 
 @MainActor
 class Authentication: ObservableObject {
-    @Published var isLoggedIn: Bool = false
+//    @Published var isLoggedIn: Bool?
     
     init() {
-        self.isLoggedIn = checkAuthentication()
+//        self.isLoggedIn = checkAuthentication()
     }
     
     func checkAuthentication() -> Bool {
         let credentials = AuthenticationCredentials()
-        self.isLoggedIn = credentials.isValid
+//        self.isLoggedIn = credentials.isValid
         return credentials.isValid
     }
     
@@ -31,7 +31,7 @@ class Authentication: ObservableObject {
             credentials.refreshToken = refreshToken
             credentials.username = username
             
-            self.isLoggedIn = credentials.isValid
+//            self.isLoggedIn = credentials.isValid
             
             return credentials.isValid
         }
@@ -45,7 +45,7 @@ class Authentication: ObservableObject {
         credentials.accessToken = nil
         credentials.refreshToken = nil
         
-        self.isLoggedIn = credentials.isValid
+//        self.isLoggedIn = credentials.isValid
 
         return credentials.isValid
     }

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ComponentButtonHNav: View {
-    @StateObject private var navigation = Navigation.instance
-    
+    @EnvironmentObject var navigation: Navigation
+
     var viewType: ViewType
 
     var body: some View {

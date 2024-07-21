@@ -19,7 +19,7 @@ class Navigation: ObservableObject {
     
     init() {
         self.authentication = authentication
-        
+
         if let savedView = lastView,
            let page = Page(label: savedView) {
             self.isView = authentication.checkAuthentication() ? AnyView(page.body) : AnyView(Page.login.body)
@@ -28,6 +28,6 @@ class Navigation: ObservableObject {
     
     func change(view: ViewType) {
         self.isView = AnyView(view.body)
-        print(view.label)
+        self.lastView = view.label
     }
 }

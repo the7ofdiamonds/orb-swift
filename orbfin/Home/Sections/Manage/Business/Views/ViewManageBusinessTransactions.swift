@@ -8,10 +8,26 @@
 import SwiftUI
 
 struct ViewManageBusinessTransactions: View {
+    @StateObject private var vm = ViewModelManageBusinessTransactions()
+
     var body: some View {
-        Text("Business Transactions")
+//        ComponentCard {
+            Table(vm.transactions) {
+                TableColumn("Date", value: \.date)
+                TableColumn("Merchant") { transaction in
+                    Text(transaction.merchantName ?? "Unknown")
+                }
+                TableColumn("Category") { transaction in
+                    Text(transaction.category.joined(separator: ", "))
+                }
+                TableColumn("Amount") { transaction in
+                    Text(Format.formatCurrency(Float(transaction.amount), currency: transaction.currencyCode))
+                }
+            }
+//        }
     }
 }
+
 
 #Preview {
     ViewManageBusinessTransactions()

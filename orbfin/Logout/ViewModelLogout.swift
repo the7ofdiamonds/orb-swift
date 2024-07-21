@@ -33,9 +33,9 @@ class ViewModelLogout: ObservableObject {
                 authCreds.accessToken = nil
                 authCreds.refreshToken = nil
                 
-                if !authentication.checkAuthentication() {
-                    authentication.isLoggedIn = true
-                }
+//                if !authentication.checkAuthentication() {
+//                    authentication.isLoggedIn = true
+//                }
                 
                 let logout: ResponseLogout = try await Logout().user(requestLogout: requestLogout)
                 

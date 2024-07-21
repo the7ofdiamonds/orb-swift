@@ -26,14 +26,17 @@ enum Page: CaseIterable {
     case paperassets
     case transactions
     case income
+    case revenue
     case expenses
+    case equity
     case assets
     case liabilities
+    case contra
+    case tax
     case notary
     case settings
     case personal
     case business
-    case revenue
     case personaltransactions
     case businesstransactions
     case commercial
@@ -76,12 +79,20 @@ extension Page: ProtocolViewType {
             return "Transactions"
         case .income:
             return "Income"
+        case .revenue:
+            return "Revenue"
         case .expenses:
             return "Expenses"
+        case .equity:
+            return "Equity"
         case .assets:
             return "Assets"
         case .liabilities:
             return "Liabilities"
+        case .contra:
+            return "Contra"
+        case .tax:
+            return "Tax"
         case .notary:
             return "Notary"
         case .settings:
@@ -90,8 +101,6 @@ extension Page: ProtocolViewType {
             return "Personal"
         case .business:
             return "Business"
-        case .revenue:
-            return "Revenue"
         case .personaltransactions:
             return "Personal Transactions"
         case .businesstransactions:
@@ -137,12 +146,20 @@ extension Page: ProtocolViewType {
             return "Transactions"
         case .income:
             return "income"
+        case .revenue:
+            return "Revenue"
         case .expenses:
             return "Expenses"
+        case .equity:
+            return "Equity"
         case .assets:
             return "Assets"
         case .liabilities:
             return "Liabilities"
+        case .contra:
+            return "Contra"
+        case .tax:
+            return "Tax"
         case .notary:
             return "signature"
         case .settings:
@@ -151,8 +168,6 @@ extension Page: ProtocolViewType {
             return "Personal"
         case .business:
             return "Business"
-        case .revenue:
-            return "Revenue"
         case .personaltransactions:
             return "personaltransactions"
         case .businesstransactions:
@@ -174,6 +189,7 @@ extension Page: ProtocolViewType {
 }
 
 extension Page {
+    
     var body: any View {
         switch self {
         case .forgot:
@@ -188,10 +204,16 @@ extension Page {
             ViewManageRevenue()
         case .expenses:
             ViewManageExpenses()
+        case .equity:
+            ViewManageEquity()
         case .assets:
             ViewManageAssets()
         case .liabilities:
             ViewManageLiabilities()
+        case .contra:
+            ViewManageContra()
+        case .tax:
+            ViewManageTax()
         case .personal:
             ViewManagePersonal()
         case .personaltransactions:
@@ -225,7 +247,7 @@ extension Page {
         case .notary:
             ViewNotary()
         case .settings:
-            ViewSettings()
+            ViewSettings(selectedLayoutExperience: .constant(.threeColumn))
         case .commercial:
             ViewCommercial()
         case .residential:
@@ -259,6 +281,10 @@ extension Page {
             self = .services
         case "Real Estate":
             self = .realestate
+        case "Commercial":
+            self = .commercial
+        case "Residential":
+            self = .residential
         case "Tangible Assets Commercial":
             self = .tangibleassetscommercial
         case "Tangible Assets Residential":
@@ -277,6 +303,10 @@ extension Page {
             self = .assets
         case "Liabilities":
             self = .liabilities
+        case "Contra":
+            self = .contra
+        case "Tax":
+            self = .tax
         case "Notary":
             self = .notary
         case "Settings":
