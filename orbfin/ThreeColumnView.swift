@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ThreeColumnView: View {
-    @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     
     @State private var selectedMenu: ViewType? = nil
@@ -27,9 +26,18 @@ struct ThreeColumnView: View {
                 }
             }
         } content: {
-            if let selectedMenu {
-                List {
+            List {
+                if let selectedMenu {
                     ForEach(selectedMenu.submenu, id: \.label) { submenu in
+                        Button(action: {
+                            selectedContentMenu = submenu
+                            navigation.change(view: submenu)
+                        }, label: {
+                            Text(submenu.label)
+                        })
+                    }
+                } else {
+                    ForEach(Menu.manage.submenu, id: \.label) { submenu in
                         Button(action: {
                             selectedContentMenu = submenu
                             navigation.change(view: submenu)
@@ -50,6 +58,5 @@ struct ThreeColumnView: View {
 
 #Preview {
     ThreeColumnView()
-        .environmentObject(Authentication())
         .environmentObject(Navigation())
 }

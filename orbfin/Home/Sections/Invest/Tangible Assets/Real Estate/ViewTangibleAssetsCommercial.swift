@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TangibleAssetsCommercial: View {
+struct ViewTangibleAssetsCommercial: View {
     var body: some View {
         ComponentCard {
             Text("Commercial")
@@ -16,5 +16,5 @@ struct TangibleAssetsCommercial: View {
 }
 
 #Preview {
-    TangibleAssetsCommercial()
+    ViewTangibleAssetsCommercial()
 }

@@ -10,31 +10,51 @@ import SwiftUI
 
 enum ContentMenu: CaseIterable {
     case personal
+    case personalincome
+    case personalexpenses
+    case personalassets
+    case personalliabilities
+    case personalrevenue
+    
     case business
-    case income
-    case expenses
-    case assets
-    case liabilities
-    case revenue
+    case businessincome
+    case businessexpenses
+    case businessassets
+    case businessliabilities
+    case businessrevenue
 }
 
 extension ContentMenu: ProtocolViewType {
+    var title: String {
+        return ""
+    }
     
     var label: String {
         switch self {
         case .personal:
             return "Personal"
+        case .personalincome:
+            return "Income"
+        case .personalexpenses:
+            return "Expenses"
+        case .personalassets:
+            return "Assets"
+        case .personalliabilities:
+            return "Liabilities"
+        case .personalrevenue:
+            return "Revenue"
+            
         case .business:
             return "Business"
-        case .income:
+        case .businessincome:
             return "Income"
-        case .expenses:
+        case .businessexpenses:
             return "Expenses"
-        case .assets:
+        case .businessassets:
             return "Assets"
-        case .liabilities:
+        case .businessliabilities:
             return "Liabilities"
-        case .revenue:
+        case .businessrevenue:
             return "Revenue"
         }
     }
@@ -43,18 +63,38 @@ extension ContentMenu: ProtocolViewType {
         switch self {
         case .personal:
             return "Personal"
+        case .personalincome:
+            return "Income"
+        case .personalexpenses:
+            return "Expenses"
+        case .personalassets:
+            return "Assets"
+        case .personalliabilities:
+            return "Liabilities"
+        case .personalrevenue:
+            return "Revenue"
+            
         case .business:
             return "Business"
-        case .income:
+        case .businessincome:
             return "Income"
-        case .expenses:
+        case .businessexpenses:
             return "Expenses"
-        case .assets:
+        case .businessassets:
             return "Assets"
-        case .liabilities:
+        case .businessliabilities:
             return "Liabilities"
-        case .revenue:
+        case .businessrevenue:
             return "Revenue"
+        }
+    }
+    
+    var parent: ViewType {
+        switch self {
+        case .personal:
+                .page(.manage)
+        default:
+            .menu(.home)
         }
     }
     
@@ -62,53 +102,20 @@ extension ContentMenu: ProtocolViewType {
         switch self {
         case .personal:
             return [
-                .contentMenu(.income),
-                .contentMenu(.expenses),
-                .contentMenu(.assets),
-                .contentMenu(.liabilities)
+                .contentMenu(.personalincome),
+                .contentMenu(.personalexpenses),
+                .contentMenu(.personalassets),
+                .contentMenu(.personalliabilities)
             ]
         case .business:
             return [
-                .contentMenu(.income),
-                .contentMenu(.expenses),
-                .contentMenu(.assets),
-                .contentMenu(.liabilities)
+                .contentMenu(.businessincome),
+                .contentMenu(.businessexpenses),
+                .contentMenu(.businessassets),
+                .contentMenu(.businessliabilities)
             ]
-        case .income:
-            return [
-                .contentMenu(.income),
-                .contentMenu(.expenses),
-                .contentMenu(.assets),
-                .contentMenu(.liabilities)
-            ]
-        case .expenses:
-            return [
-                .contentMenu(.income),
-                .contentMenu(.expenses),
-                .contentMenu(.assets),
-                .contentMenu(.liabilities)
-            ]
-        case .assets:
-            return [
-                .contentMenu(.income),
-                .contentMenu(.expenses),
-                .contentMenu(.assets),
-                .contentMenu(.liabilities)
-            ]
-        case .liabilities:
-            return [
-                .contentMenu(.income),
-                .contentMenu(.expenses),
-                .contentMenu(.assets),
-                .contentMenu(.liabilities)
-            ]
-        case .revenue:
-            return [
-                .contentMenu(.income),
-                .contentMenu(.expenses),
-                .contentMenu(.assets),
-                .contentMenu(.liabilities)
-            ]
+        default:
+                return[.page(.blank)]
         }
     }
 }
@@ -119,18 +126,29 @@ extension ContentMenu {
         switch self {
         case .personal:
             ViewManagePersonal()
+        case .personalincome:
+            ViewManagePersonalIncome()
+        case .personalexpenses:
+            ViewManagePersonalExpenses()
+        case .personalassets:
+            ViewManagePersonalLiabilities()
+        case .personalliabilities:
+            ViewManagePersonalLiabilities()
+        case .personalrevenue:
+            ViewManagePersonalRevenue()
+            
         case .business:
             ViewManageBusiness()
-        case .income:
-            ViewManageIncome()
-        case .expenses:
-            ViewManageExpenses()
-        case .assets:
-            ViewManageLiabilities()
-        case .liabilities:
-            ViewManageLiabilities()
-        case .revenue:
-            ViewManageRevenue()
+        case .businessincome:
+            ViewManageBusinessIncome()
+        case .businessexpenses:
+            ViewManageBusinessExpenses()
+        case .businessassets:
+            ViewManageBusinessLiabilities()
+        case .businessliabilities:
+            ViewManageBusinessLiabilities()
+        case .businessrevenue:
+            ViewManageBusinessRevenue()
         }
     }
 }

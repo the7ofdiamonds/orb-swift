@@ -9,20 +9,23 @@ import SwiftUI
 import SwiftData
 
 struct ViewSettings: View {
-    @State private var settings = Settings()
-    @Binding var selectedLayoutExperience: LayoutExperienceSetting?
+    @State var settings = Settings()
     
     var body: some View {
         ComponentCard {
-            #if !os(macOS)
+            #if os(macOS)
+                    ViewLayoutExperience(selectedLayoutExperience: settings.$layoutExperience)
+            #else
                 if UIDevice.current.userInterfaceIdiom == .pad {
-                    ViewLayoutExperience(selectedLayoutExperience: $selectedLayoutExperience)
+                    ViewLayoutExperience(selectedLayoutExperience: settings.$layoutExperience)
+                } else {
+                    Text("Nothing to show here yet.")
                 }
             #endif
         }
     }
 }
 
-//#Preview {
-//    ViewSettings(settings: Settings(), selectedLayoutExperience: .constant(.threeColumn.rawValue))
-//}
+#Preview {
+    ViewSettings()
+}

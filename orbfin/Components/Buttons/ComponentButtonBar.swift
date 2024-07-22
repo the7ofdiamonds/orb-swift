@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ComponentButtonBar: View {
-    @StateObject private var navigation = Navigation.instance
+    @EnvironmentObject var navigation: Navigation
 
     var viewType: ViewType
     

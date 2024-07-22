@@ -9,15 +9,15 @@ import SwiftUI
 
 @MainActor
 class Authentication: ObservableObject {
-//    @Published var isLoggedIn: Bool?
+    var credentials = AuthenticationCredentials()
+    
+    @Published var isLoggedIn: Bool
     
     init() {
-//        self.isLoggedIn = checkAuthentication()
+        self.isLoggedIn = credentials.isValid
     }
     
     func checkAuthentication() -> Bool {
-        let credentials = AuthenticationCredentials()
-//        self.isLoggedIn = credentials.isValid
         return credentials.isValid
     }
     
@@ -25,28 +25,24 @@ class Authentication: ObservableObject {
         if let accessToken = responseLogin.accessToken,
            let refreshToken = responseLogin.refreshToken,
            let username = responseLogin.username {
-            let credentials = AuthenticationCredentials()
 
             credentials.accessToken = accessToken
             credentials.refreshToken = refreshToken
             credentials.username = username
             
-//            self.isLoggedIn = credentials.isValid
-            
-            return credentials.isValid
+            self.isLoggedIn = credentials.isValid
+
+            return self.isLoggedIn
         }
         
         return false
     }
     
     func removeAuthentication() async -> Bool {
-        let credentials = AuthenticationCredentials()
-
         credentials.accessToken = nil
         credentials.refreshToken = nil
-        
-//        self.isLoggedIn = credentials.isValid
-
-        return credentials.isValid
+         
+        self.isLoggedIn = credentials.isValid
+        return self.isLoggedIn
     }
 }

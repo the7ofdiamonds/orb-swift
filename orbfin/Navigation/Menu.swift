@@ -19,6 +19,10 @@ enum Menu: CaseIterable {
 }
 
 extension Menu: ProtocolViewType {
+    var title: String {
+      return ""
+    }
+    
     var label: String {
         switch self {
         case .home:
@@ -54,6 +58,14 @@ extension Menu: ProtocolViewType {
             return "building"
 //        case .paperassets:
 //            return "chart.line.uptrend.xyaxis"
+        }
+    }
+    
+    var parent: ViewType {
+        switch self {
+        
+        default:
+                .menu(.home)
         }
     }
     

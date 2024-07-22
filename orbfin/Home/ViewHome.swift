@@ -33,12 +33,16 @@ struct ViewHome: View {
             ComponentMap()
             content
         }
+        .ignoresSafeArea()
+        
     }
 }
     
 
 #Preview {
     ViewHome {
-        AnyView(ViewLogin())
+        AnyView(ViewManagePersonal())
     }
+    .environmentObject(Authentication())
+    .environmentObject(Navigation())
 }

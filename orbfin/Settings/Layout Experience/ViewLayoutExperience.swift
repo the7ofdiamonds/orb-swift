@@ -10,7 +10,7 @@ import SwiftData
 
 
 struct ViewLayoutExperience: View {
-    @Binding var selectedLayoutExperience: LayoutExperienceSetting?
+    @Binding var selectedLayoutExperience: String?
     
     var settings: Settings = Settings()
     
@@ -31,7 +31,7 @@ struct ViewLayoutExperience: View {
             LazyVGrid(columns: columns) {
                 ForEach(LayoutExperienceSetting.allCases) { item in
                     Button {
-                        selectedLayoutExperience = item
+                        selectedLayoutExperience = item.title
                         settings.layoutExperience = item.title
                     } label: {
                         ViewLayoutExperienceSelection(selectedItem: $selectedLayoutExperience,item: item)
@@ -50,7 +50,7 @@ struct ViewLayoutExperience: View {
 
 struct LayoutExperienceView_Previews: PreviewProvider {
     static var previews: some View {
-        ViewLayoutExperience(selectedLayoutExperience: .constant(.twoColumn))
+        ViewLayoutExperience(selectedLayoutExperience: .constant("Three Column"))
             .padding()
             .previewLayout(.sizeThatFits)
     }

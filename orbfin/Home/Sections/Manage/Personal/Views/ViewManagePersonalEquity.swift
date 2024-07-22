@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ViewManageEquity: View {
+struct ViewManagePersonalEquity: View {
     var body: some View {
         ComponentCard {
             Text("Equity")
@@ -16,5 +16,5 @@ struct ViewManageEquity: View {
 }
 
 #Preview {
-    ViewManageEquity()
+    ViewManagePersonalEquity()
 }

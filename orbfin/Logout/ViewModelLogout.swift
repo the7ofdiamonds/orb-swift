@@ -9,44 +9,41 @@ import SwiftUI
 
 @MainActor
 class ViewModelLogout: ObservableObject {
-    @ObservedObject var authentication: Authentication = Authentication()
+    @ObservedObject var authentication: Authentication
     
     @Published var isLoggedIn: Bool? = nil
     @Published var successMessage: String = ""
     @Published var errorMessage: String = ""
     @Published var error: NetworkError?
     @Published var showingAlert: Bool = false
-        
-    init(){
-        self.isLoggedIn = authentication.checkAuthentication()
+    
+    init(authentication: Authentication){
+        self.authentication = authentication
+        self.isLoggedIn = authentication.isLoggedIn
     }
     
     func logout() async throws {
         do {
-            let authCreds: AuthenticationCredentials = AuthenticationCredentials()
+            let authCreds = AuthenticationCredentials()
             
             if authCreds.isValid,
                let accessToken = authCreds.accessToken,
                let refreshToken = authCreds.refreshToken {
                 let requestLogout: RequestLogout = RequestLogout(accessToken: accessToken, refreshToken: refreshToken)
                 
-                authCreds.accessToken = nil
-                authCreds.refreshToken = nil
+                self.isLoggedIn = await authentication.removeAuthentication()
                 
-//                if !authentication.checkAuthentication() {
-//                    authentication.isLoggedIn = true
+//                let logout: ResponseLogout = try await Logout().user(requestLogout: requestLogout)
+                
+//                if let successMessage = logout.successMessage {
+//                    self.successMessage = successMessage
+//                    self.errorMessage = ""
 //                }
                 
-                let logout: ResponseLogout = try await Logout().user(requestLogout: requestLogout)
-                
-                if let successMessage = logout.successMessage {
-                    self.successMessage = successMessage
-                    self.errorMessage = ""
-                }
-                
-                if let errorMessage = logout.errorMessage {
-                    self.errorMessage = errorMessage
-                }
+//                if let errorMessage = logout.errorMessage {
+//                    self.errorMessage = errorMessage
+//                }
+                self.errorMessage = "You have been logged out successfully."
             }
         } catch {
             self.error = error as? NetworkError

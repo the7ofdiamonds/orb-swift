@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ViewLayoutExperienceSelection: View {
     @State private var isHovering = false
-    @Binding var selectedItem: LayoutExperienceSetting?
+    @Binding var selectedItem: String?
     
     let item: LayoutExperienceSetting
     
@@ -33,8 +33,8 @@ struct ViewLayoutExperienceSelection: View {
         .background {
             RoundedRectangle(cornerRadius: 12,
                              style: .continuous)
-            .fill(selectedItem == item ? AnyShapeStyle(Color.accentColor) : AnyShapeStyle(.background))
-            .shadow(radius: selectedItem == item ? 4 : 0)
+            .fill(selectedItem == item.title ? AnyShapeStyle(Color.accentColor) : AnyShapeStyle(.background))
+            .shadow(radius: selectedItem == item.title ? 4 : 0)
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .stroke(isHovering ? Color.accentColor : .clear)
         }
@@ -44,10 +44,12 @@ struct ViewLayoutExperienceSelection: View {
                 self.isHovering = isHovering
             }
         }
+        
+        Text("\(selectedItem ?? "No title")")
     }
     
     func shapeStyle<S: ShapeStyle>(_ style: S) -> some ShapeStyle {
-        if selectedItem == item {
+        if selectedItem == item.title {
             return AnyShapeStyle(.background)
         } else {
             return AnyShapeStyle(style)

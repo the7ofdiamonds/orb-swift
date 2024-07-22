@@ -15,13 +15,24 @@ protocol ProtocolViewType {
     @ViewBuilder var body: any View { get }
 }
 
-enum ViewType {
+enum ViewType: Hashable {
     case menu(Menu)
     case contentMenu(ContentMenu)
     case page(Page)
 }
 
 extension ViewType {
+    var title: String {
+        switch self {
+        case .menu(let menu):
+            return menu.title
+        case .contentMenu(let contentMenu):
+            return contentMenu.title
+        case .page(let page):
+            return page.title
+        }
+    }
+    
     var label: String {
         switch self {
         case .menu(let menu):
@@ -32,6 +43,7 @@ extension ViewType {
             return page.label
         }
     }
+    
     var icon: String {
         switch self {
         case .menu(let menu):
@@ -42,7 +54,7 @@ extension ViewType {
             return page.icon
         }
     }
-   
+    
     var submenu: [ViewType] {
         switch self {
         case .menu(let menu):

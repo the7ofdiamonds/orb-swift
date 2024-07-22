@@ -8,11 +8,54 @@
 import SwiftUI
 
 struct OneColumnView: View {
+    @EnvironmentObject var navigation: Navigation
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            
+            ZStack {
+                ComponentMap()
+               
+                VStack {
+                    Spacer()
+                    
+                    AnyView(navigation.isView)
+                    
+                    Spacer()
+                }
+            }
+            .navigationDestination(for: ViewType.self) { viewType in
+                AnyView(viewType.body)
+            }
+            .toolbar(content: {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    ComponentBar {
+                        ComponentButtonBar(viewType: .page(.manage))
+                        ComponentButtonBar(viewType: .page(.invest))
+                        ComponentButtonBar(viewType: .page(.services))
+                    }
+                }
+            })
+            .toolbar(content: {
+                ToolbarItemGroup(placement: .navigation) {
+                    if let page = navigation.isPage,
+                       let view = navigation.isView {
+                        Button(action: {
+                            navigation.change(view: page.parent)
+                        }, label: {
+                            Text(page.parent.label)
+                                .font(.subheadline)
+                        })
+                    }
+                }
+            })
+
+        }
+
     }
 }
 
 #Preview {
     OneColumnView()
+        .environmentObject(Navigation())
 }

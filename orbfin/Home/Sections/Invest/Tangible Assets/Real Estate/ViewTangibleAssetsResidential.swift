@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TangibleAssetsResidential: View {
+struct ViewTangibleAssetsResidential: View {
     var body: some View {
         ComponentCard {
             Text("Residentials")
@@ -16,5 +16,5 @@ struct TangibleAssetsResidential: View {
 }
 
 #Preview {
-    TangibleAssetsResidential()
+    ViewTangibleAssetsResidential()
 }

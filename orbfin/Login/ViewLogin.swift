@@ -10,6 +10,7 @@ import MapKit
 
 struct ViewLogin: View {
     @EnvironmentObject var authentication: Authentication
+    @EnvironmentObject var navigation: Navigation
 
     @State private var username: String = ""
     @State private var password: String = ""
@@ -17,12 +18,17 @@ struct ViewLogin: View {
     @StateObject private var vm: ViewModelLogin
 
     init() {
-        _vm = StateObject(wrappedValue: ViewModelLogin())
+        _vm = StateObject(wrappedValue: ViewModelLogin(authentication: Authentication()))
     }
     
     var body: some View {
             
         if !(authentication.checkAuthentication()) {
+            
+            if !vm.errorMessage.isEmpty {
+                StatusBar(message: vm.errorMessage, type: .error)
+            }
+            
             ComponentCard {
                 Text("ORB")
                     .kerning(Styling.kerning)
@@ -54,17 +60,9 @@ struct ViewLogin: View {
                 )
             }
         } else {
-            ViewHome {
-                AnyView(ViewHomeMenu())
-            }
-        }
-        
-        if !vm.successMessage.isEmpty {
-            StatusBar(message: vm.successMessage, type: .success)
-        }
-        
-        if !vm.errorMessage.isEmpty {
-            StatusBar(message: vm.errorMessage, type: .error)
+            ViewLoggedIn()
+                .environmentObject(authentication)
+                .environmentObject(navigation)
         }
     }
 }

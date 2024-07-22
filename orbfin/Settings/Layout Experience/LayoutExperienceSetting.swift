@@ -5,6 +5,8 @@
 //  Created by Jamel Lyons on 7/20/24.
 //
 
+import SwiftUI
+
 enum LayoutExperienceSetting: String, CaseIterable, Identifiable {
     case twoColumn = "twoColumn"
     case threeColumn = "threeColumn"
@@ -44,6 +46,15 @@ extension LayoutExperienceSetting {
             return ""
         case .threeColumn:
             return ""
+        }
+    }
+    
+    var view: any View {
+        switch self {
+        case .twoColumn:
+            TwoColumnView()
+        case .threeColumn:
+            ThreeColumnView()
         }
     }
 }

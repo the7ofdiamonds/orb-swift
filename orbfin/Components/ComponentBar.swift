@@ -20,12 +20,13 @@ struct ComponentBar<Content: View>: View {
             content
             
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Styling.color(.Bar))
         .foregroundColor(Styling.color(.BarFont))
-        .ignoresSafeArea()
         .cornerRadius(Styling.cornerRadius)
         .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
+        .ignoresSafeArea(.container, edges: .bottom)
+
     }
 }
 

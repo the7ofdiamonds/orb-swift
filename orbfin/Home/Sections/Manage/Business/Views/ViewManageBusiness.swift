@@ -21,54 +21,53 @@ struct ViewManageBusiness: View {
     @State private var tax: String = "0.00"
     
     var body: some View {
-        ComponentCard {
-            VStack(alignment: .center) {
-                Grid(verticalSpacing: 20) {
-                    GridRow {
-                        ComponentButtonDoubleH(viewType: .page(.income), value: "\(income)")
+        ScrollView {
+            ComponentCard {
+                VStack(alignment: .center) {
+                    Grid(verticalSpacing: 20) {
+                        GridRow {
+                            ComponentButtonDoubleH(viewType: .page(.businessincome), value: "\(income)")
+                        }
+                        
+                        GridRow {
+                            ComponentButtonDoubleH(viewType: .page(.businessrevenue), value: "\(revenue)")
+                        }
+                        
+                        GridRow {
+                            ComponentButtonDoubleH(viewType: .page(.businessexpenses), value: "\(expenses)")
+                        }
+                        
+                        GridRow {
+                            ComponentButtonDoubleH(viewType: .page(.businessequity), value: "\(equity)")
+                        }
+                        
+                        GridRow {
+                            ComponentButtonDoubleH(viewType: .page(.businessassets), value: "\(assets)")
+                        }
+                        
+                        GridRow {
+                            ComponentButtonDoubleH(viewType: .page(.businessliabilities), value: "\(liabilities)")
+                        }
+                        
+                        GridRow {
+                            ComponentButtonDoubleH(viewType: .page(.businesscontra), value: "\(contra)")
+                        }
+                        
+                        GridRow {
+                            ComponentButtonDoubleH(viewType: .page(.businesstax), value: "\(tax)")
+                        }
                     }
                     
-                    GridRow {
-                        ComponentButtonDoubleH(viewType: .page(.revenue), value: "\(revenue)")
+                    VStack {
+                        ComponentButtonBar(viewType: .page(.businesstransactions))
+                        //                    Transactions table
                     }
-                    
-                    GridRow {
-                        ComponentButtonDoubleH(viewType: .page(.expenses), value: "\(expenses)")
-                    }
-                    
-                    GridRow {
-                        ComponentButtonDoubleH(viewType: .page(.equity), value: "\(equity)")
-                    }
-                    
-                    GridRow {
-                        ComponentButtonDoubleH(viewType: .page(.assets), value: "\(assets)")
-                    }
-                    
-                    GridRow {
-                        ComponentButtonDoubleH(viewType: .page(.liabilities), value: "\(liabilities)")
-                    }
-                    
-                    GridRow {
-                        ComponentButtonDoubleH(viewType: .page(.contra), value: "\(contra)")
-                    }
-                    
-                    GridRow {
-                        ComponentButtonDoubleH(viewType: .page(.tax), value: "\(tax)")
-                    }
-                }
-                
-                VStack {
-                    ComponentButtonBar(viewType: .page(.businesstransactions))
-                    //                    Transactions table
                 }
             }
+            .onAppear {
+                updateFormattedValues()
+            }
         }
-        .onAppear {
-            updateFormattedValues()
-        }
-        //        .onChange(of: vm) { _ in
-        //            updateFormattedValues()
-        //        }
     }
     
     private func updateFormattedValues() {

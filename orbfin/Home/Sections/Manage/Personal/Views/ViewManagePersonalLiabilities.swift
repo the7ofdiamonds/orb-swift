@@ -1,5 +1,5 @@
 //
-//  ViewManageIncome.swift
+//  ViewManageLiabilities.swift
 //  orbfin
 //
 //  Created by Jamel Lyons on 7/16/24.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct ViewManageIncome: View {
+struct ViewManagePersonalLiabilities: View {
     var body: some View {
         ComponentCard {
-            Text("Income")
+            Text("Liabilities")
         }
     }
 }
 
 #Preview {
-    ViewManageIncome()
+    ViewManagePersonalLiabilities()
 }

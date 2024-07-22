@@ -9,15 +9,16 @@ import SwiftUI
 
 struct ViewLogout: View {
     @EnvironmentObject var authentication: Authentication
+    @EnvironmentObject var navigation: Navigation
 
     @StateObject private var vm: ViewModelLogout
     
     init() {
-        _vm = StateObject(wrappedValue: ViewModelLogout())
+        _vm = StateObject(wrappedValue: ViewModelLogout(authentication: Authentication()))
     }
     
     var body: some View {
-//        if (vm.isLoggedIn ?? false) {
+        if let _ = vm.isLoggedIn {
             ComponentCard {
                 Button(action: {
                     Task{
@@ -48,7 +49,9 @@ struct ViewLogout: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
-//        }
+        } else {
+            ViewLogin()
+        }
         
         if !vm.successMessage.isEmpty {
             StatusBar(message: vm.successMessage, type: .success)

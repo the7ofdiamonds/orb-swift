@@ -17,8 +17,8 @@ struct ViewManage: View {
                 .fontWeight(.bold)
             
             HStack{
-                ComponentButtonHNav(viewType: .contentMenu(.personal))
-                ComponentButtonHNav(viewType: .contentMenu(.business))
+                ComponentButtonHNav(viewType: .page(.personal))
+                ComponentButtonHNav(viewType: .page(.business))
             }
             
             Spacer()
@@ -34,4 +34,6 @@ struct ViewManage: View {
 
 #Preview {
     ViewManage()
+        .environmentObject(Authentication())
+        .environmentObject(Navigation())
 }

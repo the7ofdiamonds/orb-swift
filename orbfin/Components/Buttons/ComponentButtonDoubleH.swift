@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ComponentButtonDoubleH: View {
-    @StateObject private var navigation = Navigation.instance
+    @EnvironmentObject var navigation: Navigation
 
     var viewType: ViewType
     var value: String
@@ -42,5 +42,5 @@ struct ComponentButtonDoubleH: View {
 }
 
 #Preview {
-    ComponentButtonDoubleH(viewType: .page(.income), value: "$100,000")
+    ComponentButtonDoubleH(viewType: .page(.personalincome), value: "$100,000")
 }
