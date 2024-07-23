@@ -12,8 +12,8 @@ struct ViewSignUp: View {
         ComponentCard {
             Text("Signup")
             HStack {
-                ComponentButtonBar(viewType: .page(.login))
-                ComponentButtonBar(viewType: .page(.forgot))
+                ComponentButtonBar(page: .login)
+                ComponentButtonBar(page: .forgot)
             }
         }
         

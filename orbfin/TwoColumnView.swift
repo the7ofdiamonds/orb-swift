@@ -9,18 +9,37 @@ import SwiftUI
 
 struct TwoColumnView: View {
     @EnvironmentObject var navigation: Navigation
-
-    @State private var selectedContentMenu: ViewType? = nil
-    @State private var selectedDetailView: Page? = nil
     
     var body: some View {
         NavigationSplitView {
+            
+            if let parent = navigation.isPage?.parent,
+               parent != .manage, parent != .invest, parent != .services {
+               
+                Button(action: {
+                    navigation.change(page: parent)
+                }, label: {
+                    Text(parent.label)
+                })
+                
+                if let menu = Menu(title: parent.title) {
+                    List {
+                        ForEach(menu.submenu) { child in
+                            Button(action: {
+                                navigation.change(menu: child)
+                            }, label: {
+                                Text(child.label)
+                            })
+                        }
+                    }
+                }
+            }
+            
             Text("Manage")
             List {
-                ForEach(Menu.manage.submenu, id: \.label) { submenu in
+                ForEach(Menu.manage.submenu) { submenu in
                     Button(action: {
-                        selectedContentMenu = submenu
-                        navigation.change(view: submenu)
+                        navigation.change(menu: submenu)
                     }, label: {
                         Text(submenu.label)
                     })
@@ -29,22 +48,20 @@ struct TwoColumnView: View {
             
             Text("Invest")
             List{
-                ForEach(Menu.invest.submenu, id: \.label) { submenu in
+                ForEach(Menu.invest.submenu) { submenu in
                     Button(action: {
-                        selectedContentMenu = submenu
-                        navigation.change(view: submenu)
+                        navigation.change(menu: submenu)
                     }, label: {
                         Text(submenu.label)
                     })
                 }
             }
-
+            
             Text("Services")
             List {
-                ForEach(Menu.services.submenu, id: \.label) { submenu in
+                ForEach(Menu.services.submenu) { submenu in
                     Button(action: {
-                        selectedContentMenu = submenu
-                        navigation.change(view: submenu)
+                        navigation.change(menu: submenu)
                     }, label: {
                         Text(submenu.label)
                     })
@@ -52,13 +69,14 @@ struct TwoColumnView: View {
             }
         } detail: {
             ViewHome {
-                AnyView(navigation.isView)
+                navigation.isView
             }
         }
-
+        
     }
 }
 
 #Preview {
     TwoColumnView()
+        .environmentObject(Navigation())
 }

@@ -17,16 +17,16 @@ struct ViewManage: View {
                 .fontWeight(.bold)
             
             HStack{
-                ComponentButtonHNav(viewType: .page(.personal))
-                ComponentButtonHNav(viewType: .page(.business))
+                ComponentButtonHNav(page: .personal)
+                ComponentButtonHNav(page: .business)
             }
             
             Spacer()
             
             HStack {
-                ComponentButtonBar(viewType: .page(.settings))
-                ComponentButtonBar(viewType: .page(.forgot))
-                ComponentButtonBar(viewType: .page(.logout))
+                ComponentButtonBar(page: .settings)
+                ComponentButtonBar(page: .forgot)
+                ComponentButtonBar(page: .logout)
             }
         }
     }

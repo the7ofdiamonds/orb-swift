@@ -18,7 +18,7 @@ struct ViewLogin: View {
     @StateObject private var vm: ViewModelLogin
 
     init() {
-        _vm = StateObject(wrappedValue: ViewModelLogin(authentication: Authentication()))
+        _vm = StateObject(wrappedValue: ViewModelLogin(authentication: Authentication(), navigation: Navigation()))
     }
     
     var body: some View {
@@ -48,8 +48,8 @@ struct ViewLogin: View {
                 }
                 
                 HStack {
-                    ComponentButtonBar(viewType: .page(.signup))
-                    ComponentButtonBar(viewType: .page(.forgot))
+                    ComponentButtonBar(page: .signup)
+                    ComponentButtonBar(page: .forgot)
                 }
             }
             .alert(isPresented: $vm.showingAlert) {

@@ -26,40 +26,40 @@ struct ViewManageBusiness: View {
                 VStack(alignment: .center) {
                     Grid(verticalSpacing: 20) {
                         GridRow {
-                            ComponentButtonDoubleH(viewType: .page(.businessincome), value: "\(income)")
+                            ComponentButtonDoubleH(page: .businessincome, value: "\(income)")
                         }
                         
                         GridRow {
-                            ComponentButtonDoubleH(viewType: .page(.businessrevenue), value: "\(revenue)")
+                            ComponentButtonDoubleH(page: .businessrevenue, value: "\(revenue)")
                         }
                         
                         GridRow {
-                            ComponentButtonDoubleH(viewType: .page(.businessexpenses), value: "\(expenses)")
+                            ComponentButtonDoubleH(page: .businessexpenses, value: "\(expenses)")
                         }
                         
                         GridRow {
-                            ComponentButtonDoubleH(viewType: .page(.businessequity), value: "\(equity)")
+                            ComponentButtonDoubleH(page: .businessequity, value: "\(equity)")
                         }
                         
                         GridRow {
-                            ComponentButtonDoubleH(viewType: .page(.businessassets), value: "\(assets)")
+                            ComponentButtonDoubleH(page: .businessassets, value: "\(assets)")
                         }
                         
                         GridRow {
-                            ComponentButtonDoubleH(viewType: .page(.businessliabilities), value: "\(liabilities)")
+                            ComponentButtonDoubleH(page: .businessliabilities, value: "\(liabilities)")
                         }
                         
                         GridRow {
-                            ComponentButtonDoubleH(viewType: .page(.businesscontra), value: "\(contra)")
+                            ComponentButtonDoubleH(page: .businesscontra, value: "\(contra)")
                         }
                         
                         GridRow {
-                            ComponentButtonDoubleH(viewType: .page(.businesstax), value: "\(tax)")
+                            ComponentButtonDoubleH(page: .businesstax, value: "\(tax)")
                         }
                     }
                     
                     VStack {
-                        ComponentButtonBar(viewType: .page(.businesstransactions))
+                        ComponentButtonBar(page: .businesstransactions)
                         //                    Transactions table
                     }
                 }

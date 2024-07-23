@@ -13,7 +13,7 @@ struct ViewServices: View {
             Text("Services")
             
             HStack {
-                ComponentButtonBar(viewType: .page(.notary))
+                ComponentButtonBar(page: .notary)
             }
         }
     }

@@ -24,26 +24,26 @@ struct OneColumnView: View {
                     Spacer()
                 }
             }
-            .navigationDestination(for: ViewType.self) { viewType in
-                AnyView(viewType.body)
+            .navigationDestination(for: Page.self) { page in
+                page.body
             }
             .toolbar(content: {
                 ToolbarItemGroup(placement: .bottomBar) {
                     ComponentBar {
-                        ComponentButtonBar(viewType: .page(.manage))
-                        ComponentButtonBar(viewType: .page(.invest))
-                        ComponentButtonBar(viewType: .page(.services))
+                        ComponentButtonBar(page: .manage)
+                        ComponentButtonBar(page: .invest)
+                        ComponentButtonBar(page: .services)
                     }
                 }
             })
             .toolbar(content: {
                 ToolbarItemGroup(placement: .navigation) {
-                    if let page = navigation.isPage,
-                       let view = navigation.isView {
+                    if let page = navigation.isPage {
+                        let parent = page.parent
                         Button(action: {
-                            navigation.change(view: page.parent)
+                            navigation.change(page: parent)
                         }, label: {
-                            Text(page.parent.label)
+                            Text(parent.label)
                                 .font(.subheadline)
                         })
                     }

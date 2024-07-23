@@ -16,25 +16,34 @@ class Navigation: ObservableObject {
     @AppStorage("lastView") var lastView: String = "Login"
     
     @Published var isViewType: ViewType?
-    @Published var isPage: Page?
+    @Published var isPage: Page? = .home
+    @Published var isMenu: Menu?
     @Published var isView: AnyView?
     @Published var path: [String] = []
     
     init() {
         self.authentication = authentication
-        self.isView = AnyView(Page.manage.body)
+        self.isView = Page.manage.body
 //        if let savedView = lastView,
 //           let page = Page(label: savedView) {
 //            self.isView = authentication.checkAuthentication() ? AnyView(page.body) : AnyView(Page.login.body)
 //        }
     }
     
-    func change(view: ViewType) {
-        self.isViewType = view
-        self.isPage = Page(title: view.title)
-        self.isView = AnyView(view.body)
-        self.lastView = view.label
-        self.path.append(view.label)
-        print(view.label)
+    func change(page: Page) {
+        self.isPage = page
+        self.isView = page.body
+        self.lastView = page.label
+        self.path.append(page.label)
+    }
+    
+    func change(menu: Menu) {
+        self.isMenu = menu
+        
+        if let page = Page(title: menu.title) {
+            self.isView = page.body
+            self.lastView = page.label
+            self.path.append(page.label)
+        }
     }
 }

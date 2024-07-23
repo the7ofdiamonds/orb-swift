@@ -10,9 +10,9 @@ import SwiftUI
 struct ViewHomeMenu: View {
     var body: some View {
         ComponentCard {
-            ComponentButtonHNav(viewType: .page(.manage))
-            ComponentButtonHNav(viewType: .page(.invest))
-            ComponentButtonHNav(viewType: .page(.services))
+            ComponentButtonHNav(page: .manage)
+            ComponentButtonHNav(page: .invest)
+            ComponentButtonHNav(page: .services)
         }
     }
 }

@@ -10,16 +10,18 @@ import SwiftUI
 @MainActor
 class ViewModelLogout: ObservableObject {
     @ObservedObject var authentication: Authentication
-    
+    @ObservedObject var navigation: Navigation
+
     @Published var isLoggedIn: Bool? = nil
     @Published var successMessage: String = ""
     @Published var errorMessage: String = ""
     @Published var error: NetworkError?
     @Published var showingAlert: Bool = false
     
-    init(authentication: Authentication){
+    init(authentication: Authentication, navigation: Navigation){
         self.authentication = authentication
         self.isLoggedIn = authentication.isLoggedIn
+        self.navigation = navigation
     }
     
     func logout() async throws {
@@ -44,6 +46,10 @@ class ViewModelLogout: ObservableObject {
 //                    self.errorMessage = errorMessage
 //                }
                 self.errorMessage = "You have been logged out successfully."
+            }
+            
+            if !authCreds.isValid {
+                navigation.change(page: .login)
             }
         } catch {
             self.error = error as? NetworkError

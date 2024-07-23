@@ -55,25 +55,25 @@ extension ViewType {
         }
     }
     
-    var submenu: [ViewType] {
-        switch self {
-        case .menu(let menu):
-            return menu.submenu
-        case .contentMenu(let contentMenu):
-            return contentMenu.submenu
-        case .page(let page):
-            return page.submenu
-        }
-    }
+//    var submenu: [ViewType] {
+//        switch self {
+//        case .menu(let menu):
+//            return menu.submenu
+//        case .contentMenu(let contentMenu):
+//            return contentMenu.submenu
+//        case .page(let page):
+//            return page.submenu
+//        }
+//    }
     
-    var body: any View {
-        switch self {
-        case .menu(let menu):
-            return menu.body
-        case .contentMenu(let contentMenu):
-            return contentMenu.body
-        case .page(let page):
-            return page.body
-        }
-    }
+//    var body: any View {
+//        switch self {
+//        case .menu(let menu):
+//            return menu.body
+//        case .contentMenu(let contentMenu):
+//            return contentMenu.body
+//        case .page(let page):
+//            return page.body
+//        }
+//    }
 }

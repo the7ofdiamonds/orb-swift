@@ -40,7 +40,7 @@ enum Page: CaseIterable {
     case settings
     case forgot
     case logout
-
+    
     case invest
     case realestate
     case commercial
@@ -58,7 +58,7 @@ enum Page: CaseIterable {
     case blank
 }
 
-extension Page: ProtocolViewType {
+extension Page {
     var title: String {
         switch self {
         case .home:
@@ -68,10 +68,9 @@ extension Page: ProtocolViewType {
         case .signup:
             return "Signup"
             
-        
         case .manage:
             return "Manage"
-        
+            
         case .personal:
             return "Personal"
         case .personalincome:
@@ -92,7 +91,7 @@ extension Page: ProtocolViewType {
             return "Personal Tax"
         case .personaltransactions:
             return "Personal Transactions"
-
+            
         case .business:
             return "Business"
         case .businessincome:
@@ -140,7 +139,7 @@ extension Page: ProtocolViewType {
             return "Tangible Assets Business"
         case .paperassets:
             return "Paper Assets"
-        
+            
         case .services:
             return "Services"
         case .notary:
@@ -162,7 +161,7 @@ extension Page: ProtocolViewType {
             
         case .manage:
             return "Manage"
-        
+            
         case .personal:
             return "Personal"
         case .personalincome:
@@ -183,7 +182,7 @@ extension Page: ProtocolViewType {
             return "Tax"
         case .personaltransactions:
             return "Personal Transactions"
-
+            
         case .business:
             return "Business"
         case .businessincome:
@@ -231,7 +230,7 @@ extension Page: ProtocolViewType {
             return "Business"
         case .paperassets:
             return "Paper Assets"
-        
+            
         case .services:
             return "Services"
         case .notary:
@@ -262,199 +261,248 @@ extension Page: ProtocolViewType {
             return "wrench"
         case .realestate:
             return "house"
-        case .tangibleassetscommercial:
-            return "building"
-        case .tangibleassetsresidential:
-            return "building"
-        case .tangibleassetsbusiness:
-            return "building"
+            
         case .paperassets:
             return "chart.line.uptrend.xyaxis"
-
+            
         case .notary:
             return "signature"
         case .settings:
             return "gear"
-        case .personal:
-            return "Personal"
-        case .business:
-            return "Business"
-        case .personaltransactions:
-            return "personaltransactions"
-        case .businesstransactions:
-            return "businesstransactions"
+            
         case .commercial:
             return "building"
         case .residential:
             return "house"
-        case .tangibleassets:
-            return "tangible"
-        case .tangibleassetsrealestate:
-            return "building"
+            
         default:
             return ""
         }
     }
     
-    var parent: ViewType {
+    var parent: Page {
         switch self {
         case .personal:
-                .page(.manage)
+                .manage
         case .business:
-                .page(.manage)
+                .manage
         case .settings:
-                .page(.manage)
+                .manage
         case .forgot:
-                .page(.manage)
+                .manage
         case .logout:
-                .page(.manage)
+                .manage
         case .personalincome:
-                .page(.personal)
+                .personal
         case .personalexpenses:
-                .page(.personal)
+                .personal
         case .personalassets:
-                .page(.personal)
+                .personal
         case .personalliabilities:
-                .page(.personal)
+                .personal
         case .personaltransactions:
-                .page(.personal)
+                .personal
         case .businessincome:
-                .page(.business)
+                .business
         case .businessrevenue:
-                .page(.business)
+                .business
         case .businessexpenses:
-                .page(.business)
+                .business
         case .businessequity:
-                .page(.business)
+                .business
         case .businessassets:
-                .page(.business)
+                .business
         case .businessliabilities:
-                .page(.business)
+                .business
         case .businesscontra:
-                .page(.business)
+                .business
         case .businesstax:
-                .page(.business)
+                .business
         case .businesstransactions:
-                .page(.business)
+                .business
         case .realestate:
-                .page(.invest)
+                .invest
         case .commercial:
-                .page(.realestate)
+                .realestate
         case .residential:
-                .page(.realestate)
+                .realestate
         case .tangibleassets:
-                .page(.invest)
+                .invest
         case .tangibleassetsrealestate:
-                .page(.tangibleassets)
+                .tangibleassets
         case .tangibleassetscommercial:
-                .page(.tangibleassetsrealestate)
+                .tangibleassetsrealestate
         case .tangibleassetsresidential:
-                .page(.tangibleassetsrealestate)
+                .tangibleassetsrealestate
         case .tangibleassetsbusiness:
-                .page(.tangibleassets)
+                .tangibleassets
         case .notary:
-                .page(.services)
+                .services
         default:
-            .page(.blank)
+                .blank
         }
     }
     
-    var submenu: [ViewType] {
-        []
+    var submenu: [Page] {
+        switch self {
+        case .home:
+            return [
+                .manage,
+                .invest,
+                .services
+            ]
+        case .manage:
+            return [
+                .personal,
+                .business,
+                .settings,
+                .forgot,
+                .logout
+            ]
+        case .personal:
+            return [
+                .personalincome,
+                .personalexpenses,
+                .personalassets,
+                .personalliabilities,
+                .personaltransactions
+            ]
+        case .business:
+            return [
+                .businessrevenue,
+                .businessincome,
+                .businessexpenses,
+                .personalassets,
+                .personalliabilities,
+                .businesscontra,
+                .businesstax,
+                .personaltransactions
+            ]
+        case .settings:
+            return []
+        case .invest:
+            return [
+                .realestate,
+                .tangibleassets,
+            ]
+        case .realestate:
+            return [
+                .commercial,
+                .residential
+            ]
+        case .tangibleassets:
+            return [
+                .tangibleassetsrealestate,
+                .tangibleassetsbusiness
+            ]
+        case .tangibleassetsrealestate:
+            return [
+                .tangibleassetscommercial,
+                .tangibleassetsresidential
+            ]
+        case .tangibleassetsbusiness:
+            return []
+        case .services:
+            return [
+                .notary
+            ]
+        default:
+            return []
+        }
     }
 }
 
 extension Page {
     
-    var body: any View {
+    var body: AnyView {
         switch self {
         case .home:
-            ViewHome()
+            AnyView(ViewHome())
         case .login:
-            ViewLogin()
+            AnyView(ViewLogin())
         case .signup:
-            ViewSignUp()
-          
+            AnyView(ViewSignUp())
+            
         case .manage:
-            ViewManage()
-        
+            AnyView(ViewManage())
+            
         case .personal:
-            ViewManagePersonal()
+            AnyView(ViewManagePersonal())
         case .personalincome:
-            ViewManagePersonalIncome()
+            AnyView(ViewManagePersonalIncome())
         case .personalrevenue:
-            ViewManagePersonalRevenue()
+            AnyView(ViewManagePersonalRevenue())
         case .personalexpenses:
-            ViewManagePersonalExpenses()
+            AnyView(ViewManagePersonalExpenses())
         case .personalequity:
-            ViewManagePersonalEquity()
+            AnyView(ViewManagePersonalEquity())
         case .personalassets:
-            ViewManagePersonalAssets()
+            AnyView(ViewManagePersonalAssets())
         case .personalliabilities:
-            ViewManagePersonalLiabilities()
+            AnyView(ViewManagePersonalLiabilities())
         case .personalcontra:
-            ViewManagePersonalContra()
+            AnyView(ViewManagePersonalContra())
         case .personaltax:
-            ViewManagePersonalTax()
+            AnyView(ViewManagePersonalTax())
         case .personaltransactions:
-            ViewManagePersonalTransactions()
+            AnyView(ViewManagePersonalTransactions())
             
         case .business:
-            ViewManageBusiness()
+            AnyView(ViewManageBusiness())
         case .businessincome:
-            ViewManageBusinessIncome()
+            AnyView(ViewManageBusinessIncome())
         case .businessrevenue:
-            ViewManageBusinessRevenue()
+            AnyView(ViewManageBusinessRevenue())
         case .businessexpenses:
-            ViewManageBusinessExpenses()
+            AnyView(ViewManageBusinessExpenses())
         case .businessequity:
-            ViewManageBusinessEquity()
+            AnyView(ViewManageBusinessEquity())
         case .businessassets:
-            ViewManageBusinessAssets()
+            AnyView(ViewManageBusinessAssets())
         case .businessliabilities:
-            ViewManageBusinessLiabilities()
+            AnyView(ViewManageBusinessLiabilities())
         case .businesscontra:
-            ViewManageBusinessContra()
+            AnyView(ViewManageBusinessContra())
         case .businesstax:
-            ViewManageBusinessTax()
+            AnyView(ViewManageBusinessTax())
         case .businesstransactions:
-            ViewManageBusinessTransactions()
-         
+            AnyView(ViewManageBusinessTransactions())
+            
         case .settings:
-            ViewSettings()
+            AnyView(ViewSettings())
         case .forgot:
-            ViewForgot()
+            AnyView(ViewForgot())
         case .logout:
-            ViewLogout()
+            AnyView(ViewLogout())
             
         case .invest:
-            ViewInvest()
+            AnyView(ViewInvest())
         case .realestate:
-            ViewRealEstate()
+            AnyView(ViewRealEstate())
         case .commercial:
-            ViewCommercial()
+            AnyView(ViewCommercial())
         case .residential:
-            ViewResidential()
+            AnyView(ViewResidential())
         case .tangibleassets:
-            ViewTangibleAssets()
+            AnyView(ViewTangibleAssets())
         case .tangibleassetsrealestate:
-            ViewTangibleAssetsRealEstate()
+            AnyView(ViewTangibleAssetsRealEstate())
         case .tangibleassetscommercial:
-            ViewTangibleAssetsCommercial()
+            AnyView(ViewTangibleAssetsCommercial())
         case .tangibleassetsresidential:
-            ViewTangibleAssetsResidential()
+            AnyView(ViewTangibleAssetsResidential())
         case .tangibleassetsbusiness:
-            ViewTangibleAssetsBusiness()
+            AnyView(ViewTangibleAssetsBusiness())
         case .paperassets:
-            ViewInvest()
+            AnyView(ViewInvest())
             
         case .services:
-            ViewServices()
+            AnyView(ViewServices())
         case .notary:
-            ViewNotary()
+            AnyView(ViewNotary())
             
         case .blank:
-            EmptyView()
+            AnyView(EmptyView())
         }
     }
 }
@@ -471,7 +519,7 @@ extension Page {
             
         case "Manage":
             self = .manage
-
+            
         case "Personal":
             self = .personal
         case "Personal Income":

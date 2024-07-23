@@ -16,37 +16,37 @@ struct ThreeColumnView: View {
     
     @ViewBuilder var body: some View {
         NavigationSplitView {
-            List {
-                ForEach(Menu.home.submenu, id: \.label) { menu in
-                    Button(action: {
-                        selectedMenu = menu
-                    }, label: {
-                        Text(menu.label)
-                    })
-                }
-            }
+//            List {
+//                ForEach(Menu.home.submenu, id: \.label) { menu in
+//                    Button(action: {
+//                        selectedMenu = menu
+//                    }, label: {
+//                        Text(menu.label)
+//                    })
+//                }
+//            }
         } content: {
-            List {
-                if let selectedMenu {
-                    ForEach(selectedMenu.submenu, id: \.label) { submenu in
-                        Button(action: {
-                            selectedContentMenu = submenu
-                            navigation.change(view: submenu)
-                        }, label: {
-                            Text(submenu.label)
-                        })
-                    }
-                } else {
-                    ForEach(Menu.manage.submenu, id: \.label) { submenu in
-                        Button(action: {
-                            selectedContentMenu = submenu
-                            navigation.change(view: submenu)
-                        }, label: {
-                            Text(submenu.label)
-                        })
-                    }
-                }
-            }
+//            List {
+//                if let selectedMenu {
+//                    ForEach(selectedMenu.submenu, id: \.label) { submenu in
+//                        Button(action: {
+//                            selectedContentMenu = submenu
+//                            navigation.change(view: submenu)
+//                        }, label: {
+//                            Text(submenu.label)
+//                        })
+//                    }
+//                } else {
+//                    ForEach(Menu.manage.submenu, id: \.label) { submenu in
+//                        Button(action: {
+//                            selectedContentMenu = submenu
+//                            navigation.change(view: submenu)
+//                        }, label: {
+//                            Text(submenu.label)
+//                        })
+//                    }
+//                }
+//            }
         } detail: {
             ViewHome {
                 AnyView(navigation.isView)

@@ -10,8 +10,8 @@ import SwiftUI
 struct ViewTangibleAssetsRealEstate: View {
     var body: some View {
         ComponentCard {
-            ComponentButtonHNav(viewType: .page(.tangibleassetscommercial))
-            ComponentButtonHNav(viewType: .page(.tangibleassetsresidential))
+            ComponentButtonHNav(page: .tangibleassetscommercial)
+            ComponentButtonHNav(page: .tangibleassetsresidential)
         }
     }
 }

@@ -10,14 +10,14 @@ import SwiftUI
 struct ComponentButtonHNav: View {
     @EnvironmentObject var navigation: Navigation
 
-    var viewType: ViewType
+    var page: Page
 
     var body: some View {
         Button(action: {
-            navigation.change(view: viewType)
+            navigation.change(page: page)
         }, label: {
             VStack{
-                Text(viewType.label)
+                Text(page.label)
             }
         })
         .font(.headline)

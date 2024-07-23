@@ -10,20 +10,21 @@ import SwiftUI
 @MainActor
 class ViewModelLogin: ObservableObject {
     @ObservedObject var authentication: Authentication
-
+    @ObservedObject var navigation: Navigation
+    
     @Published var isLoggedIn: Bool?
     @Published var successMessage: String = ""
     @Published var error: NetworkError?
     @Published var errorMessage: String = ""
     @Published var showingAlert: Bool = false
     
-    init(authentication: Authentication) {
+    init(authentication: Authentication, navigation: Navigation) {
         self.authentication = authentication
         self.isLoggedIn = authentication.isLoggedIn
+        self.navigation = navigation
     }
     
     let locationManager: LocationManager = LocationManager.instance
-    let navigation: Navigation = Navigation.instance
 
     func login(_ username: String, _ password: String) async {
         guard !username.isEmpty else {
@@ -45,7 +46,7 @@ class ViewModelLogin: ObservableObject {
                 if await authentication.saveAuthentication(responseLogin: login) {
                     if let successMessage = login.successMessage {
                         self.successMessage = successMessage
-                        navigation.isView = AnyView(Page.home.body)
+                        navigation.change(page: Page.home)
                     }
                 }
                 

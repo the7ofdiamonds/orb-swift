@@ -8,37 +8,240 @@
 import Foundation
 import SwiftUI
 
-enum Menu: CaseIterable {
+enum Menu: CaseIterable, Identifiable {
     case home
+    case login
+    case signup
+    
     case manage
+    
+    case personal
+    case personalincome
+    case personalrevenue
+    case personalexpenses
+    case personalequity
+    case personalassets
+    case personalliabilities
+    case personalcontra
+    case personaltax
+    case personaltransactions
+    
+    case business
+    case businessincome
+    case businessrevenue
+    case businessexpenses
+    case businessequity
+    case businessassets
+    case businessliabilities
+    case businesscontra
+    case businesstax
+    case businesstransactions
+    
+    case settings
+    case forgot
+    case logout
+    
     case invest
-    case services
     case realestate
+    case commercial
+    case residential
     case tangibleassets
-//    case paperassets
+    case tangibleassetsrealestate
+    case tangibleassetscommercial
+    case tangibleassetsresidential
+    case tangibleassetsbusiness
+    case paperassets
+    
+    case services
+    case notary
+    
+    case blank
 }
 
-extension Menu: ProtocolViewType {
+extension Menu {
+    var id: String {
+        UUID().uuidString
+    }
+    
     var title: String {
-      return ""
+        switch self {
+        case .home:
+            return "Home"
+        case .login:
+            return "Login"
+        case .signup:
+            return "Signup"
+            
+        case .manage:
+            return "Manage"
+            
+        case .personal:
+            return "Personal"
+        case .personalincome:
+            return "Personal Income"
+        case .personalrevenue:
+            return "Personal Revenue"
+        case .personalexpenses:
+            return "Personal Expenses"
+        case .personalequity:
+            return "Personal Equity"
+        case .personalassets:
+            return "Personal Assets"
+        case .personalliabilities:
+            return "Personal Liabilities"
+        case .personalcontra:
+            return "Personal Contra"
+        case .personaltax:
+            return "Personal Tax"
+        case .personaltransactions:
+            return "Personal Transactions"
+            
+        case .business:
+            return "Business"
+        case .businessincome:
+            return "Business Income"
+        case .businessrevenue:
+            return "Business Revenue"
+        case .businessexpenses:
+            return "Business Expenses"
+        case .businessequity:
+            return "Business Equity"
+        case .businessassets:
+            return "Business Assets"
+        case .businessliabilities:
+            return "Business Liabilities"
+        case .businesscontra:
+            return "Business Contra"
+        case .businesstax:
+            return "Business Tax"
+        case .businesstransactions:
+            return "Business Transactions"
+        case .settings:
+            return "Settings"
+        case .forgot:
+            return "Forgot"
+        case .logout:
+            return "Logout"
+            
+        case .invest:
+            return "Invest"
+        case .realestate:
+            return "Real Estate"
+        case .commercial:
+            return "Commercial"
+        case .residential:
+            return "Residential"
+        case .tangibleassets:
+            return "Tangible Assets"
+        case .tangibleassetsrealestate:
+            return "Tangible Assets Real Estate"
+        case .tangibleassetscommercial:
+            return "Tangible Assets Commercial"
+        case .tangibleassetsresidential:
+            return "Tangible Assets Residential"
+        case .tangibleassetsbusiness:
+            return "Tangible Assets Business"
+        case .paperassets:
+            return "Paper Assets"
+            
+        case .services:
+            return "Services"
+        case .notary:
+            return "Notary"
+            
+        case .blank:
+            return ""
+        }
     }
     
     var label: String {
         switch self {
         case .home:
             return "Home"
+        case .login:
+            return "Login"
+        case .signup:
+            return "Signup"
+            
         case .manage:
             return "Manage"
+            
+        case .personal:
+            return "Personal"
+        case .personalincome:
+            return "Income"
+        case .personalrevenue:
+            return "Revenue"
+        case .personalexpenses:
+            return "Expenses"
+        case .personalequity:
+            return "Equity"
+        case .personalassets:
+            return "Assets"
+        case .personalliabilities:
+            return "Liabilities"
+        case .personalcontra:
+            return "Contra"
+        case .personaltax:
+            return "Tax"
+        case .personaltransactions:
+            return "Personal Transactions"
+            
+        case .business:
+            return "Business"
+        case .businessincome:
+            return "Income"
+        case .businessrevenue:
+            return "Revenue"
+        case .businessexpenses:
+            return "Expenses"
+        case .businessequity:
+            return "Equity"
+        case .businessassets:
+            return "Assets"
+        case .businessliabilities:
+            return "Liabilities"
+        case .businesscontra:
+            return "Contra"
+        case .businesstax:
+            return "Tax"
+        case .businesstransactions:
+            return "Business Transactions"
+        case .settings:
+            return "Settings"
+        case .forgot:
+            return "Forgot"
+        case .logout:
+            return "Logout"
+            
         case .invest:
             return "Invest"
-        case .services:
-            return "Services"
         case .realestate:
             return "Real Estate"
+        case .commercial:
+            return "Commercial"
+        case .residential:
+            return "Residential"
         case .tangibleassets:
             return "Tangible Assets"
-//        case .paperassets:
-//            return "Paper Assets"
+        case .tangibleassetsrealestate:
+            return "Real Estate"
+        case .tangibleassetscommercial:
+            return "Commercial"
+        case .tangibleassetsresidential:
+            return "Residential"
+        case .tangibleassetsbusiness:
+            return "Business"
+        case .paperassets:
+            return "Paper Assets"
+            
+        case .services:
+            return "Services"
+        case .notary:
+            return "Notary"
+            
+        case .blank:
+            return ""
         }
     }
     
@@ -56,82 +259,233 @@ extension Menu: ProtocolViewType {
             return "house"
         case .tangibleassets:
             return "building"
-//        case .paperassets:
-//            return "chart.line.uptrend.xyaxis"
-        }
-    }
-    
-    var parent: ViewType {
-        switch self {
-        
+            //        case .paperassets:
+            //            return "chart.line.uptrend.xyaxis"
         default:
-                .menu(.home)
+            return ""
         }
     }
     
-    var submenu: [ViewType] {
+    var parent: Menu? {
+        switch self {
+        case .personal:
+                .manage
+        case .business:
+                .manage
+        case .settings:
+                .manage
+        case .forgot:
+                .manage
+        case .logout:
+                .manage
+        case .personalincome:
+                .personal
+        case .personalexpenses:
+                .personal
+        case .personalassets:
+                .personal
+        case .personalliabilities:
+                .personal
+        case .personaltransactions:
+                .personal
+        case .businessincome:
+                .business
+        case .businessrevenue:
+                .business
+        case .businessexpenses:
+                .business
+        case .businessequity:
+                .business
+        case .businessassets:
+                .business
+        case .businessliabilities:
+                .business
+        case .businesscontra:
+                .business
+        case .businesstax:
+                .business
+        case .businesstransactions:
+                .business
+        case .realestate:
+                .invest
+        case .commercial:
+                .realestate
+        case .residential:
+                .realestate
+        case .tangibleassets:
+                .invest
+        case .tangibleassetsrealestate:
+                .tangibleassets
+        case .tangibleassetscommercial:
+                .tangibleassetsrealestate
+        case .tangibleassetsresidential:
+                .tangibleassetsrealestate
+        case .tangibleassetsbusiness:
+                .tangibleassets
+        case .notary:
+                .services
+        default:
+                nil
+        }
+    }
+    
+    var submenu: [Menu] {
         switch self {
         case .home:
-           return [
-                .menu(.manage),
-                .menu(.invest),
-                .menu(.services)
+            return [
+                .manage,
+                .invest,
+                .services
             ]
         case .manage:
             return [
-                 .contentMenu(.personal),
-                 .contentMenu(.business),
-                 .page(.settings),
-                 .page(.forgot),
-                 .page(.logout)
+                .personal,
+                .business,
+                .settings,
+                .forgot,
+                .logout
             ]
+        case .personal:
+            return [
+                .personalincome,
+                .personalexpenses,
+                .personalassets,
+                .personalliabilities,
+                .personaltransactions
+            ]
+        case .business:
+            return [
+                .businessrevenue,
+                .businessincome,
+                .businessexpenses,
+                .personalassets,
+                .personalliabilities,
+                .businesscontra,
+                .businesstax,
+                .personaltransactions
+            ]
+        case .settings:
+            return []
         case .invest:
             return [
-                 .page(.realestate),
-                 .page(.tangibleassets),
-             ]
-        case .services:
-            return [
-                .page(.notary)
-             ]
+                .realestate,
+                .tangibleassets,
+            ]
         case .realestate:
             return [
-                 .page(.commercial),
-                 .page(.residential)
+                .commercial,
+                .residential
             ]
         case .tangibleassets:
             return [
-                 .page(.realestate),
-                 .page(.business)
-             ]
-//        case .paperassets:
-//            return [
-//                 .menu(.manage),
-//                 .menu(.invest),
-//                 .menu(.services)
-//             ]
+                .tangibleassetsrealestate,
+                .tangibleassetsbusiness
+            ]
+        case .tangibleassetsrealestate:
+            return [
+                .tangibleassetscommercial,
+                .tangibleassetsresidential
+            ]
+        case .tangibleassetsbusiness:
+            return []
+        case .services:
+            return [
+                .notary
+            ]
+        default:
+            return []
         }
     }
 }
 
 extension Menu {
-    @ViewBuilder
-    var body: any View {
-        switch self {
-        case .home:
-            ViewHome()
-        case .manage:
-            ViewManage()
-        case .invest:
-            ViewInvest()
-        case .services:
-            ViewServices()
-        case .realestate:
-            ViewInvest()
-        case .tangibleassets:
-            ViewInvest()
-//        case .paperassets:
-//            ViewInvest()
+    init?(title: String) {
+        switch title {
+        case "Home":
+            self = .home
+        case "Login":
+            self = .login
+        case "Signup":
+            self = .signup
+            
+        case "Manage":
+            self = .manage
+            
+        case "Personal":
+            self = .personal
+        case "Personal Income":
+            self = .personalincome
+        case "Personal Revenue":
+            self = .personalrevenue
+        case "Personal Expenses":
+            self = .personalexpenses
+        case "Personal Assets":
+            self = .personalassets
+        case "Personal Liabilities":
+            self = .personalliabilities
+        case "Personal Contra":
+            self = .personalcontra
+        case "Personal Tax":
+            self = .personaltax
+        case "Personal Transactions":
+            self = .personaltransactions
+            
+        case "Business":
+            self = .business
+        case "Business Income":
+            self = .businessincome
+        case "Business Revenue":
+            self = .businessrevenue
+        case "Business Expenses":
+            self = .businessexpenses
+        case "Business Assets":
+            self = .businessassets
+        case "Business Liabilities":
+            self = .businessliabilities
+        case "Business Equity":
+            self = .businessequity
+        case "Business Contra":
+            self = .businesscontra
+        case "Business Tax":
+            self = .businesstax
+        case "Business Transactions":
+            self = .businesstransactions
+            
+        case "Settings":
+            self = .settings
+        case "Forgot":
+            self = .forgot
+        case "Logout":
+            self = .logout
+            
+        case "Invest":
+            self = .invest
+        case "Real Estate":
+            self = .realestate
+        case "Commercial":
+            self = .commercial
+        case "Residential":
+            self = .residential
+        case "Tangible Assets":
+            self = .tangibleassets
+        case "Tangible Assets Real Estate":
+            self = .tangibleassetsrealestate
+        case "Tangible Assets Commercial":
+            self = .tangibleassetscommercial
+        case "Tangible Assets Residential":
+            self = .tangibleassetsresidential
+        case "Tangible Assets Business":
+            self = .tangibleassetsbusiness
+        case "Paper Assets":
+            self = .paperassets
+            
+        case "Services":
+            self = .services
+        case "Notary":
+            self = .notary
+            
+        default:
+            return nil
         }
     }
 }
