@@ -10,16 +10,20 @@ import SwiftData
 
 @main
 struct orbfinApp: App {
+    @StateObject private var authentication = Authentication()
+    @StateObject private var navigation = Navigation()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(Authentication())
-                .environmentObject(Navigation())
+                .environmentObject(authentication)
+                .environmentObject(navigation)
         }
     }
 }
 
-//#Preview {
-//    ViewHome()
-//        .environmentObject(Authentication())
-//}
+#Preview {
+    ContentView()
+        .environmentObject(Authentication())
+        .environmentObject(Navigation())
+}

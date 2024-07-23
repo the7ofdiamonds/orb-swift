@@ -23,7 +23,7 @@ struct ViewManageBusinessTransactions: View {
                 TableColumn("Amount") { transaction in
                     Text(Format.formatCurrency(Float(transaction.amount), currency: transaction.currencyCode))
                 }
-            }
+            }.padding()
 //        }
     }
 }

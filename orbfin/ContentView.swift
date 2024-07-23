@@ -13,20 +13,37 @@ struct ContentView: View {
     @EnvironmentObject var navigation: Navigation
     
     var body: some View {
-        if authentication.checkAuthentication() {
-            ViewLoggedIn()
+#if os(macOS)
+        ThreeColumnView()
+            .environmentObject(authentication)
+            .environmentObject(navigation)
+#else
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if let layoutExperience = Settings().layoutExperience {
+                if layoutExperience == "Two Column" {
+                    TwoColumnView()
+                        .environmentObject(authentication)
+                        .environmentObject(navigation)
+                } else {
+                    ThreeColumnView()
+                        .environmentObject(authentication)
+                        .environmentObject(navigation)
+                }
+            } else {
+                ThreeColumnView()
+                    .environmentObject(authentication)
+                    .environmentObject(navigation)
+            }
+        } else {
+            OneColumnView()
                 .environmentObject(authentication)
                 .environmentObject(navigation)
-        } else {
-            ViewHome {
-                AnyView(ViewLogin())
-            }
         }
+#endif
     }
 }
 
 #Preview {
-    
     ContentView()
         .environmentObject(Authentication())
         .environmentObject(Navigation())

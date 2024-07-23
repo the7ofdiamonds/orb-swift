@@ -9,19 +9,19 @@ import SwiftUI
 
 @MainActor
 class ViewModelLogin: ObservableObject {
-    @ObservedObject var authentication: Authentication
-    @ObservedObject var navigation: Navigation
+    var authentication: Authentication
+    var navigation: Navigation
     
-    @Published var isLoggedIn: Bool?
+    @Published var isLoggedIn: Bool = false
     @Published var successMessage: String = ""
-    @Published var error: NetworkError?
+    @Published var error: NetworkError? = nil
     @Published var errorMessage: String = ""
     @Published var showingAlert: Bool = false
     
     init(authentication: Authentication, navigation: Navigation) {
         self.authentication = authentication
-        self.isLoggedIn = authentication.isLoggedIn
         self.navigation = navigation
+        self.isLoggedIn = authentication.checkAuthentication()
     }
     
     let locationManager: LocationManager = LocationManager.instance
@@ -46,7 +46,6 @@ class ViewModelLogin: ObservableObject {
                 if await authentication.saveAuthentication(responseLogin: login) {
                     if let successMessage = login.successMessage {
                         self.successMessage = successMessage
-                        navigation.change(page: Page.home)
                     }
                 }
                 

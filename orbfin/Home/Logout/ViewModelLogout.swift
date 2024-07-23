@@ -35,16 +35,17 @@ class ViewModelLogout: ObservableObject {
                 
                 self.isLoggedIn = await authentication.removeAuthentication()
                 
-//                let logout: ResponseLogout = try await Logout().user(requestLogout: requestLogout)
+                let logout: ResponseLogout = try await Logout().user(requestLogout: requestLogout)
                 
-//                if let successMessage = logout.successMessage {
-//                    self.successMessage = successMessage
-//                    self.errorMessage = ""
-//                }
+                if let successMessage = logout.successMessage {
+                    self.successMessage = successMessage
+                    self.errorMessage = ""
+                }
                 
-//                if let errorMessage = logout.errorMessage {
-//                    self.errorMessage = errorMessage
-//                }
+                if let errorMessage = logout.errorMessage {
+                    self.errorMessage = errorMessage
+                }
+                
                 self.errorMessage = "You have been logged out successfully."
             }
             

@@ -362,7 +362,7 @@ extension Menu {
                 .personalliabilities,
                 .businesscontra,
                 .businesstax,
-                .personaltransactions
+                .businesstransactions
             ]
         case .settings:
             return []

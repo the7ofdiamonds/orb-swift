@@ -15,6 +15,9 @@ struct ViewLogin: View {
     @State private var username: String = ""
     @State private var password: String = ""
     
+    @State private var showSignUp: Bool = false
+    @State private var showForgot: Bool = false
+
     @StateObject private var vm: ViewModelLogin
 
     init() {
@@ -23,7 +26,7 @@ struct ViewLogin: View {
     
     var body: some View {
             
-        if !(authentication.checkAuthentication()) {
+        if !(vm.isLoggedIn) {
             
             if !vm.errorMessage.isEmpty {
                 StatusBar(message: vm.errorMessage, type: .error)
@@ -48,9 +51,30 @@ struct ViewLogin: View {
                 }
                 
                 HStack {
-                    ComponentButtonBar(page: .signup)
-                    ComponentButtonBar(page: .forgot)
+                    Button {
+                        showSignUp = true
+                    } label: {
+                        VStack {
+                            Image(systemName: Page.signup.icon)
+                            Text(Page.signup.label)
+                        }
+                    }
+                    
+                    Button {
+                        showForgot = true
+                    } label: {
+                        VStack {
+                            Image(systemName: Page.forgot.icon)
+                            Text(Page.forgot.label)
+                        }
+                    }
                 }
+            }
+            .sheet(isPresented: $showSignUp) {
+                ViewSignUp()
+            }
+            .sheet(isPresented: $showForgot) {
+                ViewForgot()
             }
             .alert(isPresented: $vm.showingAlert) {
                 Alert(
@@ -59,14 +83,12 @@ struct ViewLogin: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
-        } else {
-            ViewLoggedIn()
-                .environmentObject(authentication)
-                .environmentObject(navigation)
         }
     }
 }
 
 #Preview {
     ViewLogin()
+        .environmentObject(Authentication())
+        .environmentObject(Navigation())
 }

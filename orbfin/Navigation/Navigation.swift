@@ -9,41 +9,33 @@ import SwiftUI
 
 @MainActor
 class Navigation: ObservableObject {
-    @ObservedObject var authentication: Authentication = Authentication()
+    @AppStorage("lastView") var lastView: String?
     
-    public static let instance = Navigation()
-    
-    @AppStorage("lastView") var lastView: String = "Login"
-    
-    @Published var isViewType: ViewType?
-    @Published var isPage: Page? = .home
+    @Published var isPage: Page? = nil
     @Published var isMenu: Menu?
     @Published var isView: AnyView?
-    @Published var path: [String] = []
     
     init() {
-        self.authentication = authentication
-        self.isView = Page.manage.body
-//        if let savedView = lastView,
-//           let page = Page(label: savedView) {
-//            self.isView = authentication.checkAuthentication() ? AnyView(page.body) : AnyView(Page.login.body)
-//        }
+        if let savedView = lastView,
+           let page = Page(title: savedView) {
+            self.isView = AuthenticationCredentials().isValid ? page.body : Page.login.body
+            self.isPage = page
+            self.isMenu = Menu(title: page.title)
+        }
     }
     
     func change(page: Page) {
         self.isPage = page
-        self.isView = page.body
-        self.lastView = page.label
-        self.path.append(page.label)
+        self.isView = AuthenticationCredentials().isValid ? page.body : Page.login.body
+        self.lastView = page.title
     }
     
     func change(menu: Menu) {
         self.isMenu = menu
         
         if let page = Page(title: menu.title) {
-            self.isView = page.body
-            self.lastView = page.label
-            self.path.append(page.label)
+            self.isView = AuthenticationCredentials().isValid ? page.body : Page.login.body
+            self.lastView = page.title
         }
     }
 }

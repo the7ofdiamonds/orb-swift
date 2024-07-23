@@ -31,6 +31,6 @@ struct ComponentButtonHNav: View {
     }
 }
 
-//#Preview {
-//    ComponentButtonHNav(viewType: Page.income)
-//}
+#Preview {
+    ComponentButtonHNav(page: Page.home)
+}

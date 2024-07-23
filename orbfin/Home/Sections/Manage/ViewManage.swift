@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ViewManage: View {
-    @StateObject private var navigation = Navigation.instance
     
     var body: some View {
         ComponentCard {
@@ -34,6 +33,4 @@ struct ViewManage: View {
 
 #Preview {
     ViewManage()
-        .environmentObject(Authentication())
-        .environmentObject(Navigation())
 }

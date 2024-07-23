@@ -9,9 +9,11 @@ import SwiftUI
 
 @MainActor
 class Authentication: ObservableObject {
+    static var instance = Authentication()
+    
     var credentials = AuthenticationCredentials()
     
-    @Published var isLoggedIn: Bool
+    @Published var isLoggedIn: Bool = false
     
     init() {
         self.isLoggedIn = credentials.isValid
