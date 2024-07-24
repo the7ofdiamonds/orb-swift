@@ -15,8 +15,22 @@ struct TwoColumnView: View {
         NavigationSplitView {
             
             ViewHomeContentMenu()
+                .environmentObject(authentication)
+                .environmentObject(navigation)
             
-            ViewHomeMenu()
+            Section {
+                List {
+                    ForEach(Menu.home.submenu, id: \.id) { menu in
+                        Button(action: {
+                            navigation.change(menu: menu)
+                        }, label: {
+                            Text(menu.label)
+                        })
+                        .font(.headline)
+                        .fontWeight(.bold)
+                    }
+                }
+            }
         } detail: {
             ViewHome {
                 navigation.isView ?? Page.login.body

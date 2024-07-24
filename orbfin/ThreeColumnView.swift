@@ -14,8 +14,12 @@ struct ThreeColumnView: View {
     @ViewBuilder var body: some View {
         NavigationSplitView {
             ViewHomeMenu()
+                .environmentObject(authentication)
+                .environmentObject(navigation)
         } content: {
             ViewHomeContentMenu()
+                .environmentObject(authentication)
+                .environmentObject(navigation)
         } detail: {
             ViewHome {
                 navigation.isView ?? Page.login.body

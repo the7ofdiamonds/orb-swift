@@ -10,45 +10,99 @@ import SwiftUI
 struct ViewHomeContentMenu: View {
     @EnvironmentObject var navigation: Navigation
     
-    var body: some View {
-        if let parent = navigation.isPage?.parent,
-           parent.title != Page.manage.title,
-           parent.title != Page.invest.title,
-           parent.title != Page.services.title {
-            Button(action: {
-                navigation.change(page: parent)
-            }, label: {
-                Text(parent.label)
-            })
+    private let manage: Menu = Menu.manage
+    private let invest: Menu = Menu.invest
+    private let services: Menu = Menu.services
+    
+    func titlesMatch(_ title1: String, _ title2: String) -> Bool {
+        return title1.localizedCompare(title2) == .orderedSame
+    }
+        
+    private var isHomeMenu: Bool {
+        if let menu = navigation.isMenu {
+            let title = menu.title
             
-            if let menu = Menu(title: parent.title) {
-                List {
-                    ForEach(menu.submenu) { child in
+            let isManage = titlesMatch(manage.title, title)
+            let isInvest = titlesMatch(invest.title, title)
+            let isServices = titlesMatch(services.title, title)
+                        
+            return isManage || isInvest || isServices
+        } else {
+            return false
+        }
+    }
+    
+    private var currentPageMenu: Menu {
+        if isHomeMenu {
+            return .blank
+        } else {
+            if let menu = navigation.isMenu {
+                return menu
+            } else {
+                return .blank
+            }
+        }
+    }
+}
+
+extension ViewHomeContentMenu {
+    var body: some View {
+        VStack {
+            if currentPageMenu != .blank && !isHomeMenu {
+                Section {
+                    List {
                         Button(action: {
-                            navigation.change(menu: child)
+                            navigation.change(menu: currentPageMenu)
                         }, label: {
-                            Text(child.label)
+                            Text(currentPageMenu.label)
                         })
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        
+                        let submenu = currentPageMenu.submenu
+                        
+                        ForEach(submenu, id: \.id) { menu in
+                            Button(action: {
+                                navigation.change(menu: menu)
+                            }, label: {
+                                Text(menu.label)
+                            })
+                        }
                     }
                 }
             }
-        } 
-        
-        if let menu = navigation.isMenu {
-            Button(action: {
-                navigation.change(menu: menu)
-            }, label: {
-                Text(menu.label)
-            })
             
-            List {
-                ForEach(menu.submenu) { child in
-                    Button(action: {
-                        navigation.change(menu: child)
-                    }, label: {
-                        Text(child.label)
-                    })
+            
+            if let menu = navigation.isMenu {
+                if !isHomeMenu {
+                    Section {
+                        List {
+                            if let parent = menu.parent {
+                                Button(action: {
+                                    navigation.change(menu: parent)
+                                }, label: {
+                                    Text(parent.label)
+                                })
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                
+                                let submenu = parent.submenu
+                                
+                                ForEach(submenu) { menu in
+                                    Button(action: {
+                                        navigation.change(menu: menu)
+                                    }, label: {
+                                        Text(menu.label)
+                                    })
+                                }
+                            }
+                        }
+                    }
                 }
+            }
+            
+            if currentPageMenu == .blank && isHomeMenu {
+                Text("Make a selection")
             }
         }
     }

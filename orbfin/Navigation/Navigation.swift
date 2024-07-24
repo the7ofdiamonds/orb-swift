@@ -13,6 +13,7 @@ class Navigation: ObservableObject {
     
     @Published var isPage: Page? = nil
     @Published var isMenu: Menu?
+    @Published var isSubMenu: [Menu]?
     @Published var isView: AnyView?
     
     init() {
@@ -21,6 +22,7 @@ class Navigation: ObservableObject {
             self.isView = AuthenticationCredentials().isValid ? page.body : Page.login.body
             self.isPage = page
             self.isMenu = Menu(title: page.title)
+            self.isSubMenu = isMenu?.submenu
         }
     }
     
@@ -28,6 +30,8 @@ class Navigation: ObservableObject {
         self.isPage = page
         self.isView = AuthenticationCredentials().isValid ? page.body : Page.login.body
         self.lastView = page.title
+        self.isMenu = Menu(title: page.title)
+        self.isSubMenu = isMenu?.submenu
     }
     
     func change(menu: Menu) {
@@ -36,6 +40,8 @@ class Navigation: ObservableObject {
         if let page = Page(title: menu.title) {
             self.isView = AuthenticationCredentials().isValid ? page.body : Page.login.body
             self.lastView = page.title
+            self.isMenu = Menu(title: page.title)
+            self.isSubMenu = isMenu?.submenu
         }
     }
 }

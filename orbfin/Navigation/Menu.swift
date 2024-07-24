@@ -268,6 +268,12 @@ extension Menu {
     
     var parent: Menu? {
         switch self {
+        case .manage:
+                .home
+        case .invest:
+                .home
+        case .services:
+                .home
         case .personal:
                 .manage
         case .business:
@@ -358,8 +364,8 @@ extension Menu {
                 .businessrevenue,
                 .businessincome,
                 .businessexpenses,
-                .personalassets,
-                .personalliabilities,
+                .businessassets,
+                .businessliabilities,
                 .businesscontra,
                 .businesstax,
                 .businesstransactions
