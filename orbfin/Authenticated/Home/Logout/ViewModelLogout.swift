@@ -9,32 +9,23 @@ import SwiftUI
 
 @MainActor
 class ViewModelLogout: ObservableObject {
-    @ObservedObject var authentication: Authentication
-    @ObservedObject var navigation: Navigation
-
-    @Published var isLoggedIn: Bool? = nil
+    let authentication = Authentication()
+    
     @Published var successMessage: String = ""
     @Published var errorMessage: String = ""
     @Published var error: NetworkError?
     @Published var showingAlert: Bool = false
     
-    init(authentication: Authentication, navigation: Navigation){
-        self.authentication = authentication
-        self.isLoggedIn = authentication.isLoggedIn
-        self.navigation = navigation
-    }
-    
     func logout() async throws {
         do {
-            let authCreds = AuthenticationCredentials()
+            let isValid = await authentication.removeAuthentication()
             
-            if authCreds.isValid,
-               let accessToken = authCreds.accessToken,
-               let refreshToken = authCreds.refreshToken {
+            if !isValid {
+                guard let accessToken = authentication.accessToken else { return }
+                guard let refreshToken = authentication.refreshToken else { return }
+                
                 let requestLogout: RequestLogout = RequestLogout(accessToken: accessToken, refreshToken: refreshToken)
-                
-                self.isLoggedIn = await authentication.removeAuthentication()
-                
+                   
                 let logout: ResponseLogout = try await Logout().user(requestLogout: requestLogout)
                 
                 if let successMessage = logout.successMessage {
@@ -47,10 +38,6 @@ class ViewModelLogout: ObservableObject {
                 }
                 
                 self.errorMessage = "You have been logged out successfully."
-            }
-            
-            if !authCreds.isValid {
-                navigation.change(page: .login)
             }
         } catch {
             self.error = error as? NetworkError

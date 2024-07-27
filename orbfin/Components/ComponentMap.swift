@@ -9,21 +9,18 @@ import SwiftUI
 import MapKit
 
 struct ComponentMap: View {
+    
     @State var position: MapCameraPosition = .userLocation(fallback: .automatic)
-    @StateObject var locationManager = LocationManager.instance
-    
-    let isLoggedIn: Bool = AuthenticationCredentials().isValid
-    
+        
     var body: some View {
-        if let _ = locationManager.location {
-            
-            ZStack {
-                Map(position: $position)
-            }
+        ZStack {
+            Map(position: $position)
         }
     }
 }
 
 #Preview {
     ComponentMap()
+        .environmentObject(Authentication())
+        .environmentObject(Navigation())
 }

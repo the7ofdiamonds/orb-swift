@@ -24,6 +24,5 @@ struct orbfinApp: App {
 
 #Preview {
     ContentView()
-        .environmentObject(Authentication())
         .environmentObject(Navigation())
 }

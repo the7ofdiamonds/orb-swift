@@ -11,17 +11,21 @@ struct OneColumnView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     
+    var isLoggedIn: Bool {
+        authentication.isValid
+    }
+    
     var body: some View {
         NavigationStack {
             
-            ViewHome {
-                navigation.isView ?? Page.login.body
+            ViewAuthenticated {
+                navigation.isView
             }
             .navigationDestination(for: Page.self) { page in
                 page.body
             }
             .toolbar(content: {
-                if authentication.checkAuthentication() {
+                if isLoggedIn {
                     ToolbarItemGroup(placement: .bottomBar) {
                         ComponentBar {
                             ComponentButtonBar(page: .manage)
@@ -32,7 +36,7 @@ struct OneColumnView: View {
                 }
             })
             .toolbar(content: {
-                if authentication.checkAuthentication() {
+                if isLoggedIn {
                     ToolbarItemGroup(placement: .navigation) {
                         if let page = navigation.isPage {
                             let parent = page.parent

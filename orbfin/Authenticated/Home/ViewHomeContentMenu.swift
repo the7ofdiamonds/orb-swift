@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ViewHomeContentMenu: View {
+    @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     
     private let manage: Menu = Menu.manage
@@ -110,5 +111,6 @@ extension ViewHomeContentMenu {
 
 #Preview {
     ViewHomeContentMenu()
+        .environmentObject(Authentication())
         .environmentObject(Navigation())
 }

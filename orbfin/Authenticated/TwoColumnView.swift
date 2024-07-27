@@ -13,6 +13,8 @@ struct TwoColumnView: View {
     
     var body: some View {
         NavigationSplitView {
+            ComponentButtonHome()
+                .environmentObject(navigation)
             
             ViewHomeContentMenu()
                 .environmentObject(authentication)
@@ -32,8 +34,8 @@ struct TwoColumnView: View {
                 }
             }
         } detail: {
-            ViewHome {
-                navigation.isView ?? Page.login.body
+            ViewAuthenticated {
+                navigation.isView
             }
         }
         

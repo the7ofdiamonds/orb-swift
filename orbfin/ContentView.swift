@@ -11,35 +11,32 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
+
+    @AppStorage("layoutExperience") var selectedLayoutExperience: String?
+
+    var isLoggedIn: Bool {
+        authentication.isValid
+    }
     
     var body: some View {
-#if os(macOS)
-        ThreeColumnView()
-            .environmentObject(authentication)
-            .environmentObject(navigation)
-#else
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            if let layoutExperience = Settings().layoutExperience {
-                if layoutExperience == "Two Column" {
+        Group {
+            if isLoggedIn {
+                switch selectedLayoutExperience ?? "One Column" {
+                case "Two Column":
                     TwoColumnView()
-                        .environmentObject(authentication)
-                        .environmentObject(navigation)
-                } else {
+                case "Three Column":
                     ThreeColumnView()
-                        .environmentObject(authentication)
-                        .environmentObject(navigation)
+                case "One Column":
+                    OneColumnView()
+                default:
+                    ThreeColumnView()
                 }
             } else {
-                ThreeColumnView()
-                    .environmentObject(authentication)
-                    .environmentObject(navigation)
+                ViewLogin()
             }
-        } else {
-            OneColumnView()
-                .environmentObject(authentication)
-                .environmentObject(navigation)
         }
-#endif
+        .environmentObject(authentication)
+        .environmentObject(navigation)
     }
 }
 

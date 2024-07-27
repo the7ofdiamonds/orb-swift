@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct ViewHomeMenu: View {
-    @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
 
+    var isLoggedIn: Bool {
+            Authentication().isValid
+    }
+    
     var body: some View {
-        if authentication.checkAuthentication() {
+        if isLoggedIn {
             List {
                 Button(action: {
                     navigation.change(menu: Menu.manage)
@@ -74,6 +77,5 @@ struct ViewHomeMenu: View {
 
 #Preview {
     ViewHomeMenu()
-        .environmentObject(Authentication())
         .environmentObject(Navigation())
 }

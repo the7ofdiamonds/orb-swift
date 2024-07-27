@@ -9,15 +9,14 @@ import SwiftUI
 import SwiftData
 
 struct ViewSettings: View {
-    @State var settings = Settings()
     
     var body: some View {
         ComponentCard {
             #if os(macOS)
-                    ViewLayoutExperience(selectedLayoutExperience: settings.$layoutExperience)
+                    ViewLayoutExperience()
             #else
                 if UIDevice.current.userInterfaceIdiom == .pad {
-                    ViewLayoutExperience(selectedLayoutExperience: settings.$layoutExperience)
+                    ViewLayoutExperience()
                 } else {
                     Text("Nothing to show here yet.")
                 }

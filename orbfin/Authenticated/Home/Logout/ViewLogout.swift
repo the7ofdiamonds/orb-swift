@@ -13,12 +13,16 @@ struct ViewLogout: View {
 
     @StateObject private var vm: ViewModelLogout
     
+   private var isLoggedIn: Bool {
+        return authentication.isValid
+   }
+    
     init() {
-        _vm = StateObject(wrappedValue: ViewModelLogout(authentication: Authentication(), navigation: Navigation()))
+        _vm = StateObject(wrappedValue: ViewModelLogout())
     }
     
     var body: some View {
-        if let _ = vm.isLoggedIn {
+        if isLoggedIn {
             ComponentCard {
                 Button(action: {
                     Task{

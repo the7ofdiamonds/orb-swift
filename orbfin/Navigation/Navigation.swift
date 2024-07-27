@@ -19,16 +19,18 @@ class Navigation: ObservableObject {
     init() {
         if let savedView = lastView,
            let page = Page(title: savedView) {
-            self.isView = AuthenticationCredentials().isValid ? page.body : Page.login.body
+            self.isView = page.body
             self.isPage = page
             self.isMenu = Menu(title: page.title)
             self.isSubMenu = isMenu?.submenu
+            print(page.title)
         }
+        
     }
     
     func change(page: Page) {
         self.isPage = page
-        self.isView = AuthenticationCredentials().isValid ? page.body : Page.login.body
+        self.isView = Authentication().isValid ? page.body : Page.login.body
         self.lastView = page.title
         self.isMenu = Menu(title: page.title)
         self.isSubMenu = isMenu?.submenu
@@ -38,7 +40,7 @@ class Navigation: ObservableObject {
         self.isMenu = menu
         
         if let page = Page(title: menu.title) {
-            self.isView = AuthenticationCredentials().isValid ? page.body : Page.login.body
+            self.isView = Authentication().isValid ? page.body : Page.login.body
             self.lastView = page.title
             self.isMenu = Menu(title: page.title)
             self.isSubMenu = isMenu?.submenu

@@ -10,9 +10,7 @@ import SwiftData
 
 
 struct ViewLayoutExperience: View {
-    @Binding var selectedLayoutExperience: String?
-    
-    var settings: Settings = Settings()
+    @AppStorage("layoutExperience") var selectedLayoutExperience: String?
     
     var columns: [GridItem] {
         [
@@ -32,7 +30,6 @@ struct ViewLayoutExperience: View {
                 ForEach(LayoutExperienceSetting.allCases) { item in
                     Button {
                         selectedLayoutExperience = item.title
-                        settings.layoutExperience = item.title
                     } label: {
                         ViewLayoutExperienceSelection(selectedItem: $selectedLayoutExperience,item: item)
                     }
@@ -50,7 +47,7 @@ struct ViewLayoutExperience: View {
 
 struct LayoutExperienceView_Previews: PreviewProvider {
     static var previews: some View {
-        ViewLayoutExperience(selectedLayoutExperience: .constant("Three Column"))
+        ViewLayoutExperience()
             .padding()
             .previewLayout(.sizeThatFits)
     }

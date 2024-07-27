@@ -12,16 +12,9 @@ actor NetworkManager {
     
     public var headers: [String : String]?
     
-    private init() {
-        Task {
-            let authentication: AuthenticationCredentials = AuthenticationCredentials()
-            await self.useHeaders(authenticationCredentials: authentication)
-        }
-    }
-    
-    private func useHeaders(authenticationCredentials: AuthenticationCredentials) async {
-        if let accessToken: String = authenticationCredentials.accessToken,
-           let refreshToken: String = authenticationCredentials.refreshToken {
+    private func useHeaders() async {
+        if let accessToken: String = await Authentication().accessToken,
+           let refreshToken: String = await Authentication().refreshToken {
             self.headers = [
                 "Authorization": "Bearer \(accessToken)",
                 "refreshToken": refreshToken

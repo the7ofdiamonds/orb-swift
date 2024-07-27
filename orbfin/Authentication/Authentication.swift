@@ -9,42 +9,38 @@ import SwiftUI
 
 @MainActor
 class Authentication: ObservableObject {
-    static var instance = Authentication()
-    
-    var credentials = AuthenticationCredentials()
-    
-    @Published var isLoggedIn: Bool = false
-    
-    init() {
-        self.isLoggedIn = credentials.isValid
+    @AppStorage("access_token") var accessToken: String?
+    @AppStorage("refresh_token") var refreshToken: String?
+    @AppStorage("username") var username: String?
+    @AppStorage("lastView") var lastView: String?
+
+    var isValid: Bool {
+        guard let accessToken = accessToken, !accessToken.isEmpty,
+              let refreshToken = refreshToken, !refreshToken.isEmpty,
+              let username = username, !username.isEmpty else {
+            return false
+        }
+        
+        return true
     }
     
     func checkAuthentication() -> Bool {
-        return credentials.isValid
+        return isValid
     }
     
     func saveAuthentication(responseLogin: ResponseLogin) async -> Bool {
-        if let accessToken = responseLogin.accessToken,
-           let refreshToken = responseLogin.refreshToken,
-           let username = responseLogin.username {
-
-            credentials.accessToken = accessToken
-            credentials.refreshToken = refreshToken
-            credentials.username = username
+        self.accessToken = responseLogin.accessToken
+        self.refreshToken = responseLogin.refreshToken
+        self.username = responseLogin.username
             
-            self.isLoggedIn = credentials.isValid
-
-            return self.isLoggedIn
-        }
-        
-        return false
+        return checkAuthentication()
     }
     
     func removeAuthentication() async -> Bool {
-        credentials.accessToken = nil
-        credentials.refreshToken = nil
-         
-        self.isLoggedIn = credentials.isValid
-        return self.isLoggedIn
+        self.lastView = Page.home.title
+        self.accessToken = nil
+        self.refreshToken = nil
+        
+        return checkAuthentication()
     }
 }

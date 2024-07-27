@@ -44,8 +44,6 @@ struct ViewLayoutExperienceSelection: View {
                 self.isHovering = isHovering
             }
         }
-        
-        Text("\(selectedItem ?? "No title")")
     }
     
     func shapeStyle<S: ShapeStyle>(_ style: S) -> some ShapeStyle {
