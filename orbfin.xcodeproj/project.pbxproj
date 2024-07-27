@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4041C552C5522AA001FD37B /* InputConfirmPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C542C5522AA001FD37B /* InputConfirmPassword.swift */; };
+		A4041C572C5524ED001FD37B /* ViewModelSignup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C562C5524ED001FD37B /* ViewModelSignup.swift */; };
+		A4041C592C553397001FD37B /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C582C553397001FD37B /* Signup.swift */; };
+		A4041C5B2C5534BE001FD37B /* RequestSignup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C5A2C5534BE001FD37B /* RequestSignup.swift */; };
+		A4041C5D2C5534E4001FD37B /* ResponseSignup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C5C2C5534E4001FD37B /* ResponseSignup.swift */; };
 		A435414F2C3B71EE00B32BC1 /* ViewModelLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435414E2C3B71EE00B32BC1 /* ViewModelLogin.swift */; };
 		A43541512C3B8C7B00B32BC1 /* ComponentMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541502C3B8C7B00B32BC1 /* ComponentMap.swift */; };
 		A43541532C3B8F3100B32BC1 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541522C3B8F3100B32BC1 /* Login.swift */; };
@@ -105,6 +110,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A4041C542C5522AA001FD37B /* InputConfirmPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputConfirmPassword.swift; sourceTree = "<group>"; };
+		A4041C562C5524ED001FD37B /* ViewModelSignup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelSignup.swift; sourceTree = "<group>"; };
+		A4041C582C553397001FD37B /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
+		A4041C5A2C5534BE001FD37B /* RequestSignup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignup.swift; sourceTree = "<group>"; };
+		A4041C5C2C5534E4001FD37B /* ResponseSignup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSignup.swift; sourceTree = "<group>"; };
 		A435414E2C3B71EE00B32BC1 /* ViewModelLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelLogin.swift; sourceTree = "<group>"; };
 		A43541502C3B8C7B00B32BC1 /* ComponentMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentMap.swift; sourceTree = "<group>"; };
 		A43541522C3B8F3100B32BC1 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -223,6 +233,7 @@
 				A43541662C3F098F00B32BC1 /* InputPassword.swift */,
 				A43C29C72C3F4E34002BF1AE /* InputTextField.swift */,
 				A43C29E02C406ECE002BF1AE /* InputEmail.swift */,
+				A4041C542C5522AA001FD37B /* InputConfirmPassword.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -374,6 +385,10 @@
 		A49C0BD52C49AE3700968AFB /* Signup */ = {
 			isa = PBXGroup;
 			children = (
+				A4041C5C2C5534E4001FD37B /* ResponseSignup.swift */,
+				A4041C5A2C5534BE001FD37B /* RequestSignup.swift */,
+				A4041C582C553397001FD37B /* Signup.swift */,
+				A4041C562C5524ED001FD37B /* ViewModelSignup.swift */,
 				A43C29F22C4189FD002BF1AE /* ViewSignUp.swift */,
 			);
 			path = Signup;
@@ -723,6 +738,7 @@
 				A47FC8B72C5468970096D557 /* ComponentButtonHome.swift in Sources */,
 				A4605E9C2C46D0BC0091CC52 /* ViewManage.swift in Sources */,
 				A49C0BFB2C4A8F9900968AFB /* ViewManagePersonalEquity.swift in Sources */,
+				A4041C592C553397001FD37B /* Signup.swift in Sources */,
 				A49C0BF12C4A139800968AFB /* ViewSettings.swift in Sources */,
 				A43C29D32C404CD3002BF1AE /* Logout.swift in Sources */,
 				A4EA3CF32C4ECB4800CEFCFF /* ViewManageBusinessExpenses.swift in Sources */,
@@ -730,6 +746,7 @@
 				A43C29DF2C4068AE002BF1AE /* ResponseForgot.swift in Sources */,
 				A4EA3CF72C4ECBB300CEFCFF /* ViewManageBusinessAssets.swift in Sources */,
 				A49C0BB02C472CEE00968AFB /* ComponentButtonDoubleH.swift in Sources */,
+				A4041C552C5522AA001FD37B /* InputConfirmPassword.swift in Sources */,
 				A4605E9A2C4228160091CC52 /* StatusBar.swift in Sources */,
 				A43C29D92C4054F2002BF1AE /* ViewModelLogout.swift in Sources */,
 				A43541592C3EAC4700B32BC1 /* ResponseLogin.swift in Sources */,
@@ -744,6 +761,7 @@
 				A49C0BC82C4833DA00968AFB /* Menu.swift in Sources */,
 				A43C29CE2C4034CC002BF1AE /* ResponseServer.swift in Sources */,
 				A4A7ACF42C3B3BE100EE9B48 /* ViewLogin.swift in Sources */,
+				A4041C5D2C5534E4001FD37B /* ResponseSignup.swift in Sources */,
 				A4EA3CE42C4C379200CEFCFF /* ViewHomeMenu.swift in Sources */,
 				A43C29E12C406ECE002BF1AE /* InputEmail.swift in Sources */,
 				A4EA3CD82C4A982D00CEFCFF /* ViewManagePersonalContra.swift in Sources */,
@@ -769,9 +787,11 @@
 				A43C29C82C3F4E34002BF1AE /* InputTextField.swift in Sources */,
 				A4EA3CFB2C4ECCC300CEFCFF /* ViewManageBusinessEquity.swift in Sources */,
 				A4EA3CE02C4B5D8D00CEFCFF /* TwoColumnView.swift in Sources */,
+				A4041C5B2C5534BE001FD37B /* RequestSignup.swift in Sources */,
 				A4EA3CFF2C4ECD5100CEFCFF /* ViewManageBusinessTax.swift in Sources */,
 				A49C0BC42C4775C200968AFB /* ViewManagePersonalTransactions.swift in Sources */,
 				A43C29EF2C411F72002BF1AE /* ViewHome.swift in Sources */,
+				A4041C572C5524ED001FD37B /* ViewModelSignup.swift in Sources */,
 				A43C29D72C405404002BF1AE /* RequestLogout.swift in Sources */,
 				A4EA3CDC2C4B4B4300CEFCFF /* ViewModelManageBusinessTransactions.swift in Sources */,
 				A43C29FD2C41B31F002BF1AE /* ComponentButtonH.swift in Sources */,

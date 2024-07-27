@@ -28,10 +28,10 @@ class Authentication: ObservableObject {
         return isValid
     }
     
-    func saveAuthentication(responseLogin: ResponseLogin) async -> Bool {
-        self.accessToken = responseLogin.accessToken
-        self.refreshToken = responseLogin.refreshToken
-        self.username = responseLogin.username
+    func saveAuthentication(accessToken: String, refreshToken: String, username: String) async -> Bool {
+        self.accessToken = accessToken
+        self.refreshToken = refreshToken
+        self.username = username
             
         return checkAuthentication()
     }

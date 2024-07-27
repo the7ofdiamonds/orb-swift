@@ -23,9 +23,7 @@ class Navigation: ObservableObject {
             self.isPage = page
             self.isMenu = Menu(title: page.title)
             self.isSubMenu = isMenu?.submenu
-            print(page.title)
         }
-        
     }
     
     func change(page: Page) {

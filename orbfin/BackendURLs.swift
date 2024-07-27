@@ -7,6 +7,7 @@
 
 struct BackendURLs {
     public static var login: String = "http://localhost:8080"
+    public static var signup: String = "http://localhost:8080/signup"
     public static var logout: String = "http://localhost:8080/logout"
     public static var forgotPassword: String = "http://localhost:8080/forgot-password"
     public static var accountsBase: String = "http://localhost:8081"

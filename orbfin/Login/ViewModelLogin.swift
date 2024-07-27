@@ -33,7 +33,11 @@ class ViewModelLogin: ObservableObject {
             do {
                 let login: ResponseLogin = try await Login().user(requestLogin: requestLogin)
                 
-                if await Authentication().saveAuthentication(responseLogin: login) {
+                guard let accessToken = login.accessToken else { return }
+                guard let refreshToken = login.refreshToken else { return }
+                guard let username = login.username else { return }
+                
+                if await Authentication().saveAuthentication(accessToken: accessToken, refreshToken: refreshToken, username: username) {
                     if let successMessage = login.successMessage {
                         self.successMessage = successMessage
                     }
