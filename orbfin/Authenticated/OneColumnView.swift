@@ -26,7 +26,7 @@ struct OneColumnView: View {
             }
             .toolbar(content: {
                 if isLoggedIn {
-                    ToolbarItemGroup(placement: .principal) {
+                    ToolbarItemGroup(placement: .bottomBar) {
                         ComponentBar {
                             ComponentButtonBar(page: .manage)
                             ComponentButtonBar(page: .invest)

@@ -11,16 +11,18 @@ import SwiftData
 struct ViewSettings: View {
     
     var body: some View {
-        ComponentCard {
+        ScrollView {
             #if os(macOS)
-                    ViewLayoutExperience()
+                ViewLayoutExperience()
             #else
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     ViewLayoutExperience()
-                } else {
-                    Text("Nothing to show here yet.")
                 }
             #endif
+            ViewChangeUsername()
+            ViewChangePassword()
+            ViewChangeName()
+            ViewChangePhone()
         }
     }
 }

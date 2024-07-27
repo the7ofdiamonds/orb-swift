@@ -12,6 +12,17 @@
 		A4041C592C553397001FD37B /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C582C553397001FD37B /* Signup.swift */; };
 		A4041C5B2C5534BE001FD37B /* RequestSignup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C5A2C5534BE001FD37B /* RequestSignup.swift */; };
 		A4041C5D2C5534E4001FD37B /* ResponseSignup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C5C2C5534E4001FD37B /* ResponseSignup.swift */; };
+		A4041C602C557703001FD37B /* ViewChangeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C5F2C557703001FD37B /* ViewChangeName.swift */; };
+		A4041C622C557723001FD37B /* ViewChangeUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C612C557723001FD37B /* ViewChangeUsername.swift */; };
+		A4041C642C557737001FD37B /* ViewChangePhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C632C557737001FD37B /* ViewChangePhone.swift */; };
+		A4041C662C557888001FD37B /* ViewChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C652C557888001FD37B /* ViewChangePassword.swift */; };
+		A4041C682C5578F4001FD37B /* ViewModelChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C672C5578F4001FD37B /* ViewModelChange.swift */; };
+		A4041C6E2C557A54001FD37B /* RequestChangeUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C6D2C557A54001FD37B /* RequestChangeUsername.swift */; };
+		A4041C722C557AF7001FD37B /* ResponseChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C712C557AF7001FD37B /* ResponseChange.swift */; };
+		A4041C742C557BD1001FD37B /* RequestChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C732C557BD1001FD37B /* RequestChangePassword.swift */; };
+		A4041C762C557C03001FD37B /* RequestChangeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C752C557C03001FD37B /* RequestChangeName.swift */; };
+		A4041C782C557C20001FD37B /* RequestChangePhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C772C557C20001FD37B /* RequestChangePhone.swift */; };
+		A4041C7A2C557D93001FD37B /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C792C557D93001FD37B /* Change.swift */; };
 		A435414F2C3B71EE00B32BC1 /* ViewModelLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435414E2C3B71EE00B32BC1 /* ViewModelLogin.swift */; };
 		A43541512C3B8C7B00B32BC1 /* ComponentMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541502C3B8C7B00B32BC1 /* ComponentMap.swift */; };
 		A43541532C3B8F3100B32BC1 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541522C3B8F3100B32BC1 /* Login.swift */; };
@@ -115,6 +126,17 @@
 		A4041C582C553397001FD37B /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		A4041C5A2C5534BE001FD37B /* RequestSignup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignup.swift; sourceTree = "<group>"; };
 		A4041C5C2C5534E4001FD37B /* ResponseSignup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSignup.swift; sourceTree = "<group>"; };
+		A4041C5F2C557703001FD37B /* ViewChangeName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewChangeName.swift; sourceTree = "<group>"; };
+		A4041C612C557723001FD37B /* ViewChangeUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewChangeUsername.swift; sourceTree = "<group>"; };
+		A4041C632C557737001FD37B /* ViewChangePhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewChangePhone.swift; sourceTree = "<group>"; };
+		A4041C652C557888001FD37B /* ViewChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewChangePassword.swift; sourceTree = "<group>"; };
+		A4041C672C5578F4001FD37B /* ViewModelChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelChange.swift; sourceTree = "<group>"; };
+		A4041C6D2C557A54001FD37B /* RequestChangeUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChangeUsername.swift; sourceTree = "<group>"; };
+		A4041C712C557AF7001FD37B /* ResponseChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseChange.swift; sourceTree = "<group>"; };
+		A4041C732C557BD1001FD37B /* RequestChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChangePassword.swift; sourceTree = "<group>"; };
+		A4041C752C557C03001FD37B /* RequestChangeName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChangeName.swift; sourceTree = "<group>"; };
+		A4041C772C557C20001FD37B /* RequestChangePhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChangePhone.swift; sourceTree = "<group>"; };
+		A4041C792C557D93001FD37B /* Change.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Change.swift; sourceTree = "<group>"; };
 		A435414E2C3B71EE00B32BC1 /* ViewModelLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelLogin.swift; sourceTree = "<group>"; };
 		A43541502C3B8C7B00B32BC1 /* ComponentMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentMap.swift; sourceTree = "<group>"; };
 		A43541522C3B8F3100B32BC1 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -226,6 +248,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4041C5E2C5576E4001FD37B /* Change */ = {
+			isa = PBXGroup;
+			children = (
+				A4041C6A2C5579C0001FD37B /* Username */,
+				A4041C692C5579A6001FD37B /* Password */,
+				A4041C6B2C5579D2001FD37B /* Name */,
+				A4041C6C2C5579DC001FD37B /* Phone */,
+				A4041C792C557D93001FD37B /* Change.swift */,
+				A4041C712C557AF7001FD37B /* ResponseChange.swift */,
+				A4041C672C5578F4001FD37B /* ViewModelChange.swift */,
+			);
+			path = Change;
+			sourceTree = "<group>";
+		};
+		A4041C692C5579A6001FD37B /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				A4041C732C557BD1001FD37B /* RequestChangePassword.swift */,
+				A4041C652C557888001FD37B /* ViewChangePassword.swift */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		A4041C6A2C5579C0001FD37B /* Username */ = {
+			isa = PBXGroup;
+			children = (
+				A4041C6D2C557A54001FD37B /* RequestChangeUsername.swift */,
+				A4041C612C557723001FD37B /* ViewChangeUsername.swift */,
+			);
+			path = Username;
+			sourceTree = "<group>";
+		};
+		A4041C6B2C5579D2001FD37B /* Name */ = {
+			isa = PBXGroup;
+			children = (
+				A4041C752C557C03001FD37B /* RequestChangeName.swift */,
+				A4041C5F2C557703001FD37B /* ViewChangeName.swift */,
+			);
+			path = Name;
+			sourceTree = "<group>";
+		};
+		A4041C6C2C5579DC001FD37B /* Phone */ = {
+			isa = PBXGroup;
+			children = (
+				A4041C772C557C20001FD37B /* RequestChangePhone.swift */,
+				A4041C632C557737001FD37B /* ViewChangePhone.swift */,
+			);
+			path = Phone;
+			sourceTree = "<group>";
+		};
 		A43541632C3F029D00B32BC1 /* Input */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,6 +531,7 @@
 		A49C0BEF2C4A132800968AFB /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				A4041C5E2C5576E4001FD37B /* Change */,
 				A4EA3CED2C4C827500CEFCFF /* Layout Experience */,
 				A49C0BF02C4A139800968AFB /* ViewSettings.swift */,
 				A4EA3CE92C4C791F00CEFCFF /* Settings.swift */,
@@ -732,21 +805,25 @@
 				A43C29FB2C41A82C002BF1AE /* Navigation.swift in Sources */,
 				A4EA3CF12C4ECAF400CEFCFF /* ViewManageBusinessIncome.swift in Sources */,
 				A43C29E52C407658002BF1AE /* StorageUserDefaults.swift in Sources */,
+				A4041C762C557C03001FD37B /* RequestChangeName.swift in Sources */,
 				A4EA3CEC2C4C7F8000CEFCFF /* ViewLayoutExperienceSelection.swift in Sources */,
 				A4EA3CDA2C4A985500CEFCFF /* ViewManagePersonalTax.swift in Sources */,
 				A49C0BC62C4775E900968AFB /* ViewManageBusinessTransactions.swift in Sources */,
 				A47FC8B72C5468970096D557 /* ComponentButtonHome.swift in Sources */,
 				A4605E9C2C46D0BC0091CC52 /* ViewManage.swift in Sources */,
+				A4041C742C557BD1001FD37B /* RequestChangePassword.swift in Sources */,
 				A49C0BFB2C4A8F9900968AFB /* ViewManagePersonalEquity.swift in Sources */,
 				A4041C592C553397001FD37B /* Signup.swift in Sources */,
 				A49C0BF12C4A139800968AFB /* ViewSettings.swift in Sources */,
 				A43C29D32C404CD3002BF1AE /* Logout.swift in Sources */,
+				A4041C622C557723001FD37B /* ViewChangeUsername.swift in Sources */,
 				A4EA3CF32C4ECB4800CEFCFF /* ViewManageBusinessExpenses.swift in Sources */,
 				A43541532C3B8F3100B32BC1 /* Login.swift in Sources */,
 				A43C29DF2C4068AE002BF1AE /* ResponseForgot.swift in Sources */,
 				A4EA3CF72C4ECBB300CEFCFF /* ViewManageBusinessAssets.swift in Sources */,
 				A49C0BB02C472CEE00968AFB /* ComponentButtonDoubleH.swift in Sources */,
 				A4041C552C5522AA001FD37B /* InputConfirmPassword.swift in Sources */,
+				A4041C662C557888001FD37B /* ViewChangePassword.swift in Sources */,
 				A4605E9A2C4228160091CC52 /* StatusBar.swift in Sources */,
 				A43C29D92C4054F2002BF1AE /* ViewModelLogout.swift in Sources */,
 				A43541592C3EAC4700B32BC1 /* ResponseLogin.swift in Sources */,
@@ -761,18 +838,23 @@
 				A49C0BC82C4833DA00968AFB /* Menu.swift in Sources */,
 				A43C29CE2C4034CC002BF1AE /* ResponseServer.swift in Sources */,
 				A4A7ACF42C3B3BE100EE9B48 /* ViewLogin.swift in Sources */,
+				A4041C782C557C20001FD37B /* RequestChangePhone.swift in Sources */,
 				A4041C5D2C5534E4001FD37B /* ResponseSignup.swift in Sources */,
 				A4EA3CE42C4C379200CEFCFF /* ViewHomeMenu.swift in Sources */,
 				A43C29E12C406ECE002BF1AE /* InputEmail.swift in Sources */,
 				A4EA3CD82C4A982D00CEFCFF /* ViewManagePersonalContra.swift in Sources */,
+				A4041C682C5578F4001FD37B /* ViewModelChange.swift in Sources */,
+				A4041C722C557AF7001FD37B /* ResponseChange.swift in Sources */,
 				A49C0BB82C476B1900968AFB /* ViewManagePersonal.swift in Sources */,
 				A49C0BEE2C4A0DBE00968AFB /* ViewTangibleAssetsRealEstate.swift in Sources */,
+				A4041C6E2C557A54001FD37B /* RequestChangeUsername.swift in Sources */,
 				A43C29F82C4199FD002BF1AE /* ComponentButtonBar.swift in Sources */,
 				A435415E2C3EC20B00B32BC1 /* Coordinates.swift in Sources */,
 				A4EA3D022C50287700CEFCFF /* ViewHomeContentMenu.swift in Sources */,
 				A43C29F12C4189CD002BF1AE /* ViewForgot.swift in Sources */,
 				A4D407262B4D100D00D97AB1 /* orbfinApp.swift in Sources */,
 				A4EA3CEA2C4C791F00CEFCFF /* Settings.swift in Sources */,
+				A4041C642C557737001FD37B /* ViewChangePhone.swift in Sources */,
 				A43C29F32C4189FD002BF1AE /* ViewSignUp.swift in Sources */,
 				A49C0BDA2C49B33400968AFB /* ContentView.swift in Sources */,
 				A435415C2C3EB31F00B32BC1 /* RequestLogin.swift in Sources */,
@@ -799,12 +881,14 @@
 				A4EA3CFD2C4ECD2200CEFCFF /* ViewManageBusinessContra.swift in Sources */,
 				A4605E9E2C46D1A80091CC52 /* Page.swift in Sources */,
 				A4EA3CE22C4B5DA400CEFCFF /* ThreeColumnView.swift in Sources */,
+				A4041C7A2C557D93001FD37B /* Change.swift in Sources */,
 				A47FC8B52C54635D0096D557 /* ViewAuthenticated.swift in Sources */,
 				A49C0BBA2C47715700968AFB /* ViewManagePersonalIncome.swift in Sources */,
 				A4EA3CDE2C4B5D4C00CEFCFF /* OneColumnView.swift in Sources */,
 				A49C0BE82C4A034800968AFB /* ViewTangibleAssetsResidential.swift in Sources */,
 				A43541672C3F098F00B32BC1 /* InputPassword.swift in Sources */,
 				A43C29E92C40F44A002BF1AE /* ComponentCard.swift in Sources */,
+				A4041C602C557703001FD37B /* ViewChangeName.swift in Sources */,
 				A4605EA32C46F1000091CC52 /* ViewInvest.swift in Sources */,
 				A49C0BDD2C4A019A00968AFB /* ViewCommercial.swift in Sources */,
 			);
