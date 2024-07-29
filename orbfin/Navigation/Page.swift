@@ -282,6 +282,12 @@ extension Page {
     
     var parent: Page {
         switch self {
+        case .manage:
+                .home
+        case .invest:
+                .home
+        case .services:
+                .home
         case .personal:
                 .manage
         case .business:

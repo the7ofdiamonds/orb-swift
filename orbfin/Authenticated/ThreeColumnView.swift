@@ -25,6 +25,15 @@ struct ThreeColumnView: View {
             ViewAuthenticated {
                 navigation.isView
             }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    if let page = navigation.isPage {
+                        Text(page.title)
+                            .font(Styling.font(component: .title))
+                            .kerning(Styling.kerning)
+                    }
+                }
+            }
         }
     }
 }

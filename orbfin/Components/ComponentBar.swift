@@ -20,7 +20,7 @@ struct ComponentBar<Content: View>: View {
             content
             
         }
-//        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity)
         .background(Styling.color(.Bar))
         .foregroundColor(Styling.color(.BarFont))
         .cornerRadius(Styling.cornerRadius)

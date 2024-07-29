@@ -12,11 +12,7 @@ struct ViewHome: View {
     var body: some View {
         
         ComponentCard {
-            HStack {
-                ComponentButtonBar(page: .manage)
-                ComponentButtonBar(page: .invest)
-                ComponentButtonBar(page: .services)
-            }
+           Text("Dashboard")
         }
     }
 }

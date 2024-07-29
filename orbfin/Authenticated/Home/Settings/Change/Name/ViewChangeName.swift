@@ -23,21 +23,17 @@ struct ViewChangeName: View {
             StatusBar(message: vm.errorMessage, type: .error)
         }
         
-        ComponentCard {
-            Text("Change Name")
-                .kerning(Styling.kerning)
-            
+        ComponentCard(title: "Change Name") {
             InputTextField(placeholder: "First Name", text: $firstName)
-                .padding(.vertical, 10)
-            
             InputTextField(placeholder: "Last Name", text: $lastName)
-                .padding(.vertical, 10)
             
             ComponentButtonH(label: "Change", icon: "") {
                 Task {
                     await vm.changeName(email: email, firstName: firstName, lastName: lastName)
                 }
             }
+            .padding(.top, 20)
+            
         }
         .alert(isPresented: $vm.showingAlert) {
             Alert(

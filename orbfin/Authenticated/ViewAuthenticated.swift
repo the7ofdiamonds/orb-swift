@@ -18,7 +18,23 @@ struct ViewAuthenticated: View {
         
         ZStack {
             ComponentMap()
-            content
+            
+            VStack {
+                Spacer()
+                
+                content
+                
+                Spacer()
+                
+                ComponentBar {
+                    Group {
+                        ComponentButtonBar(page: .manage)
+                        ComponentButtonBar(page: .invest)
+                        ComponentButtonBar(page: .services)
+                    }
+                    .padding()
+                }
+            }.edgesIgnoringSafeArea(.bottom)
         }
     }
 }

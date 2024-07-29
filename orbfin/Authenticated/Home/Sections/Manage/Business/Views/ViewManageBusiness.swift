@@ -58,10 +58,9 @@ struct ViewManageBusiness: View {
                         }
                     }
                     
-                    VStack {
-                        ComponentButtonBar(page: .businesstransactions)
-                        //                    Transactions table
-                    }
+                    ComponentDivider()
+                    
+                    ComponentButtonBar(page: .businesstransactions)
                 }
             }
             .onAppear {

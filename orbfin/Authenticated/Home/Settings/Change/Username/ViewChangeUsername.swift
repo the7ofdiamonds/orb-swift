@@ -23,26 +23,20 @@ struct ViewChangeUsername: View {
             StatusBar(message: vm.errorMessage, type: .error)
         }
         
-        ComponentCard {
-            Text("Change Username")
-                .kerning(Styling.kerning)
-            
+        ComponentCard(title: "Change Username") {
             InputEmail(email: $email)
-                .padding(.vertical, 10)
 
             InputPassword(password: $password)
-                .padding(.vertical, 10)
             
             InputUsername(username: $username)
-                .padding(.vertical, 10)
-            
-            
             
             ComponentButtonH(label: "Change", icon: "") {
                 Task {
                     await vm.changeUsername(email: email, password: password, username: username)
                 }
             }
+            .padding(.top, 20)
+            
         }
         .alert(isPresented: $vm.showingAlert) {
             Alert(

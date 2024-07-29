@@ -10,10 +10,12 @@ import SwiftUI
 struct ViewInvest: View {
     var body: some View {
         ComponentCard {
-            Text("Invest")
             
-            HStack {
+            VStack(spacing: 30) {
                 ComponentButtonHNav(page: .realestate)
+                
+                ComponentDivider()
+                
                 ComponentButtonHNav(page: .tangibleassets)
             }
         }

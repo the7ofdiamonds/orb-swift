@@ -25,43 +25,65 @@ struct ViewSignUp: View {
     }
     
     var body: some View {
-        ComponentCard {
-            Text("Signup")
-                .font(.title)
+        ScrollView {
             
-            ScrollView {
-                Section("Login Info") {
-                    InputUsername(username: $username)
-                    InputEmail(email: $email)
-                    InputPassword(password: $password)
-                    InputConfirmPassword(password: $confirmPassword)
+            ComponentCard {
+                HStack {
+                    Text("Login Info")
+                        .kerning(Styling.kerning)
+                        .font(.headline)
+                        .bold()
+                    Spacer()
                 }
                 
-                Section("User Preferences") {
-                    InputTextField(placeholder: "Nicename", text: $nicename)
-                    InputTextField(placeholder: "Nickname", text: $nickname)
+                InputUsername(username: $username)
+                InputEmail(email: $email)
+                InputPassword(password: $password)
+                InputConfirmPassword(password: $confirmPassword)
+                
+                ComponentDivider()
+                
+                HStack {
+                    Text("User Preferences")
+                        .kerning(Styling.kerning)
+                        .font(.headline)
+                        .bold()
+                    Spacer()
                 }
                 
-                Section("Personal") {
-                    InputTextField(placeholder: "First Name", text: $firstname)
-                    InputTextField(placeholder: "Last Name", text: $lastname)
-                    InputTextField(placeholder: "Phone Number", text: $phone)
+                InputTextField(placeholder: "Nicename", text: $nicename)
+                InputTextField(placeholder: "Nickname", text: $nickname)
+                
+                ComponentDivider()
+                
+                HStack {
+                    Text("Personal")
+                        .kerning(Styling.kerning)
+                        .font(.headline)
+                        .bold()
+                    Spacer()
                 }
-            }
-            
-            ComponentButtonH(label: Page.signup.label, icon: Page.signup.icon) {
-                Task {
-                    await vm.signup(username: username,
-                                    email: email,
-                                    password: password,
-                                    confirmPassword: confirmPassword,
-                                    nicename: nicename,
-                                    nickname: nickname,
-                                    firstname: firstname,
-                                    lastname: lastname,
-                                    phone: phone
-                    )
+
+                InputTextField(placeholder: "First Name", text: $firstname)
+                InputTextField(placeholder: "Last Name", text: $lastname)
+                InputTextField(placeholder: "Phone Number", text: $phone)
+                
+                ComponentButtonH(label: Page.signup.label, icon: Page.signup.icon) {
+                    Task {
+                        await vm.signup(username: username,
+                                        email: email,
+                                        password: password,
+                                        confirmPassword: confirmPassword,
+                                        nicename: nicename,
+                                        nickname: nickname,
+                                        firstname: firstname,
+                                        lastname: lastname,
+                                        phone: phone
+                        )
+                    }
                 }
+                .padding(.top, 20)
+                
             }
         }
         

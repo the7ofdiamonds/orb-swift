@@ -17,15 +17,15 @@ struct ViewLayoutExperienceSelection: View {
         VStack {
             Image(systemName: item.imageName)
                 .font(.largeTitle)
-                .foregroundStyle(shapeStyle(Color.accentColor))
+                .foregroundColor(selectedItem == item.title ? Styling.color(.Card) : Styling.color(.CardFont))
             VStack {
                 Text(item.title)
                     .bold()
-                    .foregroundStyle(shapeStyle(Color.primary))
+                    .foregroundStyle(selectedItem == item.title ? Styling.color(.Card) : Styling.color(.CardFont))
                 Text(item.description)
                     .lineLimit(3, reservesSpace: true)
                     .font(.callout)
-                    .foregroundStyle(shapeStyle(Color.secondary))
+                    .foregroundStyle(selectedItem == item.title ? Styling.color(.Card) : Styling.color(.CardFont))
             }
             .padding(.top, 16)
         }
@@ -33,7 +33,7 @@ struct ViewLayoutExperienceSelection: View {
         .background {
             RoundedRectangle(cornerRadius: 12,
                              style: .continuous)
-            .fill(selectedItem == item.title ? AnyShapeStyle(Color.accentColor) : AnyShapeStyle(.background))
+            .fill(selectedItem == item.title ? AnyShapeStyle(Styling.color(.CardFont)) : AnyShapeStyle(.background))
             .shadow(radius: selectedItem == item.title ? 4 : 0)
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .stroke(isHovering ? Color.accentColor : .clear)
@@ -54,7 +54,3 @@ struct ViewLayoutExperienceSelection: View {
         }
     }
 }
-
-//#Preview {
-//    LayoutExperienceSelectionView()
-//}

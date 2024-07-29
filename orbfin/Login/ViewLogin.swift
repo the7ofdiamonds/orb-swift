@@ -41,7 +41,7 @@ struct ViewLogin: View {
                 ComponentCard {
                     Text("ORB")
                         .kerning(Styling.kerning)
-                        .font(Styling.H1)
+                        .font(Styling.font(component: .title))
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     
                     InputUsername(username: $username)
@@ -50,19 +50,27 @@ struct ViewLogin: View {
                     InputPassword(password: $password)
                         .padding(.vertical, 10)
                     
-                    ComponentButtonH(label: "Login", icon: "key") {
+                    ComponentButtonH(label: "LOGIN", icon: "key") {
                         Task {
                             await vm.login(username, password)
                         }
                     }
+                    .padding(.top, 10)
                     
-                    HStack {
+                    Divider()
+                        .background(Styling.color(.CardFont))
+                        .padding()
+                    
+                    HStack(spacing: 50) {
                         Button {
                             showSignUp = true
                         } label: {
                             VStack {
                                 Image(systemName: Page.signup.icon)
+                                    .font(Styling.font(component: .icon))
+                                
                                 Text(Page.signup.label)
+                                    .font(Styling.font(component: .label))
                             }
                         }
                         
@@ -71,7 +79,10 @@ struct ViewLogin: View {
                         } label: {
                             VStack {
                                 Image(systemName: Page.forgot.icon)
+                                    .font(Styling.font(component: .icon))
+                                
                                 Text(Page.forgot.label)
+                                    .font(Styling.font(component: .label))
                             }
                         }
                     }
@@ -81,6 +92,7 @@ struct ViewLogin: View {
                 }
                 .sheet(isPresented: $showForgot) {
                     ViewForgot()
+                        .presentationDetents([.fraction(0.5)])
                 }
                 .alert(isPresented: $vm.showingAlert) {
                     Alert(
@@ -89,6 +101,7 @@ struct ViewLogin: View {
                         dismissButton: .default(Text("OK"))
                     )
                 }
+                
             } else {
                 ViewHome()
             }

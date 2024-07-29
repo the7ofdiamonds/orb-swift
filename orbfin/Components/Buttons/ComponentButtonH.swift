@@ -18,22 +18,18 @@ struct ComponentButtonH: View {
         self.action = action
     }
     
-//    init(viewType: ViewType) {
-//        self.label = viewType.label
-//        self.icon = viewType.icon
-//        self.action = viewType.body
-//    }
-    
     var body: some View {
         Button(action: {
             _ = action()
         }, label: {
             HStack {
                 Image(systemName: icon)
+                    .font(Styling.font(component: .icon))
+                
                 Text(label)
+                    .font(Styling.font(component: .label))
             }
         })
-        .font(.headline)
         .fontWeight(.bold)
         .kerning(Styling.kerning)
         .padding()

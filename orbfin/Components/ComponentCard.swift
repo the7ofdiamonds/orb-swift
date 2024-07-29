@@ -9,34 +9,45 @@ import SwiftUI
 
 struct ComponentCard<Content: View>: View {
     var content: Content
+    var title: String
     
-    init(@ViewBuilder content: () -> Content) {
+    init(title: String = "", @ViewBuilder content: () -> Content) {
         self.content = content()
+        self.title = title
     }
     
     var body: some View {
-        VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 10) {
-            Spacer()
+        VStack(alignment: .center, spacing: 10) {
             
+            if title != "" {
+                HStack {
+                    Text(title)
+                        .kerning(Styling.kerning)
+                        .font(.headline)
+                        .bold()
+                    Spacer()
+                }
+            }
+            
+            Spacer()
+          
             content
             
             Spacer()
         }
         .padding()
-//        .frame(maxWidth: 300, maxHeight: 350)
-//        .padding(.horizontal, 20)
-//        .padding(.vertical, 20)
         .background(Styling.color(.Card))
         .foregroundColor(Styling.color(.CardFont))
         .cornerRadius(Styling.cornerRadius)
         .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
         .padding([.horizontal, .top])
-        .fixedSize(horizontal: false, vertical: true)
+        .frame(minWidth: 400)
+        .fixedSize(horizontal: true, vertical: true)
     }
 }
 
 #Preview {
-    ComponentCard {
+    ComponentCard(title: "title") {
         Text("Hello, World!")
             .padding()
             .foregroundColor(Styling.color(.CardFont))

@@ -22,28 +22,26 @@ struct ViewChangePassword: View {
             StatusBar(message: vm.errorMessage, type: .error)
         }
         
-        ComponentCard {
-            Text("Change Password")
-                .kerning(Styling.kerning)
-            
-            InputPassword(password: $password)
-                .padding(.vertical, 10)
-            
-            InputConfirmPassword(password: $confirmPassword)
-                .padding(.vertical, 10)
-            
-            ComponentButtonH(label: "Change", icon: "") {
-                Task {
-                    await vm.changePassword(password: password, confirmPassword: confirmPassword)
+        VStack {
+            ComponentCard(title: "Change Password") {
+                InputPassword(password: $password)
+                InputConfirmPassword(password: $confirmPassword)
+                
+                ComponentButtonH(label: "Change", icon: "") {
+                    Task {
+                        await vm.changePassword(password: password, confirmPassword: confirmPassword)
+                    }
                 }
+                .padding(.top, 20)
+                
             }
-        }
-        .alert(isPresented: $vm.showingAlert) {
-            Alert(
-                title: Text(vm.error?.title ?? "An Error has occured."),
-                message: Text("\(vm.error?.message ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
-                dismissButton: .default(Text("OK"))
-            )
+            .alert(isPresented: $vm.showingAlert) {
+                Alert(
+                    title: Text(vm.error?.title ?? "An Error has occured."),
+                    message: Text("\(vm.error?.message ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
 }

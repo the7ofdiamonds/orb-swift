@@ -38,6 +38,7 @@ class Navigation: ObservableObject {
         self.isMenu = menu
         
         if let page = Page(title: menu.title) {
+            self.isPage = page
             self.isView = Authentication().isValid ? page.body : Page.login.body
             self.lastView = page.title
             self.isMenu = Menu(title: page.title)

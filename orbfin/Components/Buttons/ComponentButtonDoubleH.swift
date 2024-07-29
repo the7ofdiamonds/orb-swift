@@ -27,10 +27,11 @@ struct ComponentButtonDoubleH: View {
         }, label: {
             VStack{
                 Text(label)
+                    .font(Styling.font(component: .label))
                 Text(value)
+                    .font(Styling.font(component: .value))
             }
         })
-        .font(.headline)
         .fontWeight(.bold)
         .kerning(Styling.kerning)
         .padding()

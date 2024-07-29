@@ -20,12 +20,8 @@ struct ViewLayoutExperience: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading,
-               spacing: 24) {
-            Text("Layout Configuration")
-                .font(.title)
-                .bold()
-                        
+        ComponentCard(title: "Layout Configuration") {
+                
             LazyVGrid(columns: columns) {
                 ForEach(LayoutExperienceSetting.allCases) { item in
                     Button {
@@ -36,12 +32,6 @@ struct ViewLayoutExperience: View {
                 }
             }
         }
-        .padding()
-        .background {
-            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .fill(.thinMaterial)
-        }
-        .scenePadding()
     }
 }
 

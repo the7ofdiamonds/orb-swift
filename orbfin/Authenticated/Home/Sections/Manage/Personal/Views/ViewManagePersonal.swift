@@ -33,9 +33,9 @@ struct ViewManagePersonal: View {
                         }
                     }
                     
-                    VStack {
-                        ComponentButtonBar(page: .personaltransactions)
-                    }
+                    ComponentDivider()
+                    
+                    ComponentButtonBar(page: .personaltransactions)
                 }
             }
             

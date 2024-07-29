@@ -24,35 +24,20 @@ struct OneColumnView: View {
             .navigationDestination(for: Page.self) { page in
                 page.body
             }
-            .toolbar(content: {
-                if isLoggedIn {
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        ComponentBar {
-                            ComponentButtonBar(page: .manage)
-                            ComponentButtonBar(page: .invest)
-                            ComponentButtonBar(page: .services)
-                        }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    if let page = navigation.isPage {
+                        Text(page.title)
+                            .font(Styling.font(component: .title))
+                            .kerning(Styling.kerning)
                     }
                 }
-            })
-            .toolbar(content: {
-                if isLoggedIn {
-                    ToolbarItemGroup(placement: .navigation) {
-                        if let page = navigation.isPage {
-                            let parent = page.parent
-                            Button(action: {
-                                navigation.change(page: parent)
-                            }, label: {
-                                Text(parent.label)
-                                    .font(.subheadline)
-                            })
-                        }
-                    }
+                
+                ToolbarItem(placement: .navigation) {
+                    ComponentButtonBack()
                 }
-            })
-
+            }
         }
-
     }
 }
 

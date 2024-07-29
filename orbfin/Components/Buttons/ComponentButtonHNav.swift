@@ -18,9 +18,9 @@ struct ComponentButtonHNav: View {
         }, label: {
             VStack{
                 Text(page.label)
+                    .font(Styling.font(component: .label))
             }
         })
-        .font(.headline)
         .fontWeight(.bold)
         .kerning(Styling.kerning)
         .padding()

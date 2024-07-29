@@ -10,7 +10,6 @@ import SwiftUI
 struct ViewServices: View {
     var body: some View {
         ComponentCard {
-            Text("Services")
             
             HStack {
                 ComponentButtonBar(page: .notary)

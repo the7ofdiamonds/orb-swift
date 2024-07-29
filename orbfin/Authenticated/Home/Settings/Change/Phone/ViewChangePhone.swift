@@ -22,18 +22,17 @@ struct ViewChangePhone: View {
             StatusBar(message: vm.errorMessage, type: .error)
         }
         
-        ComponentCard {
-            Text("Change Phone")
-                .kerning(Styling.kerning)
+        ComponentCard(title: "Change Phone") {
             
             InputTextField(placeholder: "Phone", text: $phone)
-                .padding(.vertical, 10)
                         
             ComponentButtonH(label: "Change", icon: "") {
                 Task {
                     await vm.changePhone(email: email, phone: phone)
                 }
             }
+            .padding(.top, 20)
+            
         }
         .alert(isPresented: $vm.showingAlert) {
             Alert(

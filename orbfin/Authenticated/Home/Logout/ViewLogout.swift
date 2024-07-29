@@ -40,11 +40,6 @@ struct ViewLogout: View {
                         .cornerRadius(Styling.cornerRadius)
                         .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
                 }
-                
-                HStack {
-                    ComponentButtonBar(page: .signup)
-                    ComponentButtonBar(page: .forgot)
-                }
             }
             .alert(isPresented: $vm.showingAlert) {
                 Alert(
@@ -69,4 +64,6 @@ struct ViewLogout: View {
 
 #Preview {
     ViewLogout()
+        .environmentObject(Authentication())
+        .environmentObject(Navigation())
 }

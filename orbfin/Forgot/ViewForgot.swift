@@ -19,13 +19,30 @@ struct ViewForgot: View {
     
     var body: some View {
         ComponentCard {
-            InputUsername(username: $username)
+            VStack(spacing: 20) {
+                InputUsername(username: $username)
+                
+                HStack {
+                    VStack {
+                        ComponentDivider()
+                    }
+                    
+                    Text("or")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .kerning(Styling.kerning)
+                    VStack {
+                        ComponentDivider()
+                    }
+                }
+                
+                InputEmail(email: $email)
+            }
             
-            InputEmail(email: $email)
-            
-            ComponentButtonH(label: "Forgot", icon: "questionmark.circle") {
+            ComponentButtonH(label: "FORGOT", icon: "questionmark.circle") {
                 vm.password(username: username, email: email)
             }
+            .padding(.top, 20)
             
             HStack {
                 if !(vm.isLoggedIn ?? true) {

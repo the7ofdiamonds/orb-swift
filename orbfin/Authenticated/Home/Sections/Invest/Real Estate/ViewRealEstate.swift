@@ -10,8 +10,13 @@ import SwiftUI
 struct ViewRealEstate: View {
     var body: some View {
         ComponentCard {
-            ComponentButtonHNav(page: .commercial)
-            ComponentButtonHNav(page: .residential)
+            VStack(spacing: 30){
+                ComponentButtonHNav(page: .commercial)
+                
+                ComponentDivider()
+                
+                ComponentButtonHNav(page: .residential)
+            }
         }
         
     }

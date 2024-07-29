@@ -18,10 +18,13 @@ struct ComponentButtonBar: View {
         }, label: {
             VStack {
                 Image(systemName: page.icon)
+                    .font(Styling.font(component: .icon))
+
                 Text(page.label)
+                    .font(Styling.font(component: .label))
+
             }
         })
-        .padding()
         .foregroundColor(Styling.color(.Font))
     }
 }

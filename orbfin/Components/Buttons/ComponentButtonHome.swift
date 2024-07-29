@@ -15,7 +15,8 @@ struct ComponentButtonHome: View {
             navigation.change(page: .home)
         },
                label: {
-            Image(systemName: "house")
+            Image(systemName: Page.home.icon)
+                .font(Styling.font(component: .icon))
         })
     }
 }
