@@ -44,6 +44,7 @@ enum Page: CaseIterable {
     case invest
     case realestate
     case commercial
+    case commercialproperty
     case residential
     case tangibleassets
     case tangibleassetsrealestate
@@ -112,6 +113,7 @@ extension Page {
             return "Business Tax"
         case .businesstransactions:
             return "Business Transactions"
+            
         case .settings:
             return "Settings"
         case .forgot:
@@ -125,6 +127,8 @@ extension Page {
             return "Real Estate"
         case .commercial:
             return "Commercial"
+        case .commercialproperty:
+            return "Commercial Property"
         case .residential:
             return "Residential"
         case .tangibleassets:
@@ -203,6 +207,7 @@ extension Page {
             return "Tax"
         case .businesstransactions:
             return "Business Transactions"
+            
         case .settings:
             return "Settings"
         case .forgot:
@@ -216,6 +221,8 @@ extension Page {
             return "Real Estate"
         case .commercial:
             return "Commercial"
+        case .commercialproperty:
+            return "Commercial Property"
         case .residential:
             return "Residential"
         case .tangibleassets:
@@ -330,6 +337,8 @@ extension Page {
                 .invest
         case .commercial:
                 .realestate
+        case .commercialproperty:
+                .commercial
         case .residential:
                 .realestate
         case .tangibleassets:
@@ -395,6 +404,10 @@ extension Page {
             return [
                 .commercial,
                 .residential
+            ]
+        case .commercial:
+            return [
+                .commercialproperty
             ]
         case .tangibleassets:
             return [
@@ -487,6 +500,8 @@ extension Page {
             AnyView(ViewRealEstate())
         case .commercial:
             AnyView(ViewCommercial())
+        case .commercialproperty:
+            AnyView(ViewCommercialProperty())
         case .residential:
             AnyView(ViewResidential())
         case .tangibleassets:
