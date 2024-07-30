@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ComponentCardLocation: View {
+    @EnvironmentObject var navigation: Navigation
+
     var address: Address
     
     var body: some View {
@@ -31,6 +33,8 @@ struct ComponentCardLocation: View {
             if let county = address.county {
                 Text("\(county)")
             }
+            
+            ComponentButtonHNav(page: .blank)
         }
     }
 }

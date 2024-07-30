@@ -16,7 +16,10 @@ struct ComponentButtonHNav: View {
         Button(action: {
             navigation.change(page: page)
         }, label: {
-            VStack{
+            HStack {
+                if page.icon != "" {
+                    Image(systemName: page.icon)
+                }
                 Text(page.label)
                     .font(Styling.font(component: .label))
             }

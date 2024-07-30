@@ -30,7 +30,7 @@ struct ViewLogin: View {
     
     var body: some View {
         ZStack {
-            ComponentMap()
+//            ComponentMap()
             
             if !isLoggedIn {
                 

@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ViewAuthenticated: View {
+    @StateObject var vm = ViewModelAuthenticated()
+    
     var content: AnyView? = nil
     
     init(@ViewBuilder content: () -> (AnyView)? = { nil }) {
@@ -17,7 +20,7 @@ struct ViewAuthenticated: View {
     @ViewBuilder var body: some View {
         
         ZStack {
-            ComponentMap()
+            ComponentMap(coordinate: vm.coordinates ?? CLLocationCoordinate2D())
             
             VStack {
                 Spacer()

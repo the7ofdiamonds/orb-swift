@@ -59,4 +59,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             return
         }
     }
+    
+    func getCoordinates(by address: String) async -> CLLocationCoordinate2D {
+        let geocoder = CLGeocoder()
+        guard let coordinates = try? await geocoder.geocodeAddressString(address).first?.location?.coordinate 
+        else { return CLLocationCoordinate2D()}
+        
+       return coordinates
+    }
 }

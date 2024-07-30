@@ -1,16 +1,17 @@
 //
-//  ViewModelCommercialProperty.swift
+//  ViewModelAuthenticated.swift
 //  orbfin
 //
-//  Created by Jamel Lyons on 7/29/24.
+//  Created by Jamel Lyons on 7/30/24.
 //
 
 import Foundation
 import MapKit
 
 @MainActor
-class ViewModelCommercialProperty: ObservableObject {
-    @Published var property: Commercial?
+class ViewModelAuthenticated: ObservableObject {
+    var property: Commercial?
+    
     @Published var coordinates: CLLocationCoordinate2D?
     @Published var errorMessage: String?
     

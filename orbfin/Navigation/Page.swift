@@ -244,7 +244,7 @@ extension Page {
             return "Notary"
             
         case .blank:
-            return ""
+            return "Show Map"
         }
     }
     
@@ -281,6 +281,9 @@ extension Page {
             return "building"
         case .residential:
             return "house"
+            
+        case .blank:
+            return "map"
             
         default:
             return ""
@@ -594,6 +597,8 @@ extension Page {
             self = .realestate
         case "Commercial":
             self = .commercial
+        case "Commercial Property":
+            self = .commercialproperty
         case "Residential":
             self = .residential
         case "Tangible Assets":

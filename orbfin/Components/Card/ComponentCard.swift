@@ -44,7 +44,6 @@ struct ComponentCard<Content: View>: View {
             .cornerRadius(Styling.cornerRadius)
             .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
             .frame(maxWidth: maxWidth)
-//            .fixedSize(horizontal: true, vertical: false)
         }
         .padding()
         

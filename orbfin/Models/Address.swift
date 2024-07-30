@@ -13,4 +13,8 @@ struct Address {
     var state: String?
     var zipcode: String?
     var county: String?
+    
+    func toString() -> String {
+        return "\(streetAddress ?? ""), \(city ?? ""), \(state ?? "")"
+    }
 }

@@ -8,6 +8,7 @@
 import Foundation
 
 struct Commercial {
+    var images: [String]?
     var streetAddress: String?
     var city: String?
     var state: String?
