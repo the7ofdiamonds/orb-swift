@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum Page: CaseIterable {
+enum Page {
     case home
     case login
     case signup
@@ -44,7 +44,7 @@ enum Page: CaseIterable {
     case invest
     case realestate
     case commercial
-    case commercialproperty
+    case commercialproperty(Commercial)
     case residential
     case tangibleassets
     case tangibleassetsrealestate
@@ -410,7 +410,7 @@ extension Page {
             ]
         case .commercial:
             return [
-                .commercialproperty
+                .commercialproperty(Commercial())
             ]
         case .tangibleassets:
             return [
@@ -503,8 +503,8 @@ extension Page {
             AnyView(ViewRealEstate())
         case .commercial:
             AnyView(ViewCommercial())
-        case .commercialproperty:
-            AnyView(ViewCommercialProperty())
+        case .commercialproperty(let property):
+            AnyView(ViewCommercialProperty(property: property))
         case .residential:
             AnyView(ViewResidential())
         case .tangibleassets:
@@ -598,7 +598,7 @@ extension Page {
         case "Commercial":
             self = .commercial
         case "Commercial Property":
-            self = .commercialproperty
+            self = .commercialproperty(Commercial())
         case "Residential":
             self = .residential
         case "Tangible Assets":

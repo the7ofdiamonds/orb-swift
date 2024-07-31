@@ -34,9 +34,10 @@ struct TwoColumnView: View {
                 }
             }
         } detail: {
-            ViewAuthenticated {
-                navigation.isView
-            }
+//            ViewAuthenticated {
+//                navigation.isView
+//            }
+            ViewAuthenticated()
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     if let page = navigation.isPage {

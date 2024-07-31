@@ -9,39 +9,39 @@ import SwiftUI
 import MapKit
 
 struct ViewCommercialProperty: View {
-    @StateObject var vm = ViewModelCommercialProperty()
+    var property: Commercial
     
     var body: some View {
         ZStack {
-            ComponentMap(coordinate: vm.coordinates ?? CLLocationCoordinate2D())
+//            ComponentMap(coordinate: property.coordinates ?? CLLocationCoordinate2D())
             
             ScrollView {
                 VStack {
-                    if let images = vm.property?.images {
+                    if let images = property.images {
                         ComponentCardImages(images: images)
                     }
                     
-                    if let address = vm.property?.address {
+                    if let address = property.address {
                         ComponentCardLocation(address: address)
                     }
                     
-                    if let highlights = vm.property?.highlights {
+                    if let highlights = property.highlights {
                         ComponentCardHighlights(highlights: highlights)
                     }
                     
-                    if let overview = vm.property?.overview {
+                    if let overview = property.overview {
                         ComponentCardOverview(overview: overview)
                     }
                     
-                    if let salesDetails = vm.property?.saleDetails {
+                    if let salesDetails = property.saleDetails {
                         ComponentCardSaleDetails(saleDetails: salesDetails)
                     }
                     
-                    if let buildingDetails = vm.property?.buildingDetails {
+                    if let buildingDetails = property.buildingDetails {
                         ComponentCardBuildingDetails(buildingDetails: buildingDetails)
                     }
                     
-                    if let landDetails = vm.property?.landDetails {
+                    if let landDetails = property.landDetails {
                         ComponentCardLandDetails(landDetails: landDetails)
                     }
                 }
@@ -51,5 +51,5 @@ struct ViewCommercialProperty: View {
 }
 
 #Preview {
-    ViewCommercialProperty()
+    ViewCommercialProperty(property: PreviewCommercialProperty.loadProperty())
 }

@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import MapKit
 
-struct Commercial {
+struct Commercial: Identifiable {
+    var id: String?
     var images: [String]?
     var streetAddress: String?
     var city: String?
@@ -15,6 +17,7 @@ struct Commercial {
     var zipcode: String?
     var county: String?
     var address: Address?
+    var coordinates: CLLocationCoordinate2D?
     var price: Int?
     var priceSF: Int?
     var capRate: Double?

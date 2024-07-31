@@ -1,20 +1,22 @@
 //
-//  Commercial.swift
+//  ComponentMap.swift
 //  orbfin
 //
-//  Created by Jamel Lyons on 7/18/24.
+//  Created by Jamel Lyons on 7/7/24.
 //
 
 import SwiftUI
 import MapKit
 
-struct ViewCommercial: View {
+struct ComponentMap: View {
     @EnvironmentObject var navigation: Navigation
 
     @StateObject var vm = ViewModelCommercial()
     
     var body: some View {
         Map {
+            UserAnnotation(anchor: .bottom)
+
             if let properties = vm.properties {
                 ForEach(properties) { property in
                     if let coordinates = property.coordinates {
@@ -28,14 +30,15 @@ struct ViewCommercial: View {
                 }
             }
         }
-        .onAppear {
-            Task {
-                await vm.getProperties()
+        .safeAreaInset(edge: .bottom) {
+            ComponentBar {
+                Group {
+                    ComponentButtonBar(page: .manage)
+                    ComponentButtonBar(page: .invest)
+                    ComponentButtonBar(page: .services)
+                }
+                .padding()
             }
         }
     }
 }
-
-//#Preview {
-//    ViewCommercial()
-//}

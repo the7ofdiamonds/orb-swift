@@ -22,9 +22,10 @@ struct ThreeColumnView: View {
             ViewHomeContentMenu()
                 .environmentObject(navigation)
         } detail: {
-            ViewAuthenticated {
-                navigation.isView
-            }
+//            ViewAuthenticated {
+//                navigation.isView
+//            }
+            ViewAuthenticated()
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     if let page = navigation.isPage {

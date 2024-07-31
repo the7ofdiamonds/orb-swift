@@ -15,8 +15,7 @@ struct ComponentButtonBack: View {
     }
     
     var body: some View {
-        if navigation.isPage != .home,
-           let prevView = prevView {
+        if let prevView = prevView {
             Button(action: {
                 navigation.change(page: prevView)
             }, label: {

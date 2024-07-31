@@ -17,13 +17,13 @@ struct OneColumnView: View {
     
     var body: some View {
         NavigationStack {
-            
-            ViewAuthenticated {
-                navigation.isView
-            }
-            .navigationDestination(for: Page.self) { page in
-                page.body
-            }
+            ViewAuthenticated()
+//            ViewAuthenticated {
+//                navigation.isView
+//            }
+//            .navigationDestination(for: Page.self) { page in
+//                page.body
+//            }
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     if let page = navigation.isPage {

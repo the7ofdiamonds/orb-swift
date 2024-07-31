@@ -1,6 +1,7 @@
 import CoreLocation
 import MapKit
 
+@MainActor
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     public static let instance = LocationManager()
     
