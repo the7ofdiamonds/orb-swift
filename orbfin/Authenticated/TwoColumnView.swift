@@ -34,21 +34,41 @@ struct TwoColumnView: View {
                 }
             }
         } detail: {
-//            ViewAuthenticated {
-//                navigation.isView
-//            }
             ViewAuthenticated()
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    if let page = navigation.isPage {
-                        Text(page.title)
-                            .font(Styling.font(component: .title))
-                            .kerning(Styling.kerning)
+                .toolbar(content: {
+                    ToolbarItem(placement: .principal) {
+                        if let page = navigation.isPage {
+                            HStack {
+                                Spacer()
+                                
+                                Text(page.title)
+                                    .font(Styling.font(component: .title))
+                                    .kerning(Styling.kerning)
+                                    .padding()
+                                
+                                Spacer()
+                            }
+                            .background(Color(Styling.color(.Bar)))
+                        }
                     }
+                })
+        }
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            VStack {
+                Spacer()
+
+                ComponentBar {
+                    
+                    Group {
+                        ComponentButtonBar(page: .manage)
+                        ComponentButtonBar(page: .invest)
+                        ComponentButtonBar(page: .services)
+                    }
+                    .padding()
                 }
+                .ignoresSafeArea(.all)
             }
         }
-        
     }
 }
 

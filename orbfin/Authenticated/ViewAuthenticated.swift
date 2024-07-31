@@ -20,17 +20,11 @@ struct ViewAuthenticated: View {
 //    }
     
     @ViewBuilder var body: some View {
-        
         ZStack {
             ComponentMap()
-                .ignoresSafeArea(.all)
             
             VStack {
-                Spacer()
-                
                 navigation.isView
-
-                Spacer()
             }
         }
     }
@@ -38,4 +32,6 @@ struct ViewAuthenticated: View {
 
 #Preview {
     ViewAuthenticated()
+        .environmentObject(Authentication())
+        .environmentObject(Navigation())
 }

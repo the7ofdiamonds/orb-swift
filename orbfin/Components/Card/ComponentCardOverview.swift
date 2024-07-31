@@ -12,9 +12,13 @@ struct ComponentCardOverview: View {
     
     var body: some View {
         ComponentCard(title: "Overview", maxWidth: Styling.sizeWidth(component: .card)) {
-            Text(overview)
-                .font(Styling.font(component: .card))
+            ScrollView {
+                Text(overview)
+                    .font(Styling.font(component: .card))
+            }
         }
+        .frame(height: 500)
+        .padding()
     }
 }
 

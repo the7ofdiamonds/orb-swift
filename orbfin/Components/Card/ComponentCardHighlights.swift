@@ -18,7 +18,9 @@ struct ComponentCardHighlights: View {
                         .font(Styling.font(component: .card))
                 }
             }
-        }    }
+        }
+        .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+    }
 }
 
 #Preview {

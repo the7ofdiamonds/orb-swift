@@ -11,15 +11,14 @@ struct ViewManage: View {
     
     var body: some View {
         ComponentCard {
-            
             VStack(spacing: 20, content: {
                 ComponentButtonHNav(page: .personal)
                 ComponentButtonHNav(page: .business)
             })
             
             ComponentDivider()
-
-            HStack(spacing: 30, content: {
+            
+            HStack(spacing: 20, content: {
                 ComponentButtonBar(page: .settings)
                 ComponentButtonBar(page: .forgot)
                 ComponentButtonBar(page: .logout)

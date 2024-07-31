@@ -19,7 +19,6 @@ struct ComponentCard<Content: View>: View {
     }
     
     var body: some View {
-        ScrollView {
             VStack(alignment: .center, spacing: 20) {
                 
                 if title != "" {
@@ -32,20 +31,21 @@ struct ComponentCard<Content: View>: View {
                     }
                 }
                 
-                Spacer()
+                ScrollView {
+                    Spacer()
+                    content
+                    Spacer()
+                }
                 
-                content
-                
-                Spacer()
             }
-            .padding()
+            .padding(25)
             .background(Styling.color(.Card))
             .foregroundColor(Styling.color(.CardFont))
             .cornerRadius(Styling.cornerRadius)
             .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
             .frame(maxWidth: maxWidth)
-        }
-        .padding()
+            .fixedSize(horizontal: true, vertical: true)
+
         
     }
 }

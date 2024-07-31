@@ -18,24 +18,36 @@ struct OneColumnView: View {
     var body: some View {
         NavigationStack {
             ViewAuthenticated()
-//            ViewAuthenticated {
-//                navigation.isView
-//            }
-//            .navigationDestination(for: Page.self) { page in
-//                page.body
-//            }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    if let page = navigation.isPage {
-                        Text(page.title)
-                            .font(Styling.font(component: .title))
-                            .kerning(Styling.kerning)
+        }
+        .safeAreaInset(edge: .top, content: {
+            if let page = navigation.isPage {
+                HStack {
+                    Spacer()
+                    
+                    Text(page.title)
+                        .font(Styling.font(component: .title))
+                        .kerning(Styling.kerning)
+                        .padding()
+                    
+                    Spacer()
+                }
+                .background(Color(Styling.color(.Bar)))
+            }
+        })
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            VStack {
+                Spacer()
+
+                ComponentBar {
+                    
+                    Group {
+                        ComponentButtonBar(page: .manage)
+                        ComponentButtonBar(page: .invest)
+                        ComponentButtonBar(page: .services)
                     }
+                    .padding()
                 }
-                
-                ToolbarItem(placement: .navigation) {
-                    ComponentButtonBack()
-                }
+                .ignoresSafeArea(.all)
             }
         }
     }

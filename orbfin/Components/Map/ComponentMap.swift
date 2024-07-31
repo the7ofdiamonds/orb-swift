@@ -30,15 +30,5 @@ struct ComponentMap: View {
                 }
             }
         }
-        .safeAreaInset(edge: .bottom) {
-            ComponentBar {
-                Group {
-                    ComponentButtonBar(page: .manage)
-                    ComponentButtonBar(page: .invest)
-                    ComponentButtonBar(page: .services)
-                }
-                .padding()
-            }
-        }
     }
 }
