@@ -13,7 +13,9 @@ struct ViewCommercialProperty: View {
     
     var body: some View {
         ScrollView {
-//            VStack {
+
+            VStack(spacing: 25) {
+
                 if let images = property.images {
                     ComponentCardImages(images: images)
                 }
@@ -25,24 +27,25 @@ struct ViewCommercialProperty: View {
                 if let highlights = property.highlights {
                     ComponentCardHighlights(highlights: highlights)
                 }
-//                
-//                if let overview = property.overview {
-//                    ComponentCardOverview(overview: overview)
-//                }
-//                
-//                if let salesDetails = property.saleDetails {
-//                    ComponentCardSaleDetails(saleDetails: salesDetails)
-//                }
-//                
-//                if let buildingDetails = property.buildingDetails {
-//                    ComponentCardBuildingDetails(buildingDetails: buildingDetails)
-//                }
-//                
-//                if let landDetails = property.landDetails {
-//                    ComponentCardLandDetails(landDetails: landDetails)
-//                }
-//            }
+                
+                if let overview = property.overview {
+                    ComponentCardOverview(overview: overview)
+                }
+                
+                if let salesDetails = property.saleDetails {
+                    ComponentCardSaleDetails(saleDetails: salesDetails)
+                }
+                
+                if let buildingDetails = property.buildingDetails {
+                    ComponentCardBuildingDetails(buildingDetails: buildingDetails)
+                }
+                
+                if let landDetails = property.landDetails {
+                    ComponentCardLandDetails(landDetails: landDetails)
+                }
+            }
         }
+        .padding(.horizontal, 30)
     }
 }
 

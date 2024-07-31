@@ -9,17 +9,15 @@ import SwiftUI
 
 struct ComponentCard<Content: View>: View {
     var title: String
-    var maxWidth: CGFloat
     var content: Content
     
-    init(title: String = "", maxWidth: CGFloat = 400, @ViewBuilder content: () -> Content) {
+    init(title: String = "", @ViewBuilder content: () -> Content) {
         self.title = title
-        self.maxWidth = maxWidth
         self.content = content()
     }
     
     var body: some View {
-            VStack(alignment: .center, spacing: 20) {
+            VStack {
                 
                 if title != "" {
                     HStack {
@@ -31,22 +29,17 @@ struct ComponentCard<Content: View>: View {
                     }
                 }
                 
-                ScrollView {
-                    Spacer()
-                    content
-                    Spacer()
-                }
-                
+                ComponentDivider()
+
+                content
             }
-            .padding(25)
+            .padding(Styling.padding(component: .card))
             .background(Styling.color(.Card))
             .foregroundColor(Styling.color(.CardFont))
             .cornerRadius(Styling.cornerRadius)
             .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
-            .frame(maxWidth: maxWidth)
-            .fixedSize(horizontal: true, vertical: true)
-
-        
+            .frame(maxHeight: Styling.sizeHeight(component: .card))
+            
     }
 }
 

@@ -18,7 +18,7 @@ extension Styling {
             return 400
         #else
             if UIDevice.current.userInterfaceIdiom == .phone {
-                return 400
+                return 350
             } else {
                 return 800
             }
@@ -49,7 +49,7 @@ extension Styling {
             if UIDevice.current.userInterfaceIdiom == .phone {
                 return 300
             } else {
-                return 600
+                return 500
             }
             
 //            if UIDevice.current.userInterfaceIdiom == .pad {

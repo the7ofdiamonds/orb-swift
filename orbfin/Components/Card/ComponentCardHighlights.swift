@@ -11,7 +11,7 @@ struct ComponentCardHighlights: View {
     var highlights: [String]
     
     var body: some View {
-        ComponentCard(title: "Highlights", maxWidth: Styling.sizeWidth(component: .card)) {
+        ComponentCard(title: "Highlights") {
             VStack(alignment: .leading) {
                 ForEach(highlights, id: \.self) { highlight in
                     Text("• \(highlight)")
@@ -19,7 +19,6 @@ struct ComponentCardHighlights: View {
                 }
             }
         }
-        .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
     }
 }
 
