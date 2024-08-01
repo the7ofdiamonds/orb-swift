@@ -11,9 +11,10 @@ import MapKit
 struct ViewHome: View {
     var body: some View {
         
-        ComponentCard {
+        ComponentCardFixed {
            Text("Dashboard")
         }
+
     }
 }
     

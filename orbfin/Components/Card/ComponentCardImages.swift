@@ -22,11 +22,11 @@ struct ComponentCardImages: View {
                             image
                                 .resizable()
                                 .scaledToFit()
+                                .aspectRatio(contentMode: .fit)
                                 .cornerRadius(Styling.cornerRadius)
-                                .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)               
-                                .padding()
+                                .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
+                                .frame(maxWidth: Styling.sizeWidthPhoto(), idealHeight: Styling.sizeHeightPhoto())
 
-                        
                         case .failure:
                             Image(systemName: "photo")
                         @unknown default:
@@ -36,8 +36,8 @@ struct ComponentCardImages: View {
                 }
             }
         }
-        .tabViewStyle(.page(indexDisplayMode: .automatic))
-        .frame(height: Styling.sizeHeight(component: .card))
+        .frame(maxWidth: Styling.sizeWidthPhoto(), idealHeight: Styling.sizeHeightPhoto())        .tabViewStyle(Styling.tabViewType())
+        .background(Color(.black))
     }
 }
 

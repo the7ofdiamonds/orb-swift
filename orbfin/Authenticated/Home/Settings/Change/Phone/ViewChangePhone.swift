@@ -31,7 +31,7 @@ struct ViewChangePhone: View {
                     await vm.changePhone(email: email, phone: phone)
                 }
             }
-            .padding(.top, 20)
+//            .padding(.top, 20)
             
         }
         .alert(isPresented: $vm.showingAlert) {

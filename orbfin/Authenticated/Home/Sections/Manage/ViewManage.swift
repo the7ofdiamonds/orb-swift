@@ -10,7 +10,7 @@ import SwiftUI
 struct ViewManage: View {
     
     var body: some View {
-        ComponentCard {
+        ComponentCardFixed {
             VStack(spacing: 20, content: {
                 ComponentButtonHNav(page: .personal)
                 ComponentButtonHNav(page: .business)

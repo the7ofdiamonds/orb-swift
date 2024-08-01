@@ -19,6 +19,19 @@ struct OneColumnView: View {
         NavigationStack {
             ViewAuthenticated()
         }
+        .safeAreaInset(edge: .bottom) {
+            HStack(alignment: .center, spacing: 50) {
+                ComponentButtonBar(page: .manage)
+                ComponentButtonBar(page: .invest)
+                ComponentButtonBar(page: .services)
+            }
+            .foregroundColor(Styling.color(.BarFont))
+            .frame(maxWidth: 500)
+            .padding(.top, 25)
+            .padding(.horizontal, 25)
+            .background(Styling.color(.Bar))
+
+        }
         .safeAreaInset(edge: .top, content: {
             if let page = navigation.isPage {
                 HStack {
@@ -34,22 +47,7 @@ struct OneColumnView: View {
                 .background(Color(Styling.color(.Bar)))
             }
         })
-        .safeAreaInset(edge: .bottom, spacing: 0) {
-            VStack {
-                Spacer()
-
-                ComponentBar {
-                    
-                    Group {
-                        ComponentButtonBar(page: .manage)
-                        ComponentButtonBar(page: .invest)
-                        ComponentButtonBar(page: .services)
-                    }
-                    .padding()
-                }
-                .ignoresSafeArea(.all)
-            }
-        }
+        
     }
 }
 

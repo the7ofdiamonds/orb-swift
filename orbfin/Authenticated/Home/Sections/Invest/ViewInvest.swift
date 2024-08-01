@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ViewInvest: View {
     var body: some View {
-        ComponentCard {
+        ComponentCardFixed {
             
             VStack(spacing: 30) {
                 ComponentButtonHNav(page: .realestate)

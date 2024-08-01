@@ -35,8 +35,6 @@ struct ViewChangeUsername: View {
                     await vm.changeUsername(email: email, password: password, username: username)
                 }
             }
-            .padding(.top, 20)
-            
         }
         .alert(isPresented: $vm.showingAlert) {
             Alert(
@@ -45,6 +43,7 @@ struct ViewChangeUsername: View {
                 dismissButton: .default(Text("OK"))
             )
         }
+
     }
 }
 

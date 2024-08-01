@@ -32,7 +32,7 @@ struct ViewChangePassword: View {
                         await vm.changePassword(password: password, confirmPassword: confirmPassword)
                     }
                 }
-                .padding(.top, 20)
+//                .padding(.top, 20)
                 
             }
             .alert(isPresented: $vm.showingAlert) {

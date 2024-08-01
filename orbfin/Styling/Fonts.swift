@@ -25,6 +25,8 @@ extension Styling {
                 .headline
         case .value:
                 .subheadline
+        default:
+                .body
         }
     }
 }

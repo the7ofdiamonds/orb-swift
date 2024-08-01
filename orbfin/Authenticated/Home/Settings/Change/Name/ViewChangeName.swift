@@ -32,7 +32,7 @@ struct ViewChangeName: View {
                     await vm.changeName(email: email, firstName: firstName, lastName: lastName)
                 }
             }
-            .padding(.top, 20)
+//            .padding(.top, 20)
             
         }
         .alert(isPresented: $vm.showingAlert) {

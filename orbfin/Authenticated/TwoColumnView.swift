@@ -54,20 +54,7 @@ struct TwoColumnView: View {
                 })
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            VStack {
-                Spacer()
-
-                ComponentBar {
-                    
-                    Group {
-                        ComponentButtonBar(page: .manage)
-                        ComponentButtonBar(page: .invest)
-                        ComponentButtonBar(page: .services)
-                    }
-                    .padding()
-                }
-                .ignoresSafeArea(.all)
-            }
+            ComponentBar()
         }
     }
 }

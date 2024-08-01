@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct ComponentCard<Content: View>: View {
+    var maxWidth: CGFloat
+    var maxHeight: CGFloat
     var title: String
     var content: Content
     
-    init(title: String = "", @ViewBuilder content: () -> Content) {
+    init(maxWidth: CGFloat = Styling.sizeWidth(component: .card), maxHeight: CGFloat = Styling.sizeHeight(component: .card), title: String = "", @ViewBuilder content: () -> Content) {
+        self.maxWidth = maxWidth
+        self.maxHeight = maxHeight
         self.title = title
         self.content = content()
     }
@@ -27,10 +31,9 @@ struct ComponentCard<Content: View>: View {
                             .bold()
                         Spacer()
                     }
+                    ComponentDivider()
                 }
                 
-                ComponentDivider()
-
                 content
             }
             .padding(Styling.padding(component: .card))
@@ -38,8 +41,8 @@ struct ComponentCard<Content: View>: View {
             .foregroundColor(Styling.color(.CardFont))
             .cornerRadius(Styling.cornerRadius)
             .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
-            .frame(maxHeight: Styling.sizeHeight(component: .card))
-            
+            .frame(maxHeight: maxHeight)
+            .frame(maxWidth: maxWidth)
     }
 }
 

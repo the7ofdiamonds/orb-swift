@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ViewResidential: View {
     var body: some View {
-        ComponentCard {
+        ComponentCardFixed {
             Text("Residential")
         }
     }

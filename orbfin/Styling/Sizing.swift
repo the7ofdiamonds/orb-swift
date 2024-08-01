@@ -6,13 +6,11 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
 extension Styling {
     static func sizeWidth(component: Component) -> CGFloat {
         switch component {
-        case .button:
-            return 400
         case .card:
         #if os(macOS)
             return 400
@@ -22,48 +20,52 @@ extension Styling {
             } else {
                 return 800
             }
-            
-//            if UIDevice.current.userInterfaceIdiom == .pad {
-//                return 700
-//            }
         #endif
-        case .icon:
-            return 400
-        case .label:
-            return 400
-        case .title:
-            return 400
-        case .value:
+            
+        default:
             return 400
         }
     }
     
     static func sizeHeight(component: Component) -> CGFloat {
         switch component {
-        case .button:
-            return 400
         case .card:
+        #if os(macOS)
+            return 500
+        #else
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 700
+            } else {
+                return 700
+            }
+        #endif
+            
+        default:
+            return 400
+        }
+    }
+    
+    static func sizeWidthPhoto() -> CGFloat {
         #if os(macOS)
             return 400
         #else
             if UIDevice.current.userInterfaceIdiom == .phone {
-                return 300
+                return 350
             } else {
-                return 500
+                return 900
             }
-            
-//            if UIDevice.current.userInterfaceIdiom == .pad {
-//                return 700
-//            }
         #endif
-        case .icon:
+    }
+    
+    static func sizeHeightPhoto() -> CGFloat {
+        #if os(macOS)
             return 400
-        case .label:
-            return 400
-        case .title:
-            return 400
-        case .value:
-            return 400
-        }
+        #else
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 350
+            } else {
+                return 650
+            }
+        #endif
     }
 }

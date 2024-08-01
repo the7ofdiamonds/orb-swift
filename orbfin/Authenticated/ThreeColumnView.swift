@@ -43,16 +43,7 @@ struct ThreeColumnView: View {
                 })
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            ComponentBar {
-                
-                Group {
-                    ComponentButtonBar(page: .manage)
-                    ComponentButtonBar(page: .invest)
-                    ComponentButtonBar(page: .services)
-                }
-                .padding()
-            }
-            .ignoresSafeArea(.all)
+            ComponentBar()
         }
     }
 }

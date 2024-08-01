@@ -45,7 +45,6 @@ struct ViewCommercialProperty: View {
                 }
             }
         }
-        .padding(.horizontal, 30)
     }
 }
 

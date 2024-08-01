@@ -23,7 +23,7 @@ struct ViewLogout: View {
     
     var body: some View {
         if isLoggedIn {
-            ComponentCard {
+            ComponentCardFixed {
                 Button(action: {
                     Task{
                         try await vm.logout()

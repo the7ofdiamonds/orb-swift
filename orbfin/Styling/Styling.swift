@@ -15,6 +15,7 @@ enum Component {
     case icon
     case label
     case value
+    case edges
 }
 
 struct StylingShadow {

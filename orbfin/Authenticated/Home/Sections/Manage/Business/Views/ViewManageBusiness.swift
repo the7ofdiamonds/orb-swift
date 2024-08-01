@@ -22,7 +22,7 @@ struct ViewManageBusiness: View {
     
     var body: some View {
         ScrollView {
-            ComponentCard {
+            ComponentCardFixed {
                 VStack(alignment: .center) {
                     Grid(verticalSpacing: 20) {
                         GridRow {

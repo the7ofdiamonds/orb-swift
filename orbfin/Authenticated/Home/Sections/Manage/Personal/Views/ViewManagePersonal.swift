@@ -11,34 +11,35 @@ struct ViewManagePersonal: View {
     @EnvironmentObject var navigation: Navigation
     
     var body: some View {
-        ScrollView {
-            
-            ComponentCard {
-                VStack(alignment: .center) {
-                    Grid(verticalSpacing: 20) {
-                        GridRow {
-                            ComponentButtonDoubleH(page: .personalincome, value: "$100,000.00")
+        GeometryReader { geometry in
+            VStack(alignment: .center) {
+                ComponentCardFixed {
+                    VStack(alignment: .center) {
+                        Grid(verticalSpacing: 20) {
+                            GridRow {
+                                ComponentButtonDoubleH(page: .personalincome, value: "$100,000.00")
+                            }
+                            
+                            GridRow {
+                                ComponentButtonDoubleH(page: .personalexpenses, value: "-$100,000.00")
+                            }
+                            
+                            GridRow {
+                                ComponentButtonDoubleH(page: .personalassets, value: "-$100,000.00")
+                            }
+                            
+                            GridRow {
+                                ComponentButtonDoubleH(page: .personalliabilities, value: "-$100,000.00")
+                            }
                         }
                         
-                        GridRow {
-                            ComponentButtonDoubleH(page: .personalexpenses, value: "-$100,000.00")
-                        }
+                        ComponentDivider()
                         
-                        GridRow {
-                            ComponentButtonDoubleH(page: .personalassets, value: "-$100,000.00")
-                        }
-                        
-                        GridRow {
-                            ComponentButtonDoubleH(page: .personalliabilities, value: "-$100,000.00")
-                        }
+                        ComponentButtonBar(page: .personaltransactions)
                     }
-                    
-                    ComponentDivider()
-                    
-                    ComponentButtonBar(page: .personaltransactions)
                 }
             }
-            
+            .frame(height: geometry.size.height)
         }
     }
 }
