@@ -59,8 +59,14 @@ struct TwoColumnView: View {
     }
 }
 
-#Preview {
-    TwoColumnView()
-        .environmentObject(Authentication())
-        .environmentObject(Navigation())
+struct TwoColumnView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {        
+            TwoColumnView()
+                .previewDisplayName("iPad Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
+                .environmentObject(Authentication())
+                .environmentObject(Navigation())
+        }
+    }
 }

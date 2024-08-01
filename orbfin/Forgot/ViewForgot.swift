@@ -62,6 +62,16 @@ struct ViewForgot: View {
     }
 }
 
-#Preview {
-    ViewForgot()
+struct ViewForgot_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ViewForgot()
+                .previewDisplayName("iPhone 15 Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
+               
+            ViewForgot()
+                .previewDisplayName("iPad Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
+        }
+    }
 }

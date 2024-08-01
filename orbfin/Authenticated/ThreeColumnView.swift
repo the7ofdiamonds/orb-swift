@@ -49,8 +49,15 @@ struct ThreeColumnView: View {
 }
 
 
-#Preview {
-    ThreeColumnView()
-        .environmentObject(Authentication())
-        .environmentObject(Navigation())
+struct ThreeColumnView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {         
+            ThreeColumnView()
+                .previewDisplayName("iPad Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
+                .previewInterfaceOrientation(.landscapeLeft)
+                .environmentObject(Authentication())
+                .environmentObject(Navigation())
+        }
+    }
 }

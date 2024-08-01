@@ -32,6 +32,20 @@ struct ViewSettings: View {
     }
 }
 
-#Preview {
-    ViewSettings()
+struct ViewSettings_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ViewSettings()
+                .previewDisplayName("iPhone 15 Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
+                .environmentObject(Authentication())
+                .environmentObject(Navigation())
+            
+            ViewSettings()
+                .previewDisplayName("iPad Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
+                .environmentObject(Authentication())
+                .environmentObject(Navigation())
+        }
+    }
 }

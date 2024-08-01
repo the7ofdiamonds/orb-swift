@@ -18,3 +18,21 @@ struct ViewResidential: View {
 #Preview {
     ViewResidential()
 }
+
+struct ViewResidential_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ViewResidential()
+                .previewDisplayName("iPhone 15 Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
+                .environmentObject(Authentication())
+                .environmentObject(Navigation())
+            
+            ViewResidential()
+                .previewDisplayName("iPad Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
+                .environmentObject(Authentication())
+                .environmentObject(Navigation())
+        }
+    }
+}

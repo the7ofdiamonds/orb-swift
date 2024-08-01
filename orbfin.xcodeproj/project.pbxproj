@@ -658,8 +658,8 @@
 			children = (
 				A4041C5E2C5576E4001FD37B /* Change */,
 				A4EA3CED2C4C827500CEFCFF /* Layout Experience */,
-				A49C0BF02C4A139800968AFB /* ViewSettings.swift */,
 				A4EA3CE92C4C791F00CEFCFF /* Settings.swift */,
+				A49C0BF02C4A139800968AFB /* ViewSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";

@@ -24,18 +24,42 @@ struct ViewLogin: View {
         return authentication.isValid
     }
     
+    var maxWidth: CGFloat {
+        #if os(macOS)
+            return 500
+        #else
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 350
+            } else {
+                return 500
+            }
+        #endif
+    }
+    
+    var maxHeight: CGFloat {
+        #if os(macOS)
+            return 500
+        #else
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 350
+            } else {
+                return 500
+            }
+        #endif
+    }
+    
     init() {
         _vm = StateObject(wrappedValue: ViewModelLogin())
     }
     
     var body: some View {
-        if !isLoggedIn {
+//        if !isLoggedIn {
             
             if !vm.errorMessage.isEmpty {
                 StatusBar(message: vm.errorMessage, type: .error)
             }
             
-            ComponentCard(maxWidth: 500, maxHeight: 500) {
+            ComponentCard(maxWidth: maxWidth, maxHeight: maxHeight) {
                 Text("ORB")
                     .kerning(Styling.kerning)
                     .font(Styling.font(component: .title))
@@ -99,14 +123,27 @@ struct ViewLogin: View {
                 )
             }
 
-        } else {
-            ViewHome()
+//        } else {
+//            ViewHome()
+//        }
+    }
+}
+
+struct ViewLogin_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ViewLogin()
+                .previewDisplayName("iPhone 15 Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
+                .environmentObject(Authentication())
+                .environmentObject(Navigation())
+
+            ViewLogin()
+                .previewDisplayName("iPad Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
+                .environmentObject(Authentication())
+                .environmentObject(Navigation())
         }
     }
 }
 
-#Preview {
-    ViewLogin()
-        .environmentObject(Authentication())
-        .environmentObject(Navigation())
-}

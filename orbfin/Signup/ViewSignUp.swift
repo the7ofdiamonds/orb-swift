@@ -98,6 +98,16 @@ struct ViewSignUp: View {
     }
 }
 
-#Preview {
-    ViewSignUp()
+struct ViewSignUp_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ViewSignUp()
+                .previewDisplayName("iPhone 15 Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
+               
+            ViewSignUp()
+                .previewDisplayName("iPad Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
+        }
+    }
 }
