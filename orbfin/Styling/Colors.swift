@@ -70,4 +70,30 @@ extension Styling {
             return Color("SuccessFont")
         }
     }
+    
+    static func colorStatusFont(type: Status) -> Color {
+        switch type {
+        case .error:
+            return Color("ErrorFont")
+        case .success:
+            return Color("SuccessFont")
+        case .caution:
+            return Color("CautionFont")
+        case .info:
+            return Color("InfoFont")
+        }
+    }
+
+    static func colorStatusBackground(type: Status) -> Color {
+        switch type {
+        case .error:
+            return Color("Error")
+        case .success:
+            return Color("Success")
+        case .caution:
+            return Color("Caution")
+        case .info:
+            return Color("Info")
+        }
+    }
 }

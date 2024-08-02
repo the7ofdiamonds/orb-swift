@@ -11,7 +11,7 @@ import SwiftUI
 class Navigation: ObservableObject {
     @AppStorage("lastView") var lastView: String?
     
-    @Published var isPage: Page? = nil
+    @Published var isPage: Page?
     @Published var isMenu: Menu?
     @Published var isSubMenu: [Menu]?
     @Published var isView: AnyView?

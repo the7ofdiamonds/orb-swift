@@ -9,9 +9,13 @@ import SwiftUI
 
 @MainActor
 class ViewModelLogin: ObservableObject {
-    @Published var successMessage: String = ""
+    @StateObject private var navigation = Navigation()
+
+    @Published var successMessage: String? = nil
+    @Published var errorMessage: String? = nil
+    @Published var cautionMessage: String? = nil
+
     @Published var error: NetworkError? = nil
-    @Published var errorMessage: String = ""
     @Published var showingAlert: Bool = false
     
     let locationManager: LocationManager = LocationManager.instance
@@ -33,6 +37,10 @@ class ViewModelLogin: ObservableObject {
             do {
                 let login: ResponseLogin = try await Login().user(requestLogin: requestLogin)
                 
+                if let errorMessage = login.errorMessage {
+                    self.errorMessage = errorMessage
+                }
+                
                 guard let accessToken = login.accessToken else { return }
                 guard let refreshToken = login.refreshToken else { return }
                 guard let username = login.username else { return }
@@ -42,11 +50,7 @@ class ViewModelLogin: ObservableObject {
                         self.successMessage = successMessage
                     }
                 }
-                
-                if let errorMessage = login.errorMessage {
-                    self.errorMessage = errorMessage
-                    self.showingAlert = true
-                }
+
             } catch {
                 self.error = error as? NetworkError
                 self.showingAlert = true

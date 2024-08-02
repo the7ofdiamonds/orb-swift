@@ -12,12 +12,14 @@ import SwiftData
 struct orbfinApp: App {
     @StateObject private var authentication = Authentication()
     @StateObject private var navigation = Navigation()
+    @StateObject private var vmCommercial = ViewModelCommercial()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(authentication)
                 .environmentObject(navigation)
+                .environmentObject(vmCommercial)
         }
     }
 }

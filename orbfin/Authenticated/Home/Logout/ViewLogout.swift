@@ -22,34 +22,30 @@ struct ViewLogout: View {
     }
     
     var body: some View {
-        if isLoggedIn {
-            ComponentCardFixed {
-                Button(action: {
-                    Task{
-                        try await vm.logout()
-                    }
-                }) {
-                    Text("Logout")
-                        .textCase(.uppercase)
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .kerning(Styling.kerning)
-                        .padding()
-                        .background(Styling.color(.Button))
-                        .foregroundColor(Styling.color(.ButtonFont))
-                        .cornerRadius(Styling.cornerRadius)
-                        .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
+        ComponentCardFixed {
+            Button(action: {
+                Task{
+                    try await vm.logout()
                 }
+            }) {
+                Text("Logout")
+                    .textCase(.uppercase)
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .kerning(Styling.kerning)
+                    .padding()
+                    .background(Styling.color(.Button))
+                    .foregroundColor(Styling.color(.ButtonFont))
+                    .cornerRadius(Styling.cornerRadius)
+                    .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
             }
-            .alert(isPresented: $vm.showingAlert) {
-                Alert(
-                    title: Text(vm.error?.title ?? "An Error has occured."),
-                    message: Text("\(vm.error?.message ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
-                    dismissButton: .default(Text("OK"))
-                )
-            }
-        } else {
-            ViewLogin()
+        }
+        .alert(isPresented: $vm.showingAlert) {
+            Alert(
+                title: Text(vm.error?.title ?? "An Error has occured."),
+                message: Text("\(vm.error?.message ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
+                dismissButton: .default(Text("OK"))
+            )
         }
         
         if !vm.successMessage.isEmpty {

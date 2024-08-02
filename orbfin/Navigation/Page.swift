@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 enum Page {
-    case home
+    case home(successMessage: String?)
     case login
     case signup
     
@@ -44,7 +44,7 @@ enum Page {
     case invest
     case realestate
     case commercial
-    case commercialproperty(Commercial)
+    case commercialproperty(property: Commercial)
     case residential
     case tangibleassets
     case tangibleassetsrealestate
@@ -293,11 +293,11 @@ extension Page {
     var parent: Page {
         switch self {
         case .manage:
-                .home
+                .home(successMessage: nil)
         case .invest:
-                .home
+                .home(successMessage: nil)
         case .services:
-                .home
+                .home(successMessage: nil)
         case .personal:
                 .manage
         case .business:
@@ -410,7 +410,7 @@ extension Page {
             ]
         case .commercial:
             return [
-                .commercialproperty(Commercial())
+                .commercialproperty(property: Commercial())
             ]
         case .tangibleassets:
             return [
@@ -438,8 +438,8 @@ extension Page {
     
     var body: AnyView {
         switch self {
-        case .home:
-            AnyView(ViewHome())
+        case .home(let successMessage):
+            AnyView(ViewHome(successMessage: successMessage))
         case .login:
             AnyView(ViewLogin())
         case .signup:
@@ -535,7 +535,7 @@ extension Page {
     init?(title: String) {
         switch title {
         case "Home":
-            self = .home
+            self = .home(successMessage: nil)
         case "Login":
             self = .login
         case "Signup":
@@ -598,7 +598,7 @@ extension Page {
         case "Commercial":
             self = .commercial
         case "Commercial Property":
-            self = .commercialproperty(Commercial())
+            self = .commercialproperty(property: Commercial())
         case "Residential":
             self = .residential
         case "Tangible Assets":

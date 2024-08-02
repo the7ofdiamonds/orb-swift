@@ -35,5 +35,5 @@ struct ComponentButtonHNav: View {
 }
 
 #Preview {
-    ComponentButtonHNav(page: Page.home)
+    ComponentButtonHNav(page: Page.home(successMessage: nil))
 }

@@ -84,6 +84,10 @@
 		A43C29F82C4199FD002BF1AE /* ComponentButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29F72C4199FD002BF1AE /* ComponentButtonBar.swift */; };
 		A43C29FB2C41A82C002BF1AE /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29FA2C41A82C002BF1AE /* Navigation.swift */; };
 		A43C29FD2C41B31F002BF1AE /* ComponentButtonH.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29FC2C41B31F002BF1AE /* ComponentButtonH.swift */; };
+		A45676322C5C19AA0025A730 /* ViewStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676312C5C19AA0025A730 /* ViewStatus.swift */; };
+		A45676342C5C1A7D0025A730 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676332C5C1A7D0025A730 /* Status.swift */; };
+		A45676362C5C43A00025A730 /* ViewModelHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676352C5C43A00025A730 /* ViewModelHome.swift */; };
+		A45676382C5C738F0025A730 /* ViewStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676372C5C738F0025A730 /* ViewStatusCard.swift */; };
 		A4605E9A2C4228160091CC52 /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4605E992C4228160091CC52 /* StatusBar.swift */; };
 		A4605E9C2C46D0BC0091CC52 /* ViewManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4605E9B2C46D0BC0091CC52 /* ViewManage.swift */; };
 		A4605E9E2C46D1A80091CC52 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4605E9D2C46D1A80091CC52 /* Page.swift */; };
@@ -225,6 +229,10 @@
 		A43C29F72C4199FD002BF1AE /* ComponentButtonBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentButtonBar.swift; sourceTree = "<group>"; };
 		A43C29FA2C41A82C002BF1AE /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		A43C29FC2C41B31F002BF1AE /* ComponentButtonH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentButtonH.swift; sourceTree = "<group>"; };
+		A45676312C5C19AA0025A730 /* ViewStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStatus.swift; sourceTree = "<group>"; };
+		A45676332C5C1A7D0025A730 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		A45676352C5C43A00025A730 /* ViewModelHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelHome.swift; sourceTree = "<group>"; };
+		A45676372C5C738F0025A730 /* ViewStatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStatusCard.swift; sourceTree = "<group>"; };
 		A4605E992C4228160091CC52 /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		A4605E9B2C46D0BC0091CC52 /* ViewManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManage.swift; sourceTree = "<group>"; tabWidth = 4; };
 		A4605E9D2C46D1A80091CC52 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
@@ -452,6 +460,16 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		A45676302C5C17AF0025A730 /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				A45676372C5C738F0025A730 /* ViewStatusCard.swift */,
+				A45676312C5C19AA0025A730 /* ViewStatus.swift */,
+				A45676332C5C1A7D0025A730 /* Status.swift */,
+			);
+			path = Status;
+			sourceTree = "<group>";
+		};
 		A4605E942C41C0820091CC52 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,6 +479,7 @@
 				A49C0BEF2C4A132800968AFB /* Settings */,
 				A4EA3CE32C4C379200CEFCFF /* ViewHomeMenu.swift */,
 				A4EA3D012C50287700CEFCFF /* ViewHomeContentMenu.swift */,
+				A45676352C5C43A00025A730 /* ViewModelHome.swift */,
 				A43C29EE2C411F72002BF1AE /* ViewHome.swift */,
 			);
 			path = Home;
@@ -782,6 +801,7 @@
 				A4A7ACEC2C3B3B0A00EE9B48 /* Models */,
 				A4EA3D032C53E04600CEFCFF /* Authenticated */,
 				A43C29F92C41A7FA002BF1AE /* Navigation */,
+				A45676302C5C17AF0025A730 /* Status */,
 				A43C29D12C404C5C002BF1AE /* Authentication */,
 				A49C0BD42C49AE2E00968AFB /* Login */,
 				A49C0BD52C49AE3700968AFB /* Signup */,
@@ -973,6 +993,7 @@
 				A43541592C3EAC4700B32BC1 /* ResponseLogin.swift in Sources */,
 				A49C0BE62C4A032C00968AFB /* ViewTangibleAssetsCommercial.swift in Sources */,
 				A4EA3CF92C4ECBE700CEFCFF /* ViewManageBusinessLiabilities.swift in Sources */,
+				A45676342C5C1A7D0025A730 /* Status.swift in Sources */,
 				A41777FC2C583E8D009C1353 /* ComponentCardBuildingDetails.swift in Sources */,
 				A49C0BF92C4A1EF500968AFB /* ManageSummary.swift in Sources */,
 				A49C0BBC2C4771A700968AFB /* ViewManagePersonalExpenses.swift in Sources */,
@@ -990,13 +1011,16 @@
 				A4EA3CE42C4C379200CEFCFF /* ViewHomeMenu.swift in Sources */,
 				A43C29E12C406ECE002BF1AE /* InputEmail.swift in Sources */,
 				A4EA3CD82C4A982D00CEFCFF /* ViewManagePersonalContra.swift in Sources */,
+				A45676322C5C19AA0025A730 /* ViewStatus.swift in Sources */,
 				A4041C682C5578F4001FD37B /* ViewModelChange.swift in Sources */,
 				A4041C722C557AF7001FD37B /* ResponseChange.swift in Sources */,
 				A41777FA2C583E2F009C1353 /* ComponentCardLandDetails.swift in Sources */,
+				A45676382C5C738F0025A730 /* ViewStatusCard.swift in Sources */,
 				A41778022C583FC7009C1353 /* LandDetails.swift in Sources */,
 				A49C0BB82C476B1900968AFB /* ViewManagePersonal.swift in Sources */,
 				A49C0BEE2C4A0DBE00968AFB /* ViewTangibleAssetsRealEstate.swift in Sources */,
 				A4041C6E2C557A54001FD37B /* RequestChangeUsername.swift in Sources */,
+				A45676362C5C43A00025A730 /* ViewModelHome.swift in Sources */,
 				A43C29F82C4199FD002BF1AE /* ComponentButtonBar.swift in Sources */,
 				A435415E2C3EC20B00B32BC1 /* Coordinates.swift in Sources */,
 				A4EA3D022C50287700CEFCFF /* ViewHomeContentMenu.swift in Sources */,

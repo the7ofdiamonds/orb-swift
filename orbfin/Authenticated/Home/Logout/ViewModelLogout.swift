@@ -9,6 +9,8 @@ import SwiftUI
 
 @MainActor
 class ViewModelLogout: ObservableObject {
+    @StateObject var vmLogin = ViewModelLogin()
+    
     let authentication = Authentication()
     
     @Published var successMessage: String = ""
@@ -31,6 +33,9 @@ class ViewModelLogout: ObservableObject {
                 if let successMessage = logout.successMessage {
                     self.successMessage = successMessage
                     self.errorMessage = ""
+                    print(successMessage)
+                    vmLogin.successMessage = successMessage
+                    Navigation().change(page: .login)
                 }
                 
                 if let errorMessage = logout.errorMessage {

@@ -30,5 +30,5 @@ struct ComponentButtonBar: View {
 }
 
 #Preview {
-    ComponentButtonBar(page: .home)
+    ComponentButtonBar(page: .home(successMessage: nil))
 }

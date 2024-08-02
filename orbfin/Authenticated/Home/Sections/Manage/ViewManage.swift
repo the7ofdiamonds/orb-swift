@@ -15,14 +15,6 @@ struct ViewManage: View {
                 ComponentButtonHNav(page: .personal)
                 ComponentButtonHNav(page: .business)
             })
-            
-            ComponentDivider()
-            
-            HStack(spacing: 20, content: {
-                ComponentButtonBar(page: .settings)
-                ComponentButtonBar(page: .forgot)
-                ComponentButtonBar(page: .logout)
-            })
         }
     }
 }

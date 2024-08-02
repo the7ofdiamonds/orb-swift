@@ -10,12 +10,13 @@ import MapKit
 
 struct ViewAuthenticated: View {
     @EnvironmentObject var navigation: Navigation
-
-    @StateObject var vm = ViewModelAuthenticated()
+    @EnvironmentObject var vmCommercial: ViewModelCommercial
     
     @ViewBuilder var body: some View {
         ZStack {
             ComponentMap()
+                .environmentObject(navigation)
+                .environmentObject(vmCommercial)
             
             VStack {
                 Spacer()

@@ -20,8 +20,10 @@ struct ViewLogin: View {
 
     @StateObject private var vm: ViewModelLogin
 
+    @State var showStatus: Bool = true
+
     private var isLoggedIn: Bool {
-        return authentication.isValid
+        return authentication.checkAuthentication()
     }
     
     var maxWidth: CGFloat {
@@ -53,11 +55,7 @@ struct ViewLogin: View {
     }
     
     var body: some View {
-//        if !isLoggedIn {
-            
-            if !vm.errorMessage.isEmpty {
-                StatusBar(message: vm.errorMessage, type: .error)
-            }
+        ZStack {
             
             ComponentCard(maxWidth: maxWidth, maxHeight: maxHeight) {
                 Text("ORB")
@@ -72,6 +70,8 @@ struct ViewLogin: View {
                     .padding(.vertical, 10)
                 
                 ComponentButtonH(label: "LOGIN", icon: "key") {
+                    showStatus = true
+
                     Task {
                         await vm.login(username, password)
                     }
@@ -122,10 +122,14 @@ struct ViewLogin: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
-
-//        } else {
-//            ViewHome()
-//        }
+        
+            if showStatus {
+                ViewStatus(showStatus: $showStatus,
+                           successMessage: vm.successMessage,
+                           errorMessage: vm.errorMessage, cautionMessage: vm.cautionMessage)
+            }
+            
+        }
     }
 }
 

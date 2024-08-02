@@ -9,12 +9,24 @@ import SwiftUI
 import MapKit
 
 struct ViewHome: View {
-    var body: some View {
-        
-        ComponentCardFixed {
-           Text("Dashboard")
-        }
+    @State var showStatus: Bool = true
 
+    var successMessage: String?
+    
+    var body: some View {
+
+        ComponentCardFixed {
+            Text("Dashboard")
+            
+            ComponentDivider()
+            
+            HStack(spacing: 25, content: {
+                ComponentButtonBar(page: .settings)
+                ComponentButtonBar(page: .forgot)
+                ComponentButtonBar(page: .logout)
+            })
+        }
+        
     }
 }
     

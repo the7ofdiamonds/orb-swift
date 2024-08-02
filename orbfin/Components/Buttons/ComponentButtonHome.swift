@@ -12,10 +12,10 @@ struct ComponentButtonHome: View {
 
     var body: some View {
         Button(action: {
-            navigation.change(page: .home)
+            navigation.change(page: .home(successMessage: nil))
         },
                label: {
-            Image(systemName: Page.home.icon)
+            Image(systemName: Page.home(successMessage: nil).icon)
                 .font(Styling.font(component: .icon))
         })
     }

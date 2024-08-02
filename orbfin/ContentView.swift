@@ -11,17 +11,18 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
-
+    @EnvironmentObject var vmCommercial: ViewModelCommercial
+    
     @AppStorage("layoutExperience") var selectedLayoutExperience: String?
 
     var isLoggedIn: Bool {
-        authentication.isValid
+        authentication.checkAuthentication()
     }
     
     var body: some View {
         Group {
             if isLoggedIn {
-                switch selectedLayoutExperience ?? "One Column" {
+                switch selectedLayoutExperience ?? "Two Column" {
                 case "Two Column":
                     TwoColumnView()
                 case "Three Column":
@@ -37,6 +38,8 @@ struct ContentView: View {
         }
         .environmentObject(authentication)
         .environmentObject(navigation)
+        .environmentObject(vmCommercial)
+
     }
 }
 

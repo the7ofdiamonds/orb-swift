@@ -9,21 +9,22 @@ import SwiftUI
 import MapKit
 
 struct ComponentMap: View {
+    @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var navigation: Navigation
-
-    @StateObject var vm = ViewModelCommercial()
+    
+    @State var position: MapCameraPosition = .userLocation(fallback: .automatic)
     
     var body: some View {
-        Map {
+        Map() {
             UserAnnotation(anchor: .bottom)
-
-            if let properties = vm.properties {
+            
+            if let properties = vmCommercial.properties {
                 ForEach(properties) { property in
                     if let coordinates = property.coordinates {
                         Annotation(property.address?.toString() ?? "", coordinate: coordinates) {
                             Image(systemName: "pin")
                                 .onTapGesture {
-                                    navigation.change(page: .commercialproperty(property))
+                                    navigation.change(page: .commercialproperty(property: property))
                                 }
                         }
                     }
@@ -31,4 +32,10 @@ struct ComponentMap: View {
             }
         }
     }
+}
+
+#Preview {
+    ComponentMap()
+        .environmentObject(ViewModelCommercial())
+        .environmentObject(Navigation())
 }

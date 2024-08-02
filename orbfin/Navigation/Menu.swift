@@ -274,15 +274,15 @@ extension Menu {
                 .home
         case .services:
                 .home
+        case .settings:
+                .home
+        case .forgot:
+                .home
+        case .logout:
+                .home
         case .personal:
                 .manage
         case .business:
-                .manage
-        case .settings:
-                .manage
-        case .forgot:
-                .manage
-        case .logout:
                 .manage
         case .personalincome:
                 .personal
@@ -339,17 +339,14 @@ extension Menu {
         switch self {
         case .home:
             return [
-                .manage,
-                .invest,
-                .services
+                .settings,
+                .forgot,
+                .logout
             ]
         case .manage:
             return [
                 .personal,
-                .business,
-                .settings,
-                .forgot,
-                .logout
+                .business
             ]
         case .personal:
             return [

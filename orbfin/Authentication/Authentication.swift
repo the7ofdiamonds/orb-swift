@@ -37,10 +37,10 @@ class Authentication: ObservableObject {
     }
     
     func removeAuthentication() async -> Bool {
-        self.lastView = Page.home.title
+        self.lastView = "Home"
         self.accessToken = nil
         self.refreshToken = nil
-        
+        print(lastView ?? "Np Value")
         return checkAuthentication()
     }
 }
