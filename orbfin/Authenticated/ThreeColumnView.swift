@@ -10,6 +10,7 @@ import SwiftUI
 struct ThreeColumnView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
+    @EnvironmentObject var vmCommercial: ViewModelCommercial
     
     @ViewBuilder var body: some View {
         NavigationSplitView {
@@ -23,7 +24,6 @@ struct ThreeColumnView: View {
                 .environmentObject(navigation)
         } detail: {
             ViewAuthenticated()
-                .environmentObject(Navigation())
                 .toolbar(content: {
                     ToolbarItem(placement: .principal) {
                         if let page = navigation.isPage {
@@ -45,6 +45,7 @@ struct ThreeColumnView: View {
         .safeAreaInset(edge: .bottom, spacing: 0) {
             ComponentBar()
         }
+
     }
 }
 
@@ -54,10 +55,11 @@ struct ThreeColumnView_Previews: PreviewProvider {
         Group {         
             ThreeColumnView()
                 .previewDisplayName("iPad Pro")
-                .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
+                .previewDevice(PreviewDevice(rawValue: "iPad Air (10th Generation)"))
                 .previewInterfaceOrientation(.landscapeLeft)
                 .environmentObject(Authentication())
                 .environmentObject(Navigation())
+                .environmentObject(ViewModelCommercial())
         }
     }
 }

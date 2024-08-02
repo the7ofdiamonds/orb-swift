@@ -10,7 +10,8 @@ import SwiftUI
 struct OneColumnView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
-    
+    @EnvironmentObject var vmCommercial: ViewModelCommercial
+
     var isLoggedIn: Bool {
         authentication.isValid
     }
@@ -59,6 +60,7 @@ struct OneColumnView_Previews: PreviewProvider {
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
                 .environmentObject(Authentication())
                 .environmentObject(Navigation())
+                .environmentObject(ViewModelCommercial())
         }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct TwoColumnView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
+    @EnvironmentObject var vmCommercial: ViewModelCommercial
     
     var body: some View {
         NavigationSplitView {
@@ -52,6 +53,7 @@ struct TwoColumnView: View {
                         }
                     }
                 })
+            
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             ComponentBar()
@@ -67,6 +69,7 @@ struct TwoColumnView_Previews: PreviewProvider {
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
                 .environmentObject(Authentication())
                 .environmentObject(Navigation())
+                .environmentObject(ViewModelCommercial())
         }
     }
 }

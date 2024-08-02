@@ -14,9 +14,26 @@ struct ComponentMap: View {
     
     @State var position: MapCameraPosition = .userLocation(fallback: .automatic)
     
+    @Namespace private var mapScope
+    
+//    private var commercialProperties: [Annotation<<#Label: View#>, <#Content: View#>>] {
+//        if let properties = vmCommercial.properties {
+//            ForEach(properties) { property in
+//                if let coordinates = property.coordinates {
+//                    Annotation(property.address?.toString() ?? "", coordinate: coordinates) {
+//                        Image(systemName: "pin")
+//                            .onTapGesture {
+//                                navigation.change(page: .commercialproperty(property: property))
+//                            }
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
     var body: some View {
-        Map() {
-            UserAnnotation(anchor: .bottom)
+        Map(scope: mapScope) {
+            UserAnnotation()
             
             if let properties = vmCommercial.properties {
                 ForEach(properties) { property in
@@ -31,6 +48,12 @@ struct ComponentMap: View {
                 }
             }
         }
+        .mapScope(mapScope)
+        .mapControls {
+            MapUserLocationButton(scope: mapScope)
+        }
+        .controlSize(.large)
+        
     }
 }
 

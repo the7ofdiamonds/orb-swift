@@ -22,16 +22,37 @@ struct ContentView: View {
     var body: some View {
         Group {
             if isLoggedIn {
-                switch selectedLayoutExperience ?? "Two Column" {
-                case "Two Column":
-                    TwoColumnView()
-                case "Three Column":
-                    ThreeColumnView()
-                case "One Column":
-                    OneColumnView()
-                default:
-                    ThreeColumnView()
-                }
+                #if os(macOS)
+                    if let selectedLayoutExperience {
+                        switch selectedLayoutExperience {
+                        case "Two Column":
+                            TwoColumnView()
+                        case "Three Column":
+                            ThreeColumnView()
+                        default:
+                            TwoColumnView()
+                        }
+                    } else {
+                        TwoColumnView()
+                    }
+                #else
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        if let selectedLayoutExperience {
+                            switch selectedLayoutExperience {
+                            case "Two Column":
+                                TwoColumnView()
+                            case "Three Column":
+                                ThreeColumnView()
+                            default:
+                                TwoColumnView()
+                            }
+                        } else {
+                            TwoColumnView()
+                        }
+                    } else {
+                        OneColumnView()
+                    }
+                #endif
             } else {
                 ViewLogin()
             }

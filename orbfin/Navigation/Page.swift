@@ -127,8 +127,12 @@ extension Page {
             return "Real Estate"
         case .commercial:
             return "Commercial"
-        case .commercialproperty:
-            return "Commercial Property"
+        case .commercialproperty(let property):
+            if let address = property.address{
+                return address.toString()
+            } else {
+                return "Commercial Property"
+            }
         case .residential:
             return "Residential"
         case .tangibleassets:
