@@ -11,7 +11,7 @@ import MapKit
 
 @MainActor
 class ViewModelCommercial: ObservableObject {
-    @Published var properties: [Commercial]? = nil
+    @Published var properties: [Commercial]?
     @Published var errorMessage: String?
     
     func getProperties() async {

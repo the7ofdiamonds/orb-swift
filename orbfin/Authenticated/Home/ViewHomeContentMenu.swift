@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct ViewHomeContentMenu: View {
-    @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
-    
-    private let manage: Menu = Menu.manage
-    private let invest: Menu = Menu.invest
-    private let services: Menu = Menu.services
+    @EnvironmentObject var vmCommercial: ViewModelCommercial
+
+    private let manage: Page = Page.manage
+    private let invest: Page = Page.invest
+    private let services: Page = Page.services
     
     func titlesMatch(_ title1: String, _ title2: String) -> Bool {
         return title1.localizedCompare(title2) == .orderedSame
     }
         
     private var isHomeMenu: Bool {
-        if let menu = navigation.isMenu {
+        if let menu = navigation.isPage {
             let title = menu.title
             
             let isManage = titlesMatch(manage.title, title)
@@ -33,11 +33,11 @@ struct ViewHomeContentMenu: View {
         }
     }
     
-    private var currentPageMenu: Menu {
+    private var currentPageMenu: Page {
         if isHomeMenu {
             return .blank
         } else {
-            if let menu = navigation.isMenu {
+            if let menu = navigation.isPage {
                 return menu
             } else {
                 return .blank
@@ -49,11 +49,15 @@ struct ViewHomeContentMenu: View {
 extension ViewHomeContentMenu {
     var body: some View {
         VStack {
-            if currentPageMenu != .blank && !isHomeMenu {
+            if !isHomeMenu {
                 Section {
                     List {
                         Button(action: {
-                            navigation.change(menu: currentPageMenu)
+                            if currentPageMenu == .commercial(properties: vmCommercial.properties) {
+                                navigation.change(page: .commercial(properties: vmCommercial.properties))
+                            } else {
+                                navigation.change(page: currentPageMenu)
+                            }
                         }, label: {
                             Text(currentPageMenu.label)
                         })
@@ -64,7 +68,13 @@ extension ViewHomeContentMenu {
                         
                         ForEach(submenu, id: \.id) { menu in
                             Button(action: {
-                                navigation.change(menu: menu)
+                                if menu == .commercial(properties: vmCommercial.properties) {
+                                    navigation.change(page: .commercial(properties: vmCommercial.properties))
+                                    print("true")
+                                } else {
+                                    navigation.change(page: menu)
+                                    print("false")
+                                }
                             }, label: {
                                 Text(menu.label)
                             })
@@ -74,13 +84,13 @@ extension ViewHomeContentMenu {
             }
             
             
-            if let menu = navigation.isMenu {
+            if let menu = navigation.isPage {
                 if !isHomeMenu {
                     Section {
                         List {
                             if let parent = menu.parent {
                                 Button(action: {
-                                    navigation.change(menu: parent)
+                                    navigation.change(page: parent)
                                 }, label: {
                                     Text(parent.label)
                                 })
@@ -91,7 +101,7 @@ extension ViewHomeContentMenu {
                                 
                                 ForEach(submenu) { menu in
                                     Button(action: {
-                                        navigation.change(menu: menu)
+                                        navigation.change(page: menu)
                                     }, label: {
                                         Text(menu.label)
                                     })
@@ -111,6 +121,6 @@ extension ViewHomeContentMenu {
 
 #Preview {
     ViewHomeContentMenu()
-        .environmentObject(Authentication())
         .environmentObject(Navigation())
+        .environmentObject(ViewModelCommercial())
 }

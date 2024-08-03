@@ -11,7 +11,7 @@ struct ViewRealEstate: View {
     var body: some View {
         ComponentCardFixed {
             VStack(spacing: 30){
-                ComponentButtonHNav(page: .commercial)
+                ComponentButtonHNav(page: .commercial(properties: nil))
                 
                 ComponentDivider()
                 
@@ -32,13 +32,11 @@ struct ViewRealEstate_Previews: PreviewProvider {
             ViewRealEstate()
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
-                .environmentObject(Authentication())
                 .environmentObject(Navigation())
             
             ViewRealEstate()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
-                .environmentObject(Authentication())
                 .environmentObject(Navigation())
         }
     }

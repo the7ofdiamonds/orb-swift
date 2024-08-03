@@ -1,5 +1,6 @@
 import CoreLocation
 import MapKit
+import SwiftUI
 
 @MainActor
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
@@ -10,6 +11,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var locations: [CLLocation] = []
     @Published var location: Coordinates?
     @Published var region: MKCoordinateRegion? = nil
+    @Published var position: MapCameraPosition = .userLocation(fallback: .automatic)
     
     private override init() {
         super.init()
@@ -67,5 +69,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         else { return CLLocationCoordinate2D()}
         
        return coordinates
+    }
+    
+    func changeCamera(coordinates: CLLocationCoordinate2D) {
+        self.position = .region(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)))
     }
 }

@@ -10,6 +10,18 @@ import MapKit
 
 struct ViewCommercialProperty: View {
     var property: Commercial
+    @StateObject var vmCommercialProperty: ViewModelCommercialProperty
+    @StateObject var location: LocationManager = LocationManager.instance
+
+    init(property: Commercial) {
+        self.property = property
+       
+        _vmCommercialProperty = StateObject(wrappedValue: ViewModelCommercialProperty(property: property))
+        
+        if let coordinates = property.coordinates {
+            location.changeCamera(coordinates: coordinates)
+        }
+    }
     
     var body: some View {
         ScrollView {
@@ -53,12 +65,10 @@ struct ViewCommercialProperty_Previews: PreviewProvider {
         Group {
             ViewCommercialProperty(property: PreviewCommercialProperty.loadProperty())                .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
-                .environmentObject(Authentication())
                 .environmentObject(Navigation())
             
             ViewCommercialProperty(property: PreviewCommercialProperty.loadProperty())                .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
-                .environmentObject(Authentication())
                 .environmentObject(Navigation())
         }
     }

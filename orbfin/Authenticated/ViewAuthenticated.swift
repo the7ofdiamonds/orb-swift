@@ -11,13 +11,15 @@ import MapKit
 struct ViewAuthenticated: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmCommercial: ViewModelCommercial
+    @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     
     @ViewBuilder var body: some View {
         ZStack {
             ComponentMap()
                 .environmentObject(navigation)
                 .environmentObject(vmCommercial)
-            
+                .environmentObject(vmCommercialProperty)
+
             VStack {
                 Spacer()
                 
@@ -38,14 +40,13 @@ struct ViewAuthenticated_Previews: PreviewProvider {
             ViewAuthenticated()
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
-                .environmentObject(Authentication())
-                .environmentObject(Navigation())
             
             ViewAuthenticated()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
-                .environmentObject(Authentication())
-                .environmentObject(Navigation())
         }
+        .environmentObject(Navigation())
+        .environmentObject(ViewModelCommercial())
+        .environmentObject(ViewModelCommercialProperty(property: PreviewCommercial.loadProperties()[0]))
     }
 }

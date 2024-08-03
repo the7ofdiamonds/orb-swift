@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum Page {
+enum Page: CaseIterable, Identifiable, Equatable {
     case home(successMessage: String?)
     case login
     case signup
@@ -43,7 +43,7 @@ enum Page {
     
     case invest
     case realestate
-    case commercial
+    case commercial(properties: [Commercial]?)
     case commercialproperty(property: Commercial)
     case residential
     case tangibleassets
@@ -60,6 +60,62 @@ enum Page {
 }
 
 extension Page {
+    static var allCases: [Page] {
+        return [
+            .home(successMessage: nil),
+            .login,
+            .signup,
+            .manage,
+            .personal,
+            .personalincome,
+            .personalrevenue,
+            .personalexpenses,
+            .personalequity,
+            .personalassets,
+            .personalliabilities,
+            .personalcontra,
+            .personaltax,
+            .personaltransactions,
+            .business,
+            .businessincome,
+            .businessrevenue,
+            .businessexpenses,
+            .businessequity,
+            .businessassets,
+            .businessliabilities,
+            .businesscontra,
+            .businesstax,
+            .businesstransactions,
+            .settings,
+            .forgot,
+            .logout,
+            .invest,
+            .realestate,
+            .commercial(properties: nil),
+            .commercialproperty(property: Commercial()),
+            .residential,
+            .tangibleassets,
+            .tangibleassetsrealestate,
+            .tangibleassetscommercial,
+            .tangibleassetsresidential,
+            .tangibleassetsbusiness,
+            .paperassets,
+            .services,
+            .notary,
+            .blank
+        ]
+    }
+    
+    static func == (lhs: Page, rhs: Page) -> Bool {
+        lhs.title == rhs.title
+    }
+}
+
+extension Page {
+    var id: String {
+        UUID().uuidString
+    }
+    
     var title: String {
         switch self {
         case .home:
@@ -225,8 +281,12 @@ extension Page {
             return "Real Estate"
         case .commercial:
             return "Commercial"
-        case .commercialproperty:
-            return "Commercial Property"
+        case .commercialproperty(let property):
+            if let address = property.address{
+                return address.toString()
+            } else {
+                return "Commercial Property"
+            }
         case .residential:
             return "Residential"
         case .tangibleassets:
@@ -294,7 +354,7 @@ extension Page {
         }
     }
     
-    var parent: Page {
+    var parent: Page? {
         switch self {
         case .manage:
                 .home(successMessage: nil)
@@ -345,7 +405,7 @@ extension Page {
         case .commercial:
                 .realestate
         case .commercialproperty:
-                .commercial
+                .commercial(properties: nil)
         case .residential:
                 .realestate
         case .tangibleassets:
@@ -409,13 +469,16 @@ extension Page {
             ]
         case .realestate:
             return [
-                .commercial,
+                .commercial(properties: nil),
                 .residential
             ]
-        case .commercial:
-            return [
-                .commercialproperty(property: Commercial())
-            ]
+        case .commercial(let properties):
+            if let properties {
+                return properties.map { Page.commercialproperty(property: $0) }
+            } else {
+                return []
+            }
+
         case .tangibleassets:
             return [
                 .tangibleassetsrealestate,
@@ -505,8 +568,8 @@ extension Page {
             AnyView(ViewInvest())
         case .realestate:
             AnyView(ViewRealEstate())
-        case .commercial:
-            AnyView(ViewCommercial())
+        case .commercial(let properties):
+            AnyView(ViewCommercial(properties: properties))
         case .commercialproperty(let property):
             AnyView(ViewCommercialProperty(property: property))
         case .residential:
@@ -600,7 +663,7 @@ extension Page {
         case "Real Estate":
             self = .realestate
         case "Commercial":
-            self = .commercial
+            self = .commercial(properties: nil)
         case "Commercial Property":
             self = .commercialproperty(property: Commercial())
         case "Residential":

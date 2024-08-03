@@ -745,7 +745,6 @@
 		A4A7ACF02C3B3B6B00EE9B48 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A41778092C59BBD2009C1353 /* Map */,
 				A4041C922C5806CF001FD37B /* Card */,
 				A4605E982C4227D90091CC52 /* Bar */,
 				A43541632C3F029D00B32BC1 /* Input */,
@@ -795,8 +794,6 @@
 		A4D407242B4D100D00D97AB1 /* orbfin */ = {
 			isa = PBXGroup;
 			children = (
-				A4041C7B2C56D5F5001FD37B /* Styling */,
-				A4A7ACF02C3B3B6B00EE9B48 /* Components */,
 				A4A7ACED2C3B3B4600EE9B48 /* Layers */,
 				A4A7ACEC2C3B3B0A00EE9B48 /* Models */,
 				A4EA3D032C53E04600CEFCFF /* Authenticated */,
@@ -806,6 +803,8 @@
 				A49C0BD42C49AE2E00968AFB /* Login */,
 				A49C0BD52C49AE3700968AFB /* Signup */,
 				A49C0BD72C49AF2600968AFB /* Forgot */,
+				A4A7ACF02C3B3B6B00EE9B48 /* Components */,
+				A4041C7B2C56D5F5001FD37B /* Styling */,
 				A49C0BD92C49B33400968AFB /* ContentView.swift */,
 				A4D407252B4D100D00D97AB1 /* orbfinApp.swift */,
 				A4D4072B2B4D100F00D97AB1 /* Assets.xcassets */,
@@ -857,11 +856,12 @@
 			isa = PBXGroup;
 			children = (
 				A4605E942C41C0820091CC52 /* Home */,
+				A41778092C59BBD2009C1353 /* Map */,
+				A41778052C598483009C1353 /* ViewModelAuthenticated.swift */,
+				A47FC8B42C54635D0096D557 /* ViewAuthenticated.swift */,
 				A4EA3CE12C4B5DA400CEFCFF /* ThreeColumnView.swift */,
 				A4EA3CDF2C4B5D8D00CEFCFF /* TwoColumnView.swift */,
 				A4EA3CDD2C4B5D4C00CEFCFF /* OneColumnView.swift */,
-				A41778052C598483009C1353 /* ViewModelAuthenticated.swift */,
-				A47FC8B42C54635D0096D557 /* ViewAuthenticated.swift */,
 			);
 			path = Authenticated;
 			sourceTree = "<group>";

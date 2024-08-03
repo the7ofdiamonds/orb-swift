@@ -13,6 +13,7 @@ struct orbfinApp: App {
     @StateObject private var authentication = Authentication()
     @StateObject private var navigation = Navigation()
     @StateObject private var vmCommercial = ViewModelCommercial()
+    @StateObject private var vmCommercialProperty = ViewModelCommercialProperty()
     
     var body: some Scene {
         WindowGroup {
@@ -20,11 +21,15 @@ struct orbfinApp: App {
                 .environmentObject(authentication)
                 .environmentObject(navigation)
                 .environmentObject(vmCommercial)
+                .environmentObject(vmCommercialProperty)
+
         }
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(Authentication())
         .environmentObject(Navigation())
+        .environmentObject(ViewModelCommercial())
 }

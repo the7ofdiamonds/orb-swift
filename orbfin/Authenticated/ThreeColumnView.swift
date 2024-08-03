@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ThreeColumnView: View {
-    @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     
@@ -57,7 +56,6 @@ struct ThreeColumnView_Previews: PreviewProvider {
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air (10th Generation)"))
                 .previewInterfaceOrientation(.landscapeLeft)
-                .environmentObject(Authentication())
                 .environmentObject(Navigation())
                 .environmentObject(ViewModelCommercial())
         }

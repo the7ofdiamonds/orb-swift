@@ -9,30 +9,15 @@ import SwiftUI
 import MapKit
 
 struct ComponentMap: View {
-    @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var navigation: Navigation
-    
-    @State var position: MapCameraPosition = .userLocation(fallback: .automatic)
-    
+    @EnvironmentObject var vmCommercial: ViewModelCommercial
+    @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
+
+    @StateObject var location: LocationManager = LocationManager.instance
     @Namespace private var mapScope
-    
-//    private var commercialProperties: [Annotation<<#Label: View#>, <#Content: View#>>] {
-//        if let properties = vmCommercial.properties {
-//            ForEach(properties) { property in
-//                if let coordinates = property.coordinates {
-//                    Annotation(property.address?.toString() ?? "", coordinate: coordinates) {
-//                        Image(systemName: "pin")
-//                            .onTapGesture {
-//                                navigation.change(page: .commercialproperty(property: property))
-//                            }
-//                    }
-//                }
-//            }
-//        }
-//    }
-    
+
     var body: some View {
-        Map(scope: mapScope) {
+        Map(position: $location.position) {
             UserAnnotation()
             
             if let properties = vmCommercial.properties {
@@ -42,9 +27,22 @@ struct ComponentMap: View {
                             Image(systemName: "pin")
                                 .onTapGesture {
                                     navigation.change(page: .commercialproperty(property: property))
+                                    location.changeCamera(coordinates: coordinates)
                                 }
                         }
                     }
+                }
+            }
+            
+            if let property = vmCommercialProperty.property,
+               let address = property.address?.toString(),
+               let coordinates = property.coordinates {
+                Annotation(address, coordinate: coordinates) {
+                    Image(systemName: "mappin")
+                        .onTapGesture {
+                            navigation.change(page: .commercialproperty(property: property))
+                            location.changeCamera(coordinates: coordinates)
+                        }
                 }
             }
         }
@@ -59,6 +57,7 @@ struct ComponentMap: View {
 
 #Preview {
     ComponentMap()
-        .environmentObject(ViewModelCommercial())
         .environmentObject(Navigation())
+        .environmentObject(ViewModelCommercial())
+        .environmentObject(ViewModelCommercialProperty())
 }

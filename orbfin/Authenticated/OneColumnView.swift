@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct OneColumnView: View {
-    @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmCommercial: ViewModelCommercial
+    @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
 
-    var isLoggedIn: Bool {
-        authentication.isValid
-    }
-    
     var body: some View {
         NavigationStack {
             ViewAuthenticated()
+                .environmentObject(navigation)
+                .environmentObject(vmCommercial)
+                .environmentObject(vmCommercialProperty)
+
         }
         .safeAreaInset(edge: .bottom) {
             HStack(alignment: .center, spacing: 50) {
@@ -58,9 +58,10 @@ struct OneColumnView_Previews: PreviewProvider {
             OneColumnView()
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
-                .environmentObject(Authentication())
                 .environmentObject(Navigation())
                 .environmentObject(ViewModelCommercial())
+                .environmentObject(ViewModelCommercialProperty(property: PreviewCommercial.loadProperties()[0]))
+
         }
     }
 }
