@@ -12,11 +12,16 @@ struct ContentView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmCommercial: ViewModelCommercial
+    @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
+    @EnvironmentObject var vmResidential: ViewModelResidential
+    @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
+    @EnvironmentObject var vmManagePersonal: ViewModelManagePersonal
+    @EnvironmentObject var vmManageBusiness: ViewModelManageBusiness
     
     @AppStorage("layoutExperience") var selectedLayoutExperience: String?
 
     var isLoggedIn: Bool {
-        authentication.checkAuthentication()
+        authentication.isValid
     }
     
     var body: some View {
@@ -60,6 +65,11 @@ struct ContentView: View {
         .environmentObject(authentication)
         .environmentObject(navigation)
         .environmentObject(vmCommercial)
+        .environmentObject(vmCommercialProperty)
+        .environmentObject(vmResidential)
+        .environmentObject(vmResidentialProperty)
+        .environmentObject(vmManagePersonal)
+        .environmentObject(vmManageBusiness)
 
     }
 }
@@ -68,4 +78,10 @@ struct ContentView: View {
     ContentView()
         .environmentObject(Authentication())
         .environmentObject(Navigation())
+        .environmentObject(ViewModelCommercial())
+        .environmentObject(ViewModelCommercialProperty())
+        .environmentObject(ViewModelResidential())
+        .environmentObject(ViewModelResidentialProperty())
+        .environmentObject(ViewModelManagePersonal())
+        .environmentObject(ViewModelManageBusiness())
 }

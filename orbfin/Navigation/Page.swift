@@ -443,17 +443,14 @@ extension Page {
         switch self {
         case .home:
             return [
-                .manage,
-                .invest,
-                .services
+                .settings,
+                .forgot,
+                .logout
             ]
         case .manage:
             return [
                 .personal,
-                .business,
-                .settings,
-                .forgot,
-                .logout
+                .business
             ]
         case .personal:
             return [

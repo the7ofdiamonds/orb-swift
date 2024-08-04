@@ -8,17 +8,22 @@
 import SwiftUI
 
 struct OneColumnView: View {
+    @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
+    @EnvironmentObject var vmResidential: ViewModelResidential
+    @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
 
     var body: some View {
         NavigationStack {
             ViewAuthenticated()
+                .environmentObject(authentication)
                 .environmentObject(navigation)
                 .environmentObject(vmCommercial)
                 .environmentObject(vmCommercialProperty)
-
+                .environmentObject(vmResidential)
+                .environmentObject(vmResidentialProperty)
         }
         .safeAreaInset(edge: .bottom) {
             HStack(alignment: .center, spacing: 50) {
@@ -43,10 +48,12 @@ struct OneColumnView_Previews: PreviewProvider {
             OneColumnView()
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
-                .environmentObject(Navigation())
-                .environmentObject(ViewModelCommercial())
-                .environmentObject(ViewModelCommercialProperty(property: PreviewCommercial.loadProperties()[0]))
-
         }
+        .environmentObject(Authentication())
+        .environmentObject(Navigation())
+        .environmentObject(ViewModelCommercial())
+        .environmentObject(ViewModelCommercialProperty())
+        .environmentObject(ViewModelResidential())
+        .environmentObject(ViewModelResidentialProperty())
     }
 }

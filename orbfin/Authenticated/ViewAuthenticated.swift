@@ -9,11 +9,14 @@ import SwiftUI
 import MapKit
 
 struct ViewAuthenticated: View {
+    @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     @EnvironmentObject var vmResidential: ViewModelResidential
     @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
+    @EnvironmentObject var vmManagePersonal: ViewModelManagePersonal
+    @EnvironmentObject var vmManageBusiness: ViewModelManageBusiness
     
     @ViewBuilder var body: some View {
         ZStack {
@@ -52,5 +55,9 @@ struct ViewAuthenticated_Previews: PreviewProvider {
         .environmentObject(Navigation())
         .environmentObject(ViewModelCommercial())
         .environmentObject(ViewModelCommercialProperty(property: PreviewCommercial.loadProperties()[0]))
+        .environmentObject(ViewModelResidential())
+        .environmentObject(ViewModelResidentialProperty(property: PreviewResidential.loadProperties()[0]))
+        .environmentObject(ViewModelManagePersonal())
+        .environmentObject(ViewModelManageBusiness())
     }
 }

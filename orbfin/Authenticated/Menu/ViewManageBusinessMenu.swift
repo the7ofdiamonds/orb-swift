@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ViewManageBusinessMenu: View {
     @EnvironmentObject var navigation: Navigation
-
+    @EnvironmentObject var vmManageBusiness: ViewModelManageBusiness
+    
     var body: some View {
         Section {
             List {
@@ -17,17 +18,23 @@ struct ViewManageBusinessMenu: View {
                     .fontWeight(.bold)
                 
                 ForEach(Page.business.submenu) { menu in
-                        Button(action: {
-                            navigation.browse(page: menu)
-                        }, label: {
+                    Button(action: {
+                        navigation.browse(page: menu)
+                    }, label: {
+                        HStack{
                             Text(menu.label)
-                        })
-                        .font(.headline)
+                            Text(vmManageBusiness.getManageBusinessData(page: menu))
+                        }
+                    })
+                    .font(.headline)
                 }
             }
-        }    }
+        }
+    }
 }
 
 #Preview {
     ViewManageBusinessMenu()
+        .environmentObject(Navigation())
+        .environmentObject(ViewModelManageBusiness())
 }

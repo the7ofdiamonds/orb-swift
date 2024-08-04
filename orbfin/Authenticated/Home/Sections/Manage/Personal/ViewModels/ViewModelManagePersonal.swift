@@ -1,14 +1,14 @@
 //
-//  ViewModelManageBusiness.swift
+//  ViewModelManagePersonal.swift
 //  orbfin
 //
-//  Created by Jamel Lyons on 7/17/24.
+//  Created by Jamel Lyons on 8/4/24.
 //
 
 import Foundation
 
 @MainActor
-class ViewModelManageBusiness: ObservableObject {
+class ViewModelManagePersonal: ObservableObject {
     @Published var currency: String?
     @Published var revenue: Float = 0
     @Published var expenses: Float = 0
@@ -32,21 +32,21 @@ class ViewModelManageBusiness: ObservableObject {
 //        self.transactions = 100000.00
     }
     
-    func getManageBusinessData(page: Page) -> String {
+    func getManagePersonalData(page: Page) -> String {
         switch page {
-        case .businessrevenue:
+        case .personalrevenue:
             return Format.formatCurrency(revenue, currency: currency)
-        case .businessincome:
+        case .personalincome:
             return Format.formatCurrency(income, currency: currency)
-        case .businessexpenses:
+        case .personalexpenses:
             return Format.formatCurrency(expenses, currency: currency)
-        case .businessassets:
+        case .personalassets:
             return Format.formatCurrency(assets, currency: currency)
-        case .businessliabilities:
+        case .personalliabilities:
             return Format.formatCurrency(liabilities, currency: currency)
-        case .businesscontra:
+        case .personalcontra:
             return Format.formatCurrency(contra, currency: currency)
-        case .businesstax:
+        case .personaltax:
             return Format.formatCurrency(tax, currency: currency)
         default:
             return ""

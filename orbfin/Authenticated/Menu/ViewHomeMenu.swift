@@ -8,26 +8,27 @@
 import SwiftUI
 
 struct ViewHomeMenu: View {
+    @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
 
     var isLoggedIn: Bool {
-            Authentication().isValid
+        authentication.isValid
     }
     
     var body: some View {
         if isLoggedIn {
             List {
                 Button(action: {
-                    navigation.change(menu: Menu.manage)
+                    navigation.change(page: Page.manage)
                 }, label: {
-                    Text(Menu.manage.title)
+                    Text(Page.manage.label)
                 })
                 .font(.headline)
                 .fontWeight(.bold)
                 
-                ForEach(Menu.manage.submenu) { submenu in
+                ForEach(Page.manage.submenu) { submenu in
                     Button(action: {
-                        navigation.change(menu: submenu)
+                        navigation.change(page: submenu)
                     }, label: {
                         Text(submenu.label)
                     })
@@ -36,16 +37,16 @@ struct ViewHomeMenu: View {
             
             List{
                 Button(action: {
-                    navigation.change(menu: Menu.invest)
+                    navigation.change(page: Page.invest)
                 }, label: {
-                    Text(Menu.invest.title)
+                    Text(Page.invest.label)
                 })
                 .font(.headline)
                 .fontWeight(.bold)
                 
-                ForEach(Menu.invest.submenu) { submenu in
+                ForEach(Page.invest.submenu) { submenu in
                     Button(action: {
-                        navigation.change(menu: submenu)
+                        navigation.change(page: submenu)
                     }, label: {
                         Text(submenu.label)
                     })
@@ -54,16 +55,16 @@ struct ViewHomeMenu: View {
             
             List {
                 Button(action: {
-                    navigation.change(menu: Menu.services)
+                    navigation.change(page: Page.services)
                 }, label: {
-                    Text(Menu.services.title)
+                    Text(Page.services.label)
                 })
                 .font(.headline)
                 .fontWeight(.bold)
                 
-                ForEach(Menu.services.submenu) { submenu in
+                ForEach(Page.services.submenu) { submenu in
                     Button(action: {
-                        navigation.change(menu: submenu)
+                        navigation.change(page: submenu)
                     }, label: {
                         Text(submenu.label)
                     })
@@ -77,5 +78,6 @@ struct ViewHomeMenu: View {
 
 #Preview {
     ViewHomeMenu()
+        .environmentObject(Authentication())
         .environmentObject(Navigation())
 }

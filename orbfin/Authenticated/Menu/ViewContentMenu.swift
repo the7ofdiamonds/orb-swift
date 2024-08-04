@@ -7,10 +7,14 @@
 
 import SwiftUI
 
-struct ViewHomeContentMenu: View {
+struct ViewContentMenu: View {
+    @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmCommercial: ViewModelCommercial
-
+    @EnvironmentObject var vmResidential: ViewModelResidential
+    @EnvironmentObject var vmManagePersonal: ViewModelManagePersonal
+    @EnvironmentObject var vmManageBusiness: ViewModelManageBusiness
+    
     private let manage: Page = Page.manage
     private let invest: Page = Page.invest
     private let services: Page = Page.services
@@ -46,7 +50,7 @@ struct ViewHomeContentMenu: View {
     }
 }
 
-extension ViewHomeContentMenu {
+extension ViewContentMenu {
     var body: some View {
         VStack {
             if !isHomeMenu {
@@ -102,7 +106,9 @@ extension ViewHomeContentMenu {
 }
 
 #Preview {
-    ViewHomeContentMenu()
+    ViewContentMenu()
+        .environmentObject(Authentication())
         .environmentObject(Navigation())
         .environmentObject(ViewModelCommercial())
+        .environmentObject(ViewModelResidential())
 }

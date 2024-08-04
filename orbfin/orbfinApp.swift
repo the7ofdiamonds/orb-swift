@@ -16,6 +16,8 @@ struct orbfinApp: App {
     @StateObject private var vmCommercialProperty = ViewModelCommercialProperty()
     @StateObject private var vmResidential = ViewModelResidential()
     @StateObject private var vmResidentialProperty = ViewModelResidentialProperty()
+    @StateObject private var vmManagePersonal = ViewModelManagePersonal()
+    @StateObject private var vmManageBusiness = ViewModelManageBusiness()
     
     var body: some Scene {
         WindowGroup {
@@ -26,6 +28,8 @@ struct orbfinApp: App {
                 .environmentObject(vmCommercialProperty)
                 .environmentObject(vmResidential)
                 .environmentObject(vmResidentialProperty)
+                .environmentObject(vmManagePersonal)
+                .environmentObject(vmManageBusiness)
         }
     }
 }
@@ -38,4 +42,6 @@ struct orbfinApp: App {
         .environmentObject(ViewModelCommercialProperty())
         .environmentObject(ViewModelResidential())
         .environmentObject(ViewModelResidentialProperty())
+        .environmentObject(ViewModelManagePersonal())
+        .environmentObject(ViewModelManageBusiness())
 }

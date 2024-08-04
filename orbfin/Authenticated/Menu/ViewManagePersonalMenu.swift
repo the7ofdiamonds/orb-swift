@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ViewManagePersonalMenu: View {
     @EnvironmentObject var navigation: Navigation
-
+    @EnvironmentObject var vmManagePersonal: ViewModelManagePersonal
+    
     var body: some View {
         Section {
             List {
@@ -20,7 +21,10 @@ struct ViewManagePersonalMenu: View {
                         Button(action: {
                             navigation.browse(page: menu)
                         }, label: {
-                            Text(menu.label)
+                            HStack {
+                                Text(menu.label)
+                                Text(vmManagePersonal.getManagePersonalData(page: menu))
+                            }
                         })
                         .font(.headline)
                 }
