@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 actor Forgot {
-    @StateObject var locationManager: LocationManager = LocationManager.instance
+    @StateObject private var locationManager: LocationManager = LocationManager.instance
     
     func password(requestForgot: RequestForgot) async throws -> ResponseForgot {
         guard let url = URL(string: BackendURLs.forgotPassword) else {

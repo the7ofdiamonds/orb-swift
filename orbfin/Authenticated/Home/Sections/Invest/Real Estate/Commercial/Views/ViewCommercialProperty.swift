@@ -9,25 +9,17 @@ import SwiftUI
 import MapKit
 
 struct ViewCommercialProperty: View {
-    var property: Commercial
-    @StateObject var vmCommercialProperty: ViewModelCommercialProperty
-    @StateObject var location: LocationManager = LocationManager.instance
+    @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
+    
+    @StateObject private var location: LocationManager = LocationManager.instance
 
-    init(property: Commercial) {
-        self.property = property
-       
-        _vmCommercialProperty = StateObject(wrappedValue: ViewModelCommercialProperty(property: property))
-        
-        if let coordinates = property.coordinates {
-            location.changeCamera(coordinates: coordinates)
-        }
-    }
+    var property: Commercial
     
     var body: some View {
         ScrollView {
 
             VStack(spacing: 25) {
-
+                
                 if let images = property.images {
                     ComponentCardImages(images: images)
                 }
@@ -55,6 +47,11 @@ struct ViewCommercialProperty: View {
                 if let landDetails = property.landDetails {
                     ComponentCardLandDetails(landDetails: landDetails)
                 }
+            }
+        }
+        .onAppear {
+            if let coordinates = property.coordinates {
+                location.changeCamera(coordinates: coordinates)
             }
         }
     }

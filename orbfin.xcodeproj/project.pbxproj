@@ -49,6 +49,8 @@
 		A417780D2C5AB81F009C1353 /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A417780C2C5AB81F009C1353 /* Padding.swift */; };
 		A417780F2C5B013E009C1353 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A417780E2C5B013E009C1353 /* View.swift */; };
 		A41778112C5B47CE009C1353 /* ComponentCardFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41778102C5B47CE009C1353 /* ComponentCardFixed.swift */; };
+		A42CC9142C5EAFA7004845AB /* ComponentButtonMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42CC9132C5EAFA7004845AB /* ComponentButtonMenu.swift */; };
+		A42CC9162C5EE0D9004845AB /* ViewRealEstateCommercialMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42CC9152C5EE0D9004845AB /* ViewRealEstateCommercialMenu.swift */; };
 		A435414F2C3B71EE00B32BC1 /* ViewModelLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435414E2C3B71EE00B32BC1 /* ViewModelLogin.swift */; };
 		A43541512C3B8C7B00B32BC1 /* ComponentMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541502C3B8C7B00B32BC1 /* ComponentMap.swift */; };
 		A43541532C3B8F3100B32BC1 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541522C3B8F3100B32BC1 /* Login.swift */; };
@@ -193,6 +195,8 @@
 		A417780C2C5AB81F009C1353 /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		A417780E2C5B013E009C1353 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		A41778102C5B47CE009C1353 /* ComponentCardFixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCardFixed.swift; sourceTree = "<group>"; };
+		A42CC9132C5EAFA7004845AB /* ComponentButtonMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentButtonMenu.swift; sourceTree = "<group>"; };
+		A42CC9152C5EE0D9004845AB /* ViewRealEstateCommercialMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRealEstateCommercialMenu.swift; sourceTree = "<group>"; };
 		A435414E2C3B71EE00B32BC1 /* ViewModelLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelLogin.swift; sourceTree = "<group>"; };
 		A43541502C3B8C7B00B32BC1 /* ComponentMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentMap.swift; sourceTree = "<group>"; };
 		A43541522C3B8F3100B32BC1 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -430,6 +434,16 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		A42CC9172C5EFDC0004845AB /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				A4EA3CE32C4C379200CEFCFF /* ViewHomeMenu.swift */,
+				A4EA3D012C50287700CEFCFF /* ViewHomeContentMenu.swift */,
+				A42CC9152C5EE0D9004845AB /* ViewRealEstateCommercialMenu.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		A43541632C3F029D00B32BC1 /* Input */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,8 +491,6 @@
 				A4605E952C41C0DB0091CC52 /* Sections */,
 				A49C0BD62C49AED500968AFB /* Logout */,
 				A49C0BEF2C4A132800968AFB /* Settings */,
-				A4EA3CE32C4C379200CEFCFF /* ViewHomeMenu.swift */,
-				A4EA3D012C50287700CEFCFF /* ViewHomeContentMenu.swift */,
 				A45676352C5C43A00025A730 /* ViewModelHome.swift */,
 				A43C29EE2C411F72002BF1AE /* ViewHome.swift */,
 			);
@@ -763,6 +775,7 @@
 				A49C0BB12C4765E800968AFB /* ComponentButtonHNav.swift */,
 				A47FC8B62C5468970096D557 /* ComponentButtonHome.swift */,
 				A4041C822C56ECD1001FD37B /* ComponentButtonBack.swift */,
+				A42CC9132C5EAFA7004845AB /* ComponentButtonMenu.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -855,6 +868,7 @@
 		A4EA3D032C53E04600CEFCFF /* Authenticated */ = {
 			isa = PBXGroup;
 			children = (
+				A42CC9172C5EFDC0004845AB /* Menu */,
 				A4605E942C41C0820091CC52 /* Home */,
 				A41778092C59BBD2009C1353 /* Map */,
 				A41778052C598483009C1353 /* ViewModelAuthenticated.swift */,
@@ -1008,6 +1022,7 @@
 				A4041C782C557C20001FD37B /* RequestChangePhone.swift in Sources */,
 				A4041C942C580710001FD37B /* ComponentCardOverview.swift in Sources */,
 				A4041C5D2C5534E4001FD37B /* ResponseSignup.swift in Sources */,
+				A42CC9142C5EAFA7004845AB /* ComponentButtonMenu.swift in Sources */,
 				A4EA3CE42C4C379200CEFCFF /* ViewHomeMenu.swift in Sources */,
 				A43C29E12C406ECE002BF1AE /* InputEmail.swift in Sources */,
 				A4EA3CD82C4A982D00CEFCFF /* ViewManagePersonalContra.swift in Sources */,
@@ -1055,6 +1070,7 @@
 				A4041C572C5524ED001FD37B /* ViewModelSignup.swift in Sources */,
 				A43C29D72C405404002BF1AE /* RequestLogout.swift in Sources */,
 				A4EA3CDC2C4B4B4300CEFCFF /* ViewModelManageBusinessTransactions.swift in Sources */,
+				A42CC9162C5EE0D9004845AB /* ViewRealEstateCommercialMenu.swift in Sources */,
 				A43C29FD2C41B31F002BF1AE /* ComponentButtonH.swift in Sources */,
 				A43C29F62C4197C6002BF1AE /* ComponentBar.swift in Sources */,
 				A417780F2C5B013E009C1353 /* View.swift in Sources */,

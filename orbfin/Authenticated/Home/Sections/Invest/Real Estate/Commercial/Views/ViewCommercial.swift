@@ -12,18 +12,15 @@ struct ViewCommercial: View {
     @EnvironmentObject var vm: ViewModelCommercial
     @EnvironmentObject var navigation: Navigation
 
-    @StateObject var location: LocationManager = LocationManager.instance
+    @StateObject private var location: LocationManager = LocationManager.instance
     
-    var properties: [Commercial]?
-
-    init(properties: [Commercial]? = nil) {
-        self.properties = properties
+    var properties: [Commercial]? {
+        return vm.properties
     }
-    
     
     var body: some View {
         ComponentCard {
-            ComponentButtonH(label: Page.commercial(properties: properties).title, icon: Page.commercial(properties: properties).icon) {
+            ComponentButtonH(label: Page.commercial.title, icon: Page.commercial.icon) {
                 Task {
                     await vm.getProperties()
                 }
@@ -33,7 +30,7 @@ struct ViewCommercial: View {
                 if let properties {
                     ForEach(properties) { property in
                         Button(action: {
-                            navigation.change(page: .commercialproperty(property: property))
+                            navigation.browse(page: .commercialproperty(property: property))
                             if let coordinates = property.coordinates {
                                 location.changeCamera(coordinates: coordinates)
                             }
@@ -43,6 +40,11 @@ struct ViewCommercial: View {
                         .font(.headline)
                         .fontWeight(.bold)
                     }
+                }
+            }
+            .onAppear {
+                if let properties, let coordinates = properties[0].coordinates {
+                    location.changeCamera(coordinates: coordinates)
                 }
             }
         }

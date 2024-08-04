@@ -11,7 +11,7 @@ struct ViewRealEstate: View {
     var body: some View {
         ComponentCardFixed {
             VStack(spacing: 30){
-                ComponentButtonHNav(page: .commercial(properties: nil))
+                ComponentButtonHNav(page: .commercial)
                 
                 ComponentDivider()
                 

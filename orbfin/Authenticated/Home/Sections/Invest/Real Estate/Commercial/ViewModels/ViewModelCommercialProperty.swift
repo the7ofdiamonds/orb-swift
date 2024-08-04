@@ -13,10 +13,13 @@ class ViewModelCommercialProperty: ObservableObject {
     @Published var property: Commercial?
 
     init(property: Commercial? = nil) {
-        self.property = property
-
-        Task {
-            await fetchCoordinatesForProperty()
+        if property != nil {
+            self.property = property
+            Task {
+                await fetchCoordinatesForProperty()
+            }
+        } else {
+            self.property = PreviewCommercialProperty.loadProperty()
         }
     }
     

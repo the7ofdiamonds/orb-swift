@@ -50,61 +50,37 @@ extension ViewHomeContentMenu {
     var body: some View {
         VStack {
             if !isHomeMenu {
-                Section {
-                    List {
-                        Button(action: {
-                            if currentPageMenu == .commercial(properties: vmCommercial.properties) {
-                                navigation.change(page: .commercial(properties: vmCommercial.properties))
-                            } else {
-                                navigation.change(page: currentPageMenu)
+                switch navigation.isPage {
+                case .commercial:
+                    ViewRealEstateCommercialMenu()
+                default:
+                    Section {
+                        List {
+                            ComponentButtonMenu(menu: currentPageMenu)
+                                .fontWeight(.bold)
+
+                            let submenu = currentPageMenu.submenu
+                            
+                            ForEach(submenu, id: \.id) { menu in
+                                ComponentButtonMenu(menu: menu)
                             }
-                        }, label: {
-                            Text(currentPageMenu.label)
-                        })
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        
-                        let submenu = currentPageMenu.submenu
-                        
-                        ForEach(submenu, id: \.id) { menu in
-                            Button(action: {
-                                if menu == .commercial(properties: vmCommercial.properties) {
-                                    navigation.change(page: .commercial(properties: vmCommercial.properties))
-                                    print("true")
-                                } else {
-                                    navigation.change(page: menu)
-                                    print("false")
-                                }
-                            }, label: {
-                                Text(menu.label)
-                            })
                         }
                     }
                 }
             }
-            
             
             if let menu = navigation.isPage {
                 if !isHomeMenu {
                     Section {
                         List {
                             if let parent = menu.parent {
-                                Button(action: {
-                                    navigation.change(page: parent)
-                                }, label: {
-                                    Text(parent.label)
-                                })
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                
+                                ComponentButtonMenu(menu: parent)
+                                    .fontWeight(.bold)
+
                                 let submenu = parent.submenu
                                 
                                 ForEach(submenu) { menu in
-                                    Button(action: {
-                                        navigation.change(page: menu)
-                                    }, label: {
-                                        Text(menu.label)
-                                    })
+                                    ComponentButtonMenu(menu: menu)
                                 }
                             }
                         }

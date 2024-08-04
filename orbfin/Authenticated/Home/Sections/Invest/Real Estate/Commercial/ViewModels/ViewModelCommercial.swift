@@ -14,6 +14,10 @@ class ViewModelCommercial: ObservableObject {
     @Published var properties: [Commercial]?
     @Published var errorMessage: String?
     
+    init(properties: [Commercial]? = nil) {
+        self.properties = properties
+    }
+    
     func getProperties() async {
         do {
             var properties = PreviewCommercial.loadProperties()
