@@ -1,41 +1,40 @@
 //
-//  Commercial.swift
+//  Residential.swift
 //  orbfin
 //
 //  Created by Jamel Lyons on 7/18/24.
 //
 
 import SwiftUI
-import MapKit
 
-struct ViewCommercial: View {
-    @EnvironmentObject var vm: ViewModelCommercial
+struct ViewResidential: View {
+    @EnvironmentObject var vm: ViewModelResidential
     @EnvironmentObject var navigation: Navigation
 
     @StateObject private var location: LocationManager = LocationManager.instance
     
-    var properties: [Commercial]? {
+    var properties: [Residential]? {
         return vm.properties
     }
     
     var body: some View {
         ComponentCard {
-            ComponentButtonH(label: Page.commercial.title, icon: Page.commercial.icon) {
+            ComponentButtonH(label: Page.residential.title, icon: Page.residential.icon) {
                 Task {
                     await vm.getProperties()
                 }
             }
-        
+            
             List {
                 if let properties {
                     ForEach(properties) { property in
                         Button(action: {
-                            navigation.browse(page: .commercialproperty(property: property))
+                            navigation.browse(page: .residentialproperty(property: property))
                             if let coordinates = property.coordinates {
                                 location.changeCamera(coordinates: coordinates)
                             }
                         }, label: {
-                            Text(property.address?.toString() ?? "Commercial Property")
+                            Text(property.address?.toString() ?? "Residential Property")
                         })
                         .font(.headline)
                         .fontWeight(.bold)
@@ -49,7 +48,7 @@ struct ViewCommercial: View {
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("Commercial")
+                    Text("Residential")
                         .font(.title)
                         .fontWeight(.bold)
                 }
@@ -59,19 +58,19 @@ struct ViewCommercial: View {
     }
 }
 
-struct ViewCommercial_Previews: PreviewProvider {
+struct ViewResidential_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ViewCommercial()
+            ViewResidential()
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
-                .environmentObject(ViewModelCommercial())
+                .environmentObject(ViewModelResidential())
                 .environmentObject(Navigation())
             
-            ViewCommercial()
+            ViewResidential()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
-                .environmentObject(ViewModelCommercial())
+                .environmentObject(ViewModelResidential())
                 .environmentObject(Navigation())
         }
     }

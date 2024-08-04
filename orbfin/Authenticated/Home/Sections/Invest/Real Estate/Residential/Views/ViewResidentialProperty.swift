@@ -1,19 +1,18 @@
 //
-//  ViewCommercialProperty.swift
+//  ViewResidentialProperty.swift
 //  orbfin
 //
-//  Created by Jamel Lyons on 7/29/24.
+//  Created by Jamel Lyons on 8/4/24.
 //
 
 import SwiftUI
-import MapKit
 
-struct ViewCommercialProperty: View {
-    @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
+struct ViewResidentialProperty: View {
+    @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
     
     @StateObject private var location: LocationManager = LocationManager.instance
 
-    var property: Commercial
+    var property: Residential
     
     var body: some View {
         ScrollView {
@@ -75,16 +74,7 @@ struct ViewCommercialProperty: View {
     }
 }
 
-struct ViewCommercialProperty_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ViewCommercialProperty(property: PreviewCommercialProperty.loadProperty())                .previewDisplayName("iPhone 15 Pro")
-                .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
-                .environmentObject(Navigation())
-            
-            ViewCommercialProperty(property: PreviewCommercialProperty.loadProperty())                .previewDisplayName("iPad Pro")
-                .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
-                .environmentObject(Navigation())
-        }
-    }
+#Preview {
+    ViewResidentialProperty(property: PreviewResidentialProperty.loadProperty())
+        .environmentObject(ViewModelResidentialProperty())
 }

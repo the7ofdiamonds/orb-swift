@@ -12,6 +12,8 @@ struct ViewAuthenticated: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
+    @EnvironmentObject var vmResidential: ViewModelResidential
+    @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
     
     @ViewBuilder var body: some View {
         ZStack {
@@ -19,6 +21,8 @@ struct ViewAuthenticated: View {
                 .environmentObject(navigation)
                 .environmentObject(vmCommercial)
                 .environmentObject(vmCommercialProperty)
+                .environmentObject(vmResidential)
+                .environmentObject(vmResidentialProperty)
 
             VStack {
                 Spacer()

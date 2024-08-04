@@ -53,6 +53,12 @@ extension ViewHomeContentMenu {
                 switch navigation.isPage {
                 case .commercial:
                     ViewRealEstateCommercialMenu()
+                case .residential:
+                    ViewRealEstateResidentialMenu()
+                case .personal:
+                    ViewManagePersonalMenu()
+                case .business:
+                    ViewManageBusinessMenu()
                 default:
                     Section {
                         List {

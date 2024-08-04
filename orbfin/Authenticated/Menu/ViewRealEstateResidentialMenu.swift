@@ -1,18 +1,18 @@
 //
-//  ViewRealEstateCommercialMenu.swift
+//  ViewRealEstateResidentialMenu.swift
 //  orbfin
 //
-//  Created by Jamel Lyons on 8/3/24.
+//  Created by Jamel Lyons on 8/4/24.
 //
 
 import SwiftUI
 
-struct ViewRealEstateCommercialMenu: View {
+struct ViewRealEstateResidentialMenu: View {
     @EnvironmentObject var navigation: Navigation
-    @EnvironmentObject var vmCommercial: ViewModelCommercial
+    @EnvironmentObject var vmResidential: ViewModelResidential
 
-    var properties: [Commercial]? {
-        if let properties = vmCommercial.properties {
+    var properties: [Residential]? {
+        if let properties = vmResidential.properties {
             return properties
         } else {
             return nil
@@ -22,13 +22,13 @@ struct ViewRealEstateCommercialMenu: View {
     var body: some View {
         Section {
             List {
-                ComponentButtonMenu(menu: .commercial)
+                ComponentButtonMenu(menu: .residential)
                     .fontWeight(.bold)
                 
                 if let properties {
                     ForEach(properties) { property in
                         Button(action: {
-                            navigation.browse(page: .commercialproperty(property: property))
+                            navigation.browse(page: .residentialproperty(property: property))
                         }, label: {
                             Text(property.address?.toString() ?? "Commercial Property")
                         })
@@ -42,5 +42,6 @@ struct ViewRealEstateCommercialMenu: View {
 }
 
 #Preview {
-    ViewRealEstateCommercialMenu()
+    ViewRealEstateResidentialMenu()
+        .environmentObject(ViewModelResidential())
 }

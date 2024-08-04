@@ -34,24 +34,6 @@ struct TwoColumnView: View {
             }
         } detail: {
             ViewAuthenticated()
-                .toolbar(content: {
-                    ToolbarItem(placement: .principal) {
-                        if let page = navigation.isPage {
-                            HStack {
-                                Spacer()
-                                
-                                Text(page.title)
-                                    .font(Styling.font(component: .title))
-                                    .kerning(Styling.kerning)
-                                    .padding()
-                                
-                                Spacer()
-                            }
-                            .background(Color(Styling.color(.Bar)))
-                        }
-                    }
-                })
-            
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             ComponentBar()

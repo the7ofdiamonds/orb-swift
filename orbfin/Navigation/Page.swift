@@ -46,6 +46,7 @@ enum Page: CaseIterable, Identifiable, Equatable {
     case commercial
     case commercialproperty(property: Commercial)
     case residential
+    case residentialproperty(property: Residential)
     case tangibleassets
     case tangibleassetsrealestate
     case tangibleassetscommercial
@@ -94,6 +95,7 @@ extension Page {
             .commercial,
             .commercialproperty(property: Commercial()),
             .residential,
+            .residentialproperty(property: Residential()),
             .tangibleassets,
             .tangibleassetsrealestate,
             .tangibleassetscommercial,
@@ -184,13 +186,19 @@ extension Page {
         case .commercial:
             return "Commercial Real Estate"
         case .commercialproperty(let property):
-            if let address = property.address{
-                return address.toString()
+            if let address = property.address?.toString() {
+                return address
             } else {
                 return "Commercial Property"
             }
         case .residential:
             return "Residential"
+        case .residentialproperty(let property):
+            if let address = property.address?.toString() {
+                return address
+            } else {
+                return "Residential Property"
+            }
         case .tangibleassets:
             return "Tangible Assets"
         case .tangibleassetsrealestate:
@@ -282,13 +290,19 @@ extension Page {
         case .commercial:
             return "Commercial"
         case .commercialproperty(let property):
-            if let address = property.address{
-                return address.toString()
+            if let address = property.address?.toString(){
+                return address
             } else {
                 return "Commercial Property"
             }
         case .residential:
             return "Residential"
+        case .residentialproperty(let property):
+            if let address = property.address?.toString(){
+                return address
+            } else {
+                return "Residential Property"
+            }
         case .tangibleassets:
             return "Tangible Assets"
         case .tangibleassetsrealestate:
@@ -404,7 +418,7 @@ extension Page {
                 .invest
         case .commercial:
                 .realestate
-        case .commercialproperty:
+        case .commercialproperty(let property):
                 .commercial
         case .residential:
                 .realestate
@@ -454,11 +468,11 @@ extension Page {
                 .businessrevenue,
                 .businessincome,
                 .businessexpenses,
-                .personalassets,
-                .personalliabilities,
+                .businessassets,
+                .businessliabilities,
                 .businesscontra,
                 .businesstax,
-                .personaltransactions
+                .businesstransactions
             ]
         case .settings:
             return []
@@ -574,6 +588,8 @@ extension Page {
             AnyView(ViewCommercialProperty(property: property))
         case .residential:
             AnyView(ViewResidential())
+        case .residentialproperty(let property):
+            AnyView(ViewResidentialProperty(property: property))
         case .tangibleassets:
             AnyView(ViewTangibleAssets())
         case .tangibleassetsrealestate:

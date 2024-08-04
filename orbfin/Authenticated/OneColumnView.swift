@@ -33,21 +33,6 @@ struct OneColumnView: View {
             .background(Styling.color(.Bar))
 
         }
-        .safeAreaInset(edge: .top, content: {
-            if let page = navigation.isPage {
-                HStack {
-                    Spacer()
-                    
-                    Text(page.title)
-                        .font(Styling.font(component: .title))
-                        .kerning(Styling.kerning)
-                        .padding()
-                    
-                    Spacer()
-                }
-                .background(Color(Styling.color(.Bar)))
-            }
-        })
         
     }
 }
