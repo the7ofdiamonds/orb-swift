@@ -31,12 +31,17 @@ struct ViewAuthenticated: View {
                 Spacer()
                 
                 navigation.isView
+                    .environmentObject(vmCommercial)
+                    .environmentObject(vmCommercialProperty)
+                    .environmentObject(vmResidential)
+                    .environmentObject(vmResidentialProperty)
                 
                 Spacer()
             }
             .padding(.top, Styling.paddingEdgesTop())
             .padding(.horizontal, Styling.paddingEdgesHorizontal())
             .padding(.bottom, Styling.paddingEdgesBottom())
+            
         }
     }
 }

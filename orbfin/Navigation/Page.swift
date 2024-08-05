@@ -109,13 +109,26 @@ extension Page {
     }
     
     static func == (lhs: Page, rhs: Page) -> Bool {
-        lhs.title == rhs.title
+        return lhs.id == rhs.id
     }
 }
 
 extension Page {
     var id: String {
-        UUID().uuidString
+        switch self {
+        case .commercial:
+            "1"
+        case .commercialproperty(property: nil):
+            "2"
+        case .residential:
+            "3"
+        case .residentialproperty(property: nil):
+            "4"
+        case .services:
+            "5"
+        default:
+            UUID().uuidString
+        }
     }
     
     var title: String {
@@ -582,11 +595,11 @@ extension Page {
         case .commercial:
             AnyView(ViewCommercial())
         case .commercialproperty(let property):
-            AnyView(ViewCommercialProperty(property: property))
+            AnyView(ViewCommercialProperty(property: property, show: true))
         case .residential:
             AnyView(ViewResidential())
         case .residentialproperty(let property):
-            AnyView(ViewResidentialProperty(property: property))
+            AnyView(ViewResidentialProperty(property: property, show: true))
         case .tangibleassets:
             AnyView(ViewTangibleAssets())
         case .tangibleassetsrealestate:

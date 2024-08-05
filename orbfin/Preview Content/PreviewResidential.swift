@@ -11,13 +11,13 @@ struct PreviewResidential {
     static func loadProperties() -> [Residential] {
         var properties: [Residential] = []
         var property = Residential(id: "1")
-        property.images = ["https://images1.showcase.com/i2/BpZ-3-dR-1KR4p5Vz-scESpRJwbmGHrJV6VaaNuSDTg/114/image.jpg", "https://images1.showcase.com/i2/r3xY0qE0KwP0SnvmI8HC6zbu_8tv_XJ6JYrO9EAzBfM/114/image.jpg"]
+        property.images = ["https://photos.zillowstatic.com/fp/6fdab9937e2a88d57e5c393816fa94a9-cc_ft_1536.webp"]
         
-        property.streetAddress = "68 McDowell St"
-        property.city = "Columbus"
-        property.state = "OH"
-        property.zipcode = "43215"
-        property.county = "Franklin"
+        property.streetAddress = "439 Baker Cir NW"
+        property.city = "Atlanta"
+        property.state = "GA"
+        property.zipcode = "30318"
+        property.county = ""
         property.address = Address(streetAddress: property.streetAddress,
                                    city: property.city,
                                    state: property.state,
@@ -76,11 +76,11 @@ struct PreviewResidential {
         
         var property1 = Residential()
         property1.id = "2"
-        property1.streetAddress = "463 W Town St"
-        property1.city = "Columbus"
-        property1.state = "OH"
-        property1.zipcode = "43215"
-        property1.county = "Franklin"
+        property1.streetAddress = "277 Barfield Ave SW"
+        property1.city = "Atlanta"
+        property1.state = "GA"
+        property1.zipcode = " 30310"
+        property1.county = ""
         property1.address = Address(streetAddress: property1.streetAddress,
                                    city: property1.city,
                                    state: property1.state,
@@ -88,7 +88,7 @@ struct PreviewResidential {
                                    county: property1.county)
         
         property1.images = [
-        "https://images1.showcase.com/i2/HHcLm4hvep0FISZTVfOC0tsB3gT4wKerhcXi6VilzPM/114/image.jpg"
+        "https://photos.zillowstatic.com/fp/89bdc9483170b25fae632cc5445e86b2-cc_ft_1536.webp"
         ]
         
         properties.append(property1)

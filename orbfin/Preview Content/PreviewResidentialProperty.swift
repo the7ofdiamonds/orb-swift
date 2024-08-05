@@ -11,13 +11,13 @@ class PreviewResidentialProperty {
     static func loadProperty() -> Residential {
         var property = Residential()
         property.id = "1"
-        property.images = ["https://images1.showcase.com/i2/BpZ-3-dR-1KR4p5Vz-scESpRJwbmGHrJV6VaaNuSDTg/114/image.jpg", "https://images1.showcase.com/i2/r3xY0qE0KwP0SnvmI8HC6zbu_8tv_XJ6JYrO9EAzBfM/114/image.jpg"]
+        property.images = ["https://photos.zillowstatic.com/fp/6fdab9937e2a88d57e5c393816fa94a9-cc_ft_1536.webp"]
         
-        property.streetAddress = "68 McDowell St"
-        property.city = "Columbus"
-        property.state = "OH"
-        property.zipcode = "43215"
-        property.county = "Franklin"
+        property.streetAddress = "439 Baker Cir NW"
+        property.city = "Atlanta"
+        property.state = "GA"
+        property.zipcode = "30318"
+        property.county = ""
         property.address = Address(streetAddress: property.streetAddress,
                                    city: property.city,
                                    state: property.state,

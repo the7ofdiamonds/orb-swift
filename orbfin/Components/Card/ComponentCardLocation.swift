@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ComponentCardLocation: View {
     @EnvironmentObject var navigation: Navigation
-
+    
     var address: Address
+    
+    @Binding var show: Bool
     
     var body: some View {
         ComponentCard(title: "Location") {
@@ -34,11 +36,20 @@ struct ComponentCardLocation: View {
                 Text("\(county)")
             }
             
-            ComponentButtonHNav(page: .blank)
+            Button {
+                navigation.browse(page: .blank)
+            } label: {
+                HStack {
+                    Image(systemName: "map")
+                    Text("Show Map")
+                        .font(Styling.font(component: .label))
+                }
+            }
+
         }
     }
 }
 
 #Preview {
-    ComponentCardLocation(address: PreviewCommercialProperty.loadProperty().address ?? Address())
+    ComponentCardLocation(address: PreviewCommercialProperty.loadProperty().address ?? Address(), show: .constant(true))
 }
