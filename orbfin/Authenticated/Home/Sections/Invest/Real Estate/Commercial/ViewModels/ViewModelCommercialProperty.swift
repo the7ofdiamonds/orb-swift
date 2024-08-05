@@ -11,16 +11,13 @@ import MapKit
 @MainActor
 class ViewModelCommercialProperty: ObservableObject {
     @Published var property: Commercial?
-
+    
     init(property: Commercial? = nil) {
-        if property != nil {
-            self.property = property
-            Task {
-                await fetchCoordinatesForProperty()
-            }
-        } else {
-            self.property = PreviewCommercialProperty.loadProperty()
-        }
+        self.property = property
+    }
+    
+    func change(property: Commercial) {
+        self.property = property
     }
     
     private func fetchCoordinatesForProperty() async {

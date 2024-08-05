@@ -20,7 +20,7 @@ struct ViewAuthenticated: View {
     
     @ViewBuilder var body: some View {
         ZStack {
-            ComponentMap()
+            ViewMap()
                 .environmentObject(navigation)
                 .environmentObject(vmCommercial)
                 .environmentObject(vmCommercialProperty)

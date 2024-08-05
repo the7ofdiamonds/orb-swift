@@ -10,35 +10,43 @@ import MapKit
 
 struct ViewCommercial: View {
     @EnvironmentObject var vm: ViewModelCommercial
+    @EnvironmentObject var vmProperty: ViewModelCommercialProperty
     @EnvironmentObject var navigation: Navigation
 
     @StateObject private var location: LocationManager = LocationManager.instance
+    
+    @State var show: Bool = true
     
     var properties: [Commercial]? {
         return vm.properties
     }
     
     var body: some View {
-        ComponentCard {
-            ComponentButtonH(label: Page.commercial.title, icon: Page.commercial.icon) {
-                Task {
-                    await vm.getProperties()
-                }
-            }
-        
-            List {
-                if let properties {
-                    ForEach(properties) { property in
-                        Button(action: {
-                            navigation.browse(page: .commercialproperty(property: property))
-                            if let coordinates = property.coordinates {
-                                location.changeCamera(coordinates: coordinates)
+        Group {
+            ComponentCard {
+                if show {
+                    ComponentButtonH(label: Page.commercial.title, icon: Page.commercial.icon) {
+                        Task {
+                            await vm.getProperties()
+                        }
+                    }
+                
+                    List {
+                        if let properties {
+                            ForEach(properties) { property in
+                                Button(action: {
+                                    vmProperty.change(property: property)
+                                    navigation.change(page: .commercialproperty(property: property))
+                                    if let coordinates = property.coordinates {
+                                        location.changeCamera(coordinates: coordinates)
+                                    }
+                                }, label: {
+                                    Text(property.address?.toString() ?? "Commercial Property")
+                                })
+                                .font(.headline)
+                                .fontWeight(.bold)
                             }
-                        }, label: {
-                            Text(property.address?.toString() ?? "Commercial Property")
-                        })
-                        .font(.headline)
-                        .fontWeight(.bold)
+                        }
                     }
                 }
             }
@@ -52,6 +60,16 @@ struct ViewCommercial: View {
                     Text("Commercial")
                         .font(.title)
                         .fontWeight(.bold)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        show.toggle()
+                    } label: {
+                        Image(systemName: "map")
+                    }
+
                 }
             }
             

@@ -8,20 +8,15 @@
 import SwiftUI
 
 struct ViewResidentialProperty: View {
-    @Environment(\.dismiss) private var dismiss
-    
+    @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
     
     @StateObject private var location: LocationManager = LocationManager.instance
 
     var property: Residential
-    
-    @State var show: Bool = true
-    
-    var body: some View {
         
-        if show {
-            ScrollView {
+    var body: some View {
+                ScrollView {
                 
                 VStack(spacing: 25) {
                     
@@ -30,7 +25,9 @@ struct ViewResidentialProperty: View {
                     }
                     
                     if let address = property.address {
-                        ComponentCardLocation(address: address, show: $show)
+                        ComponentCardLocation(address: address, action: {
+                            navigation.browse(page: .residential)
+                        })
                     }
                     
                     if let highlights = property.highlights {
@@ -52,7 +49,6 @@ struct ViewResidentialProperty: View {
                     if let landDetails = property.landDetails {
                         ComponentCardLandDetails(landDetails: landDetails)
                     }
-                }
             }
             .onAppear {
                 if let coordinates = property.coordinates {
@@ -77,13 +73,13 @@ struct ViewResidentialProperty: View {
                     }
                 }
             }
-       
+            
         }
         
     }
 }
 
 #Preview {
-    ViewResidentialProperty(property: PreviewResidentialProperty.loadProperty(), show: true)
+    ViewResidentialProperty(property: PreviewResidentialProperty.loadProperty())
         .environmentObject(ViewModelResidentialProperty())
 }

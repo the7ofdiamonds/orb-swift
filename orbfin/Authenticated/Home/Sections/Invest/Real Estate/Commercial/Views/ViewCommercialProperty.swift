@@ -10,51 +10,53 @@ import MapKit
 
 struct ViewCommercialProperty: View {
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
+    @EnvironmentObject var navigation: Navigation
     
     @StateObject private var location: LocationManager = LocationManager.instance
 
     var property: Commercial?
-       
+    
     @State var show: Bool = true
     
     var body: some View {
-        if show {
             ScrollView {
-                
-                VStack(spacing: 25) {
-                    
-                    if let images = property?.images {
-                        ComponentCardImages(images: images)
-                    }
-                    
-                    if let address = property?.address {
-                        ComponentCardLocation(address: address, show: $show)
-                    }
-                    
-                    if let highlights = property?.highlights {
-                        ComponentCardHighlights(highlights: highlights)
-                    }
-                    
-                    if let overview = property?.overview {
-                        ComponentCardOverview(overview: overview)
-                    }
-                    
-                    if let salesDetails = property?.saleDetails {
-                        ComponentCardSaleDetails(saleDetails: salesDetails)
-                    }
-                    
-                    if let buildingDetails = property?.buildingDetails {
-                        ComponentCardBuildingDetails(buildingDetails: buildingDetails)
-                    }
-                    
-                    if let landDetails = property?.landDetails {
-                        ComponentCardLandDetails(landDetails: landDetails)
+                if show {
+                    VStack(spacing: 25) {
+                        if let images = property?.images {
+                            ComponentCardImages(images: images)
+                        }
+                        
+                        if let address = property?.address {
+                            ComponentCardLocation(address: address, action: {
+                                show = false
+                            })
+                        }
+                        
+                        if let highlights = property?.highlights {
+                            ComponentCardHighlights(highlights: highlights)
+                        }
+                        
+                        if let overview = property?.overview {
+                            ComponentCardOverview(overview: overview)
+                        }
+                        
+                        if let salesDetails = property?.saleDetails {
+                            ComponentCardSaleDetails(saleDetails: salesDetails)
+                        }
+                        
+                        if let buildingDetails = property?.buildingDetails {
+                            ComponentCardBuildingDetails(buildingDetails: buildingDetails)
+                        }
+                        
+                        if let landDetails = property?.landDetails {
+                            ComponentCardLandDetails(landDetails: landDetails)
+                        }
                     }
                 }
             }
             .onAppear {
-                if let coordinates = property?.coordinates {
-                    vmCommercialProperty.property = property
+                if let property, let coordinates = property.coordinates {
+                    vmCommercialProperty.change(property: property)
                     location.changeCamera(coordinates: coordinates)
                 }
             }
@@ -75,7 +77,16 @@ struct ViewCommercialProperty: View {
                     }
                 }
             }
-        }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        show.toggle()
+                    } label: {
+                        Image(systemName: "map")
+                    }
+
+                }
+            }
         
     }
 }

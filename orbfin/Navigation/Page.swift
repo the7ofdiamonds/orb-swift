@@ -116,16 +116,24 @@ extension Page {
 extension Page {
     var id: String {
         switch self {
-        case .commercial:
+        case .manage:
+            "0"
+        case .invest:
             "1"
+        case .realestate:
+            "1.1"
+        case .commercial:
+            "1.10"
         case .commercialproperty(property: nil):
-            "2"
+            "1.100"
         case .residential:
-            "3"
+            "1.11"
         case .residentialproperty(property: nil):
-            "4"
+            "1.110"
+        case .tangibleassets:
+            "1.2"
         case .services:
-            "5"
+            "2"
         default:
             UUID().uuidString
         }
@@ -595,11 +603,11 @@ extension Page {
         case .commercial:
             AnyView(ViewCommercial())
         case .commercialproperty(let property):
-            AnyView(ViewCommercialProperty(property: property, show: true))
+            AnyView(ViewCommercialProperty(property: property))
         case .residential:
             AnyView(ViewResidential())
         case .residentialproperty(let property):
-            AnyView(ViewResidentialProperty(property: property, show: true))
+            AnyView(ViewResidentialProperty(property: property))
         case .tangibleassets:
             AnyView(ViewTangibleAssets())
         case .tangibleassetsrealestate:

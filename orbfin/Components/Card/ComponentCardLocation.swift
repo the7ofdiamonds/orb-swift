@@ -12,7 +12,7 @@ struct ComponentCardLocation: View {
     
     var address: Address
     
-    @Binding var show: Bool
+    var action: () -> Void
     
     var body: some View {
         ComponentCard(title: "Location") {
@@ -37,7 +37,7 @@ struct ComponentCardLocation: View {
             }
             
             Button {
-                navigation.browse(page: .blank)
+                action()
             } label: {
                 HStack {
                     Image(systemName: "map")
@@ -51,5 +51,7 @@ struct ComponentCardLocation: View {
 }
 
 #Preview {
-    ComponentCardLocation(address: PreviewCommercialProperty.loadProperty().address ?? Address(), show: .constant(true))
+    ComponentCardLocation(address: PreviewCommercialProperty.loadProperty().address ?? Address(), action:{
+        print("Button Pressed")
+    })
 }

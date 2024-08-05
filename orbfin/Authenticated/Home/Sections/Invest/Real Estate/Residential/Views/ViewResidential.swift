@@ -29,7 +29,7 @@ struct ViewResidential: View {
                 if let properties {
                     ForEach(properties) { property in
                         Button(action: {
-                            navigation.browse(page: .residentialproperty(property: property))
+                            navigation.change(page: .residentialproperty(property: property))
                             if let coordinates = property.coordinates {
                                 location.changeCamera(coordinates: coordinates)
                             }
