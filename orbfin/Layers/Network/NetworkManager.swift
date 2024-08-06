@@ -33,8 +33,7 @@ actor NetworkManager {
             guard let urlResponse = response as? HTTPURLResponse else {
                 throw NetworkError.noResponse(message: "No response has been received from this server.")
             }
-            print(data)
-            print(response)
+
 //            switch urlResponse.statusCode {
 //                    case 200...299:
 //                        return ResponseServer(data: data, response: urlResponse)
@@ -51,7 +50,7 @@ actor NetworkManager {
 //                        let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
 //                        throw NetworkError.unknownError(error: NSError(domain: "", code: urlResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: serverMessage]))
 //                    }
-                                    return ResponseServer(data: data, response: urlResponse)
+            return ResponseServer(data: data, response: urlResponse)
 
         } catch {
             throw error

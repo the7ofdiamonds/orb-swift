@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-struct Commercial: Identifiable {
+struct Commercial: Identifiable, Codable {
     var id: String?
     var images: [String]?
     var streetAddress: String?
@@ -16,7 +16,9 @@ struct Commercial: Identifiable {
     var state: String?
     var zipcode: String?
     var county: String?
-    var address: Address?
+    var address: Address? {
+        return Address(streetAddress: streetAddress, city: city, state: state, zipcode: zipcode, county: county)
+    }
     var coordinates: CLLocationCoordinate2D?
     var price: Int?
     var priceSF: Int?
@@ -24,7 +26,9 @@ struct Commercial: Identifiable {
     var leased: Double?
     var tenancy: String?
     var saleType: String?
-    var saleDetails: SaleDetails?
+    var saleDetails: SaleDetails? {
+        return SaleDetails(price: price, priceSF: priceSF, capRate: capRate, leased: leased, tenancy: tenancy, saleType: saleType)
+    }
     var propertyType: String?
     var propertySubType: String?
     var additionalSubTypes: [String]?
@@ -33,12 +37,16 @@ struct Commercial: Identifiable {
     var sprinklers: String?
     var parkingSpaces: Int?
     var totalBldgSize: Double?
-    var buildingDetails: BuildingDetails?
+    var buildingDetails: BuildingDetails? {
+        return BuildingDetails(propertyType: propertyType, propertySubType: propertySubType, additionalSubTypes: additionalSubTypes, stories: stories, yearbuilt: yearbuilt, sprinklers: sprinklers, parkingSpaces: parkingSpaces, totalBldgSize: totalBldgSize)
+    }
     var landAcres: Double?
     var landSqft: Double?
     var zoning: String?
     var apnParcelID: String?
-    var landDetails: LandDetails?
+    var landDetails: LandDetails? {
+        return LandDetails(landAcres: landAcres, landSqft: landSqft, zoning: zoning, apnParcelID: apnParcelID)
+    }
     var highlights: [String]?
     var overview: String?
 }

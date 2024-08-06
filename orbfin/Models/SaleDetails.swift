@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SaleDetails {
+struct SaleDetails: Codable {
     var price: Int?
     var priceSF: Int?
     var capRate: Double?

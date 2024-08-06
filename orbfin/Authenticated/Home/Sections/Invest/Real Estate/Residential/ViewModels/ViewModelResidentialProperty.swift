@@ -24,7 +24,7 @@ class ViewModelResidentialProperty: ObservableObject {
     
     private func fetchCoordinatesForProperty() async {
         if property != nil, let address = property?.address?.toString() {
-            property?.coordinates = try await LocationManager.instance.getCoordinates(by: address)
+            property?.coordinates = try? await LocationManager.instance.getCoordinates(address: address)
         }
     }
 }

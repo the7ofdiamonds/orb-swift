@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LandDetails {
+struct LandDetails: Codable {
     var landAcres: Double?
     var landSqft: Double?
     var zoning: String?

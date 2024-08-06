@@ -32,7 +32,7 @@ class ViewModelLogin: ObservableObject {
         }
         
         if let location = locationManager.location {
-            let requestLogin: RequestLogin = RequestLogin(username: username, password: password, location: location)
+            let requestLogin: RequestLogin = RequestLogin(username: username, password: password, location: Coordinates(latitude: "\(location.latitude)", longitude: "\(location.longitude)"))
             
             do {
                 let login: ResponseLogin = try await Login().user(requestLogin: requestLogin)

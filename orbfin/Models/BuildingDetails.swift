@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BuildingDetails {
+struct BuildingDetails: Codable {
     var propertyType: String?
     var propertySubType: String?
     var additionalSubTypes: [String]?

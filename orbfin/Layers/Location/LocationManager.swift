@@ -9,7 +9,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     
     @Published var locations: [CLLocation] = []
-    @Published var location: Coordinates?
+    @Published var location: CLLocationCoordinate2D?
     @Published var region: MKCoordinateRegion? = nil
     @Published var position: MapCameraPosition = .userLocation(fallback: .automatic)
     
@@ -25,7 +25,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.locations = locations
 
         if let location = locations.last {
-            self.location = Coordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            self.location = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             self.region = MKCoordinateRegion(
                 center: location.coordinate,
                 span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
@@ -63,12 +63,18 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     
-    func getCoordinates(by address: String) async -> CLLocationCoordinate2D {
+    func getCoordinates(address: String?) async -> CLLocationCoordinate2D {
         let geocoder = CLGeocoder()
-        guard let coordinates = try? await geocoder.geocodeAddressString(address).first?.location?.coordinate 
-        else { return CLLocationCoordinate2D()}
         
-       return coordinates
+        if let address {
+            if let coordinates2D = try? await geocoder.geocodeAddressString(address).first?.location?.coordinate {
+                return coordinates2D
+            } else {
+                return CLLocationCoordinate2D()
+            }
+        }
+        
+       return CLLocationCoordinate2D()
     }
     
     func changeCamera(coordinates: CLLocationCoordinate2D) {

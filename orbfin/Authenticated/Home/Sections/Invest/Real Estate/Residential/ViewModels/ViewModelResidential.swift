@@ -23,7 +23,7 @@ class ViewModelResidential: ObservableObject {
             
             for property in properties {
                 if let address = property.address?.toString() {
-                    let coordinate = try await LocationManager.instance.getCoordinates(by: address)
+                    let coordinate = try await LocationManager.instance.getCoordinates(address: address)
                     var updatedProperty = property
                     updatedProperty.coordinates = coordinate
                     updatedProperties.append(updatedProperty)

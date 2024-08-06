@@ -45,7 +45,7 @@ class ViewModelSignup: ObservableObject {
                                               firstname: firstname,
                                               lastname: lastname,
                                               phone: phone,
-                                              location: location)
+                                              location: Coordinates(latitude: "\(location.latitude)", longitude: "\(location.longitude)"))
             
             do {
                 let signup: ResponseSignup = try await Signup().user(requestSignup: requestSignup)
