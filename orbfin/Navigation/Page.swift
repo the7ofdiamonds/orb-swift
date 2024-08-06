@@ -44,7 +44,7 @@ enum Page: CaseIterable, Identifiable, Equatable {
     case invest
     case realestate
     case commercial
-    case commercialproperty(property: Commercial)
+    case commercialproperty(property: Commercial?, id: String?)
     case residential
     case residentialproperty(property: Residential)
     case tangibleassets
@@ -93,7 +93,7 @@ extension Page {
             .invest,
             .realestate,
             .commercial,
-            .commercialproperty(property: Commercial()),
+            .commercialproperty(property: Commercial(id: String()), id: String()),
             .residential,
             .residentialproperty(property: Residential()),
             .tangibleassets,
@@ -206,9 +206,9 @@ extension Page {
             return "Real Estate"
         case .commercial:
             return "Commercial Real Estate"
-        case .commercialproperty(let property):
-            if let address = property.address?.toString() {
-                return address
+        case .commercialproperty(let property, let id):
+            if let address = property?.address {
+                return address.toString()
             } else {
                 return "Commercial Property"
             }
@@ -310,11 +310,13 @@ extension Page {
             return "Real Estate"
         case .commercial:
             return "Commercial"
-        case .commercialproperty(let property):
-            if let address = property.address?.toString(){
-                return address
+        case .commercialproperty(let property, let id):
+            if let address = property?.address {
+                return address.toString()
+            } else if let id {
+                return "Commercial Property #\(id)"
             } else {
-                return "Commercial Property"
+                return "Commercial Property)"
             }
         case .residential:
             return "Residential"
@@ -602,8 +604,8 @@ extension Page {
             AnyView(ViewRealEstate())
         case .commercial:
             AnyView(ViewCommercial())
-        case .commercialproperty(let property):
-            AnyView(ViewCommercialProperty(property: property))
+        case .commercialproperty(let property, let id):
+            AnyView(ViewCommercialProperty(property: property, id: id))
         case .residential:
             AnyView(ViewResidential())
         case .residentialproperty(let property):
@@ -699,7 +701,7 @@ extension Page {
         case "Commercial":
             self = .commercial
         case "Commercial Property":
-            self = .commercialproperty(property: Commercial())
+            self = .commercialproperty(property: Commercial(id: String()), id: String())
         case "Residential":
             self = .residential
         case "Tangible Assets":

@@ -9,8 +9,7 @@ import Foundation
 
 class PreviewCommercialProperty {
     static func loadProperty() -> Commercial {
-        var property = Commercial()
-        property.id = "1"
+        var property = Commercial(id: String())
         property.images = ["https://images1.showcase.com/i2/BpZ-3-dR-1KR4p5Vz-scESpRJwbmGHrJV6VaaNuSDTg/114/image.jpg", "https://images1.showcase.com/i2/r3xY0qE0KwP0SnvmI8HC6zbu_8tv_XJ6JYrO9EAzBfM/114/image.jpg"]
         
         property.streetAddress = "68 McDowell St"

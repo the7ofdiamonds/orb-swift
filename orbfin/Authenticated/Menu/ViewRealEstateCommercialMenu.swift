@@ -28,7 +28,7 @@ struct ViewRealEstateCommercialMenu: View {
                 if let properties {
                     ForEach(properties) { property in
                         Button(action: {
-                            navigation.browse(page: .commercialproperty(property: property))
+                            navigation.browse(page: .commercialproperty(property: property, id: property.id))
                         }, label: {
                             Text(property.address?.toString() ?? "Commercial Property")
                         })

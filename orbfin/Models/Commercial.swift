@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 struct Commercial: Identifiable, Codable {
-    var id: String?
+    var id: String
     var images: [String]?
     var streetAddress: String?
     var city: String?

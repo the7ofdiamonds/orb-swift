@@ -35,11 +35,7 @@ struct ViewCommercial: View {
                         if let properties {
                             ForEach(properties) { property in
                                 Button(action: {
-                                    vmProperty.change(property: property)
-                                    navigation.change(page: .commercialproperty(property: property))
-                                    if let coordinates = property.coordinates {
-                                        location.changeCamera(coordinates: coordinates)
-                                    }
+                                    navigation.browse(page: .commercialproperty(property: property, id: property.id))
                                 }, label: {
                                     Text(property.address?.toString() ?? "Commercial Property")
                                 })

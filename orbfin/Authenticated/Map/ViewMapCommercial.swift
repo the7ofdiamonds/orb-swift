@@ -21,7 +21,7 @@ struct ViewMapCommercial: MapContent {
                     Annotation(property.address?.toString() ?? "", coordinate: coordinates) {
                         Image(systemName: "mappin")
                             .onTapGesture {
-                                navigation.change(page: .commercialproperty(property: property))
+                                navigation.change(page: .commercialproperty(property: property, id: property.id))
                                 location.changeCamera(coordinates: coordinates)
                             }
                     }

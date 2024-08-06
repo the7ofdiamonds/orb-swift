@@ -50,8 +50,7 @@ class PreviewCommercial {
         
         properties.append(property)
         
-        var property1 = Commercial()
-        property1.id = "2"
+        var property1 = Commercial(id: "2")
         property1.streetAddress = "463 W Town St"
         property1.city = "Columbus"
         property1.state = "OH"

@@ -68,6 +68,8 @@
 		A42CC93D2C6173B5004845AB /* Real Estate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42CC93C2C6173B5004845AB /* Real Estate.swift */; };
 		A42CC93F2C6176E9004845AB /* ResponseRealEstateCommercial.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42CC93E2C6176E9004845AB /* ResponseRealEstateCommercial.swift */; };
 		A42CC9422C617734004845AB /* RequestRealEstateCommercial.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42CC9412C617734004845AB /* RequestRealEstateCommercial.swift */; };
+		A42CC9442C626EA2004845AB /* RequestRealEstateCommercialProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42CC9432C626EA2004845AB /* RequestRealEstateCommercialProperty.swift */; };
+		A42CC9462C626EF8004845AB /* ResponseRealEstateCommercialProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42CC9452C626EF8004845AB /* ResponseRealEstateCommercialProperty.swift */; };
 		A435414F2C3B71EE00B32BC1 /* ViewModelLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435414E2C3B71EE00B32BC1 /* ViewModelLogin.swift */; };
 		A43541512C3B8C7B00B32BC1 /* ViewMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541502C3B8C7B00B32BC1 /* ViewMap.swift */; };
 		A43541532C3B8F3100B32BC1 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541522C3B8F3100B32BC1 /* Login.swift */; };
@@ -230,6 +232,8 @@
 		A42CC93C2C6173B5004845AB /* Real Estate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Real Estate.swift"; sourceTree = "<group>"; };
 		A42CC93E2C6176E9004845AB /* ResponseRealEstateCommercial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRealEstateCommercial.swift; sourceTree = "<group>"; };
 		A42CC9412C617734004845AB /* RequestRealEstateCommercial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRealEstateCommercial.swift; sourceTree = "<group>"; };
+		A42CC9432C626EA2004845AB /* RequestRealEstateCommercialProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRealEstateCommercialProperty.swift; sourceTree = "<group>"; };
+		A42CC9452C626EF8004845AB /* ResponseRealEstateCommercialProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRealEstateCommercialProperty.swift; sourceTree = "<group>"; };
 		A435414E2C3B71EE00B32BC1 /* ViewModelLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelLogin.swift; sourceTree = "<group>"; };
 		A43541502C3B8C7B00B32BC1 /* ViewMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMap.swift; sourceTree = "<group>"; };
 		A43541522C3B8F3100B32BC1 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -526,6 +530,8 @@
 			children = (
 				A42CC93E2C6176E9004845AB /* ResponseRealEstateCommercial.swift */,
 				A42CC9412C617734004845AB /* RequestRealEstateCommercial.swift */,
+				A42CC9432C626EA2004845AB /* RequestRealEstateCommercialProperty.swift */,
+				A42CC9452C626EF8004845AB /* ResponseRealEstateCommercialProperty.swift */,
 			);
 			path = RealEstate;
 			sourceTree = "<group>";
@@ -1132,6 +1138,7 @@
 				A45676362C5C43A00025A730 /* ViewModelHome.swift in Sources */,
 				A43C29F82C4199FD002BF1AE /* ComponentButtonBar.swift in Sources */,
 				A435415E2C3EC20B00B32BC1 /* Coordinates.swift in Sources */,
+				A42CC9462C626EF8004845AB /* ResponseRealEstateCommercialProperty.swift in Sources */,
 				A4EA3D022C50287700CEFCFF /* ViewContentMenu.swift in Sources */,
 				A42CC9212C5F67C4004845AB /* ViewResidentialProperty.swift in Sources */,
 				A43C29F12C4189CD002BF1AE /* ViewForgot.swift in Sources */,
@@ -1158,6 +1165,7 @@
 				A42CC9352C6127FA004845AB /* ViewMapCommercial.swift in Sources */,
 				A4EA3CE02C4B5D8D00CEFCFF /* TwoColumnView.swift in Sources */,
 				A4041C5B2C5534BE001FD37B /* RequestSignup.swift in Sources */,
+				A42CC9442C626EA2004845AB /* RequestRealEstateCommercialProperty.swift in Sources */,
 				A42CC9372C6129EC004845AB /* ViewMapCommercialProperty.swift in Sources */,
 				A42CC9302C5FE22C004845AB /* ViewModelManagePersonalTransactions.swift in Sources */,
 				A41778042C5926B3009C1353 /* ComponentCardImages.swift in Sources */,

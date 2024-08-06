@@ -14,7 +14,9 @@ struct ViewCommercialProperty: View {
     
     @StateObject private var location: LocationManager = LocationManager.instance
 
-    var property: Commercial?
+    @State var property: Commercial?
+    
+    var id: String?
     
     @State var show: Bool = true
     
@@ -55,9 +57,15 @@ struct ViewCommercialProperty: View {
                 }
             }
             .onAppear {
-                if let property, let coordinates = property.coordinates {
+                
+                if let property, let _ = property.address, let coordinates = property.coordinates {
                     vmCommercialProperty.change(property: property)
                     location.changeCamera(coordinates: coordinates)
+                } else if let id = self.id {
+                    Task {
+                        let request = RequestRealEstateCommercialProperty(id: id)
+                        self.property = await vmCommercialProperty.getProperty(request: request)
+                    }
                 }
             }
             .toolbar {
