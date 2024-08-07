@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ResponseRealEstateCommercial: Codable {
-    let properties: [Commercial]?
+struct ResponseProperties: Codable {
+    let properties: [RealEstateProperty]?
     let errorMessage: String?
     let statusCode: Int
 }

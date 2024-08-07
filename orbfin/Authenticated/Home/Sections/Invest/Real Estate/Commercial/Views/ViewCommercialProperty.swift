@@ -14,11 +14,17 @@ struct ViewCommercialProperty: View {
     
     @StateObject private var location: LocationManager = LocationManager.instance
 
-    @State var property: Commercial?
+    var property: RealEstateProperty?
     
-    var id: String?
+    @State private var show: Bool = true
     
-    @State var show: Bool = true
+    var images: [String] {
+        return property?.images ?? [String()]
+    }
+    
+    var address: Address {
+        return Address(streetAddress: property?.streetAddress, city: property?.city, state: property?.state, zipcode: property?.zipcode, county: property?.county)
+    }
     
     var body: some View {
             ScrollView {
@@ -27,7 +33,7 @@ struct ViewCommercialProperty: View {
                         if let images = property?.images {
                             ComponentCardImages(images: images)
                         }
-                        
+
                         if let address = property?.address {
                             ComponentCardLocation(address: address, action: {
                                 show = false
@@ -57,24 +63,18 @@ struct ViewCommercialProperty: View {
                 }
             }
             .onAppear {
-                
-                if let property, let _ = property.address, let coordinates = property.coordinates {
+                if let property, let coordinates = property.coordinates {
                     vmCommercialProperty.change(property: property)
                     location.changeCamera(coordinates: coordinates)
-                } else if let id = self.id {
-                    Task {
-                        let request = RequestRealEstateCommercialProperty(id: id)
-                        self.property = await vmCommercialProperty.getProperty(request: request)
-                    }
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    if let address = property?.address?.toString() {
+                    if let streetAddress = property?.streetAddress {
                         HStack {
                             Spacer()
                             
-                            Text(address)
+                            Text(streetAddress)
                                 .font(Styling.font(component: .title))
                                 .kerning(Styling.kerning)
                                 .padding()

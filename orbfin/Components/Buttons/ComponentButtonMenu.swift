@@ -13,7 +13,7 @@ struct ComponentButtonMenu: View {
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
 
     var menu: Page
-    var properties: [Commercial]? {
+    var properties: [RealEstateProperty]? {
         if let properties = vmCommercial.properties {
             return properties
         } else {

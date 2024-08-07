@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct RequestRealEstateCommercialProperty: Codable {
+struct RequestProperty: Codable {
     let id: String
 }

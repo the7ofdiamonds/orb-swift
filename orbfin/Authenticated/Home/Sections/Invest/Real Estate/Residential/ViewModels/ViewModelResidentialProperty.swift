@@ -9,9 +9,9 @@ import Foundation
 
 @MainActor
 class ViewModelResidentialProperty: ObservableObject {
-    @Published var property: Residential?
+    @Published var property: RealEstateProperty?
 
-    init(property: Residential? = nil) {
+    init(property: RealEstateProperty? = nil) {
         if property != nil {
             self.property = property
             Task {

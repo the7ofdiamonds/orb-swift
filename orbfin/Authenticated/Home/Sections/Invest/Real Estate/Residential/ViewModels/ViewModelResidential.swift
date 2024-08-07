@@ -9,32 +9,45 @@ import Foundation
 
 @MainActor
 class ViewModelResidential: ObservableObject {
-    @Published var properties: [Residential]?
-    @Published var errorMessage: String?
+    @Published var properties: [RealEstateProperty]?
+    @Published var successMessage: String? = nil
+    @Published var errorMessage: String? = nil
+    @Published var cautionMessage: String? = nil
+    @Published var error: NetworkError? = nil
+    @Published var showingAlert: Bool = false
     
-    init(properties: [Residential]? = nil) {
-        self.properties = properties
-    }
-    
-    func getProperties() async {
+    func getProperties() async -> [RealEstateProperty]? {
         do {
-            var properties = PreviewResidential.loadProperties()
-            var updatedProperties = [Residential]()
-            
-            for property in properties {
-                if let address = property.address?.toString() {
-                    let coordinate = try await LocationManager.instance.getCoordinates(address: address)
-                    var updatedProperty = property
-                    updatedProperty.coordinates = coordinate
-                    updatedProperties.append(updatedProperty)
-                } else {
-                    updatedProperties.append(property)
-                }
+            let request = RequestProperties(message: "From application")
+
+            let response: ResponseProperties = try await RealEstate().residentialProperties(request: request)
+
+            if let errorMessage = response.errorMessage {
+                self.errorMessage = errorMessage
             }
-            
-            self.properties = updatedProperties
+
+            if let properties = response.properties {
+                var updatedProperties = [RealEstateProperty]()
+                
+                for property in properties {
+                    if let address = property.address?.toString() {
+                        let coordinate = try await LocationManager.instance.getCoordinates(address: address)
+                        var updatedProperty = property
+                        updatedProperty.coordinates = coordinate
+                        updatedProperties.append(updatedProperty)
+                    } else {
+                        updatedProperties.append(property)
+                    }
+                }
+                
+                self.properties = updatedProperties
+                
+                return updatedProperties
+            }
         } catch {
-            errorMessage = "Failed to fetch coordinates: \(error.localizedDescription)"
+            self.error = error as? NetworkError
+            self.showingAlert = true
         }
-    }
-}
+        
+        return []
+    }}

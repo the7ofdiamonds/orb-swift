@@ -13,11 +13,13 @@ struct ViewResidentialProperty: View {
     
     @StateObject private var location: LocationManager = LocationManager.instance
 
-    var property: Residential
-        
+    var property: RealEstateProperty
+    
+    @State private var show: Bool = true
+
     var body: some View {
-                ScrollView {
-                
+        ScrollView {
+            if show {
                 VStack(spacing: 25) {
                     
                     if let images = property.images {
@@ -49,33 +51,42 @@ struct ViewResidentialProperty: View {
                     if let landDetails = property.landDetails {
                         ComponentCardLandDetails(landDetails: landDetails)
                     }
-            }
-            .onAppear {
-                if let coordinates = property.coordinates {
-                    vmResidentialProperty.property = property
-                    location.changeCamera(coordinates: coordinates)
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    if let address = property.address?.toString() {
-                        HStack {
-                            Spacer()
-                            
-                            Text(address)
-                                .font(Styling.font(component: .title))
-                                .kerning(Styling.kerning)
-                                .padding()
-                            
-                            Spacer()
-                        }
-                        .background(Color(Styling.color(.Bar)))
-                    }
-                }
-            }
-            
         }
-        
+        .onAppear {
+            if let coordinates = property.coordinates {
+                vmResidentialProperty.property = property
+                location.changeCamera(coordinates: coordinates)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                if let address = property.address?.toString() {
+                    HStack {
+                        Spacer()
+                        
+                        Text(address)
+                            .font(Styling.font(component: .title))
+                            .kerning(Styling.kerning)
+                            .padding()
+                        
+                        Spacer()
+                    }
+                    .background(Color(Styling.color(.Bar)))
+                }
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    show.toggle()
+                } label: {
+                    Image(systemName: "map")
+                }
+
+            }
+        }
     }
 }
 

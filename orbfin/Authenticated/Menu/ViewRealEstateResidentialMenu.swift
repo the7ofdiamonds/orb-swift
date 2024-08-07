@@ -11,7 +11,7 @@ struct ViewRealEstateResidentialMenu: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmResidential: ViewModelResidential
 
-    var properties: [Residential]? {
+    var properties: [RealEstateProperty]? {
         if let properties = vmResidential.properties {
             return properties
         } else {

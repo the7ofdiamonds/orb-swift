@@ -1,15 +1,16 @@
 //
-//  Commercial.swift
+//  Properties.swift
 //  orbfin
 //
-//  Created by Jamel Lyons on 7/29/24.
+//  Created by Jamel Lyons on 8/6/24.
 //
 
 import Foundation
 import MapKit
 
-struct Commercial: Identifiable, Codable {
-    var id: String
+struct RealEstateProperty: Identifiable, Equatable, Codable {
+    var id: String?
+    var propertyClass: String?
     var images: [String]?
     var streetAddress: String?
     var city: String?
@@ -49,4 +50,8 @@ struct Commercial: Identifiable, Codable {
     }
     var highlights: [String]?
     var overview: String?
+    
+    static func == (lhs: RealEstateProperty, rhs: RealEstateProperty) -> Bool {
+        lhs.id == rhs.id
+    }
 }

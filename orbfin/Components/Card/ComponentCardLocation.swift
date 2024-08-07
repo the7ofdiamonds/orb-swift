@@ -13,6 +13,11 @@ struct ComponentCardLocation: View {
     var address: Address
     
     var action: () -> Void
+
+    
+    var streetAddress: String {
+        return address.streetAddress ?? ""
+    }
     
     var body: some View {
         ComponentCard(title: "Location") {

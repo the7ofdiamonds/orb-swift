@@ -10,7 +10,7 @@ import CoreLocation
 
 actor RealEstate {
     
-    func commercial(request: RequestRealEstateCommercial) async throws -> ResponseRealEstateCommercial {
+    func commercialProperties(request: RequestProperties) async throws -> ResponseProperties {
         guard let url = URL(string: BackendURLs.realEstateCommercial) else {
             throw NetworkError.invalidURL
         }
@@ -22,7 +22,7 @@ actor RealEstate {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: requestDict, options: [])
             let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: jsonData)
-            let response: ResponseRealEstateCommercial = try JSONDecoder().decode(ResponseRealEstateCommercial.self, from: serverResponse.data)
+            let response: ResponseProperties = try JSONDecoder().decode(ResponseProperties.self, from: serverResponse.data)
 
             return response
         } catch {
@@ -30,7 +30,7 @@ actor RealEstate {
         }
     }
     
-    func commercialProperty(request: RequestRealEstateCommercialProperty) async throws -> ResponseRealEstateCommercialProperty {
+    func commercialProperty(request: RequestProperty) async throws -> ResponseProperty {
         
         let propertyURL = "\(BackendURLs.realEstateCommercial)/\(request.id)"
         
@@ -45,7 +45,50 @@ actor RealEstate {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: requestDict, options: [])
             let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: jsonData)
-            let response: ResponseRealEstateCommercialProperty = try JSONDecoder().decode(ResponseRealEstateCommercialProperty.self, from: serverResponse.data)
+            let response: ResponseProperty = try JSONDecoder().decode(ResponseProperty.self, from: serverResponse.data)
+
+            return response
+        } catch {
+            throw error
+        }
+    }
+    
+    func residentialProperties(request: RequestProperties) async throws -> ResponseProperties {
+        guard let url = URL(string: BackendURLs.realEstateResidential) else {
+            throw NetworkError.invalidURL
+        }
+        
+        guard let requestDict = request.dictionary else {
+            throw NetworkError.invalidData
+        }
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: requestDict, options: [])
+            let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: jsonData)
+            let response: ResponseProperties = try JSONDecoder().decode(ResponseProperties.self, from: serverResponse.data)
+
+            return response
+        } catch {
+            throw error
+        }
+    }
+    
+    func residentialProperty(request: RequestProperty) async throws -> ResponseProperty {
+        
+        let propertyURL = "\(BackendURLs.realEstateResidential)/\(request.id)"
+        
+        guard let url = URL(string: propertyURL) else {
+            throw NetworkError.invalidURL
+        }
+        
+        guard let requestDict = request.dictionary else {
+            throw NetworkError.invalidData
+        }
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: requestDict, options: [])
+            let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: jsonData)
+            let response: ResponseProperty = try JSONDecoder().decode(ResponseProperty.self, from: serverResponse.data)
 
             return response
         } catch {

@@ -14,11 +14,11 @@ struct ViewMapCommercialProperty: MapContent {
     
     @StateObject var location: LocationManager = LocationManager.instance
 
-    var commercialProperty: Commercial {
+    var commercialProperty: RealEstateProperty {
         if let property = vmCommercialProperty.property {
             return property
         } else {
-            return Commercial(id: String())
+            return RealEstateProperty(id: String())
         }
     }
     
@@ -38,7 +38,7 @@ struct ViewMapCommercialProperty: MapContent {
             Annotation(address, coordinate: coordinates) {
                 Image(systemName: "mappin.and.ellipse")
                     .onTapGesture {
-                        navigation.change(page: .commercialproperty(property: commercialProperty, id: commercialProperty.id))
+                        navigation.change(page: .commercialproperty(property: commercialProperty))
                         location.changeCamera(coordinates: coordinates)
                     }
             }

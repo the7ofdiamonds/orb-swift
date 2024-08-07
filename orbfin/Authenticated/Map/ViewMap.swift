@@ -11,29 +11,28 @@ import MapKit
 struct ViewMap: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmCommercial: ViewModelCommercial
-    @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     @EnvironmentObject var vmResidential: ViewModelResidential
-    @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
 
     @StateObject var location: LocationManager = LocationManager.instance
     
     @Namespace private var mapScope
 
+    
     var body: some View {
           Map(position: $location.position) {
               switch navigation.isPage {
               case .commercial:
-                ViewMapCommercial()
+                  ViewMapProperties(properties: $vmCommercial.properties)
                   
-              case .commercialproperty(property: nil):
-                  ViewMapCommercialProperty()
+              case .commercialproperty(property: _):
+                  ViewMapProperties(properties: $vmCommercial.properties)
                   
               case .residential:
-                  ViewMapResidential()
+                  ViewMapProperties(properties: $vmResidential.properties)
 
-              case .residentialproperty(property: nil):
-                  ViewMapResidentialProperty()
-                                    
+              case .residentialproperty(property: _):
+                  ViewMapProperties(properties: $vmResidential.properties)
+                  
               default:
                   UserAnnotation()
               }

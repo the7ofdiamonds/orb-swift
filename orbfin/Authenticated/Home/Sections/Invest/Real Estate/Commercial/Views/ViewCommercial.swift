@@ -6,36 +6,34 @@
 //
 
 import SwiftUI
-import MapKit
 
 struct ViewCommercial: View {
     @EnvironmentObject var vm: ViewModelCommercial
-    @EnvironmentObject var vmProperty: ViewModelCommercialProperty
     @EnvironmentObject var navigation: Navigation
 
     @StateObject private var location: LocationManager = LocationManager.instance
-    
-    @State var show: Bool = true
-    
-    var properties: [Commercial]? {
+        
+    var properties: [RealEstateProperty]? {
         return vm.properties
     }
     
+    @State var show: Bool = true
+    
     var body: some View {
         Group {
-            ComponentCard {
-                if show {
+            if show {
+                ComponentCard {
                     ComponentButtonH(label: Page.commercial.title, icon: Page.commercial.icon) {
                         Task {
                             await vm.getProperties()
                         }
                     }
-                
+                    
                     List {
                         if let properties {
                             ForEach(properties) { property in
                                 Button(action: {
-                                    navigation.browse(page: .commercialproperty(property: property, id: property.id))
+                                    navigation.browse(page: .commercialproperty(property: property))
                                 }, label: {
                                     Text(property.address?.toString() ?? "Commercial Property")
                                 })
@@ -46,30 +44,29 @@ struct ViewCommercial: View {
                     }
                 }
             }
-            .onAppear {
-                if let properties, let coordinates = properties[0].coordinates {
-                    location.changeCamera(coordinates: coordinates)
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("Commercial")
-                        .font(.title)
-                        .fontWeight(.bold)
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        show.toggle()
-                    } label: {
-                        Image(systemName: "map")
-                    }
-
-                }
-            }
-            
         }
+        .onAppear {
+            if let properties, let coordinates = properties[0].coordinates {
+                location.changeCamera(coordinates: coordinates)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Commercial")
+                    .font(.title)
+                    .fontWeight(.bold)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    show.toggle()
+                } label: {
+                    Image(systemName: "map")
+                }
+            }
+        }
+            
     }
 }
 

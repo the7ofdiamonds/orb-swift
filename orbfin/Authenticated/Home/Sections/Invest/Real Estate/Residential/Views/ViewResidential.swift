@@ -13,48 +13,64 @@ struct ViewResidential: View {
 
     @StateObject private var location: LocationManager = LocationManager.instance
     
-    var properties: [Residential]? {
+    var properties: [RealEstateProperty]? {
         return vm.properties
     }
     
+    @State var show: Bool = true
+
     var body: some View {
-        ComponentCard {
-            ComponentButtonH(label: Page.residential.title, icon: Page.residential.icon) {
-                Task {
-                    await vm.getProperties()
-                }
-            }
-            
-            List {
-                if let properties {
-                    ForEach(properties) { property in
-                        Button(action: {
-                            navigation.change(page: .residentialproperty(property: property))
-                            if let coordinates = property.coordinates {
-                                location.changeCamera(coordinates: coordinates)
+        Group {
+            if show {
+                ComponentCard {
+                    ComponentButtonH(label: Page.residential.title, icon: Page.residential.icon) {
+                        Task {
+                            await vm.getProperties()
+                        }
+                    }
+                    
+                    List {
+                        if let properties {
+                            ForEach(properties) { property in
+                                Button(action: {
+                                    navigation.change(page: .residentialproperty(property: property))
+                                    if let coordinates = property.coordinates {
+                                        location.changeCamera(coordinates: coordinates)
+                                    }
+                                }, label: {
+                                    Text(property.address?.toString() ?? "Residential Property")
+                                })
+                                .font(.headline)
+                                .fontWeight(.bold)
                             }
-                        }, label: {
-                            Text(property.address?.toString() ?? "Residential Property")
-                        })
-                        .font(.headline)
-                        .fontWeight(.bold)
+                        }
                     }
                 }
             }
-            .onAppear {
-                if let properties, let coordinates = properties[0].coordinates {
-                    location.changeCamera(coordinates: coordinates)
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("Residential")
-                        .font(.title)
-                        .fontWeight(.bold)
-                }
-            }
-            
         }
+        .onAppear {
+            if let properties, let coordinates = properties[0].coordinates {
+                location.changeCamera(coordinates: coordinates)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Residential")
+                    .font(.title)
+                    .fontWeight(.bold)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    show.toggle()
+                } label: {
+                    Image(systemName: "map")
+                }
+
+            }
+        }
+        
     }
 }
 

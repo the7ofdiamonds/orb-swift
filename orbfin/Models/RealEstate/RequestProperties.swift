@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct RequestRealEstateCommercial: Encodable {
+struct RequestProperties: Encodable {
     let message: String
 }

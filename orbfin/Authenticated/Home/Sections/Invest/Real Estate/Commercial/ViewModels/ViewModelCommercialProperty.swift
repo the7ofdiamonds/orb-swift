@@ -11,25 +11,26 @@ import MapKit
 @MainActor
 class ViewModelCommercialProperty: ObservableObject {
     @Published var id: String?
-    @Published var property: Commercial?
+    @Published var property: RealEstateProperty?
     @Published var successMessage: String? = nil
     @Published var errorMessage: String? = nil
     @Published var cautionMessage: String? = nil
     @Published var error: NetworkError? = nil
     @Published var showingAlert: Bool = false
     
-    init(property: Commercial? = nil, id: String? = nil) {
+    init(property: RealEstateProperty? = nil, id: String? = nil) {
         self.property = property
         self.id = id
     }
     
-    func change(property: Commercial) {
+    func change(property: RealEstateProperty) {
         self.property = property
     }
     
-    func getProperty(request: RequestRealEstateCommercialProperty) async -> Commercial? {
+    func getProperty(request: RequestProperty) async -> RealEstateProperty? {
+        print("getProperty")
         do {
-            let response: ResponseRealEstateCommercialProperty = try await RealEstate().commercialProperty(request: request)
+            let response: ResponseProperty = try await RealEstate().commercialProperty(request: request)
 
             if let errorMessage = response.errorMessage {
                 self.errorMessage = errorMessage
@@ -49,6 +50,6 @@ class ViewModelCommercialProperty: ObservableObject {
             self.showingAlert = true
         }
         
-        return Commercial(id: String())
+        return RealEstateProperty(id: String())
     }
 }

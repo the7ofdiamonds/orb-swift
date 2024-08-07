@@ -8,9 +8,9 @@
 import Foundation
 
 class PreviewCommercial {
-    static func loadProperties() -> [Commercial] {
-        var properties: [Commercial] = []
-        var property = Commercial(id: "1")
+    static func loadProperties() -> [RealEstateProperty] {
+        var properties: [RealEstateProperty] = []
+        var property = RealEstateProperty(id: "1")
         property.images = ["https://images1.showcase.com/i2/BpZ-3-dR-1KR4p5Vz-scESpRJwbmGHrJV6VaaNuSDTg/114/image.jpg", "https://images1.showcase.com/i2/r3xY0qE0KwP0SnvmI8HC6zbu_8tv_XJ6JYrO9EAzBfM/114/image.jpg"]
         
         property.streetAddress = "68 McDowell St"
@@ -50,7 +50,7 @@ class PreviewCommercial {
         
         properties.append(property)
         
-        var property1 = Commercial(id: "2")
+        var property1 = RealEstateProperty(id: "2")
         property1.streetAddress = "463 W Town St"
         property1.city = "Columbus"
         property1.state = "OH"

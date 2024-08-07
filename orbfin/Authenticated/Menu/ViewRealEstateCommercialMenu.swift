@@ -11,7 +11,7 @@ struct ViewRealEstateCommercialMenu: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmCommercial: ViewModelCommercial
 
-    var properties: [Commercial]? {
+    var properties: [RealEstateProperty]? {
         if let properties = vmCommercial.properties {
             return properties
         } else {
@@ -28,7 +28,7 @@ struct ViewRealEstateCommercialMenu: View {
                 if let properties {
                     ForEach(properties) { property in
                         Button(action: {
-                            navigation.browse(page: .commercialproperty(property: property, id: property.id))
+                            navigation.browse(page: .commercialproperty(property: property))
                         }, label: {
                             Text(property.address?.toString() ?? "Commercial Property")
                         })
