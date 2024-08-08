@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct ViewHome: View {
-    @State var showStatus: Bool = true
+    @EnvironmentObject var vmModal: ViewModelModal
 
     var successMessage: String?
     

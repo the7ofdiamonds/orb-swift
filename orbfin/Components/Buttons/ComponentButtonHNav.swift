@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ComponentButtonHNav: View {
     @EnvironmentObject var navigation: Navigation
+    @EnvironmentObject var vmModal: ViewModelModal
 
     var page: Page
 
     var body: some View {
         Button(action: {
             navigation.change(page: page)
+            vmModal.show = true
         }, label: {
             HStack {
                 if page.icon != "" {

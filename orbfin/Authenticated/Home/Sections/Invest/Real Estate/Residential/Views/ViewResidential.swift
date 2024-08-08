@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ViewResidential: View {
+    @EnvironmentObject var vmModal: ViewModelModal
     @EnvironmentObject var vm: ViewModelResidential
     @EnvironmentObject var navigation: Navigation
 
@@ -21,7 +22,7 @@ struct ViewResidential: View {
 
     var body: some View {
         Group {
-            if show {
+            if vmModal.show {
                 ComponentCard {
                     ComponentButtonH(label: Page.residential.title, icon: Page.residential.icon) {
                         Task {
@@ -34,9 +35,6 @@ struct ViewResidential: View {
                             ForEach(properties) { property in
                                 Button(action: {
                                     navigation.change(page: .residentialproperty(property: property))
-                                    if let coordinates = property.coordinates {
-                                        location.changeCamera(coordinates: coordinates)
-                                    }
                                 }, label: {
                                     Text(property.address?.toString() ?? "Residential Property")
                                 })
@@ -63,7 +61,7 @@ struct ViewResidential: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    show.toggle()
+                    vmModal.toggle()
                 } label: {
                     Image(systemName: "map")
                 }

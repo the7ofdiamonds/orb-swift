@@ -23,6 +23,7 @@ class ViewModelCommercial: ObservableObject {
             let response: ResponseProperties = try await RealEstate().commercialProperties(request: request)
 
             if let errorMessage = response.errorMessage {
+                print(errorMessage)
                 self.errorMessage = errorMessage
             }
 
@@ -31,6 +32,7 @@ class ViewModelCommercial: ObservableObject {
                 
                 for property in properties {
                     if let address = property.address?.toString() {
+                        print(address)
                         let coordinate = try await LocationManager.instance.getCoordinates(address: address)
                         var updatedProperty = property
                         updatedProperty.coordinates = coordinate

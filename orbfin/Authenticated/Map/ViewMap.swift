@@ -10,6 +10,7 @@ import MapKit
 
 struct ViewMap: View {
     @EnvironmentObject var navigation: Navigation
+    @EnvironmentObject var vmModal: ViewModelModal
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmResidential: ViewModelResidential
 
@@ -17,7 +18,6 @@ struct ViewMap: View {
     
     @Namespace private var mapScope
 
-    
     var body: some View {
           Map(position: $location.position) {
               switch navigation.isPage {
@@ -58,6 +58,7 @@ struct ViewMap: View {
 #Preview {
     ViewMap()
         .environmentObject(Navigation())
+        .environmentObject(ViewModelModal())
         .environmentObject(ViewModelCommercial())
         .environmentObject(ViewModelCommercialProperty())
         .environmentObject(ViewModelResidential())

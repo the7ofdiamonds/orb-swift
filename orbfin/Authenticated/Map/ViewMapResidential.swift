@@ -14,6 +14,8 @@ struct ViewMapResidential: MapContent {
 
     @StateObject var location: LocationManager = LocationManager.instance
     
+    @Binding var show: Bool
+
     var body: some MapContent {
         if let residentialProperties = vmResidential.properties {
             ForEach(residentialProperties) { property in
@@ -22,7 +24,7 @@ struct ViewMapResidential: MapContent {
                         Image(systemName: "mappin")
                             .onTapGesture {
                                 navigation.change(page: .residentialproperty(property: property))
-                                location.changeCamera(coordinates: coordinates)
+                                show = true
                             }
                     }
                 }

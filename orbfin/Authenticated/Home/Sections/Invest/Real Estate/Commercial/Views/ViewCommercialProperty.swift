@@ -9,15 +9,14 @@ import SwiftUI
 import MapKit
 
 struct ViewCommercialProperty: View {
-    @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     @EnvironmentObject var navigation: Navigation
+    @EnvironmentObject var vmModal: ViewModelModal
+    @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     
     @StateObject private var location: LocationManager = LocationManager.instance
 
     var property: RealEstateProperty?
-    
-    @State private var show: Bool = true
-    
+        
     var images: [String] {
         return property?.images ?? [String()]
     }
@@ -28,7 +27,7 @@ struct ViewCommercialProperty: View {
     
     var body: some View {
             ScrollView {
-                if show {
+                if vmModal.show {
                     VStack(spacing: 25) {
                         if let images = property?.images {
                             ComponentCardImages(images: images)
@@ -36,7 +35,7 @@ struct ViewCommercialProperty: View {
 
                         if let address = property?.address {
                             ComponentCardLocation(address: address, action: {
-                                show = false
+                                vmModal.show = false
                             })
                         }
                         
@@ -64,7 +63,6 @@ struct ViewCommercialProperty: View {
             }
             .onAppear {
                 if let property, let coordinates = property.coordinates {
-                    vmCommercialProperty.change(property: property)
                     location.changeCamera(coordinates: coordinates)
                 }
             }
@@ -88,7 +86,7 @@ struct ViewCommercialProperty: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        show.toggle()
+                        vmModal.toggle()
                     } label: {
                         Image(systemName: "map")
                     }

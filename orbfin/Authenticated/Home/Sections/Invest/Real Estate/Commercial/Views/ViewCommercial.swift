@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct ViewCommercial: View {
-    @EnvironmentObject var vm: ViewModelCommercial
     @EnvironmentObject var navigation: Navigation
+    @EnvironmentObject var vmModal: ViewModelModal
+    @EnvironmentObject var vm: ViewModelCommercial
 
     @StateObject private var location: LocationManager = LocationManager.instance
         
     var properties: [RealEstateProperty]? {
         return vm.properties
     }
-    
-    @State var show: Bool = true
-    
+        
     var body: some View {
         Group {
-            if show {
+            if vmModal.show {
                 ComponentCard {
                     ComponentButtonH(label: Page.commercial.title, icon: Page.commercial.icon) {
                         Task {
@@ -60,7 +59,7 @@ struct ViewCommercial: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    show.toggle()
+                    vmModal.toggle()
                 } label: {
                     Image(systemName: "map")
                 }

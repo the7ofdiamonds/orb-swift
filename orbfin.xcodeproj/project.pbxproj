@@ -115,6 +115,7 @@
 		A4605EA52C46F15C0091CC52 /* ViewServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4605EA42C46F15C0091CC52 /* ViewServices.swift */; };
 		A47FC8B52C54635D0096D557 /* ViewAuthenticated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47FC8B42C54635D0096D557 /* ViewAuthenticated.swift */; };
 		A47FC8B72C5468970096D557 /* ComponentButtonHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47FC8B62C5468970096D557 /* ComponentButtonHome.swift */; };
+		A4880F9E2C6506500080C5E0 /* ViewModelModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4880F9D2C6506500080C5E0 /* ViewModelModal.swift */; };
 		A49C0BB02C472CEE00968AFB /* ComponentButtonDoubleH.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BAF2C472CEE00968AFB /* ComponentButtonDoubleH.swift */; };
 		A49C0BB22C4765E800968AFB /* ComponentButtonHNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BB12C4765E800968AFB /* ComponentButtonHNav.swift */; };
 		A49C0BB62C476AF700968AFB /* ViewManageBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BB52C476AF700968AFB /* ViewManageBusiness.swift */; };
@@ -279,6 +280,7 @@
 		A4605EA42C46F15C0091CC52 /* ViewServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewServices.swift; sourceTree = "<group>"; };
 		A47FC8B42C54635D0096D557 /* ViewAuthenticated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAuthenticated.swift; sourceTree = "<group>"; };
 		A47FC8B62C5468970096D557 /* ComponentButtonHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentButtonHome.swift; sourceTree = "<group>"; };
+		A4880F9D2C6506500080C5E0 /* ViewModelModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelModal.swift; sourceTree = "<group>"; };
 		A49C0BAF2C472CEE00968AFB /* ComponentButtonDoubleH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentButtonDoubleH.swift; sourceTree = "<group>"; };
 		A49C0BB12C4765E800968AFB /* ComponentButtonHNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentButtonHNav.swift; sourceTree = "<group>"; };
 		A49C0BB52C476AF700968AFB /* ViewManageBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageBusiness.swift; sourceTree = "<group>"; };
@@ -635,6 +637,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		A4880F9C2C65060E0080C5E0 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				A4880F9D2C6506500080C5E0 /* ViewModelModal.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
 		A49C0BB32C476A7700968AFB /* Personal */ = {
 			isa = PBXGroup;
 			children = (
@@ -963,6 +973,7 @@
 		A4EA3D032C53E04600CEFCFF /* Authenticated */ = {
 			isa = PBXGroup;
 			children = (
+				A4880F9C2C65060E0080C5E0 /* Modal */,
 				A4605E942C41C0820091CC52 /* Home */,
 				A42CC9172C5EFDC0004845AB /* Menu */,
 				A41778092C59BBD2009C1353 /* Map */,
@@ -1107,6 +1118,7 @@
 				A49C0BF92C4A1EF500968AFB /* ManageSummary.swift in Sources */,
 				A49C0BBC2C4771A700968AFB /* ViewManagePersonalExpenses.swift in Sources */,
 				A43C29ED2C4103AF002BF1AE /* Authentication.swift in Sources */,
+				A4880F9E2C6506500080C5E0 /* ViewModelModal.swift in Sources */,
 				A49C0BC02C47728900968AFB /* ViewManagePersonalAssets.swift in Sources */,
 				A43C29DD2C406727002BF1AE /* Forgot.swift in Sources */,
 				A49C0BDF2C4A01AE00968AFB /* ViewResidential.swift in Sources */,

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ViewServices: View {
+    @EnvironmentObject var vmModal: ViewModelModal
+
     var body: some View {
         ComponentCard {
             
@@ -24,14 +26,12 @@ struct ViewServices_Previews: PreviewProvider {
             ViewServices()
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
-                .environmentObject(Authentication())
-                .environmentObject(Navigation())
+                .environmentObject(ViewModelModal())
             
             ViewServices()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
-                .environmentObject(Authentication())
-                .environmentObject(Navigation())
+                .environmentObject(ViewModelModal())
         }
     }
 }

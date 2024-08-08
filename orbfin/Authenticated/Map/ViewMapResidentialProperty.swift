@@ -14,6 +14,8 @@ struct ViewMapResidentialProperty: MapContent {
 
     @StateObject var location: LocationManager = LocationManager.instance
     
+    @State private var show: Bool
+
     var body: some MapContent {
         if let residentialProperty = vmResidentialProperty.property,
            let address = residentialProperty.address?.toString(),
@@ -23,7 +25,7 @@ struct ViewMapResidentialProperty: MapContent {
                     .onTapGesture {
                         print(address)
                         navigation.change(page: .residentialproperty(property: residentialProperty))
-                        location.changeCamera(coordinates: coordinates)
+                        show = true
                     }
             }
         }

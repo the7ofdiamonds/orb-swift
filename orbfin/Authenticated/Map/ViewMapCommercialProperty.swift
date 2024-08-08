@@ -33,13 +33,15 @@ struct ViewMapCommercialProperty: MapContent {
         }
     }
     
+    @State private var show: Bool
+
     var body: some MapContent {
         if let coordinates = commercialProperty.coordinates {
             Annotation(address, coordinate: coordinates) {
                 Image(systemName: "mappin.and.ellipse")
                     .onTapGesture {
                         navigation.change(page: .commercialproperty(property: commercialProperty))
-                        location.changeCamera(coordinates: coordinates)
+                        show = true
                     }
             }
         }

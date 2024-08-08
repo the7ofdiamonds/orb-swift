@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ViewResidentialProperty: View {
     @EnvironmentObject var navigation: Navigation
+    @EnvironmentObject var vmModal: ViewModelModal
     @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
     
     @StateObject private var location: LocationManager = LocationManager.instance
@@ -19,7 +20,7 @@ struct ViewResidentialProperty: View {
 
     var body: some View {
         ScrollView {
-            if show {
+            if vmModal.show {
                 VStack(spacing: 25) {
                     
                     if let images = property.images {
@@ -28,7 +29,7 @@ struct ViewResidentialProperty: View {
                     
                     if let address = property.address {
                         ComponentCardLocation(address: address, action: {
-                            navigation.browse(page: .residential)
+                            vmModal.show = false
                         })
                     }
                     
@@ -80,7 +81,7 @@ struct ViewResidentialProperty: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    show.toggle()
+                    vmModal.toggle()
                 } label: {
                     Image(systemName: "map")
                 }

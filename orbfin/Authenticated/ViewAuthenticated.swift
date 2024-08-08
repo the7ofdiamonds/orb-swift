@@ -11,6 +11,7 @@ import MapKit
 struct ViewAuthenticated: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
+    @EnvironmentObject var vmModal: ViewModelModal
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     @EnvironmentObject var vmResidential: ViewModelResidential
@@ -22,6 +23,7 @@ struct ViewAuthenticated: View {
         ZStack {
             ViewMap()
                 .environmentObject(navigation)
+                .environmentObject(vmModal)
                 .environmentObject(vmCommercial)
                 .environmentObject(vmCommercialProperty)
                 .environmentObject(vmResidential)

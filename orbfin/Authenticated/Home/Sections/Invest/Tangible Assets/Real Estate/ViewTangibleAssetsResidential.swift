@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ViewTangibleAssetsResidential: View {
+    @EnvironmentObject var vmModal: ViewModelModal
+
     var body: some View {
         ComponentCard {
             Text("Residentials")
@@ -17,4 +19,5 @@ struct ViewTangibleAssetsResidential: View {
 
 #Preview {
     ViewTangibleAssetsResidential()
+        .environmentObject(ViewModelModal())
 }

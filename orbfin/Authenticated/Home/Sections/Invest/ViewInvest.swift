@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ViewInvest: View {
+    @EnvironmentObject var vmModal: ViewModelModal
+
     var body: some View {
         ComponentCardFixed {
             
@@ -28,14 +30,12 @@ struct ViewInvest_Previews: PreviewProvider {
             ViewInvest()
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
-                .environmentObject(Authentication())
-                .environmentObject(Navigation())
+                .environmentObject(ViewModelModal())
             
             ViewInvest()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
-                .environmentObject(Authentication())
-                .environmentObject(Navigation())
+                .environmentObject(ViewModelModal())
         }
     }
 }

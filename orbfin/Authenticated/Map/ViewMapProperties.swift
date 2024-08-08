@@ -10,7 +10,8 @@ import MapKit
 
 struct ViewMapProperties: MapContent {
     @EnvironmentObject var navigation: Navigation
-    
+    @EnvironmentObject var vmModal: ViewModelModal
+
     @StateObject var location: LocationManager = LocationManager.instance
     
     @Binding var properties: [RealEstateProperty]?
@@ -23,7 +24,7 @@ struct ViewMapProperties: MapContent {
                         Image(systemName: "mappin")
                             .onTapGesture {
                                 navigation.change(page: .commercialproperty(property: property))
-                                location.changeCamera(coordinates: coordinates)
+                                vmModal.show = true
                             }
                     }
                 }

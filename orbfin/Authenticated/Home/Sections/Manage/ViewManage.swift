@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ViewManage: View {
-    
+    @EnvironmentObject var vmModal: ViewModelModal
+
     var body: some View {
         ComponentCardFixed {
             VStack(spacing: 20, content: {
@@ -25,14 +26,12 @@ struct ViewManage_Previews: PreviewProvider {
             ViewManage()
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
-                .environmentObject(Authentication())
-                .environmentObject(Navigation())
+                .environmentObject(ViewModelModal())
             
             ViewManage()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
-                .environmentObject(Authentication())
-                .environmentObject(Navigation())
+                .environmentObject(ViewModelModal())
         }
     }
 }

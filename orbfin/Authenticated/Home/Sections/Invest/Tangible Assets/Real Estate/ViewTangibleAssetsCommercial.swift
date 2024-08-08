@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ViewTangibleAssetsCommercial: View {
+    @EnvironmentObject var vmModal: ViewModelModal
+
     var body: some View {
         ComponentCard {
             Text("Commercial")
@@ -17,4 +19,5 @@ struct ViewTangibleAssetsCommercial: View {
 
 #Preview {
     ViewTangibleAssetsCommercial()
+        .environmentObject(ViewModelModal())
 }

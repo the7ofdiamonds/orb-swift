@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
+    @EnvironmentObject var vmModal: ViewModelModal
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     @EnvironmentObject var vmResidential: ViewModelResidential
@@ -64,6 +65,7 @@ struct ContentView: View {
         }
         .environmentObject(authentication)
         .environmentObject(navigation)
+        .environmentObject(vmModal)
         .environmentObject(vmCommercial)
         .environmentObject(vmCommercialProperty)
         .environmentObject(vmResidential)
@@ -78,6 +80,7 @@ struct ContentView: View {
     ContentView()
         .environmentObject(Authentication())
         .environmentObject(Navigation())
+        .environmentObject(ViewModelModal())
         .environmentObject(ViewModelCommercial())
         .environmentObject(ViewModelCommercialProperty())
         .environmentObject(ViewModelResidential())

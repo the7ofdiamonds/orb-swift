@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ViewTangibleAssets: View {
+    @EnvironmentObject var vmModal: ViewModelModal
+
     var body: some View {
             ComponentCard {
                 VStack(spacing: 30){
@@ -26,4 +28,5 @@ struct ViewTangibleAssets: View {
 
 #Preview {
     ViewTangibleAssets()
+        .environmentObject(ViewModelModal())
 }
