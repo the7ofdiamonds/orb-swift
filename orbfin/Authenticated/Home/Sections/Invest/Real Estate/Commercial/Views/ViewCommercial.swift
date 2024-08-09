@@ -23,10 +23,14 @@ struct ViewCommercial: View {
     var body: some View {
         Group {
             if vmModal.show {
-                ComponentSearchBy()
+                ScrollView {
+                    VStack {
+                        ComponentSearchBy()
 
-                if let properties {
-                    ComponentCardResults(properties: properties)
+                        if let properties {
+                            ComponentCardResults(properties: properties)
+                        }
+                    }
                 }
                 
                 if showStatus {

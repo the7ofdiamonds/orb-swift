@@ -21,14 +21,47 @@ struct ComponentSearchBy: View {
     @State private var state: String = ""
     @State private var zipcode: String = ""
     @State private var county: String = ""
-    
+    @State private var price: Int = 0
+    @State private var priceSF: Int = 0
+    @State private var capRate: Double = 0.0
+    @State private var leased: Double = 0.0
+    @State private var tenancy: String = ""
+    @State private var saleType: String = ""
+    @State private var propertyType: String = ""
+    @State private var propertySubType: String = ""
+    @State private var additionalSubTypes: String = ""
+    @State private var stories: Int = 0
+    @State private var yearbuilt: Int = 0000
+    @State private var sprinklers: String = ""
+    @State private var parkingSpaces: Int = 0
+    @State private var totalBldgSize: Double = 0.0
+    @State private var landAcres: Double = 0.0
+    @State private var landSqft: Double = 0.0
+    @State private var zoning: String = ""
+
     var request: RequestProperties {
         RequestProperties(
             streetAddress: streetAddress,
             city: city,
             state: state,
             zipcode: zipcode,
-            county: county
+            county: county,
+            price: price,
+            priceSF: priceSF,
+            capRate: capRate,
+            leased: leased,
+            tenancy: tenancy,
+            saleType: saleType,
+            propertyType: propertyType,
+            propertySubType: propertySubType,
+            stories: stories,
+            yearbuilt: yearbuilt,
+            sprinklers: sprinklers,
+            parkingSpaces: parkingSpaces,
+            totalBldgSize: totalBldgSize,
+            landAcres: landAcres,
+            landSqft: landSqft,
+            zoning: zoning
         )
     }
     
@@ -41,6 +74,24 @@ struct ComponentSearchBy: View {
                     TextField("State", text: $state)
                     TextField("Zipcode", text: $zipcode)
                     TextField("County", text: $county)
+                    ComponentDivider()
+                    TextField("Price", value: $price, formatter: NumberFormatter())
+                    TextField("Price SF", value: $priceSF, formatter: NumberFormatter())
+                    TextField("Cap Rate", value: $capRate, formatter: NumberFormatter())
+                    ComponentDivider()
+                    TextField("tenancy", text: $tenancy)
+                    TextField("Sale Type", text: $saleType)
+                    ComponentDivider()
+                    TextField("propertyType", text: $propertyType)
+                    TextField("propertySubType", text: $propertySubType)
+                    TextField("stories", value: $stories, formatter: NumberFormatter())
+                    TextField("yearbuilt", value: $yearbuilt, formatter: NumberFormatter())
+                    TextField("sprinklers", text: $sprinklers)
+                    TextField("parkingSpaces", value: $parkingSpaces, formatter: NumberFormatter())
+                    TextField("totalBldgSize", value: $totalBldgSize, formatter: NumberFormatter())
+                    TextField("landAcres", value: $landAcres, formatter: NumberFormatter())
+                    TextField("landSqft", value: $landSqft, formatter: NumberFormatter())
+                    TextField("zoning", text: $zoning)
                 }
                 
                 Button {

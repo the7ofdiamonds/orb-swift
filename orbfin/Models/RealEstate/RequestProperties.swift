@@ -19,6 +19,7 @@ struct RequestProperties: Encodable {
     var capRate: Double?
     var leased: Double?
     var tenancy: String?
+    var saleType: String?
     var propertyType: String?
     var propertySubType: String?
     var stories: Int?

@@ -19,25 +19,27 @@ struct ViewRealEstate: View {
     var body: some View {
         Group {
             if vmModal.show {
-                VStack(spacing: 30) {
-                    ComponentSearchByPropertyID()
-                    
-                    ComponentSearchByAPN()
-                                        
-                    ComponentCardFixed {
-                        VStack(spacing: 30){
-                            ComponentButtonHNav(page: .commercial)
-                            
-                            ComponentDivider()
-                            
-                            ComponentButtonHNav(page: .residential)
+                ScrollView {
+                    VStack {
+                        ComponentSearchByPropertyID()
+                        
+                        ComponentSearchByAPN()
+                        
+                        ComponentCardFixed {
+                            VStack(spacing: 30){
+                                ComponentButtonHNav(page: .commercial)
+                                
+                                ComponentDivider()
+                                
+                                ComponentButtonHNav(page: .residential)
+                            }
                         }
-                    }
-                    
-                    ComponentSearchBy()
-
-                    if let properties {
-                        ComponentCardResults(properties: properties)
+                        
+                        ComponentSearchBy()
+                        
+                        if let properties {
+                            ComponentCardResults(properties: properties)
+                        }
                     }
                 }
             }
