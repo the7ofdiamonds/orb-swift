@@ -1,0 +1,108 @@
+//
+//  ViewModelRealEstate.swift
+//  orbfin
+//
+//  Created by Jamel Lyons on 8/8/24.
+//
+
+import Foundation
+import SwiftUI
+
+@MainActor
+class ViewModelRealEstate: ObservableObject {
+    @Published var id: String?
+    @Published var property: RealEstateProperty?
+    @Published var properties: [RealEstateProperty]?
+    @Published var successMessage: String? = nil
+    @Published var errorMessage: String? = nil
+    @Published var cautionMessage: String? = nil
+    @Published var error: NetworkError? = nil
+    @Published var showingAlert: Bool = false
+    
+    func getPropertyByID(_ id: String) async -> RealEstateProperty? {
+        do {
+            let response: ResponseRealEstateProperty = try await RealEstate().propertyByID(id)
+            
+            if let errorMessage = response.errorMessage {
+                self.errorMessage = errorMessage
+            }
+            
+            if let property = response.property {
+                self.property = property
+                
+                if let address = property.address {
+                    let coordinate = try await LocationManager.instance.getCoordinates(address: address.toString())
+                    self.property?.coordinates = coordinate
+                }
+            }
+            
+            return self.property
+        } catch {
+            self.error = error as? NetworkError
+            self.showingAlert = true
+        }
+        
+        return RealEstateProperty(id: String())
+    }
+    
+    func getPropertyByAPN(_ apn: String) async -> RealEstateProperty? {
+        do {
+            let response: ResponseRealEstateProperty = try await RealEstate().propertyByAPN(apn)
+            
+            if let errorMessage = response.errorMessage {
+                self.errorMessage = errorMessage
+            }
+            
+            if let property = response.property {
+                self.property = property
+                
+                if let address = property.address {
+                    let coordinate = try await LocationManager.instance.getCoordinates(address: address.toString())
+                    self.property?.coordinates = coordinate
+                }
+            }
+            
+            return self.property
+        } catch {
+            self.error = error as? NetworkError
+            self.showingAlert = true
+        }
+        
+        return RealEstateProperty(id: String())
+    }
+    
+    func getProperties(request: RequestProperties) async -> [RealEstateProperty]? {
+        do {
+            let response: ResponseProperties = try await RealEstate().properties(request: request)
+            
+            if let errorMessage = response.errorMessage {
+                self.errorMessage = errorMessage
+            }
+            
+            if let properties = response.properties {
+                var updatedProperties = [RealEstateProperty]()
+                
+                for property in properties {
+                    if let address = property.address?.toString() {
+                        let coordinate = try await LocationManager.instance.getCoordinates(address: address)
+                        var updatedProperty = property
+                        
+                        updatedProperty.coordinates = coordinate
+                        updatedProperties.append(updatedProperty)
+                    } else {
+                        updatedProperties.append(property)
+                    }
+                }
+                
+                self.properties = updatedProperties
+                
+                return updatedProperties
+            }
+        } catch {
+            self.error = error as? NetworkError
+            self.showingAlert = true
+        }
+        
+        return []
+    }
+}

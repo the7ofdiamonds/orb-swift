@@ -78,16 +78,7 @@ struct ViewResidentialProperty: View {
                 }
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    vmModal.toggle()
-                } label: {
-                    Image(systemName: "map")
-                }
-
-            }
-        }
+        
     }
 }
 

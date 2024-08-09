@@ -8,24 +8,49 @@
 import SwiftUI
 
 struct ViewRealEstate: View {
+    @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
-
+    @EnvironmentObject var vm: ViewModelRealEstate
+    
+    var properties: [RealEstateProperty]? {
+        return vm.properties
+    }
+    
     var body: some View {
-        ComponentCardFixed {
-            VStack(spacing: 30){
-                ComponentButtonHNav(page: .commercial)
-                
-                ComponentDivider()
-                
-                ComponentButtonHNav(page: .residential)
+        Group {
+            if vmModal.show {
+                VStack(spacing: 30) {
+                    ComponentSearchByPropertyID()
+                    
+                    ComponentSearchByAPN()
+                                        
+                    ComponentCardFixed {
+                        VStack(spacing: 30){
+                            ComponentButtonHNav(page: .commercial)
+                            
+                            ComponentDivider()
+                            
+                            ComponentButtonHNav(page: .residential)
+                        }
+                    }
+                    
+                    ComponentSearchBy()
+
+                    if let properties {
+                        ComponentCardResults(properties: properties)
+                    }
+                }
             }
+        }
+        .alert(isPresented: $vm.showingAlert) {
+            Alert(
+                title: Text(vm.error?.title ?? "An Error has occured."),
+                message: Text("\(vm.error?.message ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
+                dismissButton: .default(Text("OK"))
+            )
         }
         
     }
-}
-
-#Preview {
-    ViewRealEstate()
 }
 
 struct ViewRealEstate_Previews: PreviewProvider {
@@ -36,7 +61,7 @@ struct ViewRealEstate_Previews: PreviewProvider {
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
                 .environmentObject(Navigation())
                 .environmentObject(ViewModelModal())
-
+            
             ViewRealEstate()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))

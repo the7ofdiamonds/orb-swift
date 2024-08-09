@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ViewTangibleAssetsBusiness: View {
+    @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
 
     var body: some View {

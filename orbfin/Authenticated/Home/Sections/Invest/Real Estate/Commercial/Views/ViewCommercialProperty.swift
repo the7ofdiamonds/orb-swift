@@ -83,16 +83,6 @@ struct ViewCommercialProperty: View {
                     }
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        vmModal.toggle()
-                    } label: {
-                        Image(systemName: "map")
-                    }
-
-                }
-            }
         
     }
 }

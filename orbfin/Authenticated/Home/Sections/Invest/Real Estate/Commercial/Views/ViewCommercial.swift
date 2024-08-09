@@ -17,53 +17,40 @@ struct ViewCommercial: View {
     var properties: [RealEstateProperty]? {
         return vm.properties
     }
-        
+    
+    @State var showStatus: Bool = true
+
     var body: some View {
         Group {
             if vmModal.show {
-                ComponentCard {
-                    ComponentButtonH(label: Page.commercial.title, icon: Page.commercial.icon) {
-                        Task {
-                            await vm.getProperties()
-                        }
-                    }
-                    
-                    List {
-                        if let properties {
-                            ForEach(properties) { property in
-                                Button(action: {
-                                    navigation.browse(page: .commercialproperty(property: property))
-                                }, label: {
-                                    Text(property.address?.toString() ?? "Commercial Property")
-                                })
-                                .font(.headline)
-                                .fontWeight(.bold)
-                            }
-                        }
-                    }
+                ComponentSearchBy()
+
+                if let properties {
+                    ComponentCardResults(properties: properties)
+                }
+                
+                if showStatus {
+                    ViewStatus(showStatus: $showStatus,
+                               successMessage: vm.successMessage,
+                               errorMessage: vm.errorMessage, cautionMessage: vm.cautionMessage)
                 }
             }
         }
         .onAppear {
+            Task {
+                await vm.getProperties(request: RequestProperties(propertyClass: "commercial"))
+            }
+            
             if let properties, let coordinates = properties[0].coordinates {
                 location.changeCamera(coordinates: coordinates)
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("Commercial")
-                    .font(.title)
-                    .fontWeight(.bold)
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    vmModal.toggle()
-                } label: {
-                    Image(systemName: "map")
-                }
-            }
+        .alert(isPresented: $vm.showingAlert) {
+            Alert(
+                title: Text(vm.error?.title ?? "An Error has occured."),
+                message: Text("\(vm.error?.message ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
+                dismissButton: .default(Text("OK"))
+            )
         }
             
     }

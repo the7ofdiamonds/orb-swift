@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 struct RealEstateProperty: Identifiable, Equatable, Codable {
-    var id: String?
+    var id: String
     var propertyClass: String?
     var images: [String]?
     var streetAddress: String?

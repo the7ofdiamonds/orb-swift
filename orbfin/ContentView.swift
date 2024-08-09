@@ -12,6 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
+    @EnvironmentObject var vmRealEstate: ViewModelRealEstate
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     @EnvironmentObject var vmResidential: ViewModelResidential
@@ -66,6 +67,7 @@ struct ContentView: View {
         .environmentObject(authentication)
         .environmentObject(navigation)
         .environmentObject(vmModal)
+        .environmentObject(vmRealEstate)
         .environmentObject(vmCommercial)
         .environmentObject(vmCommercialProperty)
         .environmentObject(vmResidential)
@@ -81,6 +83,7 @@ struct ContentView: View {
         .environmentObject(Authentication())
         .environmentObject(Navigation())
         .environmentObject(ViewModelModal())
+        .environmentObject(ViewModelRealEstate())
         .environmentObject(ViewModelCommercial())
         .environmentObject(ViewModelCommercialProperty())
         .environmentObject(ViewModelResidential())

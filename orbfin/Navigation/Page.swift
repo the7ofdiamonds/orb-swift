@@ -205,22 +205,20 @@ extension Page {
         case .realestate:
             return "Real Estate"
         case .commercial:
-            return "Commercial Real Estate"
+            return "Commercial"
         case .commercialproperty(let property):
             if let address = property.address {
                 return address.toString()
-            } else if let id = property.id {
-                return "Commercial Property #\(id)"
             } else {
-                return "Commercial Property"
+                return "Commercial Property #\(property.id)"
             }
         case .residential:
             return "Residential"
         case .residentialproperty(let property):
-            if let address = property.address?.toString() {
-                return address
+            if let address = property.address {
+                return address.toString()
             } else {
-                return "Residential Property"
+                return "Residential Property#\(property.id)"
             }
         case .tangibleassets:
             return "Tangible Assets"
@@ -315,18 +313,16 @@ extension Page {
         case .commercialproperty(let property):
             if let address = property.address {
                 return address.toString()
-            } else if let id = property.id {
-                return "Commercial Property #\(id)"
             } else {
-                return "Commercial Property)"
+                return "Commercial Property #\(property.id)"
             }
         case .residential:
             return "Residential"
         case .residentialproperty(let property):
-            if let address = property.address?.toString(){
-                return address
+            if let address = property.address {
+                return address.toString()
             } else {
-                return "Residential Property"
+                return "Residential Property #\(property.id)"
             }
         case .tangibleassets:
             return "Tangible Assets"

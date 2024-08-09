@@ -8,5 +8,6 @@
 import Foundation
 
 struct RequestProperty: Codable {
-    let id: String
+    let id: String?
+    let apn: String?
 }

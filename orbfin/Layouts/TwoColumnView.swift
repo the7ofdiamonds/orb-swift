@@ -10,6 +10,8 @@ import SwiftUI
 struct TwoColumnView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
+    @EnvironmentObject var vmModal: ViewModelModal
+    @EnvironmentObject var vmRealEstate: ViewModelRealEstate
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     @EnvironmentObject var vmResidential: ViewModelResidential
@@ -32,6 +34,8 @@ struct TwoColumnView: View {
             ViewAuthenticated()
                 .environmentObject(authentication)
                 .environmentObject(navigation)
+                .environmentObject(vmModal)
+                .environmentObject(vmRealEstate)
                 .environmentObject(vmCommercial)
                 .environmentObject(vmCommercialProperty)
                 .environmentObject(vmResidential)
@@ -52,6 +56,8 @@ struct TwoColumnView_Previews: PreviewProvider {
         }
         .environmentObject(Authentication())
         .environmentObject(Navigation())
+        .environmentObject(ViewModelModal())
+        .environmentObject(ViewModelRealEstate())
         .environmentObject(ViewModelCommercial())
         .environmentObject(ViewModelCommercialProperty())
         .environmentObject(ViewModelResidential())

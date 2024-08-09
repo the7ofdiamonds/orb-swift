@@ -36,14 +36,12 @@ struct ViewHome_Previews: PreviewProvider {
             ViewHome()
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
-                .environmentObject(Authentication())
-                .environmentObject(Navigation())
+                .environmentObject(ViewModelModal())
             
             ViewHome()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
-                .environmentObject(Authentication())
-                .environmentObject(Navigation())
+                .environmentObject(ViewModelModal())
         }
     }
 }

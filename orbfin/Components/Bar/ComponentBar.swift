@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ComponentBar: View {
-    
+    @EnvironmentObject var vmModal: ViewModelModal
+
     var body: some View {
         
         HStack(alignment: .center, spacing: 50) {

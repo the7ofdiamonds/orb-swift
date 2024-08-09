@@ -11,6 +11,7 @@ import MapKit
 struct ViewMap: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
+    @EnvironmentObject var vmRealEstate: ViewModelRealEstate
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmResidential: ViewModelResidential
 
@@ -21,6 +22,12 @@ struct ViewMap: View {
     var body: some View {
           Map(position: $location.position) {
               switch navigation.isPage {
+              case .blank:
+                  ViewMapProperties(properties: $vmRealEstate.properties)
+                  
+              case .realestate:
+                  ViewMapProperties(properties: $vmRealEstate.properties)
+                  
               case .commercial:
                   ViewMapProperties(properties: $vmCommercial.properties)
                   
@@ -52,6 +59,25 @@ struct ViewMap: View {
                 }
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                HStack {
+                    Image(systemName: navigation.isPage?.icon ?? "questionmark")
+                    Text(navigation.isPage?.title ?? "No title")
+                        .font(.title)
+                        .fontWeight(.bold)
+                }
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    vmModal.toggle()
+                } label: {
+                    Image(systemName: "map")
+                }
+            }
+        }
     }
 }
 
@@ -59,6 +85,7 @@ struct ViewMap: View {
     ViewMap()
         .environmentObject(Navigation())
         .environmentObject(ViewModelModal())
+        .environmentObject(ViewModelRealEstate())
         .environmentObject(ViewModelCommercial())
         .environmentObject(ViewModelCommercialProperty())
         .environmentObject(ViewModelResidential())

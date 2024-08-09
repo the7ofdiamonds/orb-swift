@@ -23,14 +23,9 @@ class ViewModelCommercialProperty: ObservableObject {
         self.id = id
     }
     
-    func change(property: RealEstateProperty) {
-        self.property = property
-    }
-    
     func getProperty(request: RequestProperty) async -> RealEstateProperty? {
-        print("getProperty")
         do {
-            let response: ResponseProperty = try await RealEstate().commercialProperty(request: request)
+            let response: ResponseRealEstateProperty = try await Commercial().property(request: request)
 
             if let errorMessage = response.errorMessage {
                 self.errorMessage = errorMessage

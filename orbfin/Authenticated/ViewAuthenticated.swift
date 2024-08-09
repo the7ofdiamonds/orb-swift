@@ -9,9 +9,9 @@ import SwiftUI
 import MapKit
 
 struct ViewAuthenticated: View {
-    @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
+    @EnvironmentObject var vmRealEstate: ViewModelRealEstate
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     @EnvironmentObject var vmResidential: ViewModelResidential
@@ -22,8 +22,7 @@ struct ViewAuthenticated: View {
     @ViewBuilder var body: some View {
         ZStack {
             ViewMap()
-                .environmentObject(navigation)
-                .environmentObject(vmModal)
+                .environmentObject(vmRealEstate)
                 .environmentObject(vmCommercial)
                 .environmentObject(vmCommercialProperty)
                 .environmentObject(vmResidential)
@@ -33,6 +32,8 @@ struct ViewAuthenticated: View {
                 Spacer()
                 
                 navigation.isView
+                    .environmentObject(vmModal)
+                    .environmentObject(vmRealEstate)
                     .environmentObject(vmCommercial)
                     .environmentObject(vmCommercialProperty)
                     .environmentObject(vmResidential)
@@ -60,6 +61,8 @@ struct ViewAuthenticated_Previews: PreviewProvider {
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
         }
         .environmentObject(Navigation())
+        .environmentObject(ViewModelModal())
+        .environmentObject(ViewModelRealEstate())
         .environmentObject(ViewModelCommercial())
         .environmentObject(ViewModelCommercialProperty(property: PreviewCommercial.loadProperties()[0]))
         .environmentObject(ViewModelResidential())

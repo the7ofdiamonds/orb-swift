@@ -18,55 +18,39 @@ struct ViewResidential: View {
         return vm.properties
     }
     
-    @State var show: Bool = true
+    @State var showStatus: Bool = true
 
     var body: some View {
         Group {
             if vmModal.show {
-                ComponentCard {
-                    ComponentButtonH(label: Page.residential.title, icon: Page.residential.icon) {
-                        Task {
-                            await vm.getProperties()
-                        }
-                    }
-                    
-                    List {
-                        if let properties {
-                            ForEach(properties) { property in
-                                Button(action: {
-                                    navigation.change(page: .residentialproperty(property: property))
-                                }, label: {
-                                    Text(property.address?.toString() ?? "Residential Property")
-                                })
-                                .font(.headline)
-                                .fontWeight(.bold)
-                            }
-                        }
-                    }
+                ComponentSearchBy()
+
+                if let properties {
+                    ComponentCardResults(properties: properties)
                 }
+            }
+            
+            if showStatus {
+                ViewStatus(showStatus: $showStatus,
+                           successMessage: vm.successMessage,
+                           errorMessage: vm.errorMessage, cautionMessage: vm.cautionMessage)
             }
         }
         .onAppear {
+            Task {
+                await vm.getProperties(request: RequestProperties(propertyClass: "residential"))
+            }
+            
             if let properties, let coordinates = properties[0].coordinates {
                 location.changeCamera(coordinates: coordinates)
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("Residential")
-                    .font(.title)
-                    .fontWeight(.bold)
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    vmModal.toggle()
-                } label: {
-                    Image(systemName: "map")
-                }
-
-            }
+        .alert(isPresented: $vm.showingAlert) {
+            Alert(
+                title: Text(vm.error?.title ?? "An Error has occured."),
+                message: Text("\(vm.error?.message ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
+                dismissButton: .default(Text("OK"))
+            )
         }
         
     }

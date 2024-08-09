@@ -16,11 +16,9 @@ class ViewModelResidential: ObservableObject {
     @Published var error: NetworkError? = nil
     @Published var showingAlert: Bool = false
     
-    func getProperties() async -> [RealEstateProperty]? {
+    func getProperties(request: RequestProperties?) async -> [RealEstateProperty]? {
         do {
-            let request = RequestProperties(message: "From application")
-
-            let response: ResponseProperties = try await RealEstate().residentialProperties(request: request)
+            let response: ResponseProperties = try await Residential().properties(request: request)
 
             if let errorMessage = response.errorMessage {
                 self.errorMessage = errorMessage
