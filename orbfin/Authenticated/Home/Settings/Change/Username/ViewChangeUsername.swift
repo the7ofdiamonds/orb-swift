@@ -20,15 +20,15 @@ struct ViewChangeUsername: View {
     
     var body: some View {
         if !vm.errorMessage.isEmpty {
-            StatusBar(message: vm.errorMessage, type: .error)
+            ComponentBarStatus(message: vm.errorMessage, type: .error)
         }
         
         ComponentCard(title: "Change Username") {
-            InputEmail(email: $email)
+            ComponentInputEmail(email: $email)
 
-            InputPassword(password: $password)
+            ComponentInputPassword(password: $password)
             
-            InputUsername(username: $username)
+            ComponentInputUsername(username: $username)
             
             ComponentButtonH(label: "Change", icon: "") {
                 Task {

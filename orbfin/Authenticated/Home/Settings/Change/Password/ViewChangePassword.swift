@@ -19,13 +19,13 @@ struct ViewChangePassword: View {
     
     var body: some View {
         if !vm.errorMessage.isEmpty {
-            StatusBar(message: vm.errorMessage, type: .error)
+            ComponentBarStatus(message: vm.errorMessage, type: .error)
         }
         
         VStack {
             ComponentCard(title: "Change Password") {
-                InputPassword(password: $password)
-                InputConfirmPassword(password: $confirmPassword)
+                ComponentInputPassword(password: $password)
+                ComponentInputConfirmPassword(password: $confirmPassword)
                 
                 ComponentButtonH(label: "Change", icon: "") {
                     Task {

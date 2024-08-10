@@ -63,10 +63,10 @@ struct ViewLogin: View {
                     .font(Styling.font(component: .title))
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 
-                InputUsername(username: $username)
+                ComponentInputUsername(username: $username)
                     .padding(.vertical, 10)
                 
-                InputPassword(password: $password)
+                ComponentInputPassword(password: $password)
                     .padding(.vertical, 10)
                 
                 ComponentButtonH(label: "LOGIN", icon: "key") {

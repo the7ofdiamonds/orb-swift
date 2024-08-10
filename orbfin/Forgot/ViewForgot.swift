@@ -20,7 +20,7 @@ struct ViewForgot: View {
     var body: some View {
         ComponentCard {
             VStack(spacing: 20) {
-                InputUsername(username: $username)
+                ComponentInputUsername(username: $username)
                 
                 HStack {
                     VStack {
@@ -36,7 +36,7 @@ struct ViewForgot: View {
                     }
                 }
                 
-                InputEmail(email: $email)
+                ComponentInputEmail(email: $email)
             }
             
             ComponentButtonH(label: "FORGOT", icon: "questionmark.circle") {
@@ -53,11 +53,11 @@ struct ViewForgot: View {
         }
         
         if !vm.successMessage.isEmpty {
-            StatusBar(message: vm.successMessage, type: .success)
+            ComponentBarStatus(message: vm.successMessage, type: .success)
         }
         
         if !vm.errorMessage.isEmpty {
-            StatusBar(message: vm.errorMessage, type: .error)
+            ComponentBarStatus(message: vm.errorMessage, type: .error)
         }
     }
 }

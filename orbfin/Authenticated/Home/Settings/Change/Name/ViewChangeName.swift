@@ -20,12 +20,12 @@ struct ViewChangeName: View {
     
     var body: some View {
         if !vm.errorMessage.isEmpty {
-            StatusBar(message: vm.errorMessage, type: .error)
+            ComponentBarStatus(message: vm.errorMessage, type: .error)
         }
         
         ComponentCard(title: "Change Name") {
-            InputTextField(placeholder: "First Name", text: $firstName)
-            InputTextField(placeholder: "Last Name", text: $lastName)
+            ComponentInputTextField(placeholder: "First Name", text: $firstName)
+            ComponentInputTextField(placeholder: "Last Name", text: $lastName)
             
             ComponentButtonH(label: "Change", icon: "") {
                 Task {

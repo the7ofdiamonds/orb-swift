@@ -19,12 +19,12 @@ struct ViewChangePhone: View {
     
     var body: some View {
         if !vm.errorMessage.isEmpty {
-            StatusBar(message: vm.errorMessage, type: .error)
+            ComponentBarStatus(message: vm.errorMessage, type: .error)
         }
         
         ComponentCard(title: "Change Phone") {
             
-            InputTextField(placeholder: "Phone", text: $phone)
+            ComponentInputTextField(placeholder: "Phone", text: $phone)
                         
             ComponentButtonH(label: "Change", icon: "") {
                 Task {

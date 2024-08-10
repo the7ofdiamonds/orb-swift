@@ -42,7 +42,7 @@ struct ThreeColumnView: View {
                 .environmentObject(vmResidentialProperty)
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            ComponentBar()
+            ComponentBarHome()
         }
 
     }

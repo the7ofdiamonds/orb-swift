@@ -548,46 +548,46 @@ extension Page {
             AnyView(ViewManage())
             
         case .personal:
-            AnyView(ViewManagePersonal())
+            AnyView(ViewManageSection(page: .personal))
         case .personalincome:
-            AnyView(ViewManagePersonalIncome())
+            AnyView(ViewManageIncome())
         case .personalrevenue:
-            AnyView(ViewManagePersonalRevenue())
+            AnyView(ViewManageRevenue())
         case .personalexpenses:
-            AnyView(ViewManagePersonalExpenses())
+            AnyView(ViewManageExpenses())
         case .personalequity:
-            AnyView(ViewManagePersonalEquity())
+            AnyView(ViewManageEquity())
         case .personalassets:
-            AnyView(ViewManagePersonalAssets())
+            AnyView(ViewManageAssets())
         case .personalliabilities:
-            AnyView(ViewManagePersonalLiabilities())
+            AnyView(ViewManageLiabilities())
         case .personalcontra:
-            AnyView(ViewManagePersonalContra())
+            AnyView(ViewManageContra())
         case .personaltax:
             AnyView(ViewManagePersonalTax())
         case .personaltransactions:
-            AnyView(ViewManagePersonalTransactions())
+            AnyView(ViewManageTransactions())
             
         case .business:
-            AnyView(ViewManageBusiness())
+            AnyView(ViewManageSection(page: .business))
         case .businessincome:
-            AnyView(ViewManageBusinessIncome())
+            AnyView(ViewManageIncome())
         case .businessrevenue:
-            AnyView(ViewManageBusinessRevenue())
+            AnyView(ViewManageRevenue())
         case .businessexpenses:
-            AnyView(ViewManageBusinessExpenses())
+            AnyView(ViewManageExpenses())
         case .businessequity:
-            AnyView(ViewManageBusinessEquity())
+            AnyView(ViewManageEquity())
         case .businessassets:
-            AnyView(ViewManageBusinessAssets())
+            AnyView(ViewManageAssets())
         case .businessliabilities:
-            AnyView(ViewManageBusinessLiabilities())
+            AnyView(ViewManageLiabilities())
         case .businesscontra:
-            AnyView(ViewManageBusinessContra())
+            AnyView(ViewManageContra())
         case .businesstax:
             AnyView(ViewManageBusinessTax())
         case .businesstransactions:
-            AnyView(ViewManageBusinessTransactions())
+            AnyView(ViewManageTransactions())
             
         case .settings:
             AnyView(ViewSettings())

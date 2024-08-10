@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A4041C552C5522AA001FD37B /* InputConfirmPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C542C5522AA001FD37B /* InputConfirmPassword.swift */; };
+		A4041C552C5522AA001FD37B /* ComponentInputConfirmPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C542C5522AA001FD37B /* ComponentInputConfirmPassword.swift */; };
 		A4041C572C5524ED001FD37B /* ViewModelSignup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C562C5524ED001FD37B /* ViewModelSignup.swift */; };
 		A4041C592C553397001FD37B /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C582C553397001FD37B /* Signup.swift */; };
 		A4041C5B2C5534BE001FD37B /* RequestSignup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C5A2C5534BE001FD37B /* RequestSignup.swift */; };
@@ -32,6 +32,8 @@
 		A4041C8D2C57EAB5001FD37B /* ViewCommercialProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C8C2C57EAB5001FD37B /* ViewCommercialProperty.swift */; };
 		A4041C8F2C57EAF1001FD37B /* ViewModelCommercialProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C8E2C57EAF1001FD37B /* ViewModelCommercialProperty.swift */; };
 		A4041C942C580710001FD37B /* ComponentCardOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C932C580710001FD37B /* ComponentCardOverview.swift */; };
+		A40741A62C6824B900FB1770 /* ViewManagePersonalTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40741A52C6824B900FB1770 /* ViewManagePersonalTax.swift */; };
+		A40741A82C68251400FB1770 /* ViewManageContra.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40741A72C68251400FB1770 /* ViewManageContra.swift */; };
 		A41777F02C581336009C1353 /* PreviewCommercialProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41777EF2C581336009C1353 /* PreviewCommercialProperty.swift */; };
 		A41777F22C582FE0009C1353 /* ComponentCardHighlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41777F12C582FE0009C1353 /* ComponentCardHighlights.swift */; };
 		A41777F42C58317A009C1353 /* ComponentCardLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41777F32C58317A009C1353 /* ComponentCardLocation.swift */; };
@@ -77,9 +79,9 @@
 		A435415E2C3EC20B00B32BC1 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435415D2C3EC20B00B32BC1 /* Coordinates.swift */; };
 		A43541602C3EC4FD00B32BC1 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435415F2C3EC4FD00B32BC1 /* Models.swift */; };
 		A43541622C3EDACF00B32BC1 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541612C3EDACF00B32BC1 /* Styling.swift */; };
-		A43541652C3F02BA00B32BC1 /* InputUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541642C3F02BA00B32BC1 /* InputUsername.swift */; };
-		A43541672C3F098F00B32BC1 /* InputPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541662C3F098F00B32BC1 /* InputPassword.swift */; };
-		A43C29C82C3F4E34002BF1AE /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29C72C3F4E34002BF1AE /* InputTextField.swift */; };
+		A43541652C3F02BA00B32BC1 /* ComponentInputUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541642C3F02BA00B32BC1 /* ComponentInputUsername.swift */; };
+		A43541672C3F098F00B32BC1 /* ComponentInputPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43541662C3F098F00B32BC1 /* ComponentInputPassword.swift */; };
+		A43C29C82C3F4E34002BF1AE /* ComponentInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29C72C3F4E34002BF1AE /* ComponentInputTextField.swift */; };
 		A43C29CA2C4004C2002BF1AE /* BackendURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29C92C4004C2002BF1AE /* BackendURLs.swift */; };
 		A43C29CC2C4005C2002BF1AE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29CB2C4005C2002BF1AE /* NetworkManager.swift */; };
 		A43C29CE2C4034CC002BF1AE /* ResponseServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29CD2C4034CC002BF1AE /* ResponseServer.swift */; };
@@ -91,7 +93,7 @@
 		A43C29DB2C405A98002BF1AE /* RequestForgot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29DA2C405A98002BF1AE /* RequestForgot.swift */; };
 		A43C29DD2C406727002BF1AE /* Forgot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29DC2C406727002BF1AE /* Forgot.swift */; };
 		A43C29DF2C4068AE002BF1AE /* ResponseForgot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29DE2C4068AE002BF1AE /* ResponseForgot.swift */; };
-		A43C29E12C406ECE002BF1AE /* InputEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29E02C406ECE002BF1AE /* InputEmail.swift */; };
+		A43C29E12C406ECE002BF1AE /* ComponentInputEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29E02C406ECE002BF1AE /* ComponentInputEmail.swift */; };
 		A43C29E32C406F5B002BF1AE /* ViewModelForgot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29E22C406F5B002BF1AE /* ViewModelForgot.swift */; };
 		A43C29E52C407658002BF1AE /* StorageUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29E42C407658002BF1AE /* StorageUserDefaults.swift */; };
 		A43C29E92C40F44A002BF1AE /* ComponentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29E82C40F44A002BF1AE /* ComponentCard.swift */; };
@@ -100,7 +102,7 @@
 		A43C29EF2C411F72002BF1AE /* ViewHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29EE2C411F72002BF1AE /* ViewHome.swift */; };
 		A43C29F12C4189CD002BF1AE /* ViewForgot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29F02C4189CD002BF1AE /* ViewForgot.swift */; };
 		A43C29F32C4189FD002BF1AE /* ViewSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29F22C4189FD002BF1AE /* ViewSignUp.swift */; };
-		A43C29F62C4197C6002BF1AE /* ComponentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29F52C4197C6002BF1AE /* ComponentBar.swift */; };
+		A43C29F62C4197C6002BF1AE /* ComponentBarHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29F52C4197C6002BF1AE /* ComponentBarHome.swift */; };
 		A43C29F82C4199FD002BF1AE /* ComponentButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29F72C4199FD002BF1AE /* ComponentButtonBar.swift */; };
 		A43C29FB2C41A82C002BF1AE /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29FA2C41A82C002BF1AE /* Navigation.swift */; };
 		A43C29FD2C41B31F002BF1AE /* ComponentButtonH.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C29FC2C41B31F002BF1AE /* ComponentButtonH.swift */; };
@@ -108,7 +110,7 @@
 		A45676342C5C1A7D0025A730 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676332C5C1A7D0025A730 /* Status.swift */; };
 		A45676362C5C43A00025A730 /* ViewModelHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676352C5C43A00025A730 /* ViewModelHome.swift */; };
 		A45676382C5C738F0025A730 /* ViewStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676372C5C738F0025A730 /* ViewStatusCard.swift */; };
-		A4605E9A2C4228160091CC52 /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4605E992C4228160091CC52 /* StatusBar.swift */; };
+		A4605E9A2C4228160091CC52 /* ComponentBarStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4605E992C4228160091CC52 /* ComponentBarStatus.swift */; };
 		A4605E9C2C46D0BC0091CC52 /* ViewManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4605E9B2C46D0BC0091CC52 /* ViewManage.swift */; };
 		A4605E9E2C46D1A80091CC52 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4605E9D2C46D1A80091CC52 /* Page.swift */; };
 		A4605EA32C46F1000091CC52 /* ViewInvest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4605EA22C46F1000091CC52 /* ViewInvest.swift */; };
@@ -125,17 +127,12 @@
 		A4880FAD2C65909A0080C5E0 /* ComponentSearchByAPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4880FAC2C65909A0080C5E0 /* ComponentSearchByAPN.swift */; };
 		A4880FAF2C65915E0080C5E0 /* ComponentSearchBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4880FAE2C65915E0080C5E0 /* ComponentSearchBy.swift */; };
 		A4880FB12C65CDE60080C5E0 /* ComponentCardResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4880FB02C65CDE60080C5E0 /* ComponentCardResults.swift */; };
+		A4880FB62C6809DE0080C5E0 /* ViewManagePersonalSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4880FB52C6809DE0080C5E0 /* ViewManagePersonalSummary.swift */; };
+		A4880FB82C680AB90080C5E0 /* ViewManageBusinessSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4880FB72C680AB90080C5E0 /* ViewManageBusinessSummary.swift */; };
 		A49C0BB02C472CEE00968AFB /* ComponentButtonDoubleH.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BAF2C472CEE00968AFB /* ComponentButtonDoubleH.swift */; };
 		A49C0BB22C4765E800968AFB /* ComponentButtonHNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BB12C4765E800968AFB /* ComponentButtonHNav.swift */; };
-		A49C0BB62C476AF700968AFB /* ViewManageBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BB52C476AF700968AFB /* ViewManageBusiness.swift */; };
-		A49C0BB82C476B1900968AFB /* ViewManagePersonal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BB72C476B1900968AFB /* ViewManagePersonal.swift */; };
-		A49C0BBA2C47715700968AFB /* ViewManagePersonalIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BB92C47715700968AFB /* ViewManagePersonalIncome.swift */; };
-		A49C0BBC2C4771A700968AFB /* ViewManagePersonalExpenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BBB2C4771A700968AFB /* ViewManagePersonalExpenses.swift */; };
-		A49C0BBE2C47723300968AFB /* ViewManagePersonalLiabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BBD2C47723300968AFB /* ViewManagePersonalLiabilities.swift */; };
-		A49C0BC02C47728900968AFB /* ViewManagePersonalAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BBF2C47728900968AFB /* ViewManagePersonalAssets.swift */; };
-		A49C0BC22C4772FA00968AFB /* ViewManagePersonalRevenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BC12C4772FA00968AFB /* ViewManagePersonalRevenue.swift */; };
-		A49C0BC42C4775C200968AFB /* ViewManagePersonalTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BC32C4775C200968AFB /* ViewManagePersonalTransactions.swift */; };
-		A49C0BC62C4775E900968AFB /* ViewManageBusinessTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BC52C4775E900968AFB /* ViewManageBusinessTransactions.swift */; };
+		A49C0BB62C476AF700968AFB /* ViewManageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BB52C476AF700968AFB /* ViewManageSection.swift */; };
+		A49C0BC62C4775E900968AFB /* ViewManageTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BC52C4775E900968AFB /* ViewManageTransactions.swift */; };
 		A49C0BCE2C489BD800968AFB /* ViewModelManageBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BCD2C489BD800968AFB /* ViewModelManageBusiness.swift */; };
 		A49C0BD12C489CD300968AFB /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BD02C489CD300968AFB /* Transaction.swift */; };
 		A49C0BDA2C49B33400968AFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BD92C49B33400968AFB /* ContentView.swift */; };
@@ -151,14 +148,11 @@
 		A49C0BF42C4A15C200968AFB /* ViewNotary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BF32C4A15C200968AFB /* ViewNotary.swift */; };
 		A49C0BF62C4A1BEB00968AFB /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BF52C4A1BEA00968AFB /* Format.swift */; };
 		A49C0BF92C4A1EF500968AFB /* ManageSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BF82C4A1EF500968AFB /* ManageSummary.swift */; };
-		A49C0BFB2C4A8F9900968AFB /* ViewManagePersonalEquity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BFA2C4A8F9900968AFB /* ViewManagePersonalEquity.swift */; };
 		A4A7ACF42C3B3BE100EE9B48 /* ViewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A7ACF32C3B3BE100EE9B48 /* ViewLogin.swift */; };
 		A4A7ACF72C3B432900EE9B48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A7ACF62C3B432900EE9B48 /* LocationManager.swift */; };
 		A4D407262B4D100D00D97AB1 /* orbfinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D407252B4D100D00D97AB1 /* orbfinApp.swift */; };
 		A4D4072C2B4D100F00D97AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4D4072B2B4D100F00D97AB1 /* Assets.xcassets */; };
 		A4D407302B4D100F00D97AB1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4D4072F2B4D100F00D97AB1 /* Preview Assets.xcassets */; };
-		A4EA3CD82C4A982D00CEFCFF /* ViewManagePersonalContra.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CD72C4A982D00CEFCFF /* ViewManagePersonalContra.swift */; };
-		A4EA3CDA2C4A985500CEFCFF /* ViewManagePersonalTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CD92C4A985500CEFCFF /* ViewManagePersonalTax.swift */; };
 		A4EA3CDC2C4B4B4300CEFCFF /* ViewModelManageBusinessTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CDB2C4B4B4300CEFCFF /* ViewModelManageBusinessTransactions.swift */; };
 		A4EA3CDE2C4B5D4C00CEFCFF /* OneColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CDD2C4B5D4C00CEFCFF /* OneColumnView.swift */; };
 		A4EA3CE02C4B5D8D00CEFCFF /* TwoColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CDF2C4B5D8D00CEFCFF /* TwoColumnView.swift */; };
@@ -168,19 +162,18 @@
 		A4EA3CE82C4C787F00CEFCFF /* LayoutExperienceSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CE72C4C787F00CEFCFF /* LayoutExperienceSetting.swift */; };
 		A4EA3CEA2C4C791F00CEFCFF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CE92C4C791F00CEFCFF /* Settings.swift */; };
 		A4EA3CEC2C4C7F8000CEFCFF /* ViewLayoutExperienceSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CEB2C4C7F8000CEFCFF /* ViewLayoutExperienceSelection.swift */; };
-		A4EA3CF12C4ECAF400CEFCFF /* ViewManageBusinessIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CF02C4ECAF400CEFCFF /* ViewManageBusinessIncome.swift */; };
-		A4EA3CF32C4ECB4800CEFCFF /* ViewManageBusinessExpenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CF22C4ECB4800CEFCFF /* ViewManageBusinessExpenses.swift */; };
-		A4EA3CF52C4ECB7600CEFCFF /* ViewManageBusinessRevenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CF42C4ECB7600CEFCFF /* ViewManageBusinessRevenue.swift */; };
-		A4EA3CF72C4ECBB300CEFCFF /* ViewManageBusinessAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CF62C4ECBB300CEFCFF /* ViewManageBusinessAssets.swift */; };
-		A4EA3CF92C4ECBE700CEFCFF /* ViewManageBusinessLiabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CF82C4ECBE700CEFCFF /* ViewManageBusinessLiabilities.swift */; };
-		A4EA3CFB2C4ECCC300CEFCFF /* ViewManageBusinessEquity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CFA2C4ECCC300CEFCFF /* ViewManageBusinessEquity.swift */; };
-		A4EA3CFD2C4ECD2200CEFCFF /* ViewManageBusinessContra.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CFC2C4ECD2200CEFCFF /* ViewManageBusinessContra.swift */; };
+		A4EA3CF12C4ECAF400CEFCFF /* ViewManageIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CF02C4ECAF400CEFCFF /* ViewManageIncome.swift */; };
+		A4EA3CF32C4ECB4800CEFCFF /* ViewManageExpenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CF22C4ECB4800CEFCFF /* ViewManageExpenses.swift */; };
+		A4EA3CF52C4ECB7600CEFCFF /* ViewManageRevenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CF42C4ECB7600CEFCFF /* ViewManageRevenue.swift */; };
+		A4EA3CF72C4ECBB300CEFCFF /* ViewManageAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CF62C4ECBB300CEFCFF /* ViewManageAssets.swift */; };
+		A4EA3CF92C4ECBE700CEFCFF /* ViewManageLiabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CF82C4ECBE700CEFCFF /* ViewManageLiabilities.swift */; };
+		A4EA3CFB2C4ECCC300CEFCFF /* ViewManageEquity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CFA2C4ECCC300CEFCFF /* ViewManageEquity.swift */; };
 		A4EA3CFF2C4ECD5100CEFCFF /* ViewManageBusinessTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3CFE2C4ECD5100CEFCFF /* ViewManageBusinessTax.swift */; };
 		A4EA3D022C50287700CEFCFF /* ViewContentMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA3D012C50287700CEFCFF /* ViewContentMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A4041C542C5522AA001FD37B /* InputConfirmPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputConfirmPassword.swift; sourceTree = "<group>"; };
+		A4041C542C5522AA001FD37B /* ComponentInputConfirmPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentInputConfirmPassword.swift; sourceTree = "<group>"; };
 		A4041C562C5524ED001FD37B /* ViewModelSignup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelSignup.swift; sourceTree = "<group>"; };
 		A4041C582C553397001FD37B /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		A4041C5A2C5534BE001FD37B /* RequestSignup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignup.swift; sourceTree = "<group>"; };
@@ -205,6 +198,8 @@
 		A4041C8C2C57EAB5001FD37B /* ViewCommercialProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCommercialProperty.swift; sourceTree = "<group>"; };
 		A4041C8E2C57EAF1001FD37B /* ViewModelCommercialProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelCommercialProperty.swift; sourceTree = "<group>"; };
 		A4041C932C580710001FD37B /* ComponentCardOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCardOverview.swift; sourceTree = "<group>"; };
+		A40741A52C6824B900FB1770 /* ViewManagePersonalTax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonalTax.swift; sourceTree = "<group>"; };
+		A40741A72C68251400FB1770 /* ViewManageContra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageContra.swift; sourceTree = "<group>"; };
 		A41777EF2C581336009C1353 /* PreviewCommercialProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCommercialProperty.swift; sourceTree = "<group>"; };
 		A41777F12C582FE0009C1353 /* ComponentCardHighlights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCardHighlights.swift; sourceTree = "<group>"; };
 		A41777F32C58317A009C1353 /* ComponentCardLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCardLocation.swift; sourceTree = "<group>"; };
@@ -251,9 +246,9 @@
 		A435415D2C3EC20B00B32BC1 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		A435415F2C3EC4FD00B32BC1 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		A43541612C3EDACF00B32BC1 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
-		A43541642C3F02BA00B32BC1 /* InputUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUsername.swift; sourceTree = "<group>"; };
-		A43541662C3F098F00B32BC1 /* InputPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPassword.swift; sourceTree = "<group>"; };
-		A43C29C72C3F4E34002BF1AE /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		A43541642C3F02BA00B32BC1 /* ComponentInputUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentInputUsername.swift; sourceTree = "<group>"; };
+		A43541662C3F098F00B32BC1 /* ComponentInputPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentInputPassword.swift; sourceTree = "<group>"; };
+		A43C29C72C3F4E34002BF1AE /* ComponentInputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentInputTextField.swift; sourceTree = "<group>"; };
 		A43C29C92C4004C2002BF1AE /* BackendURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendURLs.swift; sourceTree = "<group>"; };
 		A43C29CB2C4005C2002BF1AE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A43C29CD2C4034CC002BF1AE /* ResponseServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseServer.swift; sourceTree = "<group>"; };
@@ -265,7 +260,7 @@
 		A43C29DA2C405A98002BF1AE /* RequestForgot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestForgot.swift; sourceTree = "<group>"; };
 		A43C29DC2C406727002BF1AE /* Forgot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forgot.swift; sourceTree = "<group>"; };
 		A43C29DE2C4068AE002BF1AE /* ResponseForgot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseForgot.swift; sourceTree = "<group>"; };
-		A43C29E02C406ECE002BF1AE /* InputEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputEmail.swift; sourceTree = "<group>"; };
+		A43C29E02C406ECE002BF1AE /* ComponentInputEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentInputEmail.swift; sourceTree = "<group>"; };
 		A43C29E22C406F5B002BF1AE /* ViewModelForgot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelForgot.swift; sourceTree = "<group>"; };
 		A43C29E42C407658002BF1AE /* StorageUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUserDefaults.swift; sourceTree = "<group>"; };
 		A43C29E82C40F44A002BF1AE /* ComponentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCard.swift; sourceTree = "<group>"; };
@@ -274,7 +269,7 @@
 		A43C29EE2C411F72002BF1AE /* ViewHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHome.swift; sourceTree = "<group>"; };
 		A43C29F02C4189CD002BF1AE /* ViewForgot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForgot.swift; sourceTree = "<group>"; };
 		A43C29F22C4189FD002BF1AE /* ViewSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSignUp.swift; sourceTree = "<group>"; };
-		A43C29F52C4197C6002BF1AE /* ComponentBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentBar.swift; sourceTree = "<group>"; };
+		A43C29F52C4197C6002BF1AE /* ComponentBarHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentBarHome.swift; sourceTree = "<group>"; };
 		A43C29F72C4199FD002BF1AE /* ComponentButtonBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentButtonBar.swift; sourceTree = "<group>"; };
 		A43C29FA2C41A82C002BF1AE /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		A43C29FC2C41B31F002BF1AE /* ComponentButtonH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentButtonH.swift; sourceTree = "<group>"; };
@@ -282,7 +277,7 @@
 		A45676332C5C1A7D0025A730 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		A45676352C5C43A00025A730 /* ViewModelHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelHome.swift; sourceTree = "<group>"; };
 		A45676372C5C738F0025A730 /* ViewStatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStatusCard.swift; sourceTree = "<group>"; };
-		A4605E992C4228160091CC52 /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
+		A4605E992C4228160091CC52 /* ComponentBarStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentBarStatus.swift; sourceTree = "<group>"; };
 		A4605E9B2C46D0BC0091CC52 /* ViewManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManage.swift; sourceTree = "<group>"; tabWidth = 4; };
 		A4605E9D2C46D1A80091CC52 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		A4605EA22C46F1000091CC52 /* ViewInvest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInvest.swift; sourceTree = "<group>"; };
@@ -299,17 +294,12 @@
 		A4880FAC2C65909A0080C5E0 /* ComponentSearchByAPN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSearchByAPN.swift; sourceTree = "<group>"; };
 		A4880FAE2C65915E0080C5E0 /* ComponentSearchBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSearchBy.swift; sourceTree = "<group>"; };
 		A4880FB02C65CDE60080C5E0 /* ComponentCardResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCardResults.swift; sourceTree = "<group>"; };
+		A4880FB52C6809DE0080C5E0 /* ViewManagePersonalSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonalSummary.swift; sourceTree = "<group>"; };
+		A4880FB72C680AB90080C5E0 /* ViewManageBusinessSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageBusinessSummary.swift; sourceTree = "<group>"; };
 		A49C0BAF2C472CEE00968AFB /* ComponentButtonDoubleH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentButtonDoubleH.swift; sourceTree = "<group>"; };
 		A49C0BB12C4765E800968AFB /* ComponentButtonHNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentButtonHNav.swift; sourceTree = "<group>"; };
-		A49C0BB52C476AF700968AFB /* ViewManageBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageBusiness.swift; sourceTree = "<group>"; };
-		A49C0BB72C476B1900968AFB /* ViewManagePersonal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonal.swift; sourceTree = "<group>"; };
-		A49C0BB92C47715700968AFB /* ViewManagePersonalIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonalIncome.swift; sourceTree = "<group>"; };
-		A49C0BBB2C4771A700968AFB /* ViewManagePersonalExpenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonalExpenses.swift; sourceTree = "<group>"; };
-		A49C0BBD2C47723300968AFB /* ViewManagePersonalLiabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonalLiabilities.swift; sourceTree = "<group>"; };
-		A49C0BBF2C47728900968AFB /* ViewManagePersonalAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonalAssets.swift; sourceTree = "<group>"; };
-		A49C0BC12C4772FA00968AFB /* ViewManagePersonalRevenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonalRevenue.swift; sourceTree = "<group>"; };
-		A49C0BC32C4775C200968AFB /* ViewManagePersonalTransactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonalTransactions.swift; sourceTree = "<group>"; };
-		A49C0BC52C4775E900968AFB /* ViewManageBusinessTransactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageBusinessTransactions.swift; sourceTree = "<group>"; };
+		A49C0BB52C476AF700968AFB /* ViewManageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageSection.swift; sourceTree = "<group>"; };
+		A49C0BC52C4775E900968AFB /* ViewManageTransactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageTransactions.swift; sourceTree = "<group>"; };
 		A49C0BCD2C489BD800968AFB /* ViewModelManageBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelManageBusiness.swift; sourceTree = "<group>"; };
 		A49C0BD02C489CD300968AFB /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		A49C0BD92C49B33400968AFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -325,7 +315,6 @@
 		A49C0BF32C4A15C200968AFB /* ViewNotary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNotary.swift; sourceTree = "<group>"; };
 		A49C0BF52C4A1BEA00968AFB /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		A49C0BF82C4A1EF500968AFB /* ManageSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageSummary.swift; sourceTree = "<group>"; };
-		A49C0BFA2C4A8F9900968AFB /* ViewManagePersonalEquity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonalEquity.swift; sourceTree = "<group>"; };
 		A4A7ACF32C3B3BE100EE9B48 /* ViewLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLogin.swift; sourceTree = "<group>"; };
 		A4A7ACF62C3B432900EE9B48 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A4D407222B4D100D00D97AB1 /* orbfin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orbfin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -333,8 +322,6 @@
 		A4D4072B2B4D100F00D97AB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4D4072D2B4D100F00D97AB1 /* orbfin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = orbfin.entitlements; sourceTree = "<group>"; };
 		A4D4072F2B4D100F00D97AB1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A4EA3CD72C4A982D00CEFCFF /* ViewManagePersonalContra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonalContra.swift; sourceTree = "<group>"; };
-		A4EA3CD92C4A985500CEFCFF /* ViewManagePersonalTax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonalTax.swift; sourceTree = "<group>"; };
 		A4EA3CDB2C4B4B4300CEFCFF /* ViewModelManageBusinessTransactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelManageBusinessTransactions.swift; sourceTree = "<group>"; };
 		A4EA3CDD2C4B5D4C00CEFCFF /* OneColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneColumnView.swift; sourceTree = "<group>"; };
 		A4EA3CDF2C4B5D8D00CEFCFF /* TwoColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoColumnView.swift; sourceTree = "<group>"; };
@@ -344,13 +331,12 @@
 		A4EA3CE72C4C787F00CEFCFF /* LayoutExperienceSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutExperienceSetting.swift; sourceTree = "<group>"; };
 		A4EA3CE92C4C791F00CEFCFF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A4EA3CEB2C4C7F8000CEFCFF /* ViewLayoutExperienceSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLayoutExperienceSelection.swift; sourceTree = "<group>"; };
-		A4EA3CF02C4ECAF400CEFCFF /* ViewManageBusinessIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageBusinessIncome.swift; sourceTree = "<group>"; };
-		A4EA3CF22C4ECB4800CEFCFF /* ViewManageBusinessExpenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageBusinessExpenses.swift; sourceTree = "<group>"; };
-		A4EA3CF42C4ECB7600CEFCFF /* ViewManageBusinessRevenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageBusinessRevenue.swift; sourceTree = "<group>"; };
-		A4EA3CF62C4ECBB300CEFCFF /* ViewManageBusinessAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageBusinessAssets.swift; sourceTree = "<group>"; };
-		A4EA3CF82C4ECBE700CEFCFF /* ViewManageBusinessLiabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageBusinessLiabilities.swift; sourceTree = "<group>"; };
-		A4EA3CFA2C4ECCC300CEFCFF /* ViewManageBusinessEquity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageBusinessEquity.swift; sourceTree = "<group>"; };
-		A4EA3CFC2C4ECD2200CEFCFF /* ViewManageBusinessContra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageBusinessContra.swift; sourceTree = "<group>"; };
+		A4EA3CF02C4ECAF400CEFCFF /* ViewManageIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageIncome.swift; sourceTree = "<group>"; };
+		A4EA3CF22C4ECB4800CEFCFF /* ViewManageExpenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageExpenses.swift; sourceTree = "<group>"; };
+		A4EA3CF42C4ECB7600CEFCFF /* ViewManageRevenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageRevenue.swift; sourceTree = "<group>"; };
+		A4EA3CF62C4ECBB300CEFCFF /* ViewManageAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageAssets.swift; sourceTree = "<group>"; };
+		A4EA3CF82C4ECBE700CEFCFF /* ViewManageLiabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageLiabilities.swift; sourceTree = "<group>"; };
+		A4EA3CFA2C4ECCC300CEFCFF /* ViewManageEquity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageEquity.swift; sourceTree = "<group>"; };
 		A4EA3CFE2C4ECD5100CEFCFF /* ViewManageBusinessTax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageBusinessTax.swift; sourceTree = "<group>"; };
 		A4EA3D012C50287700CEFCFF /* ViewContentMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContentMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -549,6 +535,13 @@
 		A42CC9402C6176F5004845AB /* RealEstate */ = {
 			isa = PBXGroup;
 			children = (
+				A435415D2C3EC20B00B32BC1 /* Coordinates.swift */,
+				A41777F52C5831FB009C1353 /* Address.swift */,
+				A41777FD2C583F32009C1353 /* SaleDetails.swift */,
+				A41777FF2C583F96009C1353 /* BuildingDetails.swift */,
+				A41778012C583FC7009C1353 /* LandDetails.swift */,
+				A4880FA72C6584160080C5E0 /* PropertyClass.swift */,
+				A42CC9472C62B5A5004845AB /* RealEstateProperty.swift */,
 				A42CC93E2C6176E9004845AB /* ResponseProperties.swift */,
 				A42CC9412C617734004845AB /* RequestProperties.swift */,
 				A42CC9432C626EA2004845AB /* RequestProperty.swift */,
@@ -560,11 +553,11 @@
 		A43541632C3F029D00B32BC1 /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				A43541642C3F02BA00B32BC1 /* InputUsername.swift */,
-				A43541662C3F098F00B32BC1 /* InputPassword.swift */,
-				A43C29C72C3F4E34002BF1AE /* InputTextField.swift */,
-				A43C29E02C406ECE002BF1AE /* InputEmail.swift */,
-				A4041C542C5522AA001FD37B /* InputConfirmPassword.swift */,
+				A43541642C3F02BA00B32BC1 /* ComponentInputUsername.swift */,
+				A43541662C3F098F00B32BC1 /* ComponentInputPassword.swift */,
+				A43C29C72C3F4E34002BF1AE /* ComponentInputTextField.swift */,
+				A43C29E02C406ECE002BF1AE /* ComponentInputEmail.swift */,
+				A4041C542C5522AA001FD37B /* ComponentInputConfirmPassword.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -599,8 +592,9 @@
 		A4605E942C41C0820091CC52 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				A49C0BF72C4A1BFC00968AFB /* Format */,
-				A4605E952C41C0DB0091CC52 /* Sections */,
+				A4605EA02C46F03F0091CC52 /* Invest */,
+				A4605E9F2C46F0340091CC52 /* Manage */,
+				A4605EA12C46F0580091CC52 /* Services */,
 				A49C0BD62C49AED500968AFB /* Logout */,
 				A49C0BEF2C4A132800968AFB /* Settings */,
 				A45676352C5C43A00025A730 /* ViewModelHome.swift */,
@@ -609,21 +603,11 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		A4605E952C41C0DB0091CC52 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				A4605EA02C46F03F0091CC52 /* Invest */,
-				A4605E9F2C46F0340091CC52 /* Manage */,
-				A4605EA12C46F0580091CC52 /* Services */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
 		A4605E982C4227D90091CC52 /* Bar */ = {
 			isa = PBXGroup;
 			children = (
-				A43C29F52C4197C6002BF1AE /* ComponentBar.swift */,
-				A4605E992C4228160091CC52 /* StatusBar.swift */,
+				A43C29F52C4197C6002BF1AE /* ComponentBarHome.swift */,
+				A4605E992C4228160091CC52 /* ComponentBarStatus.swift */,
 			);
 			path = Bar;
 			sourceTree = "<group>";
@@ -631,10 +615,18 @@
 		A4605E9F2C46F0340091CC52 /* Manage */ = {
 			isa = PBXGroup;
 			children = (
-				A49C0BCF2C489CAC00968AFB /* Models */,
 				A49C0BB32C476A7700968AFB /* Personal */,
 				A49C0BB42C476A9400968AFB /* Business */,
+				A49C0BB52C476AF700968AFB /* ViewManageSection.swift */,
 				A4605E9B2C46D0BC0091CC52 /* ViewManage.swift */,
+				A4EA3CF02C4ECAF400CEFCFF /* ViewManageIncome.swift */,
+				A4EA3CF22C4ECB4800CEFCFF /* ViewManageExpenses.swift */,
+				A4EA3CF42C4ECB7600CEFCFF /* ViewManageRevenue.swift */,
+				A4EA3CF62C4ECBB300CEFCFF /* ViewManageAssets.swift */,
+				A4EA3CF82C4ECBE700CEFCFF /* ViewManageLiabilities.swift */,
+				A4EA3CFA2C4ECCC300CEFCFF /* ViewManageEquity.swift */,
+				A49C0BC52C4775E900968AFB /* ViewManageTransactions.swift */,
+				A40741A72C68251400FB1770 /* ViewManageContra.swift */,
 			);
 			path = Manage;
 			sourceTree = "<group>";
@@ -678,11 +670,36 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		A4880FB22C66653B0080C5E0 /* Invest */ = {
+			isa = PBXGroup;
+			children = (
+				A42CC9402C6176F5004845AB /* RealEstate */,
+			);
+			path = Invest;
+			sourceTree = "<group>";
+		};
+		A4880FB32C66654C0080C5E0 /* Manage */ = {
+			isa = PBXGroup;
+			children = (
+				A49C0BF82C4A1EF500968AFB /* ManageSummary.swift */,
+				A49C0BD02C489CD300968AFB /* Transaction.swift */,
+			);
+			path = Manage;
+			sourceTree = "<group>";
+		};
+		A4880FB42C6665CF0080C5E0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		A49C0BB32C476A7700968AFB /* Personal */ = {
 			isa = PBXGroup;
 			children = (
 				A42CC92C2C5FE1DA004845AB /* ViewModels */,
 				A4EA3D002C4ECDCC00CEFCFF /* Views */,
+				A4880FB52C6809DE0080C5E0 /* ViewManagePersonalSummary.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -692,6 +709,7 @@
 			children = (
 				A49C0BCC2C489B7D00968AFB /* ViewModels */,
 				A49C0BCB2C489B6100968AFB /* Views */,
+				A4880FB72C680AB90080C5E0 /* ViewManageBusinessSummary.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -699,16 +717,7 @@
 		A49C0BCB2C489B6100968AFB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A49C0BB52C476AF700968AFB /* ViewManageBusiness.swift */,
-				A4EA3CF02C4ECAF400CEFCFF /* ViewManageBusinessIncome.swift */,
-				A4EA3CF42C4ECB7600CEFCFF /* ViewManageBusinessRevenue.swift */,
-				A4EA3CF22C4ECB4800CEFCFF /* ViewManageBusinessExpenses.swift */,
-				A4EA3CF62C4ECBB300CEFCFF /* ViewManageBusinessAssets.swift */,
-				A4EA3CF82C4ECBE700CEFCFF /* ViewManageBusinessLiabilities.swift */,
-				A4EA3CFA2C4ECCC300CEFCFF /* ViewManageBusinessEquity.swift */,
-				A4EA3CFC2C4ECD2200CEFCFF /* ViewManageBusinessContra.swift */,
 				A4EA3CFE2C4ECD5100CEFCFF /* ViewManageBusinessTax.swift */,
-				A49C0BC52C4775E900968AFB /* ViewManageBusinessTransactions.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -720,15 +729,6 @@
 				A4EA3CDB2C4B4B4300CEFCFF /* ViewModelManageBusinessTransactions.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		A49C0BCF2C489CAC00968AFB /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				A49C0BD02C489CD300968AFB /* Transaction.swift */,
-				A49C0BF82C4A1EF500968AFB /* ManageSummary.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		A49C0BD42C49AE2E00968AFB /* Login */ = {
@@ -849,15 +849,10 @@
 		A4A7ACEC2C3B3B0A00EE9B48 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A42CC9402C6176F5004845AB /* RealEstate */,
-				A435415D2C3EC20B00B32BC1 /* Coordinates.swift */,
+				A4880FB32C66654C0080C5E0 /* Manage */,
+				A4880FB22C66653B0080C5E0 /* Invest */,
+				A4880FB42C6665CF0080C5E0 /* Services */,
 				A435415F2C3EC4FD00B32BC1 /* Models.swift */,
-				A41777F52C5831FB009C1353 /* Address.swift */,
-				A41777FD2C583F32009C1353 /* SaleDetails.swift */,
-				A41777FF2C583F96009C1353 /* BuildingDetails.swift */,
-				A41778012C583FC7009C1353 /* LandDetails.swift */,
-				A42CC9472C62B5A5004845AB /* RealEstateProperty.swift */,
-				A4880FA72C6584160080C5E0 /* PropertyClass.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -945,10 +940,13 @@
 		A4D407242B4D100D00D97AB1 /* orbfin */ = {
 			isa = PBXGroup;
 			children = (
+				A49C0BF72C4A1BFC00968AFB /* Format */,
 				A4A7ACED2C3B3B4600EE9B48 /* Layers */,
 				A4A7ACEC2C3B3B0A00EE9B48 /* Models */,
 				A4EA3D032C53E04600CEFCFF /* Authenticated */,
+				A41778092C59BBD2009C1353 /* Map */,
 				A42CC9332C5FFF2D004845AB /* Layouts */,
+				A42CC9172C5EFDC0004845AB /* Menu */,
 				A43C29F92C41A7FA002BF1AE /* Navigation */,
 				A4880F9C2C65060E0080C5E0 /* Modal */,
 				A43C29D12C404C5C002BF1AE /* Authentication */,
@@ -992,16 +990,7 @@
 		A4EA3D002C4ECDCC00CEFCFF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A49C0BB72C476B1900968AFB /* ViewManagePersonal.swift */,
-				A49C0BB92C47715700968AFB /* ViewManagePersonalIncome.swift */,
-				A49C0BC12C4772FA00968AFB /* ViewManagePersonalRevenue.swift */,
-				A49C0BBB2C4771A700968AFB /* ViewManagePersonalExpenses.swift */,
-				A49C0BBF2C47728900968AFB /* ViewManagePersonalAssets.swift */,
-				A49C0BBD2C47723300968AFB /* ViewManagePersonalLiabilities.swift */,
-				A49C0BFA2C4A8F9900968AFB /* ViewManagePersonalEquity.swift */,
-				A4EA3CD72C4A982D00CEFCFF /* ViewManagePersonalContra.swift */,
-				A4EA3CD92C4A985500CEFCFF /* ViewManagePersonalTax.swift */,
-				A49C0BC32C4775C200968AFB /* ViewManagePersonalTransactions.swift */,
+				A40741A52C6824B900FB1770 /* ViewManagePersonalTax.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1010,8 +999,6 @@
 			isa = PBXGroup;
 			children = (
 				A4605E942C41C0820091CC52 /* Home */,
-				A42CC9172C5EFDC0004845AB /* Menu */,
-				A41778092C59BBD2009C1353 /* Map */,
 				A47FC8B42C54635D0096D557 /* ViewAuthenticated.swift */,
 			);
 			path = Authenticated;
@@ -1092,14 +1079,13 @@
 				A41778112C5B47CE009C1353 /* ComponentCardFixed.swift in Sources */,
 				A417780D2C5AB81F009C1353 /* Padding.swift in Sources */,
 				A4041C7D2C56D660001FD37B /* Colors.swift in Sources */,
-				A49C0BBE2C47723300968AFB /* ViewManagePersonalLiabilities.swift in Sources */,
-				A4EA3CF52C4ECB7600CEFCFF /* ViewManageBusinessRevenue.swift in Sources */,
+				A4EA3CF52C4ECB7600CEFCFF /* ViewManageRevenue.swift in Sources */,
 				A42CC92B2C5F6AC7004845AB /* PreviewResidential.swift in Sources */,
 				A435414F2C3B71EE00B32BC1 /* ViewModelLogin.swift in Sources */,
 				A49C0BEC2C4A0CFE00968AFB /* ViewTangibleAssets.swift in Sources */,
 				A4880FA62C6533E80080C5E0 /* ViewModelRealEstate.swift in Sources */,
 				A43541512C3B8C7B00B32BC1 /* ViewMap.swift in Sources */,
-				A49C0BB62C476AF700968AFB /* ViewManageBusiness.swift in Sources */,
+				A49C0BB62C476AF700968AFB /* ViewManageSection.swift in Sources */,
 				A43C29CA2C4004C2002BF1AE /* BackendURLs.swift in Sources */,
 				A4880FA22C652E200080C5E0 /* Commercial.swift in Sources */,
 				A43C29DB2C405A98002BF1AE /* RequestForgot.swift in Sources */,
@@ -1108,7 +1094,6 @@
 				A42CC93D2C6173B5004845AB /* Real Estate.swift in Sources */,
 				A43C29EB2C40FEC8002BF1AE /* ViewLogout.swift in Sources */,
 				A4880FA02C651B800080C5E0 /* ViewModal.swift in Sources */,
-				A49C0BC22C4772FA00968AFB /* ViewManagePersonalRevenue.swift in Sources */,
 				A4A7ACF72C3B432900EE9B48 /* LocationManager.swift in Sources */,
 				A43C29E32C406F5B002BF1AE /* ViewModelForgot.swift in Sources */,
 				A43C29D52C404E16002BF1AE /* ResponseLogout.swift in Sources */,
@@ -1118,48 +1103,45 @@
 				A49C0BD12C489CD300968AFB /* Transaction.swift in Sources */,
 				A4880FA82C6584160080C5E0 /* PropertyClass.swift in Sources */,
 				A43C29FB2C41A82C002BF1AE /* Navigation.swift in Sources */,
-				A4EA3CF12C4ECAF400CEFCFF /* ViewManageBusinessIncome.swift in Sources */,
+				A4EA3CF12C4ECAF400CEFCFF /* ViewManageIncome.swift in Sources */,
 				A43C29E52C407658002BF1AE /* StorageUserDefaults.swift in Sources */,
 				A4041C762C557C03001FD37B /* RequestChangeName.swift in Sources */,
 				A4EA3CEC2C4C7F8000CEFCFF /* ViewLayoutExperienceSelection.swift in Sources */,
-				A4EA3CDA2C4A985500CEFCFF /* ViewManagePersonalTax.swift in Sources */,
-				A49C0BC62C4775E900968AFB /* ViewManageBusinessTransactions.swift in Sources */,
+				A49C0BC62C4775E900968AFB /* ViewManageTransactions.swift in Sources */,
 				A47FC8B72C5468970096D557 /* ComponentButtonHome.swift in Sources */,
 				A4605E9C2C46D0BC0091CC52 /* ViewManage.swift in Sources */,
 				A4041C742C557BD1001FD37B /* RequestChangePassword.swift in Sources */,
-				A49C0BFB2C4A8F9900968AFB /* ViewManagePersonalEquity.swift in Sources */,
+				A40741A82C68251400FB1770 /* ViewManageContra.swift in Sources */,
 				A4041C592C553397001FD37B /* Signup.swift in Sources */,
 				A49C0BF12C4A139800968AFB /* ViewSettings.swift in Sources */,
 				A43C29D32C404CD3002BF1AE /* Logout.swift in Sources */,
 				A4041C622C557723001FD37B /* ViewChangeUsername.swift in Sources */,
-				A4EA3CF32C4ECB4800CEFCFF /* ViewManageBusinessExpenses.swift in Sources */,
+				A4EA3CF32C4ECB4800CEFCFF /* ViewManageExpenses.swift in Sources */,
 				A43541532C3B8F3100B32BC1 /* Login.swift in Sources */,
 				A43C29DF2C4068AE002BF1AE /* ResponseForgot.swift in Sources */,
 				A41777F82C583DBC009C1353 /* ComponentCardSaleDetails.swift in Sources */,
-				A4EA3CF72C4ECBB300CEFCFF /* ViewManageBusinessAssets.swift in Sources */,
+				A4EA3CF72C4ECBB300CEFCFF /* ViewManageAssets.swift in Sources */,
 				A42CC9192C5F6219004845AB /* ViewRealEstateResidentialMenu.swift in Sources */,
 				A42CC9392C612AB7004845AB /* ViewMapResidential.swift in Sources */,
 				A49C0BB02C472CEE00968AFB /* ComponentButtonDoubleH.swift in Sources */,
-				A4041C552C5522AA001FD37B /* InputConfirmPassword.swift in Sources */,
+				A4041C552C5522AA001FD37B /* ComponentInputConfirmPassword.swift in Sources */,
 				A4880FAB2C658FE10080C5E0 /* ComponentSearchByPropertyID.swift in Sources */,
 				A4041C662C557888001FD37B /* ViewChangePassword.swift in Sources */,
-				A4605E9A2C4228160091CC52 /* StatusBar.swift in Sources */,
+				A4605E9A2C4228160091CC52 /* ComponentBarStatus.swift in Sources */,
 				A41778082C59A423009C1353 /* PreviewCommercial.swift in Sources */,
 				A43C29D92C4054F2002BF1AE /* ViewModelLogout.swift in Sources */,
 				A4041C832C56ECD1001FD37B /* ComponentButtonBack.swift in Sources */,
 				A41777FE2C583F32009C1353 /* SaleDetails.swift in Sources */,
 				A43541592C3EAC4700B32BC1 /* ResponseLogin.swift in Sources */,
 				A49C0BE62C4A032C00968AFB /* ViewTangibleAssetsCommercial.swift in Sources */,
-				A4EA3CF92C4ECBE700CEFCFF /* ViewManageBusinessLiabilities.swift in Sources */,
+				A4EA3CF92C4ECBE700CEFCFF /* ViewManageLiabilities.swift in Sources */,
 				A45676342C5C1A7D0025A730 /* Status.swift in Sources */,
 				A42CC9292C5F6A50004845AB /* PreviewResidentialProperty.swift in Sources */,
 				A41777FC2C583E8D009C1353 /* ComponentCardBuildingDetails.swift in Sources */,
 				A42CC9422C617734004845AB /* RequestProperties.swift in Sources */,
 				A49C0BF92C4A1EF500968AFB /* ManageSummary.swift in Sources */,
-				A49C0BBC2C4771A700968AFB /* ViewManagePersonalExpenses.swift in Sources */,
 				A43C29ED2C4103AF002BF1AE /* Authentication.swift in Sources */,
 				A4880F9E2C6506500080C5E0 /* ViewModelModal.swift in Sources */,
-				A49C0BC02C47728900968AFB /* ViewManagePersonalAssets.swift in Sources */,
 				A43C29DD2C406727002BF1AE /* Forgot.swift in Sources */,
 				A49C0BDF2C4A01AE00968AFB /* ViewResidential.swift in Sources */,
 				A43C29CE2C4034CC002BF1AE /* ResponseServer.swift in Sources */,
@@ -1170,19 +1152,19 @@
 				A4041C5D2C5534E4001FD37B /* ResponseSignup.swift in Sources */,
 				A42CC9142C5EAFA7004845AB /* ComponentButtonMenu.swift in Sources */,
 				A4EA3CE42C4C379200CEFCFF /* ViewHomeMenu.swift in Sources */,
-				A43C29E12C406ECE002BF1AE /* InputEmail.swift in Sources */,
+				A43C29E12C406ECE002BF1AE /* ComponentInputEmail.swift in Sources */,
 				A4880FB12C65CDE60080C5E0 /* ComponentCardResults.swift in Sources */,
 				A42CC92E2C5FE204004845AB /* ViewModelManagePersonal.swift in Sources */,
-				A4EA3CD82C4A982D00CEFCFF /* ViewManagePersonalContra.swift in Sources */,
 				A45676322C5C19AA0025A730 /* ViewStatus.swift in Sources */,
 				A4041C682C5578F4001FD37B /* ViewModelChange.swift in Sources */,
 				A4041C722C557AF7001FD37B /* ResponseChange.swift in Sources */,
+				A4880FB62C6809DE0080C5E0 /* ViewManagePersonalSummary.swift in Sources */,
 				A41777FA2C583E2F009C1353 /* ComponentCardLandDetails.swift in Sources */,
 				A45676382C5C738F0025A730 /* ViewStatusCard.swift in Sources */,
 				A41778022C583FC7009C1353 /* LandDetails.swift in Sources */,
 				A42CC93F2C6176E9004845AB /* ResponseProperties.swift in Sources */,
 				A42CC9482C62B5A5004845AB /* RealEstateProperty.swift in Sources */,
-				A49C0BB82C476B1900968AFB /* ViewManagePersonal.swift in Sources */,
+				A4880FB82C680AB90080C5E0 /* ViewManageBusinessSummary.swift in Sources */,
 				A49C0BEE2C4A0DBE00968AFB /* ViewTangibleAssetsRealEstate.swift in Sources */,
 				A4041C6E2C557A54001FD37B /* RequestChangeUsername.swift in Sources */,
 				A45676362C5C43A00025A730 /* ViewModelHome.swift in Sources */,
@@ -1203,13 +1185,13 @@
 				A43541602C3EC4FD00B32BC1 /* Models.swift in Sources */,
 				A49C0BF42C4A15C200968AFB /* ViewNotary.swift in Sources */,
 				A49C0BEA2C4A08B700968AFB /* ViewRealEstate.swift in Sources */,
-				A43541652C3F02BA00B32BC1 /* InputUsername.swift in Sources */,
+				A43541652C3F02BA00B32BC1 /* ComponentInputUsername.swift in Sources */,
 				A43C29D02C404B70002BF1AE /* Network.swift in Sources */,
 				A43541622C3EDACF00B32BC1 /* Styling.swift in Sources */,
 				A4EA3CE82C4C787F00CEFCFF /* LayoutExperienceSetting.swift in Sources */,
 				A49C0BCE2C489BD800968AFB /* ViewModelManageBusiness.swift in Sources */,
-				A43C29C82C3F4E34002BF1AE /* InputTextField.swift in Sources */,
-				A4EA3CFB2C4ECCC300CEFCFF /* ViewManageBusinessEquity.swift in Sources */,
+				A43C29C82C3F4E34002BF1AE /* ComponentInputTextField.swift in Sources */,
+				A4EA3CFB2C4ECCC300CEFCFF /* ViewManageEquity.swift in Sources */,
 				A4041C8F2C57EAF1001FD37B /* ViewModelCommercialProperty.swift in Sources */,
 				A42CC91D2C5F6245004845AB /* ViewManageBusinessMenu.swift in Sources */,
 				A41777F02C581336009C1353 /* PreviewCommercialProperty.swift in Sources */,
@@ -1224,7 +1206,6 @@
 				A42CC9252C5F6814004845AB /* ViewModelResidentialProperty.swift in Sources */,
 				A4EA3CFF2C4ECD5100CEFCFF /* ViewManageBusinessTax.swift in Sources */,
 				A4041C852C56FB7D001FD37B /* ComponentDivider.swift in Sources */,
-				A49C0BC42C4775C200968AFB /* ViewManagePersonalTransactions.swift in Sources */,
 				A43C29EF2C411F72002BF1AE /* ViewHome.swift in Sources */,
 				A41777F42C58317A009C1353 /* ComponentCardLocation.swift in Sources */,
 				A4041C572C5524ED001FD37B /* ViewModelSignup.swift in Sources */,
@@ -1234,18 +1215,17 @@
 				A42CC9162C5EE0D9004845AB /* ViewRealEstateCommercialMenu.swift in Sources */,
 				A43C29FD2C41B31F002BF1AE /* ComponentButtonH.swift in Sources */,
 				A42CC93B2C612B47004845AB /* ViewMapResidentialProperty.swift in Sources */,
-				A43C29F62C4197C6002BF1AE /* ComponentBar.swift in Sources */,
+				A43C29F62C4197C6002BF1AE /* ComponentBarHome.swift in Sources */,
 				A417780F2C5B013E009C1353 /* View.swift in Sources */,
-				A4EA3CFD2C4ECD2200CEFCFF /* ViewManageBusinessContra.swift in Sources */,
 				A42CC91B2C5F6231004845AB /* ViewManagePersonalMenu.swift in Sources */,
 				A4605E9E2C46D1A80091CC52 /* Page.swift in Sources */,
 				A4EA3CE22C4B5DA400CEFCFF /* ThreeColumnView.swift in Sources */,
 				A4041C7A2C557D93001FD37B /* Change.swift in Sources */,
 				A47FC8B52C54635D0096D557 /* ViewAuthenticated.swift in Sources */,
-				A49C0BBA2C47715700968AFB /* ViewManagePersonalIncome.swift in Sources */,
 				A4EA3CDE2C4B5D4C00CEFCFF /* OneColumnView.swift in Sources */,
 				A49C0BE82C4A034800968AFB /* ViewTangibleAssetsResidential.swift in Sources */,
-				A43541672C3F098F00B32BC1 /* InputPassword.swift in Sources */,
+				A40741A62C6824B900FB1770 /* ViewManagePersonalTax.swift in Sources */,
+				A43541672C3F098F00B32BC1 /* ComponentInputPassword.swift in Sources */,
 				A43C29E92C40F44A002BF1AE /* ComponentCard.swift in Sources */,
 				A4041C8B2C57EA6C001FD37B /* ViewModelCommercial.swift in Sources */,
 				A41777F62C5831FB009C1353 /* Address.swift in Sources */,

@@ -49,11 +49,11 @@ struct ViewLogout: View {
         }
         
         if !vm.successMessage.isEmpty {
-            StatusBar(message: vm.successMessage, type: .success)
+            ComponentBarStatus(message: vm.successMessage, type: .success)
         }
         
         if !vm.errorMessage.isEmpty {
-            StatusBar(message: vm.errorMessage, type: .error)
+            ComponentBarStatus(message: vm.errorMessage, type: .error)
         }
     }
 }

@@ -36,10 +36,10 @@ struct ViewSignUp: View {
                     Spacer()
                 }
                 
-                InputUsername(username: $username)
-                InputEmail(email: $email)
-                InputPassword(password: $password)
-                InputConfirmPassword(password: $confirmPassword)
+                ComponentInputUsername(username: $username)
+                ComponentInputEmail(email: $email)
+                ComponentInputPassword(password: $password)
+                ComponentInputConfirmPassword(password: $confirmPassword)
                 
                 ComponentDivider()
                 
@@ -51,8 +51,8 @@ struct ViewSignUp: View {
                     Spacer()
                 }
                 
-                InputTextField(placeholder: "Nicename", text: $nicename)
-                InputTextField(placeholder: "Nickname", text: $nickname)
+                ComponentInputTextField(placeholder: "Nicename", text: $nicename)
+                ComponentInputTextField(placeholder: "Nickname", text: $nickname)
                 
                 ComponentDivider()
                 
@@ -64,9 +64,9 @@ struct ViewSignUp: View {
                     Spacer()
                 }
 
-                InputTextField(placeholder: "First Name", text: $firstname)
-                InputTextField(placeholder: "Last Name", text: $lastname)
-                InputTextField(placeholder: "Phone Number", text: $phone)
+                ComponentInputTextField(placeholder: "First Name", text: $firstname)
+                ComponentInputTextField(placeholder: "Last Name", text: $lastname)
+                ComponentInputTextField(placeholder: "Phone Number", text: $phone)
                 
                 ComponentButtonH(label: Page.signup.label, icon: Page.signup.icon) {
                     Task {

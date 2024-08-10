@@ -78,8 +78,17 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ContentView()
+                .previewDisplayName("iPhone 15 Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
+            
+            ContentView()
+                .previewDisplayName("iPad Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
+        }
         .environmentObject(Authentication())
         .environmentObject(Navigation())
         .environmentObject(ViewModelModal())
@@ -90,4 +99,5 @@ struct ContentView: View {
         .environmentObject(ViewModelResidentialProperty())
         .environmentObject(ViewModelManagePersonal())
         .environmentObject(ViewModelManageBusiness())
+    }
 }

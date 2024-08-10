@@ -13,12 +13,8 @@ struct ComponentButtonDoubleH: View {
     var page: Page
     var value: String
     
-    private var label: String
-    
-    init(page: Page, value: String) {
-        self.page = page
-        self.label = page.label
-        self.value = value
+    private var label: String {
+        page.label
     }
     
     var body: some View {
