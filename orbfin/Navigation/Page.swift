@@ -566,7 +566,7 @@ extension Page {
         case .personaltax:
             AnyView(ViewManagePersonalTax())
         case .personaltransactions:
-            AnyView(ViewManageTransactions())
+            AnyView(ViewManageTransactions(page: .personaltransactions))
             
         case .business:
             AnyView(ViewManageSection(page: .business))
@@ -587,7 +587,7 @@ extension Page {
         case .businesstax:
             AnyView(ViewManageBusinessTax())
         case .businesstransactions:
-            AnyView(ViewManageTransactions())
+            AnyView(ViewManageTransactions(page: .businesstransactions))
             
         case .settings:
             AnyView(ViewSettings())

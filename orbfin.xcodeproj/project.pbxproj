@@ -34,6 +34,9 @@
 		A4041C942C580710001FD37B /* ComponentCardOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4041C932C580710001FD37B /* ComponentCardOverview.swift */; };
 		A40741A62C6824B900FB1770 /* ViewManagePersonalTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40741A52C6824B900FB1770 /* ViewManagePersonalTax.swift */; };
 		A40741A82C68251400FB1770 /* ViewManageContra.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40741A72C68251400FB1770 /* ViewManageContra.swift */; };
+		A40741AA2C683BE900FB1770 /* ResponseTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40741A92C683BE900FB1770 /* ResponseTransactions.swift */; };
+		A40741AD2C684F9200FB1770 /* ComponentImageIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40741AC2C684F9200FB1770 /* ComponentImageIcon.swift */; };
+		A40741AF2C685ED100FB1770 /* ViewManageTransactionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40741AE2C685ED100FB1770 /* ViewManageTransactionDetails.swift */; };
 		A41777F02C581336009C1353 /* PreviewCommercialProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41777EF2C581336009C1353 /* PreviewCommercialProperty.swift */; };
 		A41777F22C582FE0009C1353 /* ComponentCardHighlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41777F12C582FE0009C1353 /* ComponentCardHighlights.swift */; };
 		A41777F42C58317A009C1353 /* ComponentCardLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41777F32C58317A009C1353 /* ComponentCardLocation.swift */; };
@@ -200,6 +203,9 @@
 		A4041C932C580710001FD37B /* ComponentCardOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCardOverview.swift; sourceTree = "<group>"; };
 		A40741A52C6824B900FB1770 /* ViewManagePersonalTax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManagePersonalTax.swift; sourceTree = "<group>"; };
 		A40741A72C68251400FB1770 /* ViewManageContra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageContra.swift; sourceTree = "<group>"; };
+		A40741A92C683BE900FB1770 /* ResponseTransactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTransactions.swift; sourceTree = "<group>"; };
+		A40741AC2C684F9200FB1770 /* ComponentImageIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentImageIcon.swift; sourceTree = "<group>"; };
+		A40741AE2C685ED100FB1770 /* ViewManageTransactionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManageTransactionDetails.swift; sourceTree = "<group>"; };
 		A41777EF2C581336009C1353 /* PreviewCommercialProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCommercialProperty.swift; sourceTree = "<group>"; };
 		A41777F12C582FE0009C1353 /* ComponentCardHighlights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCardHighlights.swift; sourceTree = "<group>"; };
 		A41777F32C58317A009C1353 /* ComponentCardLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCardLocation.swift; sourceTree = "<group>"; };
@@ -470,6 +476,14 @@
 			path = Card;
 			sourceTree = "<group>";
 		};
+		A40741AB2C684F4F00FB1770 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				A40741AC2C684F9200FB1770 /* ComponentImageIcon.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		A41778092C59BBD2009C1353 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -625,8 +639,9 @@
 				A4EA3CF62C4ECBB300CEFCFF /* ViewManageAssets.swift */,
 				A4EA3CF82C4ECBE700CEFCFF /* ViewManageLiabilities.swift */,
 				A4EA3CFA2C4ECCC300CEFCFF /* ViewManageEquity.swift */,
-				A49C0BC52C4775E900968AFB /* ViewManageTransactions.swift */,
 				A40741A72C68251400FB1770 /* ViewManageContra.swift */,
+				A49C0BC52C4775E900968AFB /* ViewManageTransactions.swift */,
+				A40741AE2C685ED100FB1770 /* ViewManageTransactionDetails.swift */,
 			);
 			path = Manage;
 			sourceTree = "<group>";
@@ -683,6 +698,7 @@
 			children = (
 				A49C0BF82C4A1EF500968AFB /* ManageSummary.swift */,
 				A49C0BD02C489CD300968AFB /* Transaction.swift */,
+				A40741A92C683BE900FB1770 /* ResponseTransactions.swift */,
 			);
 			path = Manage;
 			sourceTree = "<group>";
@@ -889,6 +905,7 @@
 		A4A7ACF02C3B3B6B00EE9B48 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A40741AB2C684F4F00FB1770 /* Image */,
 				A4880FA92C658F730080C5E0 /* Search */,
 				A4041C922C5806CF001FD37B /* Card */,
 				A4605E982C4227D90091CC52 /* Bar */,
@@ -1108,6 +1125,7 @@
 				A4041C762C557C03001FD37B /* RequestChangeName.swift in Sources */,
 				A4EA3CEC2C4C7F8000CEFCFF /* ViewLayoutExperienceSelection.swift in Sources */,
 				A49C0BC62C4775E900968AFB /* ViewManageTransactions.swift in Sources */,
+				A40741AD2C684F9200FB1770 /* ComponentImageIcon.swift in Sources */,
 				A47FC8B72C5468970096D557 /* ComponentButtonHome.swift in Sources */,
 				A4605E9C2C46D0BC0091CC52 /* ViewManage.swift in Sources */,
 				A4041C742C557BD1001FD37B /* RequestChangePassword.swift in Sources */,
@@ -1169,6 +1187,7 @@
 				A4041C6E2C557A54001FD37B /* RequestChangeUsername.swift in Sources */,
 				A45676362C5C43A00025A730 /* ViewModelHome.swift in Sources */,
 				A43C29F82C4199FD002BF1AE /* ComponentButtonBar.swift in Sources */,
+				A40741AA2C683BE900FB1770 /* ResponseTransactions.swift in Sources */,
 				A435415E2C3EC20B00B32BC1 /* Coordinates.swift in Sources */,
 				A42CC9462C626EF8004845AB /* ResponseRealEstateProperty.swift in Sources */,
 				A4EA3D022C50287700CEFCFF /* ViewContentMenu.swift in Sources */,
@@ -1225,6 +1244,7 @@
 				A4EA3CDE2C4B5D4C00CEFCFF /* OneColumnView.swift in Sources */,
 				A49C0BE82C4A034800968AFB /* ViewTangibleAssetsResidential.swift in Sources */,
 				A40741A62C6824B900FB1770 /* ViewManagePersonalTax.swift in Sources */,
+				A40741AF2C685ED100FB1770 /* ViewManageTransactionDetails.swift in Sources */,
 				A43541672C3F098F00B32BC1 /* ComponentInputPassword.swift in Sources */,
 				A43C29E92C40F44A002BF1AE /* ComponentCard.swift in Sources */,
 				A4041C8B2C57EA6C001FD37B /* ViewModelCommercial.swift in Sources */,

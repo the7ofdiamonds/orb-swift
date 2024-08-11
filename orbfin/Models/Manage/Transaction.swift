@@ -7,23 +7,50 @@
 
 import Foundation
 
-struct Transaction: Identifiable, Decodable {
-    let id = UUID()
-    let accountId: String
-    let amount: Double
-    let currencyCode: String
-    let category: [String]
-    let date: String
-    let merchantName: String?
-    let pending: Bool
-
+struct TransactionLocation: Identifiable, Codable {
+    var id = UUID()
+    
+    let address: String?
+    let city: String?
+    let region: String?
+    let postal_code: String?
+    let country: String?
+    let lat: Double?
+    let lon: Double?
+    let store_number: String?
+    
     enum CodingKeys: String, CodingKey {
-        case accountId = "account_id"
+        case address
+        case city
+        case region
+        case postal_code
+        case country
+        case lat
+        case lon
+        case store_number
+    }
+}
+
+struct Transaction: Identifiable, Decodable {
+    let id: String
+    let type: String
+    let amount: Double
+    let date: String
+    let currencyCode: String
+    let description: String
+    let name: String
+    let logo: String
+    let location: TransactionLocation?
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "transaction_id"
+        case type
         case amount
-        case currencyCode = "iso_currency_code"
-        case category
         case date
-        case merchantName = "merchant_name"
-        case pending
+        case currencyCode = "iso_currency_code"
+        case description = "name"
+        case name = "merchant_name"
+        case logo = "logo_url"
+        case location
     }
 }

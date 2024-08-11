@@ -11,7 +11,8 @@ import SwiftUI
 
 class ViewModelManageBusinessTransactions: ObservableObject {
     @Published var transactions: [Transaction] = []
-    
+    @Published var currency: String = "USD"
+
     init() {
         loadTransactions()
     }
