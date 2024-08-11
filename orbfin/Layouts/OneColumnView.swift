@@ -11,6 +11,8 @@ struct OneColumnView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
+    @EnvironmentObject var vmBusiness: ViewModelManageBusinessTransactions
+    @EnvironmentObject var vmPersonal: ViewModelManagePersonalTransactions
     @EnvironmentObject var vmRealEstate: ViewModelRealEstate
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
@@ -23,6 +25,8 @@ struct OneColumnView: View {
                 .environmentObject(authentication)
                 .environmentObject(navigation)
                 .environmentObject(vmModal)
+                .environmentObject(vmPersonal)
+                .environmentObject(vmBusiness)
                 .environmentObject(vmRealEstate)
                 .environmentObject(vmCommercial)
                 .environmentObject(vmCommercialProperty)
@@ -55,6 +59,8 @@ struct OneColumnView_Previews: PreviewProvider {
         }
         .environmentObject(Authentication())
         .environmentObject(Navigation())
+        .environmentObject(ViewModelManagePersonalTransactions())
+        .environmentObject(ViewModelManageBusinessTransactions())
         .environmentObject(ViewModelCommercial())
         .environmentObject(ViewModelCommercialProperty())
         .environmentObject(ViewModelResidential())

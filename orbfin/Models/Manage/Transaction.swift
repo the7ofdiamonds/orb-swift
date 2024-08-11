@@ -39,7 +39,7 @@ struct Transaction: Identifiable, Decodable {
     let currencyCode: String
     let description: String
     let name: String
-    let logo: String
+    let logo: String?
     let location: TransactionLocation?
     
     enum CodingKeys: String, CodingKey {

@@ -11,6 +11,8 @@ import MapKit
 struct ViewMap: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
+    @EnvironmentObject var vmPersonal: ViewModelManagePersonalTransactions
+    @EnvironmentObject var vmBusiness: ViewModelManageBusinessTransactions
     @EnvironmentObject var vmRealEstate: ViewModelRealEstate
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmResidential: ViewModelResidential
@@ -22,6 +24,12 @@ struct ViewMap: View {
     var body: some View {
           Map(position: $location.position) {
               switch navigation.isPage {
+              case .manage:
+                  ViewMapTransactions(locations: vmBusiness.locations)
+              case .businesstransactions:
+                  ViewMapTransactions(locations: vmBusiness.locations)
+              case .personaltransactions:
+                  ViewMapTransactions(locations: vmPersonal.locations)
               case .blank:
                   ViewMapProperties(properties: $vmRealEstate.properties)
                   
@@ -85,6 +93,8 @@ struct ViewMap: View {
     ViewMap()
         .environmentObject(Navigation())
         .environmentObject(ViewModelModal())
+        .environmentObject(ViewModelManagePersonal())
+        .environmentObject(ViewModelManageBusiness())
         .environmentObject(ViewModelRealEstate())
         .environmentObject(ViewModelCommercial())
         .environmentObject(ViewModelCommercialProperty())

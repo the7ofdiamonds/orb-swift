@@ -6,75 +6,40 @@
 //
 
 import Foundation
+import MapKit
 
 @MainActor
 class ViewModelManagePersonalTransactions: ObservableObject {
     @Published var transactions: [Transaction] = []
     @Published var currency: String = ""
     
+    var locations: [MapLocation] = []
+    
+    private static let instance = ViewModelManagePersonalTransactions()
+    
     init() {
-        loadTransactions()
+        let transactionsRequest = PreviewManagePersonal.loadTransactions()
+        self.currency = transactionsRequest.currencyCode
+
+        if let transactions = transactionsRequest.transactions {
+            self.transactions = transactions
+        }
+        
+        getLocations(transactions: self.transactions)
     }
     
-    func loadTransactions() {
-        let json = """
-        {
-            "account_id": "BxBXxLj1m4HMXBm9WZZmCWVbPjX16EHwv99vp",
-            "account_owner": null,
-            "iso_currency_code": "JPY",
-            "transactions": [
-                {
-                    "transaction_id": "1",
-                    "type": "debit",
-                    "amount": 28.34,
-                    "iso_currency_code": "USD",
-                    "name": "Dd Doordash Burgerkin",
-                    "merchant_name": "Burger King",
-                    "logo_url": "https://plaid-merchant-logos.plaid.com/burger_king_155.png",
-                    "date": "2023-09-28",
-                    "location": {
-                        "address": null,
-                        "city": null,
-                        "region": null,
-                        "postal_code": null,
-                        "country": null,
-                        "lat": null,
-                        "lon": null,
-                        "store_number": null
-                    }
-                },
-                {
-                    "transaction_id": "2",
-                    "type": "debit",
-                    "amount": 72.1,
-                    "iso_currency_code": "USD",
-                    "name": "PURCHASE WM SUPERCENTER #1700",
-                    "merchant_name": "Walmart",
-                    "logo_url": "https://plaid-merchant-logos.plaid.com/walmart_1100.png",
-                    "date": "2023-09-24",
-                    "location": {
-                        "address": "13425 Community Rd",
-                        "city": "Poway",
-                        "region": "CA",
-                        "postal_code": "92064",
-                        "country": "US",
-                        "lat": 32.959068,
-                        "lon": -117.037666,
-                        "store_number": "1700"
-                    }
-                }
-            ]
-        }
-        """
+    func getLocations(transactions: [Transaction]) {
+        var locations = [MapLocation]()
         
-        if let data = json.data(using: .utf8) {
-            do {
-                let response = try JSONDecoder().decode(ResponseTransactions.self, from: data)
-                self.transactions = response.transactions
-                self.currency = response.currencyCode
-            } catch {
-                print("Error decoding JSON: \(error)")
+        for transaction in transactions {
+            if let location = transaction.location,
+               let lat = location.lat,
+               let lon = location.lon {
+                let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                locations.append(MapLocation(label: transaction.name, coordinates: coordinates, icon: nil, logo: transaction.logo))
             }
         }
-    }
+        
+        self.locations = locations
+        }
 }

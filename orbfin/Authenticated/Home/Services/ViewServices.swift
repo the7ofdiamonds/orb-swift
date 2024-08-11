@@ -11,10 +11,11 @@ struct ViewServices: View {
     @EnvironmentObject var vmModal: ViewModelModal
 
     var body: some View {
-        ComponentCard {
-            
-            HStack {
-                ComponentButtonBar(page: .notary)
+        if vmModal.show {
+            ComponentCard {
+                HStack {
+                    ComponentButtonBar(page: .notary)
+                }
             }
         }
     }

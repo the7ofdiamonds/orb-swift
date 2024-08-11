@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ComponentBarHome: View {
+    @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
 
     var body: some View {
@@ -28,4 +29,6 @@ struct ComponentBarHome: View {
 
 #Preview {
     ComponentBarHome()
+        .environmentObject(Navigation())
+        .environmentObject(ViewModelModal())
 }

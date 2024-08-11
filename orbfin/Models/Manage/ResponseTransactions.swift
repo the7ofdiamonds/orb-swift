@@ -11,7 +11,7 @@ struct ResponseTransactions: Decodable {
     let accountId: String
     let accountOwner: String?
     let currencyCode: String
-    let transactions: [Transaction]
+    let transactions: [Transaction]?
     
     enum CodingKeys: String, CodingKey {
         case accountId = "account_id"

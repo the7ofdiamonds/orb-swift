@@ -21,6 +21,9 @@ extension Page {
 }
 
 struct ViewManageSection: View {
+    @EnvironmentObject var vmBusinessTransactions: ViewModelManageBusinessTransactions
+    @EnvironmentObject var vmPersonalTransactions: ViewModelManagePersonalTransactions
+    
     @StateObject private var vmBusiness = ViewModelManageBusiness()
     @StateObject private var vmPersonal = ViewModelManagePersonal()
 
@@ -76,4 +79,7 @@ struct ViewManageSection: View {
 #Preview {
     ViewManageSection(page: .business)
         .environmentObject(ViewModelManageBusiness())
+        .environmentObject(ViewModelManageBusinessTransactions())
+        .environmentObject(ViewModelManagePersonal())
+        .environmentObject(ViewModelManagePersonalTransactions())
 }

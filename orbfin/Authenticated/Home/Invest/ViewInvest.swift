@@ -12,14 +12,15 @@ struct ViewInvest: View {
     @EnvironmentObject var vmModal: ViewModelModal
 
     var body: some View {
-        ComponentCardFixed {
-            
-            VStack(spacing: 30) {
-                ComponentButtonHNav(page: .realestate)
-                
-                ComponentDivider()
-                
-                ComponentButtonHNav(page: .tangibleassets)
+        if vmModal.show {
+            ComponentCardFixed {
+                VStack(spacing: 30) {
+                    ComponentButtonHNav(page: .realestate)
+                    
+                    ComponentDivider()
+                    
+                    ComponentButtonHNav(page: .tangibleassets)
+                }
             }
         }
     }

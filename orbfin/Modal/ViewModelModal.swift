@@ -10,7 +10,8 @@ import Foundation
 @MainActor
 class ViewModelModal: ObservableObject {
     @Published var show = true
-    
+    @Published var showModal = true
+
     func isVisible() -> Bool {
         return self.show
     }

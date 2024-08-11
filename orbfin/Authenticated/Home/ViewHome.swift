@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct ViewHome: View {
+    @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
 
     var successMessage: String?
@@ -37,11 +38,13 @@ struct ViewHome_Previews: PreviewProvider {
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
                 .environmentObject(ViewModelModal())
+                .environmentObject(Navigation())
             
             ViewHome()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
                 .environmentObject(ViewModelModal())
+                .environmentObject(Navigation())
         }
     }
 }

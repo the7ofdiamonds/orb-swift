@@ -8,31 +8,38 @@
 import SwiftUI
 
 struct ViewModal<Content: View>: View {
-    let modalView: Content
+    @EnvironmentObject var vmModal: ViewModelModal
+    
+    var modalView: Content
 
-    var type: Status = .info
-    var onDismiss: () -> Void
-
+    init(@ViewBuilder content: () -> Content) {
+        self.modalView = content()
+    }
+    
     var body: some View {
         VStack {
             HStack {
                 Spacer()
                 Button {
-                    onDismiss()
+                    vmModal.showModal = false
                 } label: {
                     HStack {
-                        Text("Dismiss")
                         Image(systemName: "x.circle")
+                            .font(.title)
                     }
+                    .foregroundColor(Styling.color(.Error))
+
                 }
+                .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
+                
             }
             .frame(maxWidth: Styling.sizeWidth(component: .card))
-            
+
             modalView
         }
         .padding()
-        .background(Styling.colorStatusBackground(type: type))
-        .foregroundColor(Styling.colorStatusFont(type: type))
+        .background(Styling.color(.Card))
+        .foregroundColor(Styling.color(.CardFont))
         .cornerRadius(Styling.cornerRadius)
         .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
         .frame(maxWidth: Styling.sizeWidth(component: .card), maxHeight: Styling.sizeHeight(component: .card))
@@ -41,7 +48,8 @@ struct ViewModal<Content: View>: View {
 }
 
 struct ViewModal_Previews: PreviewProvider {
-    static var previews: some View {    let sampleTransaction = Transaction(
+    static var previews: some View {    
+        let sampleTransaction = Transaction(
         id: "1",
         type: "debit",
         amount: 28.34,
@@ -62,8 +70,9 @@ struct ViewModal_Previews: PreviewProvider {
         )
     )
         
-        ViewModal(modalView: ViewManageTransactionDetails(transaction: sampleTransaction)) {
-            print("Dismissed")
+        ViewModal {
+            ViewManageTransactionDetails(transaction: sampleTransaction)
         }
+        .environmentObject(ViewModelModal())
     }
 }

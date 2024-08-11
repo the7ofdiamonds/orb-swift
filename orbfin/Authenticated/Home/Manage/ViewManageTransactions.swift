@@ -9,9 +9,8 @@ import SwiftUI
 
 struct ViewManageTransactions: View {
     @EnvironmentObject var vmModal: ViewModelModal
-
-    @StateObject private var vmBusiness = ViewModelManageBusinessTransactions()
-    @StateObject private var vmPersonal = ViewModelManagePersonalTransactions()
+    @EnvironmentObject var vmBusiness: ViewModelManageBusinessTransactions
+    @EnvironmentObject var vmPersonal: ViewModelManagePersonalTransactions
     
     @State private var startingBalance: Double = 1000.0
     @State private var showDetails: Bool = false
@@ -45,56 +44,70 @@ struct ViewManageTransactions: View {
     }
     
     var body: some View {
-        ComponentCard {
-            Text("Total: \(total)")
-        }
-        
-        ComponentCard {
-            Table(transactions) {
-                TableColumn("#", value: \.id)
-                TableColumn("Date", value: \.date)
-                TableColumn("Name") { transaction in
-                    Button {
-                        selectedTransaction = transaction
-                        showDetails = true
-                    } label: {
-                        HStack {
-                            ComponentImageIcon(url: transaction.logo)
-                                .frame(width: 30, height: 30)
-                            Text(transaction.name)
+        if vmModal.show {
+            ZStack {
+                ComponentCard {
+                    Text("Total: \(total)")
+                }
+                
+                ComponentCard {
+                    Table(transactions) {
+                        TableColumn("#", value: \.id)
+                        TableColumn("Date", value: \.date)
+                        TableColumn("Name") { transaction in
+                            if let logo = transaction.logo {
+                                Button {
+                                    selectedTransaction = transaction
+                                    
+                                    if selectedTransaction != nil {
+                                        vmModal.showModal = true
+                                    }
+                                } label: {
+                                    HStack {
+                                        ComponentImageIcon(url: logo)
+                                            .frame(width: 30, height: 30)
+                                        Text(transaction.name)
+                                    }
+                                }
+                            } else {
+                                Button {
+                                    selectedTransaction = transaction
+                                    
+                                    if selectedTransaction != nil {
+                                        showDetails = true
+                                    }
+                                } label: {
+                                    HStack {
+                                        Text(transaction.name)
+                                    }
+                                }
+                            }
+                        }
+                        TableColumn("Debit") { transaction in
+                            if transaction.type == "debit" {
+                                Text(Format.formatCurrency(Double(transaction.amount), currency: transaction.currencyCode))
+                            }
+                        }
+                        TableColumn("Credit") { transaction in
+                            if transaction.type == "credit" {
+                                Text(Format.formatCurrency(Double(transaction.amount), currency: transaction.currencyCode))
+                            }
+                        }
+                        TableColumn("Balance") { transaction in
+                            let balance = calculateBalance(for: transaction)
+                            Text(Format.formatCurrency(balance, currency: transaction.currencyCode))
                         }
                     }
+                    .padding()
                 }
-                TableColumn("Debit") { transaction in
-                    if transaction.type == "debit" {
-                        Text(Format.formatCurrency(Double(transaction.amount), currency: transaction.currencyCode))
+                
+                if vmModal.showModal,
+                   let transaction = selectedTransaction {
+                    ViewModal {
+                        ViewManageTransactionDetails(transaction: transaction)
                     }
-                }
-                TableColumn("Credit") { transaction in
-                    if transaction.type == "credit" {
-                        Text(Format.formatCurrency(Double(transaction.amount), currency: transaction.currencyCode))
-                    }
-                }
-                TableColumn("Balance") { transaction in
-                    let balance = calculateBalance(for: transaction)
-                    Text(Format.formatCurrency(balance, currency: transaction.currencyCode))
                 }
             }
-            .padding()
-        }
-        .sheet(isPresented: $showDetails) {
-            
-            if let transaction = selectedTransaction {
-                            ViewManageTransactionDetails(transaction: transaction)
-                                .onAppear {
-                                    print("Sheet is showing with transaction: \(transaction)")
-                                }
-                        } else {
-                            Text("No transaction selected")
-                                .onAppear {
-                                    print("No transaction to show in the sheet")
-                                }
-                        }
         }
     }
     
@@ -114,4 +127,6 @@ struct ViewManageTransactions: View {
 #Preview {
     ViewManageTransactions(page: .personaltransactions)
         .environmentObject(ViewModelModal())
+        .environmentObject(ViewModelManagePersonalTransactions())
+        .environmentObject(ViewModelManageBusinessTransactions())
 }

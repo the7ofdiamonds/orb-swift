@@ -9,24 +9,37 @@ import SwiftUI
 import MapKit
 
 struct ViewManageTransactionDetails: View {
+    @EnvironmentObject var vmModal: ViewModelModal
+    
     @StateObject private var locationManager: LocationManager = LocationManager.instance
     
     var transaction: Transaction
     
-    var coordinates: CLLocationCoordinate2D {
+    var location: TransactionLocation? {
+        if let location = transaction.location {
+            return location
+        } else {
+            return nil
+        }
+    }
+    var coordinates: CLLocationCoordinate2D? {
         if let location = transaction.location,
            let latitude = location.lat,
            let longitude = location.lon {
             return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         } else {
-            return CLLocationCoordinate2D()
+            return nil
         }
     }
     
     var body: some View {
-        ComponentCard {
-            
-            ComponentImageIcon(url: transaction.logo)
+        Group {
+            if let logo = transaction.logo {
+                ComponentImageIcon(url: logo)
+                    .frame(width: 100, height: 100)
+            } else {
+                Text("\(transaction.name)")
+            }
             
             Text("ID: \(transaction.id)")
             Text("Date: \(transaction.date)")
@@ -37,7 +50,9 @@ struct ViewManageTransactionDetails: View {
             Text("Amount: \(transaction.amount)")
         }
         .onAppear {
-            locationManager.changeCamera(coordinates: coordinates)
+            if let coordinates {
+                locationManager.changeCamera(coordinates: coordinates)
+            }
         }
     }
 }

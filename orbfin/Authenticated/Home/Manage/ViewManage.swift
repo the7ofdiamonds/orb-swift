@@ -10,13 +10,17 @@ import SwiftUI
 struct ViewManage: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
-
+    @EnvironmentObject var vmBusinessTransactions: ViewModelManageBusinessTransactions
+    @EnvironmentObject var vmPersonalTransactions: ViewModelManagePersonalTransactions
+    
     var body: some View {
-        ComponentCardFixed {
-            VStack(spacing: 20, content: {
-                ComponentButtonHNav(page: .personal)
-                ComponentButtonHNav(page: .business)
-            })
+        if vmModal.show {
+            ComponentCardFixed {
+                VStack(spacing: 20, content: {
+                    ComponentButtonHNav(page: .personal)
+                    ComponentButtonHNav(page: .business)
+                })
+            }
         }
     }
 }

@@ -11,6 +11,8 @@ import MapKit
 struct ViewAuthenticated: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
+    @EnvironmentObject var vmBusinessTransactions: ViewModelManageBusinessTransactions
+    @EnvironmentObject var vmPersonalTransactions: ViewModelManagePersonalTransactions
     @EnvironmentObject var vmRealEstate: ViewModelRealEstate
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
@@ -22,6 +24,8 @@ struct ViewAuthenticated: View {
     @ViewBuilder var body: some View {
         ZStack {
             ViewMap()
+                .environmentObject(vmPersonalTransactions)
+                .environmentObject(vmBusinessTransactions)
                 .environmentObject(vmRealEstate)
                 .environmentObject(vmCommercial)
                 .environmentObject(vmCommercialProperty)
@@ -33,6 +37,8 @@ struct ViewAuthenticated: View {
                 
                 navigation.isView
                     .environmentObject(vmModal)
+                    .environmentObject(vmPersonalTransactions)
+                    .environmentObject(vmBusinessTransactions)
                     .environmentObject(vmRealEstate)
                     .environmentObject(vmCommercial)
                     .environmentObject(vmCommercialProperty)
@@ -62,6 +68,8 @@ struct ViewAuthenticated_Previews: PreviewProvider {
         }
         .environmentObject(Navigation())
         .environmentObject(ViewModelModal())
+        .environmentObject(ViewModelManagePersonalTransactions())
+        .environmentObject(ViewModelManageBusinessTransactions())
         .environmentObject(ViewModelRealEstate())
         .environmentObject(ViewModelCommercial())
         .environmentObject(ViewModelCommercialProperty(property: PreviewCommercial.loadProperties()[0]))

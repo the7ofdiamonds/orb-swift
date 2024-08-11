@@ -16,7 +16,7 @@ struct ComponentButtonBar: View {
     var body: some View {
         Button(action: {
             navigation.change(page: page)
-            vmModal.toggle()
+            vmModal.show = true
         }, label: {
             VStack {
                 Image(systemName: page.icon)
@@ -33,4 +33,6 @@ struct ComponentButtonBar: View {
 
 #Preview {
     ComponentButtonBar(page: .home(successMessage: nil))
+        .environmentObject(Navigation())
+        .environmentObject(ViewModelModal())
 }

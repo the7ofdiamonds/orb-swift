@@ -11,6 +11,10 @@ struct ThreeColumnView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
+    @EnvironmentObject var vmBusiness: ViewModelManageBusiness
+    @EnvironmentObject var vmPersonal: ViewModelManagePersonal
+    @EnvironmentObject var vmBusinessTransactions: ViewModelManageBusinessTransactions
+    @EnvironmentObject var vmPersonalTransactions: ViewModelManagePersonalTransactions
     @EnvironmentObject var vmRealEstate: ViewModelRealEstate
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
@@ -35,6 +39,10 @@ struct ThreeColumnView: View {
                 .environmentObject(authentication)
                 .environmentObject(navigation)
                 .environmentObject(vmModal)
+                .environmentObject(vmPersonal)
+                .environmentObject(vmPersonalTransactions)
+                .environmentObject(vmBusiness)
+                .environmentObject(vmBusinessTransactions)
                 .environmentObject(vmRealEstate)
                 .environmentObject(vmCommercial)
                 .environmentObject(vmCommercialProperty)
@@ -60,6 +68,10 @@ struct ThreeColumnView_Previews: PreviewProvider {
         .environmentObject(Authentication())
         .environmentObject(Navigation())
         .environmentObject(ViewModelModal())
+        .environmentObject(ViewModelManagePersonal())
+        .environmentObject(ViewModelManageBusiness())
+        .environmentObject(ViewModelManagePersonalTransactions())
+        .environmentObject(ViewModelManageBusinessTransactions())
         .environmentObject(ViewModelRealEstate())
         .environmentObject(ViewModelCommercial())
         .environmentObject(ViewModelCommercialProperty())
