@@ -9,14 +9,45 @@ import SwiftUI
 
 struct ViewServices: View {
     @EnvironmentObject var vmModal: ViewModelModal
-
+    @EnvironmentObject var vm: ViewModelServices
+    
+    @StateObject private var location: LocationManager = LocationManager.instance
+    
+    var services: [Service]? {
+        return vm.services
+    }
+    
     var body: some View {
         if vmModal.show {
-            ComponentCard {
-                HStack {
-                    ComponentButtonBar(page: .notary)
+            Group {
+                ComponentCard {
+                    HStack {
+                        ComponentButtonBar(page: .notary)
+                    }
+                }
+                
+                ComponentCardFixed {
+                    Text("\(services?[0].title)")
                 }
             }
+            .onAppear {
+                Task {
+                    await vm.getServices(request: RequestServices())
+                }
+                
+                if let services = services,
+                   let coordinates = services[0].mapLocation?.coordinates {
+                    location.changeCamera(coordinates: coordinates)
+                }
+            }
+            .alert(isPresented: $vm.showingAlert) {
+                Alert(
+                    title: Text(vm.error?.title ?? "An Error has occured."),
+                    message: Text("\(vm.error?.message ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
+            
         }
     }
 }

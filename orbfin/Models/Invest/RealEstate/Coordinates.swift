@@ -8,8 +8,8 @@
 import CoreLocation
 
 struct Coordinates: Codable {
-    let latitude: String
-    let longitude: String
+    let latitude: Double
+    let longitude: Double
 }
 
 extension CLLocationCoordinate2D: Codable {

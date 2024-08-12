@@ -18,4 +18,5 @@ struct BackendURLs {
     public static var realEstate: String = "http://localhost:8084"
     public static var realEstateCommercial: String = "http://localhost:8084/commercial"
     public static var realEstateResidential: String = "http://localhost:8084/residential"
+    public static var services: String = "https://the7ofdiamonds.development/wp-json/orb/services/v1/all"
 }

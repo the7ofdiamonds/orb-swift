@@ -21,17 +21,20 @@ struct ViewMapProperties: MapContent {
         switch navigation.isPage {
         case .invest, .realestate:
             return vmRealEstate.properties
+            
         case .commercial, .commercialproperty(property: _):
             return vmCommercial.properties
+            
         case .residential, .residentialproperty(property: _):
             return vmResidential.properties
+            
         default:
             return []
         }
     }
     
     var body: some MapContent {
-        if let properties {
+        if let properties = properties {
             ForEach(properties, id: \.id) { property in
                 if let coordinates = property.coordinates {
                     Annotation(property.address?.toString() ?? "", coordinate: coordinates) {

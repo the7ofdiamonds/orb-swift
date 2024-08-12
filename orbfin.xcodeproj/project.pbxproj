@@ -113,6 +113,9 @@
 		A44306082C698CEB00F9B883 /* ViewMapServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44306072C698CEB00F9B883 /* ViewMapServices.swift */; };
 		A443060A2C69906900F9B883 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44306092C69906900F9B883 /* Service.swift */; };
 		A443060E2C699C4E00F9B883 /* ViewModelServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A443060D2C699C4E00F9B883 /* ViewModelServices.swift */; };
+		A44306102C6A985200F9B883 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = A443060F2C6A985200F9B883 /* Services.swift */; };
+		A44306122C6A995D00F9B883 /* RequestServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44306112C6A995D00F9B883 /* RequestServices.swift */; };
+		A44306142C6A996F00F9B883 /* ResponseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44306132C6A996F00F9B883 /* ResponseServices.swift */; };
 		A45676322C5C19AA0025A730 /* ViewStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676312C5C19AA0025A730 /* ViewStatus.swift */; };
 		A45676342C5C1A7D0025A730 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676332C5C1A7D0025A730 /* Status.swift */; };
 		A45676362C5C43A00025A730 /* ViewModelHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676352C5C43A00025A730 /* ViewModelHome.swift */; };
@@ -287,6 +290,9 @@
 		A44306072C698CEB00F9B883 /* ViewMapServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMapServices.swift; sourceTree = "<group>"; };
 		A44306092C69906900F9B883 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		A443060D2C699C4E00F9B883 /* ViewModelServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelServices.swift; sourceTree = "<group>"; };
+		A443060F2C6A985200F9B883 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		A44306112C6A995D00F9B883 /* RequestServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServices.swift; sourceTree = "<group>"; };
+		A44306132C6A996F00F9B883 /* ResponseServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseServices.swift; sourceTree = "<group>"; };
 		A45676312C5C19AA0025A730 /* ViewStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStatus.swift; sourceTree = "<group>"; };
 		A45676332C5C1A7D0025A730 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		A45676352C5C43A00025A730 /* ViewModelHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelHome.swift; sourceTree = "<group>"; };
@@ -705,6 +711,7 @@
 				A49C0BF22C4A15A600968AFB /* Notary */,
 				A4605EA42C46F15C0091CC52 /* ViewServices.swift */,
 				A443060D2C699C4E00F9B883 /* ViewModelServices.swift */,
+				A443060F2C6A985200F9B883 /* Services.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -751,6 +758,8 @@
 			isa = PBXGroup;
 			children = (
 				A44306092C69906900F9B883 /* Service.swift */,
+				A44306112C6A995D00F9B883 /* RequestServices.swift */,
+				A44306132C6A996F00F9B883 /* ResponseServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1135,6 +1144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A44306102C6A985200F9B883 /* Services.swift in Sources */,
 				A4041C812C56D69E001FD37B /* Fonts.swift in Sources */,
 				A4605EA52C46F15C0091CC52 /* ViewServices.swift in Sources */,
 				A41778112C5B47CE009C1353 /* ComponentCardFixed.swift in Sources */,
@@ -1277,6 +1287,7 @@
 				A43C29EF2C411F72002BF1AE /* ViewHome.swift in Sources */,
 				A41777F42C58317A009C1353 /* ComponentCardLocation.swift in Sources */,
 				A4041C572C5524ED001FD37B /* ViewModelSignup.swift in Sources */,
+				A44306142C6A996F00F9B883 /* ResponseServices.swift in Sources */,
 				A43C29D72C405404002BF1AE /* RequestLogout.swift in Sources */,
 				A4880FA42C652E590080C5E0 /* Residential.swift in Sources */,
 				A4EA3CDC2C4B4B4300CEFCFF /* ViewModelManageBusinessTransactions.swift in Sources */,
@@ -1297,6 +1308,7 @@
 				A43C29E92C40F44A002BF1AE /* ComponentCard.swift in Sources */,
 				A4041C8B2C57EA6C001FD37B /* ViewModelCommercial.swift in Sources */,
 				A41777F62C5831FB009C1353 /* Address.swift in Sources */,
+				A44306122C6A995D00F9B883 /* RequestServices.swift in Sources */,
 				A4041C8D2C57EAB5001FD37B /* ViewCommercialProperty.swift in Sources */,
 				A4041C602C557703001FD37B /* ViewChangeName.swift in Sources */,
 				A4605EA32C46F1000091CC52 /* ViewInvest.swift in Sources */,

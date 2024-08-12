@@ -8,10 +8,10 @@
 import Foundation
 import MapKit
 
-struct MapLocation {
+struct MapLocation: Codable {
     var id = UUID()
-    let label: String
-    let coordinates: CLLocationCoordinate2D
-    let icon: String?
-    let logo: String?
+    var label: String?
+    var coordinates: CLLocationCoordinate2D?
+    var icon: String?
+    var logo: String?
 }

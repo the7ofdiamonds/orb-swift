@@ -16,20 +16,29 @@ struct ViewMapServices: MapContent {
     @StateObject var location: LocationManager = LocationManager.instance
     
     var services: [Service]? {
-        return vmServices.services
+        switch navigation.isPage {
+        case .services:
+            return vmServices.services
+            
+        default:
+            return nil
+        }
     }
     
     var body: some MapContent {
-        if let services {
+        if let services = services {
             ForEach(services, id: \.id) { service in
-                if let coordinates = service.mapLocation?.coordinates {
-                    Annotation(service.name, coordinate: coordinates) {
+                if let title = service.title,
+                   let mapLocation = service.mapLocation,
+                   let coordinates = mapLocation.coordinates {
+                    Annotation(title, coordinate: coordinates) {
                         Image(systemName: "mappin")
                             .onTapGesture {
-                                vmModal.show = true
+                                vmModal.showModal = true
                             }
                     }
                 }
+                
             }
         }
     }
