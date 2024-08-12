@@ -21,6 +21,7 @@ struct ContentView: View {
     @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
     @EnvironmentObject var vmManagePersonal: ViewModelManagePersonal
     @EnvironmentObject var vmManageBusiness: ViewModelManageBusiness
+    @EnvironmentObject var vmServices: ViewModelServices
     
     @AppStorage("layoutExperience") var selectedLayoutExperience: String?
 
@@ -78,7 +79,7 @@ struct ContentView: View {
         .environmentObject(vmResidentialProperty)
         .environmentObject(vmManagePersonal)
         .environmentObject(vmManageBusiness)
-
+        .environmentObject(vmServices)
     }
 }
 
@@ -105,5 +106,6 @@ struct ContentView_Previews: PreviewProvider {
         .environmentObject(ViewModelResidentialProperty())
         .environmentObject(ViewModelManagePersonal())
         .environmentObject(ViewModelManageBusiness())
+        .environmentObject(ViewModelServices())
     }
 }

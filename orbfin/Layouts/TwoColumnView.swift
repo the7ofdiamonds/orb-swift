@@ -18,7 +18,8 @@ struct TwoColumnView: View {
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     @EnvironmentObject var vmResidential: ViewModelResidential
     @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
-
+    @EnvironmentObject var vmServices: ViewModelServices
+    
     var body: some View {
         NavigationSplitView {
             ComponentButtonHome()
@@ -44,6 +45,7 @@ struct TwoColumnView: View {
                 .environmentObject(vmCommercialProperty)
                 .environmentObject(vmResidential)
                 .environmentObject(vmResidentialProperty)
+                .environmentObject(vmServices)
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             ComponentBarHome()
@@ -68,5 +70,6 @@ struct TwoColumnView_Previews: PreviewProvider {
         .environmentObject(ViewModelCommercialProperty())
         .environmentObject(ViewModelResidential())
         .environmentObject(ViewModelResidentialProperty())
+        .environmentObject(ViewModelServices())
     }
 }

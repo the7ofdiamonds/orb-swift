@@ -25,7 +25,7 @@ extension Styling {
             if UIDevice.current.userInterfaceIdiom == .phone {
                 return 75
             } else {
-                return 70
+                return 20
             }
         #endif
     }

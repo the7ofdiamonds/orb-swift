@@ -18,7 +18,8 @@ struct OneColumnView: View {
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     @EnvironmentObject var vmResidential: ViewModelResidential
     @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
-
+    @EnvironmentObject var vmServices: ViewModelServices
+    
     var body: some View {
         NavigationStack {
             ViewAuthenticated()
@@ -32,6 +33,7 @@ struct OneColumnView: View {
                 .environmentObject(vmCommercialProperty)
                 .environmentObject(vmResidential)
                 .environmentObject(vmResidentialProperty)
+                .environmentObject(vmServices)
         }
         .safeAreaInset(edge: .bottom) {
             HStack(alignment: .center, spacing: 50) {
@@ -65,5 +67,6 @@ struct OneColumnView_Previews: PreviewProvider {
         .environmentObject(ViewModelCommercialProperty())
         .environmentObject(ViewModelResidential())
         .environmentObject(ViewModelResidentialProperty())
+        .environmentObject(ViewModelServices())
     }
 }

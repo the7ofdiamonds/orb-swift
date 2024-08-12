@@ -16,22 +16,44 @@ struct ViewMapTransactions: MapContent {
     
     @StateObject var locationManager: LocationManager = LocationManager.instance
     
-    var locations: [MapLocation]
+    var transactions: [Transaction] {
+        switch navigation.isPage {
+        case .manage:
+            let transactions = vmBusiness.transactions + vmPersonal.transactions
+            return transactions
+        case .business:
+            return vmBusiness.transactions
+        case .personal:
+            return vmPersonal.transactions
+        default:
+            return []
+        }
+    }
     
     var body: some MapContent {
-        ForEach(locations, id: \.id) { location in
-            Annotation(location.label, coordinate: location.coordinates) {
+        ForEach(transactions, id: \.id) { transaction in
+            let coordinate = transaction.mapLocation?.coordinates ?? CLLocationCoordinate2D()
+            Annotation(transaction.name, coordinate: coordinate) {
                 Group {
-                    if let logo = location.logo {
-                        ComponentImageIcon(url: logo)
-                    } else {
-                        Image(systemName: "mappin")
+                    ZStack {
+                        if let logo = transaction.mapLocation?.logo {
+                            ComponentImageIcon(url: logo)
+                                .frame(width: 70, height: 70)
+                        } else {
+                            Image(systemName: "mappin")
+                                .font(.title)
+                        }
+                        
+                        if vmModal.showModal {
+                            ViewModal {
+                                ViewManageTransactionDetails(transaction: transaction)
+                            }
+                        }
                     }
                 }
-                .frame(width: 70, height: 70)
                 .onTapGesture {
-                    locationManager.changeCamera(coordinates: location.coordinates)
-                    vmModal.show = true
+                    vmModal.showModal = true
+                    locationManager.changeCamera(coordinates: coordinate)
                 }
             }
         }

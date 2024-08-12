@@ -9,15 +9,14 @@ import Foundation
 
 struct TransactionLocation: Identifiable, Codable {
     var id = UUID()
-    
-    let address: String?
-    let city: String?
-    let region: String?
-    let postal_code: String?
-    let country: String?
-    let lat: Double?
-    let lon: Double?
-    let store_number: String?
+    var address: String?
+    var city: String?
+    var region: String?
+    var postal_code: String?
+    var country: String?
+    var lat: Double?
+    var lon: Double?
+    var store_number: String?
     
     enum CodingKeys: String, CodingKey {
         case address
@@ -32,15 +31,16 @@ struct TransactionLocation: Identifiable, Codable {
 }
 
 struct Transaction: Identifiable, Decodable {
-    let id: String
-    let type: String
-    let amount: Double
-    let date: String
-    let currencyCode: String
-    let description: String
-    let name: String
-    let logo: String?
-    let location: TransactionLocation?
+    var id: String
+    var type: String
+    var amount: Double
+    var date: String
+    var currencyCode: String
+    var description: String
+    var name: String
+    var logo: String?
+    var location: TransactionLocation?
+    var mapLocation: MapLocation?
     
     enum CodingKeys: String, CodingKey {
         case id = "transaction_id"

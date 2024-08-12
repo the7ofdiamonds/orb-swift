@@ -37,7 +37,6 @@ struct ComponentCardFixed<Content: View>: View {
         .foregroundColor(Styling.color(.CardFont))
         .cornerRadius(Styling.cornerRadius)
         .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
-        .frame(maxHeight: Styling.sizeHeight(component: .card))
         .frame(maxWidth: Styling.sizeWidth(component: .card))
         .fixedSize()
 

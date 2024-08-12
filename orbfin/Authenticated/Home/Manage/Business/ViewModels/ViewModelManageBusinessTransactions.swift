@@ -12,32 +12,30 @@ import MapKit
 class ViewModelManageBusinessTransactions: ObservableObject {
     @Published var transactions: [Transaction] = []
     @Published var currency: String = "USD"
-
-    var locations: [MapLocation] = []
     
     init() {
-        let transactionsRequest = PreviewManageBusiness.loadTransactions()
+        var transactionsRequest = PreviewManageBusiness.loadTransactions()
         self.currency = transactionsRequest.currencyCode
-
-        if let transactions = transactionsRequest.transactions {
-            self.transactions = transactions
-        }
         
-        getLocations(transactions: self.transactions)
+        updateMapLocations(transactions: transactionsRequest.transactions ?? [])
     }
     
-    func getLocations(transactions: [Transaction]) {
-        var locations = [MapLocation]()
+    func updateMapLocations(transactions: [Transaction]) {
+        var updatedTransactions = [Transaction]()
         
         for transaction in transactions {
-            if let location = transaction.location,
-               let lat = location.lat,
-               let lon = location.lon {
+            var updatedTransaction = transaction
+
+            if let lat = transaction.location?.lat,
+               let lon = transaction.location?.lon {
                 let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                locations.append(MapLocation(label: transaction.name, coordinates: coordinates, icon: nil, logo: transaction.logo))
+                                
+                updatedTransaction.mapLocation = MapLocation(label: transaction.name, coordinates: coordinates, icon: nil, logo: transaction.logo)
             }
+            
+            updatedTransactions.append(updatedTransaction)
         }
         
-        self.locations = locations
-        }
+        self.transactions = updatedTransactions
+    }
 }

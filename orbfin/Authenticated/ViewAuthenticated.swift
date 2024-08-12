@@ -20,6 +20,7 @@ struct ViewAuthenticated: View {
     @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
     @EnvironmentObject var vmManagePersonal: ViewModelManagePersonal
     @EnvironmentObject var vmManageBusiness: ViewModelManageBusiness
+    @EnvironmentObject var vmServices: ViewModelServices
     
     @ViewBuilder var body: some View {
         ZStack {
@@ -31,9 +32,9 @@ struct ViewAuthenticated: View {
                 .environmentObject(vmCommercialProperty)
                 .environmentObject(vmResidential)
                 .environmentObject(vmResidentialProperty)
+                .environmentObject(vmServices)
 
             VStack {
-                Spacer()
                 
                 navigation.isView
                     .environmentObject(vmModal)
@@ -44,8 +45,7 @@ struct ViewAuthenticated: View {
                     .environmentObject(vmCommercialProperty)
                     .environmentObject(vmResidential)
                     .environmentObject(vmResidentialProperty)
-                
-                Spacer()
+                    .environmentObject(vmServices)
             }
             .padding(.top, Styling.paddingEdgesTop())
             .padding(.horizontal, Styling.paddingEdgesHorizontal())
@@ -77,5 +77,6 @@ struct ViewAuthenticated_Previews: PreviewProvider {
         .environmentObject(ViewModelResidentialProperty(property: PreviewResidential.loadProperties()[0]))
         .environmentObject(ViewModelManagePersonal())
         .environmentObject(ViewModelManageBusiness())
+        .environmentObject(ViewModelServices())
     }
 }

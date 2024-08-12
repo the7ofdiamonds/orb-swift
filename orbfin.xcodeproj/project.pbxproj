@@ -110,6 +110,9 @@
 		A44306012C69057900F9B883 /* PreviewManageBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44306002C69057900F9B883 /* PreviewManageBusiness.swift */; };
 		A44306032C690F5A00F9B883 /* ViewMapTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44306022C690F5A00F9B883 /* ViewMapTransactions.swift */; };
 		A44306062C69174300F9B883 /* MapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44306052C69174300F9B883 /* MapLocation.swift */; };
+		A44306082C698CEB00F9B883 /* ViewMapServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44306072C698CEB00F9B883 /* ViewMapServices.swift */; };
+		A443060A2C69906900F9B883 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44306092C69906900F9B883 /* Service.swift */; };
+		A443060E2C699C4E00F9B883 /* ViewModelServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A443060D2C699C4E00F9B883 /* ViewModelServices.swift */; };
 		A45676322C5C19AA0025A730 /* ViewStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676312C5C19AA0025A730 /* ViewStatus.swift */; };
 		A45676342C5C1A7D0025A730 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676332C5C1A7D0025A730 /* Status.swift */; };
 		A45676362C5C43A00025A730 /* ViewModelHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676352C5C43A00025A730 /* ViewModelHome.swift */; };
@@ -281,6 +284,9 @@
 		A44306002C69057900F9B883 /* PreviewManageBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewManageBusiness.swift; sourceTree = "<group>"; };
 		A44306022C690F5A00F9B883 /* ViewMapTransactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMapTransactions.swift; sourceTree = "<group>"; };
 		A44306052C69174300F9B883 /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
+		A44306072C698CEB00F9B883 /* ViewMapServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMapServices.swift; sourceTree = "<group>"; };
+		A44306092C69906900F9B883 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		A443060D2C699C4E00F9B883 /* ViewModelServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelServices.swift; sourceTree = "<group>"; };
 		A45676312C5C19AA0025A730 /* ViewStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStatus.swift; sourceTree = "<group>"; };
 		A45676332C5C1A7D0025A730 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		A45676352C5C43A00025A730 /* ViewModelHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelHome.swift; sourceTree = "<group>"; };
@@ -490,8 +496,9 @@
 			isa = PBXGroup;
 			children = (
 				A43541502C3B8C7B00B32BC1 /* ViewMap.swift */,
-				A42CC9342C6127FA004845AB /* ViewMapProperties.swift */,
 				A44306022C690F5A00F9B883 /* ViewMapTransactions.swift */,
+				A42CC9342C6127FA004845AB /* ViewMapProperties.swift */,
+				A44306072C698CEB00F9B883 /* ViewMapServices.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -697,6 +704,7 @@
 			children = (
 				A49C0BF22C4A15A600968AFB /* Notary */,
 				A4605EA42C46F15C0091CC52 /* ViewServices.swift */,
+				A443060D2C699C4E00F9B883 /* ViewModelServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -742,6 +750,7 @@
 		A4880FB42C6665CF0080C5E0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A44306092C69906900F9B883 /* Service.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1192,6 +1201,7 @@
 				A45676342C5C1A7D0025A730 /* Status.swift in Sources */,
 				A42CC9292C5F6A50004845AB /* PreviewResidentialProperty.swift in Sources */,
 				A41777FC2C583E8D009C1353 /* ComponentCardBuildingDetails.swift in Sources */,
+				A443060E2C699C4E00F9B883 /* ViewModelServices.swift in Sources */,
 				A42CC9422C617734004845AB /* RequestProperties.swift in Sources */,
 				A44305FF2C69056000F9B883 /* PreviewManagePersonal.swift in Sources */,
 				A49C0BF92C4A1EF500968AFB /* ManageSummary.swift in Sources */,
@@ -1225,9 +1235,11 @@
 				A45676362C5C43A00025A730 /* ViewModelHome.swift in Sources */,
 				A43C29F82C4199FD002BF1AE /* ComponentButtonBar.swift in Sources */,
 				A40741AA2C683BE900FB1770 /* ResponseTransactions.swift in Sources */,
+				A44306082C698CEB00F9B883 /* ViewMapServices.swift in Sources */,
 				A435415E2C3EC20B00B32BC1 /* Coordinates.swift in Sources */,
 				A42CC9462C626EF8004845AB /* ResponseRealEstateProperty.swift in Sources */,
 				A4EA3D022C50287700CEFCFF /* ViewContentMenu.swift in Sources */,
+				A443060A2C69906900F9B883 /* Service.swift in Sources */,
 				A42CC9212C5F67C4004845AB /* ViewResidentialProperty.swift in Sources */,
 				A43C29F12C4189CD002BF1AE /* ViewForgot.swift in Sources */,
 				A4880FAF2C65915E0080C5E0 /* ComponentSearchBy.swift in Sources */,

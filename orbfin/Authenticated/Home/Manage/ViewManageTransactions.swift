@@ -74,7 +74,7 @@ struct ViewManageTransactions: View {
                                     selectedTransaction = transaction
                                     
                                     if selectedTransaction != nil {
-                                        showDetails = true
+                                        vmModal.showModal = true
                                     }
                                 } label: {
                                     HStack {
@@ -101,12 +101,6 @@ struct ViewManageTransactions: View {
                     .padding()
                 }
                 
-                if vmModal.showModal,
-                   let transaction = selectedTransaction {
-                    ViewModal {
-                        ViewManageTransactionDetails(transaction: transaction)
-                    }
-                }
             }
         }
     }

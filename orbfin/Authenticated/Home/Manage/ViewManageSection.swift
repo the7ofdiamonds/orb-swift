@@ -28,6 +28,7 @@ struct ViewManageSection: View {
     @StateObject private var vmPersonal = ViewModelManagePersonal()
 
     var page: Page
+    
     var transactionsPage: Page {
         switch self.page {
         case .business:
@@ -52,24 +53,21 @@ struct ViewManageSection: View {
     
     var body: some View {
         ScrollView {
-            ComponentCardFixed {
-                page.summaryPage
-            }
-            .frame(height: 300)
-
-            ComponentCardFixed {
-                VStack(alignment: .center) {
-                    Grid(verticalSpacing: 20) {
-                        ForEach(page.submenu) { menu in
-                            GridRow {
-                                ComponentButtonDoubleH(page: menu, value: fetchData(subPage: menu))
+            VStack(spacing: 25) {
+                ComponentCardFixed {
+                    page.summaryPage
+                }
+                
+                ComponentCardFixed {
+                    VStack(alignment: .center) {
+                        Grid(verticalSpacing: 12.5) {
+                            ForEach(page.submenu) { menu in
+                                GridRow {
+                                    ComponentButtonDoubleH(page: menu, value: fetchData(subPage: menu))
+                                }
                             }
                         }
                     }
-                    
-                    ComponentDivider()
-                    
-                    ComponentButtonBar(page: transactionsPage)
                 }
             }
         }
@@ -78,6 +76,7 @@ struct ViewManageSection: View {
 
 #Preview {
     ViewManageSection(page: .business)
+        .environmentObject(Navigation())
         .environmentObject(ViewModelManageBusiness())
         .environmentObject(ViewModelManageBusinessTransactions())
         .environmentObject(ViewModelManagePersonal())

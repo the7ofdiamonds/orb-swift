@@ -11,10 +11,24 @@ import MapKit
 struct ViewMapProperties: MapContent {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
-
+    @EnvironmentObject var vmRealEstate: ViewModelRealEstate
+    @EnvironmentObject var vmCommercial: ViewModelCommercial
+    @EnvironmentObject var vmResidential: ViewModelResidential
+    
     @StateObject var location: LocationManager = LocationManager.instance
     
-    @Binding var properties: [RealEstateProperty]?
+    var properties: [RealEstateProperty]? {
+        switch navigation.isPage {
+        case .invest, .realestate:
+            return vmRealEstate.properties
+        case .commercial, .commercialproperty(property: _):
+            return vmCommercial.properties
+        case .residential, .residentialproperty(property: _):
+            return vmResidential.properties
+        default:
+            return []
+        }
+    }
     
     var body: some MapContent {
         if let properties {

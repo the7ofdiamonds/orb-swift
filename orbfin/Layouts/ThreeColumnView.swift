@@ -20,7 +20,8 @@ struct ThreeColumnView: View {
     @EnvironmentObject var vmCommercialProperty: ViewModelCommercialProperty
     @EnvironmentObject var vmResidential: ViewModelResidential
     @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
-
+    @EnvironmentObject var vmServices: ViewModelServices
+    
     @ViewBuilder var body: some View {
         NavigationSplitView {
             ComponentButtonHome()
@@ -48,6 +49,7 @@ struct ThreeColumnView: View {
                 .environmentObject(vmCommercialProperty)
                 .environmentObject(vmResidential)
                 .environmentObject(vmResidentialProperty)
+                .environmentObject(vmServices)
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             ComponentBarHome()
@@ -59,23 +61,22 @@ struct ThreeColumnView: View {
 
 struct ThreeColumnView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {         
-            ThreeColumnView()
-                .previewDisplayName("iPad Pro")
-                .previewDevice(PreviewDevice(rawValue: "iPad Air (10th Generation)"))
-                .previewInterfaceOrientation(.landscapeLeft)
-        }
-        .environmentObject(Authentication())
-        .environmentObject(Navigation())
-        .environmentObject(ViewModelModal())
-        .environmentObject(ViewModelManagePersonal())
-        .environmentObject(ViewModelManageBusiness())
-        .environmentObject(ViewModelManagePersonalTransactions())
-        .environmentObject(ViewModelManageBusinessTransactions())
-        .environmentObject(ViewModelRealEstate())
-        .environmentObject(ViewModelCommercial())
-        .environmentObject(ViewModelCommercialProperty())
-        .environmentObject(ViewModelResidential())
-        .environmentObject(ViewModelResidentialProperty())
+        ThreeColumnView()
+            .previewDisplayName("iPad Pro")
+            .previewDevice(PreviewDevice(rawValue: "iPad Air (10th Generation)"))
+            .previewInterfaceOrientation(.landscapeLeft)
+            .environmentObject(Authentication())
+            .environmentObject(Navigation())
+            .environmentObject(ViewModelModal())
+            .environmentObject(ViewModelManagePersonal())
+            .environmentObject(ViewModelManageBusiness())
+            .environmentObject(ViewModelManagePersonalTransactions())
+            .environmentObject(ViewModelManageBusinessTransactions())
+            .environmentObject(ViewModelRealEstate())
+            .environmentObject(ViewModelCommercial())
+            .environmentObject(ViewModelCommercialProperty())
+            .environmentObject(ViewModelResidential())
+            .environmentObject(ViewModelResidentialProperty())
+            .environmentObject(ViewModelServices())
     }
 }

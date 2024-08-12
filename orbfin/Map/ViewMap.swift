@@ -16,6 +16,7 @@ struct ViewMap: View {
     @EnvironmentObject var vmRealEstate: ViewModelRealEstate
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmResidential: ViewModelResidential
+    @EnvironmentObject var vmServices: ViewModelServices
 
     @StateObject var location: LocationManager = LocationManager.instance
     
@@ -24,29 +25,16 @@ struct ViewMap: View {
     var body: some View {
           Map(position: $location.position) {
               switch navigation.isPage {
-              case .manage:
-                  ViewMapTransactions(locations: vmBusiness.locations)
-              case .businesstransactions:
-                  ViewMapTransactions(locations: vmBusiness.locations)
-              case .personaltransactions:
-                  ViewMapTransactions(locations: vmPersonal.locations)
-              case .blank:
-                  ViewMapProperties(properties: $vmRealEstate.properties)
-                  
-              case .realestate:
-                  ViewMapProperties(properties: $vmRealEstate.properties)
-                  
-              case .commercial:
-                  ViewMapProperties(properties: $vmCommercial.properties)
-                  
-              case .commercialproperty(property: _):
-                  ViewMapProperties(properties: $vmCommercial.properties)
-                  
-              case .residential:
-                  ViewMapProperties(properties: $vmResidential.properties)
-
-              case .residentialproperty(property: _):
-                  ViewMapProperties(properties: $vmResidential.properties)
+              case .manage, .personal, .business, .businesstransactions, .personaltransactions:
+                  ViewMapTransactions()
+              
+              case .invest, .realestate,
+                      .commercial, .commercialproperty(property: _),
+                      .residential, .residentialproperty(property: _):
+                  ViewMapProperties()
+              
+              case .services, .notary:
+                  ViewMapServices()
                   
               default:
                   UserAnnotation()
@@ -100,4 +88,5 @@ struct ViewMap: View {
         .environmentObject(ViewModelCommercialProperty())
         .environmentObject(ViewModelResidential())
         .environmentObject(ViewModelResidentialProperty())
+        .environmentObject(ViewModelServices())
 }
