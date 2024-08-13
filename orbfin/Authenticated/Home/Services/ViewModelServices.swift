@@ -37,8 +37,9 @@ class ViewModelServices: ObservableObject {
                         let coordinate = try await LocationManager.instance.getCoordinates(address: address)
                         
                         updatedService.mapLocation?.coordinates = coordinate
-                        updatedServices.append(updatedService)
                     }
+                    
+                    updatedServices.append(updatedService)
                 }
                 
                 self.services = updatedServices

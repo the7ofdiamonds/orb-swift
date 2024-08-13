@@ -56,6 +56,7 @@ enum Page: CaseIterable, Identifiable, Equatable {
     
     case services
     case notary
+    case realestateappraisal
     
     case blank
 }
@@ -104,6 +105,7 @@ extension Page {
             .paperassets,
             .services,
             .notary,
+            .realestateappraisal,
             .blank
         ]
     }
@@ -237,6 +239,8 @@ extension Page {
             return "Services"
         case .notary:
             return "Notary"
+        case .realestateappraisal:
+            return "Real Estate Appraisal"
             
         case .blank:
             return ""
@@ -341,7 +345,8 @@ extension Page {
             return "Services"
         case .notary:
             return "Notary"
-            
+        case .realestateappraisal:
+            return "Appraisal"
         case .blank:
             return "Show Map"
         }
@@ -625,6 +630,8 @@ extension Page {
             AnyView(ViewServices())
         case .notary:
             AnyView(ViewNotary())
+        case .realestateappraisal:
+            AnyView(ViewServicesAppraisal())
             
         case .blank:
             AnyView(EmptyView())
@@ -719,6 +726,8 @@ extension Page {
             self = .services
         case "Notary":
             self = .notary
+        case "Real Estate Appraisal":
+            self = .realestateappraisal
             
         default:
             return nil

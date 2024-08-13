@@ -19,15 +19,16 @@ struct ViewServices: View {
     
     var body: some View {
         if vmModal.show {
-            Group {
-                ComponentCard {
-                    HStack {
-                        ComponentButtonBar(page: .notary)
-                    }
-                }
-                
+            VStack {
                 ComponentCardFixed {
-                    Text("\(services?[0].title)")
+                    if let services {
+                        ForEach(services, id: \.id) { service in
+                            if let name = service.name,
+                            let page = Page(title: name) {
+                                ComponentButtonBar(page: page)
+                            }
+                        }
+                    }
                 }
             }
             .onAppear {
@@ -35,10 +36,10 @@ struct ViewServices: View {
                     await vm.getServices(request: RequestServices())
                 }
                 
-                if let services = services,
-                   let coordinates = services[0].mapLocation?.coordinates {
-                    location.changeCamera(coordinates: coordinates)
-                }
+//                if let services = services,
+//                   let coordinates = services[0].mapLocation?.coordinates {
+//                    location.changeCamera(coordinates: coordinates)
+//                }
             }
             .alert(isPresented: $vm.showingAlert) {
                 Alert(

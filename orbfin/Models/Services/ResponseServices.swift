@@ -8,7 +8,7 @@
 import Foundation
 
 struct ResponseServices: Codable {
-    let services: [Service]?
-    let errorMessage: String?
-    let statusCode: Int
+    var services: [Service]?
+    var errorMessage: String?
+    var statusCode: Int
 }

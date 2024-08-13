@@ -160,6 +160,7 @@
 		A49C0BF92C4A1EF500968AFB /* ManageSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BF82C4A1EF500968AFB /* ManageSummary.swift */; };
 		A4A7ACF42C3B3BE100EE9B48 /* ViewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A7ACF32C3B3BE100EE9B48 /* ViewLogin.swift */; };
 		A4A7ACF72C3B432900EE9B48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A7ACF62C3B432900EE9B48 /* LocationManager.swift */; };
+		A4BA31762C6B3A91008BD541 /* ViewServicesAppraisal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA31752C6B3A91008BD541 /* ViewServicesAppraisal.swift */; };
 		A4D407262B4D100D00D97AB1 /* orbfinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D407252B4D100D00D97AB1 /* orbfinApp.swift */; };
 		A4D4072C2B4D100F00D97AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4D4072B2B4D100F00D97AB1 /* Assets.xcassets */; };
 		A4D407302B4D100F00D97AB1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4D4072F2B4D100F00D97AB1 /* Preview Assets.xcassets */; };
@@ -337,6 +338,7 @@
 		A49C0BF82C4A1EF500968AFB /* ManageSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageSummary.swift; sourceTree = "<group>"; };
 		A4A7ACF32C3B3BE100EE9B48 /* ViewLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLogin.swift; sourceTree = "<group>"; };
 		A4A7ACF62C3B432900EE9B48 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A4BA31752C6B3A91008BD541 /* ViewServicesAppraisal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewServicesAppraisal.swift; sourceTree = "<group>"; };
 		A4D407222B4D100D00D97AB1 /* orbfin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orbfin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4D407252B4D100D00D97AB1 /* orbfinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orbfinApp.swift; sourceTree = "<group>"; };
 		A4D4072B2B4D100F00D97AB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -708,6 +710,7 @@
 		A4605EA12C46F0580091CC52 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A4BA31742C6B3A6E008BD541 /* Appraisal */,
 				A49C0BF22C4A15A600968AFB /* Notary */,
 				A4605EA42C46F15C0091CC52 /* ViewServices.swift */,
 				A443060D2C699C4E00F9B883 /* ViewModelServices.swift */,
@@ -993,6 +996,14 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		A4BA31742C6B3A6E008BD541 /* Appraisal */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA31752C6B3A91008BD541 /* ViewServicesAppraisal.swift */,
+			);
+			path = Appraisal;
+			sourceTree = "<group>";
+		};
 		A4D407192B4D100D00D97AB1 = {
 			isa = PBXGroup;
 			children = (
@@ -1238,6 +1249,7 @@
 				A45676382C5C738F0025A730 /* ViewStatusCard.swift in Sources */,
 				A41778022C583FC7009C1353 /* LandDetails.swift in Sources */,
 				A42CC93F2C6176E9004845AB /* ResponseProperties.swift in Sources */,
+				A4BA31762C6B3A91008BD541 /* ViewServicesAppraisal.swift in Sources */,
 				A42CC9482C62B5A5004845AB /* RealEstateProperty.swift in Sources */,
 				A4880FB82C680AB90080C5E0 /* ViewManageBusinessSummary.swift in Sources */,
 				A49C0BEE2C4A0DBE00968AFB /* ViewTangibleAssetsRealEstate.swift in Sources */,

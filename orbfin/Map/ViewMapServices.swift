@@ -28,10 +28,10 @@ struct ViewMapServices: MapContent {
     var body: some MapContent {
         if let services = services {
             ForEach(services, id: \.id) { service in
-                if let title = service.title,
+                if let name = service.name,
                    let mapLocation = service.mapLocation,
                    let coordinates = mapLocation.coordinates {
-                    Annotation(title, coordinate: coordinates) {
+                    Annotation(name, coordinate: coordinates) {
                         Image(systemName: "mappin")
                             .onTapGesture {
                                 vmModal.showModal = true

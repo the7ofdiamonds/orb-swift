@@ -19,12 +19,14 @@ actor Services {
             }
             
             let jsonData = try JSONSerialization.data(withJSONObject: requestDict, options: [])
-//            let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: jsonData)
+
             let serverResponse: ResponseServer = try await NetworkManager.instance.get(url: url)
             let response: ResponseServices = try JSONDecoder().decode(ResponseServices.self, from: serverResponse.data)
-print(response)
+            
+            print(response)
             return response
         } catch {
+            print(error)
             throw error
         }
     }
