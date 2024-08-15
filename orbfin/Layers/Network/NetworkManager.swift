@@ -34,24 +34,22 @@ actor NetworkManager {
                 throw NetworkError.noResponse(message: "No response has been received from this server.")
             }
 
-//            switch urlResponse.statusCode {
-//                    case 200...299:
-//                        return ResponseServer(data: data, response: urlResponse)
-//                    case 300...399:
-//                        let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown redirection error"
-//                        throw NetworkError.clientError(statusCode: urlResponse.statusCode, message: "Redirection error: \(serverMessage)")
-//                    case 400...499:
-//                        let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown client error"
-//                        throw NetworkError.clientError(statusCode: urlResponse.statusCode, message: "Client error: \(serverMessage)")
-//                    case 500...599:
-//                        let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown server error"
-//                        throw NetworkError.serverError(statusCode: urlResponse.statusCode, message: "Server error: \(serverMessage)")
-//                    default:
-//                        let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
-//                        throw NetworkError.unknownError(error: NSError(domain: "", code: urlResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: serverMessage]))
-//                    }
-            return ResponseServer(data: data, response: urlResponse)
-
+            switch urlResponse.statusCode {
+                case 200...299:
+                    return ResponseServer(data: data, response: urlResponse)
+                case 300...399:
+                    let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown redirection error"
+                    throw NetworkError.clientError(statusCode: urlResponse.statusCode, message: "Redirection error: \(serverMessage)")
+                case 400...499:
+                    let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown client error"
+                    throw NetworkError.clientError(statusCode: urlResponse.statusCode, message: "Client error: \(serverMessage)")
+                case 500...599:
+                    let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown server error"
+                    throw NetworkError.serverError(error: NSError(domain: "", code: urlResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: serverMessage]))
+                default:
+                    let serverMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
+                    throw NetworkError.unknownError(error: NSError(domain: "", code: urlResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: serverMessage]))
+                }
         } catch {
             throw error
         }

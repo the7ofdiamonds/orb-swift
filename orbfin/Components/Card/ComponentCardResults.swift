@@ -10,10 +10,11 @@ import SwiftUI
 struct ComponentCardResults: View {
     @EnvironmentObject var navigation: Navigation
 
-    let properties: [RealEstateProperty]
+    let properties: [RealEstateProperty]?
     
     var body: some View {
-        List(properties, id: \.id) { property in
+        if let properties {
+            List(properties, id: \.id) { property in
                 Button(action: {
                     switch property.propertyClass {
                     case "commercial":
@@ -30,6 +31,7 @@ struct ComponentCardResults: View {
                 .fontWeight(.bold)
             }
         }
+    }
 }
 
 

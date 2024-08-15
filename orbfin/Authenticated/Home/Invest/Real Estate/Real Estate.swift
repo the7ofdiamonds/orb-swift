@@ -22,7 +22,7 @@ actor RealEstate {
             let jsonData = try JSONSerialization.data(withJSONObject: requestDict, options: [])
             let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: jsonData)
             let response: ResponseProperties = try JSONDecoder().decode(ResponseProperties.self, from: serverResponse.data)
-            print(response)
+
             return response
         } catch {
             throw error

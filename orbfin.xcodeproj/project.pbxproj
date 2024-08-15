@@ -116,6 +116,13 @@
 		A44306102C6A985200F9B883 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = A443060F2C6A985200F9B883 /* Services.swift */; };
 		A44306122C6A995D00F9B883 /* RequestServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44306112C6A995D00F9B883 /* RequestServices.swift */; };
 		A44306142C6A996F00F9B883 /* ResponseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44306132C6A996F00F9B883 /* ResponseServices.swift */; };
+		A44B01A02C6D237B00D6E90D /* ResponseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B019F2C6D237B00D6E90D /* ResponseService.swift */; };
+		A44B01A22C6D2C3000D6E90D /* ViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B01A12C6D2C3000D6E90D /* ViewService.swift */; };
+		A44B01A42C6D337A00D6E90D /* ViewServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B01A32C6D337A00D6E90D /* ViewServiceType.swift */; };
+		A44B01A62C6D610800D6E90D /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B01A52C6D610800D6E90D /* RequestService.swift */; };
+		A44B01A82C6D635B00D6E90D /* ViewServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B01A72C6D635B00D6E90D /* ViewServiceRequest.swift */; };
+		A44B01AC2C6D64A200D6E90D /* ViewModelServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B01AB2C6D64A200D6E90D /* ViewModelServiceRequest.swift */; };
+		A44B01AE2C6D666600D6E90D /* ResponseServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B01AD2C6D666600D6E90D /* ResponseServiceRequest.swift */; };
 		A45676322C5C19AA0025A730 /* ViewStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676312C5C19AA0025A730 /* ViewStatus.swift */; };
 		A45676342C5C1A7D0025A730 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676332C5C1A7D0025A730 /* Status.swift */; };
 		A45676362C5C43A00025A730 /* ViewModelHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676352C5C43A00025A730 /* ViewModelHome.swift */; };
@@ -155,12 +162,10 @@
 		A49C0BEC2C4A0CFE00968AFB /* ViewTangibleAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BEB2C4A0CFE00968AFB /* ViewTangibleAssets.swift */; };
 		A49C0BEE2C4A0DBE00968AFB /* ViewTangibleAssetsRealEstate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BED2C4A0DBE00968AFB /* ViewTangibleAssetsRealEstate.swift */; };
 		A49C0BF12C4A139800968AFB /* ViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BF02C4A139800968AFB /* ViewSettings.swift */; };
-		A49C0BF42C4A15C200968AFB /* ViewNotary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BF32C4A15C200968AFB /* ViewNotary.swift */; };
 		A49C0BF62C4A1BEB00968AFB /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BF52C4A1BEA00968AFB /* Format.swift */; };
 		A49C0BF92C4A1EF500968AFB /* ManageSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BF82C4A1EF500968AFB /* ManageSummary.swift */; };
 		A4A7ACF42C3B3BE100EE9B48 /* ViewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A7ACF32C3B3BE100EE9B48 /* ViewLogin.swift */; };
 		A4A7ACF72C3B432900EE9B48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A7ACF62C3B432900EE9B48 /* LocationManager.swift */; };
-		A4BA31762C6B3A91008BD541 /* ViewServicesAppraisal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA31752C6B3A91008BD541 /* ViewServicesAppraisal.swift */; };
 		A4D407262B4D100D00D97AB1 /* orbfinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D407252B4D100D00D97AB1 /* orbfinApp.swift */; };
 		A4D4072C2B4D100F00D97AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4D4072B2B4D100F00D97AB1 /* Assets.xcassets */; };
 		A4D407302B4D100F00D97AB1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4D4072F2B4D100F00D97AB1 /* Preview Assets.xcassets */; };
@@ -294,6 +299,13 @@
 		A443060F2C6A985200F9B883 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		A44306112C6A995D00F9B883 /* RequestServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServices.swift; sourceTree = "<group>"; };
 		A44306132C6A996F00F9B883 /* ResponseServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseServices.swift; sourceTree = "<group>"; };
+		A44B019F2C6D237B00D6E90D /* ResponseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseService.swift; sourceTree = "<group>"; };
+		A44B01A12C6D2C3000D6E90D /* ViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewService.swift; sourceTree = "<group>"; };
+		A44B01A32C6D337A00D6E90D /* ViewServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewServiceType.swift; sourceTree = "<group>"; };
+		A44B01A52C6D610800D6E90D /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
+		A44B01A72C6D635B00D6E90D /* ViewServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewServiceRequest.swift; sourceTree = "<group>"; };
+		A44B01AB2C6D64A200D6E90D /* ViewModelServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelServiceRequest.swift; sourceTree = "<group>"; };
+		A44B01AD2C6D666600D6E90D /* ResponseServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseServiceRequest.swift; sourceTree = "<group>"; };
 		A45676312C5C19AA0025A730 /* ViewStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStatus.swift; sourceTree = "<group>"; };
 		A45676332C5C1A7D0025A730 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		A45676352C5C43A00025A730 /* ViewModelHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelHome.swift; sourceTree = "<group>"; };
@@ -333,12 +345,10 @@
 		A49C0BEB2C4A0CFE00968AFB /* ViewTangibleAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTangibleAssets.swift; sourceTree = "<group>"; };
 		A49C0BED2C4A0DBE00968AFB /* ViewTangibleAssetsRealEstate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTangibleAssetsRealEstate.swift; sourceTree = "<group>"; };
 		A49C0BF02C4A139800968AFB /* ViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSettings.swift; sourceTree = "<group>"; };
-		A49C0BF32C4A15C200968AFB /* ViewNotary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNotary.swift; sourceTree = "<group>"; };
 		A49C0BF52C4A1BEA00968AFB /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		A49C0BF82C4A1EF500968AFB /* ManageSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageSummary.swift; sourceTree = "<group>"; };
 		A4A7ACF32C3B3BE100EE9B48 /* ViewLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLogin.swift; sourceTree = "<group>"; };
 		A4A7ACF62C3B432900EE9B48 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		A4BA31752C6B3A91008BD541 /* ViewServicesAppraisal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewServicesAppraisal.swift; sourceTree = "<group>"; };
 		A4D407222B4D100D00D97AB1 /* orbfin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orbfin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4D407252B4D100D00D97AB1 /* orbfinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orbfinApp.swift; sourceTree = "<group>"; };
 		A4D4072B2B4D100F00D97AB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -564,8 +574,6 @@
 		A42CC9402C6176F5004845AB /* RealEstate */ = {
 			isa = PBXGroup;
 			children = (
-				A435415D2C3EC20B00B32BC1 /* Coordinates.swift */,
-				A41777F52C5831FB009C1353 /* Address.swift */,
 				A41777FD2C583F32009C1353 /* SaleDetails.swift */,
 				A41777FF2C583F96009C1353 /* BuildingDetails.swift */,
 				A41778012C583FC7009C1353 /* LandDetails.swift */,
@@ -644,6 +652,45 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		A44B01A92C6D63F300D6E90D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A44B01A72C6D635B00D6E90D /* ViewServiceRequest.swift */,
+				A44B01A12C6D2C3000D6E90D /* ViewService.swift */,
+				A44B01A32C6D337A00D6E90D /* ViewServiceType.swift */,
+				A4605EA42C46F15C0091CC52 /* ViewServices.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A44B01AA2C6D63FB00D6E90D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A443060D2C699C4E00F9B883 /* ViewModelServices.swift */,
+				A44B01AB2C6D64A200D6E90D /* ViewModelServiceRequest.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A44B01AF2C6D731000D6E90D /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				A44306112C6A995D00F9B883 /* RequestServices.swift */,
+				A44B01A52C6D610800D6E90D /* RequestService.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		A44B01B02C6D732200D6E90D /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				A44306132C6A996F00F9B883 /* ResponseServices.swift */,
+				A44B019F2C6D237B00D6E90D /* ResponseService.swift */,
+				A44B01AD2C6D666600D6E90D /* ResponseServiceRequest.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		A45676302C5C17AF0025A730 /* Status */ = {
 			isa = PBXGroup;
 			children = (
@@ -710,10 +757,8 @@
 		A4605EA12C46F0580091CC52 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A4BA31742C6B3A6E008BD541 /* Appraisal */,
-				A49C0BF22C4A15A600968AFB /* Notary */,
-				A4605EA42C46F15C0091CC52 /* ViewServices.swift */,
-				A443060D2C699C4E00F9B883 /* ViewModelServices.swift */,
+				A44B01AA2C6D63FB00D6E90D /* ViewModel */,
+				A44B01A92C6D63F300D6E90D /* View */,
 				A443060F2C6A985200F9B883 /* Services.swift */,
 			);
 			path = Services;
@@ -760,9 +805,9 @@
 		A4880FB42C6665CF0080C5E0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A44B01B02C6D732200D6E90D /* Response */,
+				A44B01AF2C6D731000D6E90D /* Request */,
 				A44306092C69906900F9B883 /* Service.swift */,
-				A44306112C6A995D00F9B883 /* RequestServices.swift */,
-				A44306132C6A996F00F9B883 /* ResponseServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -903,14 +948,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		A49C0BF22C4A15A600968AFB /* Notary */ = {
-			isa = PBXGroup;
-			children = (
-				A49C0BF32C4A15C200968AFB /* ViewNotary.swift */,
-			);
-			path = Notary;
-			sourceTree = "<group>";
-		};
 		A49C0BF72C4A1BFC00968AFB /* Format */ = {
 			isa = PBXGroup;
 			children = (
@@ -927,6 +964,8 @@
 				A4880FB22C66653B0080C5E0 /* Invest */,
 				A4880FB42C6665CF0080C5E0 /* Services */,
 				A435415F2C3EC4FD00B32BC1 /* Models.swift */,
+				A435415D2C3EC20B00B32BC1 /* Coordinates.swift */,
+				A41777F52C5831FB009C1353 /* Address.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -994,14 +1033,6 @@
 				A4A7ACF62C3B432900EE9B48 /* LocationManager.swift */,
 			);
 			path = Location;
-			sourceTree = "<group>";
-		};
-		A4BA31742C6B3A6E008BD541 /* Appraisal */ = {
-			isa = PBXGroup;
-			children = (
-				A4BA31752C6B3A91008BD541 /* ViewServicesAppraisal.swift */,
-			);
-			path = Appraisal;
 			sourceTree = "<group>";
 		};
 		A4D407192B4D100D00D97AB1 = {
@@ -1169,6 +1200,7 @@
 				A43541512C3B8C7B00B32BC1 /* ViewMap.swift in Sources */,
 				A49C0BB62C476AF700968AFB /* ViewManageSection.swift in Sources */,
 				A43C29CA2C4004C2002BF1AE /* BackendURLs.swift in Sources */,
+				A44B01AC2C6D64A200D6E90D /* ViewModelServiceRequest.swift in Sources */,
 				A4880FA22C652E200080C5E0 /* Commercial.swift in Sources */,
 				A43C29DB2C405A98002BF1AE /* RequestForgot.swift in Sources */,
 				A49C0BF62C4A1BEB00968AFB /* Format.swift in Sources */,
@@ -1180,6 +1212,7 @@
 				A43C29E32C406F5B002BF1AE /* ViewModelForgot.swift in Sources */,
 				A43C29D52C404E16002BF1AE /* ResponseLogout.swift in Sources */,
 				A44306012C69057900F9B883 /* PreviewManageBusiness.swift in Sources */,
+				A44B01A62C6D610800D6E90D /* RequestService.swift in Sources */,
 				A43C29CC2C4005C2002BF1AE /* NetworkManager.swift in Sources */,
 				A49C0BE32C4A028700968AFB /* ViewTangibleAssetsBusiness.swift in Sources */,
 				A49C0BB22C4765E800968AFB /* ComponentButtonHNav.swift in Sources */,
@@ -1249,7 +1282,6 @@
 				A45676382C5C738F0025A730 /* ViewStatusCard.swift in Sources */,
 				A41778022C583FC7009C1353 /* LandDetails.swift in Sources */,
 				A42CC93F2C6176E9004845AB /* ResponseProperties.swift in Sources */,
-				A4BA31762C6B3A91008BD541 /* ViewServicesAppraisal.swift in Sources */,
 				A42CC9482C62B5A5004845AB /* RealEstateProperty.swift in Sources */,
 				A4880FB82C680AB90080C5E0 /* ViewManageBusinessSummary.swift in Sources */,
 				A49C0BEE2C4A0DBE00968AFB /* ViewTangibleAssetsRealEstate.swift in Sources */,
@@ -1259,6 +1291,7 @@
 				A40741AA2C683BE900FB1770 /* ResponseTransactions.swift in Sources */,
 				A44306082C698CEB00F9B883 /* ViewMapServices.swift in Sources */,
 				A435415E2C3EC20B00B32BC1 /* Coordinates.swift in Sources */,
+				A44B01A22C6D2C3000D6E90D /* ViewService.swift in Sources */,
 				A42CC9462C626EF8004845AB /* ResponseRealEstateProperty.swift in Sources */,
 				A4EA3D022C50287700CEFCFF /* ViewContentMenu.swift in Sources */,
 				A443060A2C69906900F9B883 /* Service.swift in Sources */,
@@ -1274,7 +1307,6 @@
 				A435415C2C3EB31F00B32BC1 /* RequestLogin.swift in Sources */,
 				A4880FAD2C65909A0080C5E0 /* ComponentSearchByAPN.swift in Sources */,
 				A43541602C3EC4FD00B32BC1 /* Models.swift in Sources */,
-				A49C0BF42C4A15C200968AFB /* ViewNotary.swift in Sources */,
 				A49C0BEA2C4A08B700968AFB /* ViewRealEstate.swift in Sources */,
 				A43541652C3F02BA00B32BC1 /* ComponentInputUsername.swift in Sources */,
 				A43C29D02C404B70002BF1AE /* Network.swift in Sources */,
@@ -1284,6 +1316,7 @@
 				A43C29C82C3F4E34002BF1AE /* ComponentInputTextField.swift in Sources */,
 				A4EA3CFB2C4ECCC300CEFCFF /* ViewManageEquity.swift in Sources */,
 				A4041C8F2C57EAF1001FD37B /* ViewModelCommercialProperty.swift in Sources */,
+				A44B01A42C6D337A00D6E90D /* ViewServiceType.swift in Sources */,
 				A42CC91D2C5F6245004845AB /* ViewManageBusinessMenu.swift in Sources */,
 				A41777F02C581336009C1353 /* PreviewCommercialProperty.swift in Sources */,
 				A42CC9352C6127FA004845AB /* ViewMapProperties.swift in Sources */,
@@ -1291,6 +1324,7 @@
 				A4041C5B2C5534BE001FD37B /* RequestSignup.swift in Sources */,
 				A42CC9442C626EA2004845AB /* RequestProperty.swift in Sources */,
 				A42CC9302C5FE22C004845AB /* ViewModelManagePersonalTransactions.swift in Sources */,
+				A44B01A82C6D635B00D6E90D /* ViewServiceRequest.swift in Sources */,
 				A41778042C5926B3009C1353 /* ComponentCardImages.swift in Sources */,
 				A41778002C583F96009C1353 /* BuildingDetails.swift in Sources */,
 				A42CC9252C5F6814004845AB /* ViewModelResidentialProperty.swift in Sources */,
@@ -1316,8 +1350,10 @@
 				A49C0BE82C4A034800968AFB /* ViewTangibleAssetsResidential.swift in Sources */,
 				A40741A62C6824B900FB1770 /* ViewManagePersonalTax.swift in Sources */,
 				A40741AF2C685ED100FB1770 /* ViewManageTransactionDetails.swift in Sources */,
+				A44B01A02C6D237B00D6E90D /* ResponseService.swift in Sources */,
 				A43541672C3F098F00B32BC1 /* ComponentInputPassword.swift in Sources */,
 				A43C29E92C40F44A002BF1AE /* ComponentCard.swift in Sources */,
+				A44B01AE2C6D666600D6E90D /* ResponseServiceRequest.swift in Sources */,
 				A4041C8B2C57EA6C001FD37B /* ViewModelCommercial.swift in Sources */,
 				A41777F62C5831FB009C1353 /* Address.swift in Sources */,
 				A44306122C6A995D00F9B883 /* RequestServices.swift in Sources */,

@@ -110,6 +110,8 @@ struct ComponentSearchBy: View {
                             await vmRealEstate.getProperties(request: request)
                         }
                     }
+                    
+                    vmModal.showModal = true
                 } label: {
                     HStack {
                         Image(systemName: "1.magnifyingglass")

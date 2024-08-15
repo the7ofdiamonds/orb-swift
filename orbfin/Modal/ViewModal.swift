@@ -28,7 +28,6 @@ struct ViewModal<Content: View>: View {
                             .font(.title)
                     }
                     .foregroundColor(Styling.color(.Error))
-
                 }
                 .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
                 

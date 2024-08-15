@@ -22,7 +22,7 @@ struct ViewAuthenticated: View {
     @EnvironmentObject var vmManageBusiness: ViewModelManageBusiness
     @EnvironmentObject var vmServices: ViewModelServices
     
-    @ViewBuilder var body: some View {
+   var body: some View {
         ZStack {
             ViewMap()
                 .environmentObject(vmPersonalTransactions)

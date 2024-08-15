@@ -18,15 +18,14 @@ struct ViewResidential: View {
         return vm.properties
     }
     
-    @State var showStatus: Bool = true
-
     var body: some View {
-        Group {
+        ZStack(alignment: .top) {
             if vmModal.show {
-                ScrollView {
-                    VStack {
-                        ComponentSearchBy()
+                VStack(spacing: 30) {
+                    ScrollView {
 
+                        ComponentSearchBy()
+                        
                         if let properties {
                             ComponentCardResults(properties: properties)
                         }
@@ -34,10 +33,10 @@ struct ViewResidential: View {
                 }
             }
             
-            if showStatus {
-                ViewStatus(showStatus: $showStatus,
-                           successMessage: vm.successMessage,
-                           errorMessage: vm.errorMessage, cautionMessage: vm.cautionMessage)
+            ViewModal {
+                Text("Modal")
+                    .padding(50)
+                    .background(Color.blue)
             }
         }
         .onAppear {
@@ -45,7 +44,9 @@ struct ViewResidential: View {
                 await vm.getProperties(request: RequestProperties(propertyClass: "residential"))
             }
             
-            if let properties, let coordinates = properties[0].coordinates {
+            if let properties,
+               let property = properties.first,
+               let coordinates = property.coordinates {
                 location.changeCamera(coordinates: coordinates)
             }
         }
@@ -66,12 +67,14 @@ struct ViewResidential_Previews: PreviewProvider {
             ViewResidential()
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
+                .environmentObject(ViewModelModal())
                 .environmentObject(ViewModelResidential())
                 .environmentObject(Navigation())
             
             ViewResidential()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
+                .environmentObject(ViewModelModal())
                 .environmentObject(ViewModelResidential())
                 .environmentObject(Navigation())
         }

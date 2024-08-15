@@ -18,8 +18,6 @@ struct ViewCommercial: View {
         return vm.properties
     }
     
-    @State var showStatus: Bool = true
-
     var body: some View {
         Group {
             if vmModal.show {
@@ -33,8 +31,8 @@ struct ViewCommercial: View {
                     }
                 }
                 
-                if showStatus {
-                    ViewStatus(showStatus: $showStatus,
+                if vm.showStatus {
+                    ViewStatus(
                                successMessage: vm.successMessage,
                                errorMessage: vm.errorMessage, cautionMessage: vm.cautionMessage)
                 }

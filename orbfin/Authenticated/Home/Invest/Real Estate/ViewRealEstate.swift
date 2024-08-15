@@ -17,7 +17,7 @@ struct ViewRealEstate: View {
     }
     
     var body: some View {
-        Group {
+        ZStack {
             if vmModal.show {
                 ScrollView {
                     VStack {
@@ -37,17 +37,24 @@ struct ViewRealEstate: View {
                         
                         ComponentSearchBy()
                         
-                        if let properties {
-                            ComponentCardResults(properties: properties)
-                        }
+                        ComponentCardResults(properties: properties)
                     }
+                }
+            }
+            
+            if vm.showStatus && vmModal.showModal {
+                ViewModal {
+                    ViewStatus(
+                        successMessage: vm.successMessage,
+                        errorMessage: vm.errorMessage,
+                        cautionMessage: vm.cautionMessage)
                 }
             }
         }
         .alert(isPresented: $vm.showingAlert) {
             Alert(
                 title: Text(vm.error?.title ?? "An Error has occured."),
-                message: Text("\(vm.error?.message ?? "An Error has occured." )").foregroundColor(Styling.color(.Error)),
+                message: Text("\(vm.error?.message ?? "An Error has occured." )"),
                 dismissButton: .default(Text("OK"))
             )
         }
@@ -63,12 +70,14 @@ struct ViewRealEstate_Previews: PreviewProvider {
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
                 .environmentObject(Navigation())
                 .environmentObject(ViewModelModal())
+                .environmentObject(ViewModelRealEstate())
             
             ViewRealEstate()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
                 .environmentObject(Navigation())
                 .environmentObject(ViewModelModal())
+                .environmentObject(ViewModelRealEstate())
         }
     }
 }

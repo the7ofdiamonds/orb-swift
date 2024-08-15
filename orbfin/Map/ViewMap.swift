@@ -33,7 +33,7 @@ struct ViewMap: View {
                       .residential, .residentialproperty(property: _):
                   ViewMapProperties()
               
-              case .services, .notary:
+              case .services:
                   ViewMapServices()
                   
               default:
@@ -68,7 +68,7 @@ struct ViewMap: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    vmModal.toggle()
+                    vmModal.show.toggle()
                 } label: {
                     Image(systemName: "map")
                 }

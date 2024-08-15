@@ -10,26 +10,12 @@ import SwiftUI
 struct ViewStatusCard: View {
     var message: String
     var type: Status = .info
-    var onDismiss: () -> Void
     
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                Button {
-                    onDismiss()
-                } label: {
-                    HStack {
-                        Text("Dismiss")
-                        Image(systemName: "x.circle")
-                    }
-                }
-            }
-            .frame(maxWidth: Styling.sizeWidth(component: .card))
-            
             Text(message)
                 .padding(.top, 10)
-                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                .font(.title)
         }
         .padding()
         .background(Styling.colorStatusBackground(type: type))
@@ -43,5 +29,5 @@ struct ViewStatusCard: View {
 }
 
 #Preview {
-    ViewStatus(showStatus: .constant(true), successMessage: "Welcome User")
+    ViewStatus(successMessage: "Welcome User")
 }

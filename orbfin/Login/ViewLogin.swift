@@ -122,12 +122,6 @@ struct ViewLogin: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
-        
-            if showStatus {
-                ViewStatus(showStatus: $showStatus,
-                           successMessage: vm.successMessage,
-                           errorMessage: vm.errorMessage, cautionMessage: vm.cautionMessage)
-            }
             
         }
     }

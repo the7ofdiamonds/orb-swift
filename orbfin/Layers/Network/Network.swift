@@ -15,6 +15,7 @@ enum NetworkError: Error {
     case serverError(error: Error)
     case decodingError(error: Error)
     case unknownError(error: Error)
+    case clientError(statusCode: Int, message: String)
     
     var title: String {
         switch self {
@@ -32,6 +33,8 @@ enum NetworkError: Error {
             return "Decoding Error"
         case .unknownError:
             return "Unknown Error"
+        case .clientError(statusCode: _, message: _):
+            return "Client Error"
         }
     }
     
@@ -51,6 +54,8 @@ enum NetworkError: Error {
             return "\(error.localizedDescription)"
         case .unknownError(let error):
             return "\(error.localizedDescription)"
+        case .clientError(statusCode: _, let message):
+            return "\(message)"
         }
     }
     
@@ -70,6 +75,8 @@ enum NetworkError: Error {
             return "\(error.localizedDescription)"
         case .unknownError(let error):
             return "\(error.localizedDescription)"
+        case .clientError(statusCode: _, message: let message):
+            return "\(message)"
         }
     }
 }

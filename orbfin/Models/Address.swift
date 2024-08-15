@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Address: Codable {
+struct Address: Encodable, Decodable {
     var streetAddress: String?
     var city: String?
     var state: String?

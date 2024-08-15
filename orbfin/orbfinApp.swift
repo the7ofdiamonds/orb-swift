@@ -32,7 +32,7 @@ struct orbfinApp: App {
                 .environmentObject(vmModal)
                 .environmentObject(vmPersonal)
                 .environmentObject(vmBusiness)
-                .environmentObject(vmRealEstate)
+                .environmentObject(ViewModelRealEstate())
                 .environmentObject(vmCommercial)
                 .environmentObject(vmCommercialProperty)
                 .environmentObject(vmResidential)

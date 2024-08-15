@@ -12,7 +12,7 @@ struct ViewHome: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
 
-    var successMessage: String?
+    @State var successMessage: String?
     
     var body: some View {
 
@@ -21,12 +21,21 @@ struct ViewHome: View {
             
             ComponentDivider()
             
-            HStack(spacing: 25, content: {
+            HStack(spacing: 25) {
                 ComponentButtonBar(page: .settings)
                 ComponentButtonBar(page: .forgot)
                 ComponentButtonBar(page: .logout)
-            })
+            }
         }
+        .overlay {
+            if vmModal.showModal {
+                ViewModal {
+                    ViewStatus(successMessage: successMessage)
+                }
+            }
+        }
+        
+        
         
     }
 }
@@ -34,13 +43,13 @@ struct ViewHome: View {
 struct ViewHome_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ViewHome()
+            ViewHome(successMessage: "Welcome Username")
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
                 .environmentObject(ViewModelModal())
                 .environmentObject(Navigation())
             
-            ViewHome()
+            ViewHome(successMessage: "Welcome Username")
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
                 .environmentObject(ViewModelModal())

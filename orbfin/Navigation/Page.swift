@@ -55,8 +55,9 @@ enum Page: CaseIterable, Identifiable, Equatable {
     case paperassets
     
     case services
-    case notary
-    case realestateappraisal
+    case serviceType(type: String)
+    case service(service: Service)
+    case servicerequest(service: Service)
     
     case blank
 }
@@ -104,8 +105,6 @@ extension Page {
             .tangibleassetsbusiness,
             .paperassets,
             .services,
-            .notary,
-            .realestateappraisal,
             .blank
         ]
     }
@@ -237,10 +236,20 @@ extension Page {
             
         case .services:
             return "Services"
-        case .notary:
-            return "Notary"
-        case .realestateappraisal:
-            return "Real Estate Appraisal"
+        case .serviceType(let type):
+            return type.capitalized
+        case .service(let service):
+            if let title = service.name {
+                return title
+            } else {
+                return "Service #\(service.id)"
+            }
+        case .servicerequest(let service):
+            if let title = service.name {
+                return title
+            } else {
+                return "Service #\(service.id)"
+            }
             
         case .blank:
             return ""
@@ -343,10 +352,20 @@ extension Page {
             
         case .services:
             return "Services"
-        case .notary:
-            return "Notary"
-        case .realestateappraisal:
-            return "Appraisal"
+        case .serviceType(let type):
+            return type.capitalized
+        case .service(let service):
+            if let title = service.name {
+                return title
+            } else {
+                return "Service #\(service.id)"
+            }
+        case .servicerequest(let service):
+            if let title = service.name {
+                return title
+            } else {
+                return "Service #\(service.id)"
+            }
         case .blank:
             return "Show Map"
         }
@@ -376,8 +395,6 @@ extension Page {
         case .paperassets:
             return "chart.line.uptrend.xyaxis"
             
-        case .notary:
-            return "signature"
         case .settings:
             return "gear"
             
@@ -458,8 +475,7 @@ extension Page {
                 .tangibleassetsrealestate
         case .tangibleassetsbusiness:
                 .tangibleassets
-        case .notary:
-                .services
+        
         default:
                 .blank
         }
@@ -528,10 +544,7 @@ extension Page {
             ]
         case .tangibleassetsbusiness:
             return []
-        case .services:
-            return [
-                .notary
-            ]
+        
         default:
             return []
         }
@@ -628,10 +641,12 @@ extension Page {
             
         case .services:
             AnyView(ViewServices())
-        case .notary:
-            AnyView(ViewNotary())
-        case .realestateappraisal:
-            AnyView(ViewServicesAppraisal())
+        case .serviceType(let type):
+            AnyView(ViewServiceType(type: type))
+        case .service(let service):
+            AnyView(ViewService(service: service))
+        case .servicerequest(let service):
+            AnyView(ViewServiceRequest(service: service))
             
         case .blank:
             AnyView(EmptyView())
@@ -724,10 +739,6 @@ extension Page {
             
         case "Services":
             self = .services
-        case "Notary":
-            self = .notary
-        case "Real Estate Appraisal":
-            self = .realestateappraisal
             
         default:
             return nil

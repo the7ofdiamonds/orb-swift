@@ -13,6 +13,7 @@ class ViewModelCommercial: ObservableObject {
     @Published var successMessage: String? = nil
     @Published var errorMessage: String? = nil
     @Published var cautionMessage: String? = nil
+    @Published var showStatus: Bool = false
     @Published var error: NetworkError? = nil
     @Published var showingAlert: Bool = false
     
@@ -22,6 +23,7 @@ class ViewModelCommercial: ObservableObject {
 
             if let errorMessage = response.errorMessage {
                 self.errorMessage = errorMessage
+                self.showStatus = true
             }
 
             if let properties = response.properties {
