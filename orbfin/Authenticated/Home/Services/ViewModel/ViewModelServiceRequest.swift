@@ -29,7 +29,6 @@ class ViewModelServiceRequest: ObservableObject {
             }
         } catch {
             self.error = error as? NetworkError
-            print(error)
             self.showingAlert = true
         }
         

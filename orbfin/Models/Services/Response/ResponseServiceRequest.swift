@@ -19,8 +19,8 @@ struct ResponseServiceRequest: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        successMessage = try container.decode(String.self, forKey: .successMessage)
-        errorMessage = try container.decode(String.self, forKey: .errorMessage)
+        successMessage = try container.decodeIfPresent(String.self, forKey: .successMessage)
+        errorMessage = try container.decodeIfPresent(String.self, forKey: .errorMessage)
         statusCode = try container.decode(Int.self, forKey: .statusCode)
     }
     
