@@ -10,26 +10,24 @@ import SwiftUI
 struct ComponentCardResults: View {
     @EnvironmentObject var navigation: Navigation
 
-    let properties: [RealEstateProperty]?
+    var properties: [RealEstateProperty]
     
     var body: some View {
-        if let properties {
-            List(properties, id: \.id) { property in
-                Button(action: {
-                    switch property.propertyClass {
-                    case "commercial":
-                        navigation.change(page: .commercialproperty(property: property))
-                    case "residential":
-                        navigation.change(page: .residentialproperty(property: property))
-                    default:
-                        navigation.change(page: .residentialproperty(property: property))
-                    }
-                }, label: {
-                    Text(property.address?.toString() ?? "Commercial Property")
-                })
-                .font(.headline)
-                .fontWeight(.bold)
-            }
+        List(properties, id: \.id) { property in
+            Button(action: {
+                switch property.propertyClass {
+                case "commercial":
+                    navigation.change(page: .commercialproperty(property: property))
+                case "residential":
+                    navigation.change(page: .residentialproperty(property: property))
+                default:
+                    navigation.change(page: .residentialproperty(property: property))
+                }
+            }, label: {
+                Text(property.address?.toString() ?? "Commercial Property")
+            })
+            .font(.headline)
+            .fontWeight(.bold)
         }
     }
 }

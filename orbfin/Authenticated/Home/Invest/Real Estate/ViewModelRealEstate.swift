@@ -20,13 +20,14 @@ class ViewModelRealEstate: ObservableObject {
     @Published var error: NetworkError? = nil
     @Published var showingAlert: Bool = false
     
-    func getPropertyByID(_ id: String) async -> RealEstateProperty? {
+    func getPropertyByID(_ id: String) async throws -> RealEstateProperty? {
         do {
             let response: ResponseRealEstateProperty = try await RealEstate().propertyByID(id)
             
             if let errorMessage = response.errorMessage {
                 self.errorMessage = errorMessage
                 self.showStatus = true
+                self.property = nil
                 return nil
             }
             
@@ -39,22 +40,22 @@ class ViewModelRealEstate: ObservableObject {
                 }
             }
             
-            return self.property
+            return property
         } catch {
             self.error = error as? NetworkError
             self.showingAlert = true
+            return nil
         }
-        
-        return RealEstateProperty(id: String())
     }
     
-    func getPropertyByAPN(_ apn: String) async -> RealEstateProperty? {
+    func getPropertyByAPN(_ apn: String) async throws -> RealEstateProperty? {
         do {
             let response: ResponseRealEstateProperty = try await RealEstate().propertyByAPN(apn)
 
             if let errorMessage = response.errorMessage {
                 self.errorMessage = errorMessage
                 self.showStatus = true
+                self.property = nil
                 return nil
             }
             
@@ -66,23 +67,24 @@ class ViewModelRealEstate: ObservableObject {
                     self.property?.coordinates = coordinate
                 }
             }
-            
-            return self.property
+        
+            return property
         } catch {
             self.error = error as? NetworkError
             self.showingAlert = true
+            return nil
         }
-        
-        return RealEstateProperty(id: String())
     }
     
     func getProperties(request: RequestProperties) async {
         do {
             let response: ResponseProperties = try await RealEstate().properties(request: request)
-
+            
             if let errorMessage = response.errorMessage {
                 self.errorMessage = errorMessage
                 self.showStatus = true
+                self.properties = []
+                return
             }
 
             if let properties = response.properties {
@@ -92,14 +94,13 @@ class ViewModelRealEstate: ObservableObject {
                     if let address = property.address?.toString() {
                         let coordinate = try await LocationManager.instance.getCoordinates(address: address)
                         var updatedProperty = property
-                        
                         updatedProperty.coordinates = coordinate
                         updatedProperties.append(updatedProperty)
                     } else {
                         updatedProperties.append(property)
                     }
                 }
-                
+
                 self.properties = updatedProperties
             }
         } catch {

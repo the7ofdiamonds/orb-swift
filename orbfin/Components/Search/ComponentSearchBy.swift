@@ -14,7 +14,7 @@ struct ComponentSearchBy: View {
     @EnvironmentObject var vmCommercial: ViewModelCommercial
     @EnvironmentObject var vmResidential: ViewModelResidential
 
-    @StateObject private var location: LocationManager = LocationManager.instance
+    @StateObject private var locationManager: LocationManager = LocationManager.instance
         
     @State private var streetAddress: String = ""
     @State private var city: String = ""
@@ -39,29 +39,45 @@ struct ComponentSearchBy: View {
     @State private var landSqft: Double = 0.0
     @State private var zoning: String = ""
 
+    var coordinates: Coordinates? {
+        if let coords = locationManager.location {
+            var latitude = coords.latitude
+            var longitude = coords.longitude
+            return Coordinates(latitude: Double(latitude), longitude: Double(longitude))
+        } else {
+            return nil
+        }
+    }
+    
     var request: RequestProperties {
         RequestProperties(
+            propertyClass: PropertyClass(rawValue: propertyType),
+            location: Location(address: Address(
             streetAddress: streetAddress,
             city: city,
             state: state,
             zipcode: zipcode,
-            county: county,
+            county: county
+            ), coordinates: coordinates),
+            saleDetails: SaleDetails(
             price: price,
             priceSF: priceSF,
             capRate: capRate,
             leased: leased,
             tenancy: tenancy,
-            saleType: saleType,
+            saleType: saleType),
+            buildingDetails: BuildingDetails(
             propertyType: propertyType,
             propertySubType: propertySubType,
             stories: stories,
             yearbuilt: yearbuilt,
             sprinklers: sprinklers,
             parkingSpaces: parkingSpaces,
-            totalBldgSize: totalBldgSize,
+            totalBldgSize: totalBldgSize),
+            LandDetails: LandDetails(
             landAcres: landAcres,
             landSqft: landSqft,
-            zoning: zoning
+            zoning: zoning)
         )
     }
     

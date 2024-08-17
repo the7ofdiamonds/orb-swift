@@ -41,7 +41,7 @@ struct ViewResidential: View {
         }
         .onAppear {
             Task {
-                await vm.getProperties(request: RequestProperties(propertyClass: "residential"))
+                await vm.getProperties(request: RequestProperties(propertyClass: .residential))
             }
             
             if let properties,

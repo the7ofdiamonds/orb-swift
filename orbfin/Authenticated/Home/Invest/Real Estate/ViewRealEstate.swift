@@ -13,6 +13,7 @@ struct ViewRealEstate: View {
     @EnvironmentObject var vm: ViewModelRealEstate
     
     var properties: [RealEstateProperty]? {
+        print(vm.properties)
         return vm.properties
     }
     
@@ -37,7 +38,9 @@ struct ViewRealEstate: View {
                         
                         ComponentSearchBy()
                         
-                        ComponentCardResults(properties: properties)
+                        if let properties = vm.properties {
+                            ComponentCardResults(properties: properties)
+                        }
                     }
                 }
             }

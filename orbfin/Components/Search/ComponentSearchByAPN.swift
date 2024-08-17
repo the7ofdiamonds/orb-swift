@@ -22,7 +22,7 @@ struct ComponentSearchByAPN: View {
                 TextField("APN#", text: $apn)
                 Button {
                     Task {
-                        guard let property = await vm.getPropertyByAPN(apn) else { return }
+                        guard let property = try await vm.getPropertyByAPN(apn) else { return }
                         
                         if let propertyClass = property.propertyClass {
                             switch propertyClass {

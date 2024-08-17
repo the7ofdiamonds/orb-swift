@@ -12,4 +12,15 @@ enum PropertyClass: String, CaseIterable, Identifiable, Codable {
     case residential
     
     var id: String { rawValue }
+    
+    init?(rawValue: String) {
+        switch rawValue {
+        case "commercial":
+            self = .commercial
+        case "residential":
+            self = .residential
+        default:
+            return nil
+        }
+    }
 }

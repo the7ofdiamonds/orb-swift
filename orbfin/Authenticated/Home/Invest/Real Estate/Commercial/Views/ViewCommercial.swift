@@ -24,8 +24,8 @@ struct ViewCommercial: View {
                 ScrollView {
                     VStack {
                         ComponentSearchBy()
-
-                        if let properties {
+                        
+                        if let properties = vm.properties {
                             ComponentCardResults(properties: properties)
                         }
                     }
@@ -40,10 +40,12 @@ struct ViewCommercial: View {
         }
         .onAppear {
             Task {
-                await vm.getProperties(request: RequestProperties(propertyClass: "commercial"))
+                await vm.getProperties(request: RequestProperties(propertyClass: .commercial))
             }
             
-            if let properties, let coordinates = properties[0].coordinates {
+            if let properties,
+               let property = properties.first,
+               let coordinates = property.coordinates {
                 location.changeCamera(coordinates: coordinates)
             }
         }

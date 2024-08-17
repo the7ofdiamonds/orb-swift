@@ -12,13 +12,43 @@ actor RealEstate {
     
     func properties(request: RequestProperties) async throws -> ResponseProperties {
         do {
-            guard let url = URL(string: BackendURLs.realEstate) else {
+            var propertiesURL: String = BackendURLs.realEstate
+            
+            var queryItems: [URLQueryItem] = []
+            
+            if let propertyClass = request.propertyClass {
+                propertiesURL = "\(propertiesURL)/\(propertyClass.rawValue)"
+            }
+            
+            if let location = request.location,
+               let address = location.address {
+                if let city = address.city,
+                   city != "" {
+                    queryItems.append(URLQueryItem(name: "city", value: city))
+                }
+                if let state = address.state,
+                   state != "" {
+                    queryItems.append(URLQueryItem(name: "state", value: state))
+                }
+                if let zipcode = address.zipcode,
+                   zipcode != "" {
+                    queryItems.append(URLQueryItem(name: "zipcode", value: zipcode))
+                }
+            }
+            
+            var urlComponents = URLComponents(string: propertiesURL)!
+            
+            if queryItems.count > 0 {
+                urlComponents.queryItems = queryItems
+            }
+            
+            guard let url = urlComponents.url else {
                 throw NetworkError.invalidURL
             }
+
             guard let requestDict = request.dictionary else {
                 throw NetworkError.invalidData
             }
-            
             let jsonData = try JSONSerialization.data(withJSONObject: requestDict, options: [])
             let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: jsonData)
             let response: ResponseProperties = try JSONDecoder().decode(ResponseProperties.self, from: serverResponse.data)
@@ -31,7 +61,7 @@ actor RealEstate {
     
     func propertyByID(_ id: String) async throws -> ResponseRealEstateProperty {
         do {
-            let propertyURL = "\(BackendURLs.realEstate)/\(id)"
+            let propertyURL = "\(BackendURLs.realEstate)/id/\(id)"
             
             guard let url = URL(string: propertyURL) else {
                 throw NetworkError.invalidURL
@@ -48,7 +78,7 @@ actor RealEstate {
     
     func propertyByAPN(_ apn: String) async throws -> ResponseRealEstateProperty {
         do {
-            let propertyURL = "\(BackendURLs.realEstate)"
+            let propertyURL = "\(BackendURLs.realEstate)/apn/\(apn)"
             
             guard let url = URL(string: propertyURL) else {
                 throw NetworkError.invalidURL

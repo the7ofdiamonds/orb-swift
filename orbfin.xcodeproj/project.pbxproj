@@ -123,6 +123,7 @@
 		A44B01A82C6D635B00D6E90D /* ViewServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B01A72C6D635B00D6E90D /* ViewServiceRequest.swift */; };
 		A44B01AC2C6D64A200D6E90D /* ViewModelServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B01AB2C6D64A200D6E90D /* ViewModelServiceRequest.swift */; };
 		A44B01AE2C6D666600D6E90D /* ResponseServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B01AD2C6D666600D6E90D /* ResponseServiceRequest.swift */; };
+		A44B01B22C71258F00D6E90D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44B01B12C71258F00D6E90D /* Location.swift */; };
 		A45676322C5C19AA0025A730 /* ViewStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676312C5C19AA0025A730 /* ViewStatus.swift */; };
 		A45676342C5C1A7D0025A730 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676332C5C1A7D0025A730 /* Status.swift */; };
 		A45676362C5C43A00025A730 /* ViewModelHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45676352C5C43A00025A730 /* ViewModelHome.swift */; };
@@ -306,6 +307,7 @@
 		A44B01A72C6D635B00D6E90D /* ViewServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewServiceRequest.swift; sourceTree = "<group>"; };
 		A44B01AB2C6D64A200D6E90D /* ViewModelServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelServiceRequest.swift; sourceTree = "<group>"; };
 		A44B01AD2C6D666600D6E90D /* ResponseServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseServiceRequest.swift; sourceTree = "<group>"; };
+		A44B01B12C71258F00D6E90D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A45676312C5C19AA0025A730 /* ViewStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStatus.swift; sourceTree = "<group>"; };
 		A45676332C5C1A7D0025A730 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		A45676352C5C43A00025A730 /* ViewModelHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelHome.swift; sourceTree = "<group>"; };
@@ -574,15 +576,13 @@
 		A42CC9402C6176F5004845AB /* RealEstate */ = {
 			isa = PBXGroup;
 			children = (
+				A44B01B42C7126A400D6E90D /* Response */,
+				A44B01B32C71269B00D6E90D /* Request */,
 				A41777FD2C583F32009C1353 /* SaleDetails.swift */,
 				A41777FF2C583F96009C1353 /* BuildingDetails.swift */,
 				A41778012C583FC7009C1353 /* LandDetails.swift */,
 				A4880FA72C6584160080C5E0 /* PropertyClass.swift */,
 				A42CC9472C62B5A5004845AB /* RealEstateProperty.swift */,
-				A42CC93E2C6176E9004845AB /* ResponseProperties.swift */,
-				A42CC9412C617734004845AB /* RequestProperties.swift */,
-				A42CC9432C626EA2004845AB /* RequestProperty.swift */,
-				A42CC9452C626EF8004845AB /* ResponseRealEstateProperty.swift */,
 			);
 			path = RealEstate;
 			sourceTree = "<group>";
@@ -687,6 +687,24 @@
 				A44306132C6A996F00F9B883 /* ResponseServices.swift */,
 				A44B019F2C6D237B00D6E90D /* ResponseService.swift */,
 				A44B01AD2C6D666600D6E90D /* ResponseServiceRequest.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		A44B01B32C71269B00D6E90D /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				A42CC9412C617734004845AB /* RequestProperties.swift */,
+				A42CC9432C626EA2004845AB /* RequestProperty.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		A44B01B42C7126A400D6E90D /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				A42CC93E2C6176E9004845AB /* ResponseProperties.swift */,
+				A42CC9452C626EF8004845AB /* ResponseRealEstateProperty.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -966,6 +984,7 @@
 				A435415F2C3EC4FD00B32BC1 /* Models.swift */,
 				A435415D2C3EC20B00B32BC1 /* Coordinates.swift */,
 				A41777F52C5831FB009C1353 /* Address.swift */,
+				A44B01B12C71258F00D6E90D /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1308,6 +1327,7 @@
 				A4880FAD2C65909A0080C5E0 /* ComponentSearchByAPN.swift in Sources */,
 				A43541602C3EC4FD00B32BC1 /* Models.swift in Sources */,
 				A49C0BEA2C4A08B700968AFB /* ViewRealEstate.swift in Sources */,
+				A44B01B22C71258F00D6E90D /* Location.swift in Sources */,
 				A43541652C3F02BA00B32BC1 /* ComponentInputUsername.swift in Sources */,
 				A43C29D02C404B70002BF1AE /* Network.swift in Sources */,
 				A43541622C3EDACF00B32BC1 /* Styling.swift in Sources */,

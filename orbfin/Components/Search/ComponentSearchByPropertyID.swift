@@ -16,13 +16,17 @@ struct ComponentSearchByPropertyID: View {
     
     @State private var propertyID: String = ""
     
+    var property: RealEstateProperty? {
+        return vm.property
+    }
+    
     var body: some View {
         ComponentCardFixed {
             HStack(spacing: 15) {
                 TextField("Property ID#", text: $propertyID)
                 Button {
                     Task {
-                        guard let property = await vm.getPropertyByID(propertyID) else { return }
+                        guard let property = try await vm.getPropertyByID(propertyID) else { return }
                         
                         if let propertyClass = property.propertyClass {
                             switch propertyClass {

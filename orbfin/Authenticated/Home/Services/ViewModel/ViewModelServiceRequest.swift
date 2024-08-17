@@ -23,6 +23,10 @@ class ViewModelServiceRequest: ObservableObject {
                 self.errorMessage = errorMessage
                 self.showStatus = true
             }
+            if let cautionMessage = response.cautionMessage {
+                self.cautionMessage = cautionMessage
+                self.showStatus = true
+            }
             if let successMessage = response.successMessage {
                 self.successMessage = successMessage
                 self.showStatus = true
