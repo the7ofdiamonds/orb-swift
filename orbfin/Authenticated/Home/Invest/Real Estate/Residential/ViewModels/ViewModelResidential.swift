@@ -17,15 +17,15 @@ class ViewModelResidential: ObservableObject {
     @Published var error: NetworkError? = nil
     @Published var showingAlert: Bool = false
     
-    func getProperties(request: RequestProperties?) async -> [RealEstateProperty]? {
+    func getProperties(request: RequestProperties?) async {
         do {
             let response: ResponseProperties = try await Residential().properties(request: request)
-
+            
             if let errorMessage = response.errorMessage {
                 self.errorMessage = errorMessage
                 self.showStatus = true
             }
-
+            
             if let properties = response.properties {
                 var updatedProperties = [RealEstateProperty]()
                 
@@ -41,13 +41,10 @@ class ViewModelResidential: ObservableObject {
                 }
                 
                 self.properties = updatedProperties
-                
-                return updatedProperties
             }
         } catch {
             self.error = error as? NetworkError
             self.showingAlert = true
         }
-        
-        return []
-    }}
+    }
+}

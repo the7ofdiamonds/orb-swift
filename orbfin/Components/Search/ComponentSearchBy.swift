@@ -10,12 +10,13 @@ import SwiftUI
 struct ComponentSearchBy: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
-    @EnvironmentObject var vmRealEstate: ViewModelRealEstate
-    @EnvironmentObject var vmCommercial: ViewModelCommercial
-    @EnvironmentObject var vmResidential: ViewModelResidential
-
+    @EnvironmentObject var vm: ViewModelRealEstate
+    
     @StateObject private var locationManager: LocationManager = LocationManager.instance
-        
+    
+    @State var properties: [RealEstateProperty]? = []
+    @State var initialized: Int = 0
+    
     @State private var streetAddress: String = ""
     @State private var city: String = ""
     @State private var state: String = ""
@@ -38,108 +39,214 @@ struct ComponentSearchBy: View {
     @State private var landAcres: Double = 0.0
     @State private var landSqft: Double = 0.0
     @State private var zoning: String = ""
-
-    var coordinates: Coordinates? {
+    
+    private var coordinates: Coordinates? {
         if let coords = locationManager.location {
-            var latitude = coords.latitude
-            var longitude = coords.longitude
+            let latitude = coords.latitude
+            let longitude = coords.longitude
             return Coordinates(latitude: Double(latitude), longitude: Double(longitude))
         } else {
             return nil
         }
     }
     
-    var request: RequestProperties {
+    private var request: RequestProperties {
         RequestProperties(
             propertyClass: PropertyClass(rawValue: propertyType),
             location: Location(address: Address(
-            streetAddress: streetAddress,
-            city: city,
-            state: state,
-            zipcode: zipcode,
-            county: county
+                streetAddress: streetAddress,
+                city: city,
+                state: state,
+                zipcode: zipcode,
+                county: county
             ), coordinates: coordinates),
             saleDetails: SaleDetails(
-            price: price,
-            priceSF: priceSF,
-            capRate: capRate,
-            leased: leased,
-            tenancy: tenancy,
-            saleType: saleType),
+                price: price,
+                priceSF: priceSF,
+                capRate: capRate,
+                leased: leased,
+                tenancy: tenancy,
+                saleType: saleType),
             buildingDetails: BuildingDetails(
-            propertyType: propertyType,
-            propertySubType: propertySubType,
-            stories: stories,
-            yearbuilt: yearbuilt,
-            sprinklers: sprinklers,
-            parkingSpaces: parkingSpaces,
-            totalBldgSize: totalBldgSize),
+                propertyType: propertyType,
+                propertySubType: propertySubType,
+                stories: stories,
+                yearbuilt: yearbuilt,
+                sprinklers: sprinklers,
+                parkingSpaces: parkingSpaces,
+                totalBldgSize: totalBldgSize),
             LandDetails: LandDetails(
-            landAcres: landAcres,
-            landSqft: landSqft,
-            zoning: zoning)
+                landAcres: landAcres,
+                landSqft: landSqft,
+                zoning: zoning)
         )
     }
     
     var body: some View {
-        ComponentCardFixed {
-            HStack(spacing: 15) {
-                VStack {
-                    TextField("Street Address", text: $streetAddress)
-                    TextField("City", text: $city)
-                    TextField("State", text: $state)
-                    TextField("Zipcode", text: $zipcode)
-                    TextField("County", text: $county)
-                    ComponentDivider()
-                    TextField("Price", value: $price, formatter: NumberFormatter())
-                    TextField("Price SF", value: $priceSF, formatter: NumberFormatter())
-                    TextField("Cap Rate", value: $capRate, formatter: NumberFormatter())
-                    ComponentDivider()
-                    TextField("tenancy", text: $tenancy)
-                    TextField("Sale Type", text: $saleType)
-                    ComponentDivider()
-                    TextField("propertyType", text: $propertyType)
-                    TextField("propertySubType", text: $propertySubType)
-                    TextField("stories", value: $stories, formatter: NumberFormatter())
-                    TextField("yearbuilt", value: $yearbuilt, formatter: NumberFormatter())
-                    TextField("sprinklers", text: $sprinklers)
-                    TextField("parkingSpaces", value: $parkingSpaces, formatter: NumberFormatter())
-                    TextField("totalBldgSize", value: $totalBldgSize, formatter: NumberFormatter())
-                    TextField("landAcres", value: $landAcres, formatter: NumberFormatter())
-                    TextField("landSqft", value: $landSqft, formatter: NumberFormatter())
-                    TextField("zoning", text: $zoning)
-                }
-                
-                Button {
-                    Task {
-                        switch navigation.isPage {
-                        case .realestate:
-                            await vmRealEstate.getProperties(request: request)
+        VStack(spacing: 30) {
+            ComponentCardFixed {
+                HStack(spacing: 20) {
+                    VStack {
+                        Group {
+                            HStack {
+                                Text("Street Address")
+                                TextField("Street Address", text: $streetAddress)
+                            }
                             
-                        case .commercial:
-                            await vmCommercial.getProperties(request: request)
+                            HStack {
+                                Text("City")
+                                TextField("City", text: $city)
+                            }
                             
-                        case .residential:
-                            await vmResidential.getProperties(request: request)
+                            HStack {
+                                Text("State")
+                                TextField("State", text: $state)
+                            }
                             
-                        default:
-                            await vmRealEstate.getProperties(request: request)
+                            HStack {
+                                Text("County")
+                                TextField("Zipcode", text: $zipcode)
+                            }
+                            
+                            HStack {
+                                Text("County")
+                                TextField("County", text: $county)
+                            }
+                            
+                            ComponentDivider()
+                            
+                            HStack {
+                                Text("Price")
+                                TextField("Price", value: $price, formatter: NumberFormatter())
+                            }
+                            
+                            HStack {
+                                Text("Price per SQFT")
+                                TextField("Price SF", value: $priceSF, formatter: NumberFormatter())
+                            }
+                            
+                            HStack {
+                                Text("Cap Rate")
+                                TextField("Cap Rate", value: $capRate, formatter: NumberFormatter())
+                            }
+                            
+                            ComponentDivider()
+                            
+                            HStack {
+                                Text("Tenancy")
+                                TextField("tenancy", text: $tenancy)
+                            }
+                            
+                            HStack {
+                                Text("Sale Type")
+                                TextField("Sale Type", text: $saleType)
+                            }
+                            
+                            ComponentDivider()
+                            
+                            HStack {
+                                Text("Property Type")
+                                
+                                if navigation.isPage == .commercial {
+                                    Text("Commercial Property")
+                                        .onAppear {
+                                            propertyType = "commercial"
+                                        }
+                                } else if navigation.isPage == .residential {
+                                    Text("Residential Property")
+                                        .onAppear {
+                                            propertyType = "residential"
+                                        }
+                                } else {
+                                    TextField("propertyType", text: $propertyType)
+                                }
+                            }
+                            
+                            HStack {
+                                Text("Property Sub Type")
+                                TextField("propertySubType", text: $propertySubType)
+                            }
+                            
+                            HStack {
+                                Text("Stories")
+                                TextField("stories", value: $stories, formatter: NumberFormatter())
+                            }
+                            
+                            HStack {
+                                Text("Year Built")
+                                TextField("yearbuilt", value: $yearbuilt, formatter: NumberFormatter())
+                            }
+                            
+                            HStack {
+                                Text("Sprinklers")
+                                TextField("sprinklers", text: $sprinklers)
+                            }
+                            
+                            HStack {
+                                Text("Parking Spaces")
+                                TextField("parkingSpaces", value: $parkingSpaces, formatter: NumberFormatter())
+                            }
+                            
+                            HStack {
+                                Text("Total Bldg Size")
+                                TextField("totalBldgSize", value: $totalBldgSize, formatter: NumberFormatter())
+                            }
+                            
+                            HStack {
+                                Text("Land Acres")
+                                TextField("landAcres", value: $landAcres, formatter: NumberFormatter())
+                            }
+                            
+                            HStack {
+                                Text("Land SQFT")
+                                TextField("Land SQFT", value: $landSqft, formatter: NumberFormatter())
+                            }
+                            
+                            HStack {
+                                Text("Zoning")
+                                TextField("Zoning", text: $zoning)
+                            }
+                        }
+                        .padding(5)
+                        .frame(width: 400)
+
+                    }
+                    .padding(.top, 10)
+                    .padding(.bottom, 10)
+                    .padding(.horizontal, 5)
+                    
+                    Button {
+                        Task {
+                            try await vm.getProperties(request: request)
+                        }
+                        
+                        initialized += 1
+                    } label: {
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                            Text("Search")
                         }
                     }
+                    .fontWeight(.bold)
+                    .kerning(Styling.kerning)
+                    .padding()
+                    .background(Styling.color(.Button))
+                    .foregroundColor(Styling.color(.ButtonFont))
+                    .cornerRadius(Styling.cornerRadius)
+                    .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
                     
-                    vmModal.showModal = true
-                } label: {
-                    HStack {
-                        Image(systemName: "1.magnifyingglass")
-                        Text("Search")
-                    }
                 }
             }
-            
+
+            ComponentCardResults(properties: vm.properties)
+                .id(initialized)
         }
     }
 }
 
 #Preview {
     ComponentSearchBy()
+        .environmentObject(Navigation())
+        .environmentObject(ViewModelModal())
+        .environmentObject(ViewModelRealEstate())
 }

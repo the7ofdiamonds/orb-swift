@@ -17,7 +17,7 @@ class ViewModelCommercial: ObservableObject {
     @Published var error: NetworkError? = nil
     @Published var showingAlert: Bool = false
     
-    func getProperties(request: RequestProperties?) async -> [RealEstateProperty]? {
+    func getProperties(request: RequestProperties?) async {
         do {
             let response: ResponseProperties = try await Commercial().properties(request: request)
 
@@ -42,14 +42,10 @@ class ViewModelCommercial: ObservableObject {
                 }
                 
                 self.properties = updatedProperties
-                
-                return updatedProperties
             }
         } catch {
             self.error = error as? NetworkError
             self.showingAlert = true
         }
-        
-        return []
     }
 }

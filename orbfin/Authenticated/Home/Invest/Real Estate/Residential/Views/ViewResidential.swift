@@ -14,29 +14,16 @@ struct ViewResidential: View {
 
     @StateObject private var location: LocationManager = LocationManager.instance
     
-    var properties: [RealEstateProperty]? {
-        return vm.properties
-    }
+    @State var initialized: Int = 0
     
     var body: some View {
         ZStack(alignment: .top) {
             if vmModal.show {
                 VStack(spacing: 30) {
                     ScrollView {
-
                         ComponentSearchBy()
-                        
-                        if let properties {
-                            ComponentCardResults(properties: properties)
-                        }
                     }
                 }
-            }
-            
-            ViewModal {
-                Text("Modal")
-                    .padding(50)
-                    .background(Color.blue)
             }
         }
         .onAppear {
@@ -44,7 +31,7 @@ struct ViewResidential: View {
                 await vm.getProperties(request: RequestProperties(propertyClass: .residential))
             }
             
-            if let properties,
+            if let properties = vm.properties,
                let property = properties.first,
                let coordinates = property.coordinates {
                 location.changeCamera(coordinates: coordinates)

@@ -12,22 +12,19 @@ struct ViewRealEstate: View {
     @EnvironmentObject var vmModal: ViewModelModal
     @EnvironmentObject var vm: ViewModelRealEstate
     
-    var properties: [RealEstateProperty]? {
-        print(vm.properties)
-        return vm.properties
-    }
-    
+    @StateObject private var location: LocationManager = LocationManager.instance
+       
     var body: some View {
         ZStack {
             if vmModal.show {
                 ScrollView {
-                    VStack {
+                    VStack(spacing: 25) {
                         ComponentSearchByPropertyID()
                         
                         ComponentSearchByAPN()
                         
                         ComponentCardFixed {
-                            VStack(spacing: 30){
+                            VStack(spacing: 15){
                                 ComponentButtonHNav(page: .commercial)
                                 
                                 ComponentDivider()
@@ -35,12 +32,8 @@ struct ViewRealEstate: View {
                                 ComponentButtonHNav(page: .residential)
                             }
                         }
-                        
+
                         ComponentSearchBy()
-                        
-                        if let properties = vm.properties {
-                            ComponentCardResults(properties: properties)
-                        }
                     }
                 }
             }
@@ -54,6 +47,13 @@ struct ViewRealEstate: View {
                 }
             }
         }
+        .onAppear {
+            if let properties = vm.properties,
+               let property = properties.first,
+               let coordinates = property.coordinates {
+                location.changeCamera(coordinates: coordinates)
+            }
+        }
         .alert(isPresented: $vm.showingAlert) {
             Alert(
                 title: Text(vm.error?.title ?? "An Error has occured."),
@@ -61,7 +61,7 @@ struct ViewRealEstate: View {
                 dismissButton: .default(Text("OK"))
             )
         }
-        
+
     }
 }
 

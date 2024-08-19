@@ -13,21 +13,15 @@ struct ViewCommercial: View {
     @EnvironmentObject var vm: ViewModelCommercial
 
     @StateObject private var location: LocationManager = LocationManager.instance
-        
-    var properties: [RealEstateProperty]? {
-        return vm.properties
-    }
-    
+       
+    @State var initialized: Int = 0
+
     var body: some View {
         Group {
             if vmModal.show {
                 ScrollView {
                     VStack {
                         ComponentSearchBy()
-                        
-                        if let properties = vm.properties {
-                            ComponentCardResults(properties: properties)
-                        }
                     }
                 }
                 
@@ -43,7 +37,7 @@ struct ViewCommercial: View {
                 await vm.getProperties(request: RequestProperties(propertyClass: .commercial))
             }
             
-            if let properties,
+            if let properties = vm.properties,
                let property = properties.first,
                let coordinates = property.coordinates {
                 location.changeCamera(coordinates: coordinates)
@@ -56,7 +50,7 @@ struct ViewCommercial: View {
                 dismissButton: .default(Text("OK"))
             )
         }
-            
+
     }
 }
 

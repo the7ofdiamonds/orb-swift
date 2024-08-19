@@ -22,26 +22,33 @@ struct ComponentSearchByAPN: View {
                 TextField("APN#", text: $apn)
                 Button {
                     Task {
-                        guard let property = try await vm.getPropertyByAPN(apn) else { return }
+                       try await vm.getPropertyByAPN(apn)
                         
-                        if let propertyClass = property.propertyClass {
-                            switch propertyClass {
-                            case "commercial":
+                        if let property = vm.property {
+                            if property.propertyClass == "commercial" {
                                 navigation.change(page: .commercialproperty(property: property))
-                            case "residential":
+                            } else if property.propertyClass == "residential" {
                                 navigation.change(page: .residentialproperty(property: property))
-                            default:
-                                navigation.change(page: .blank)
                             }
                         }
                     }
                 } label: {
                     HStack {
-                        Image(systemName: "1.magnifyingglass")
+                        Image(systemName: "magnifyingglass")
                         Text("Search")
                     }
                 }
+                .fontWeight(.bold)
+                .kerning(Styling.kerning)
+                .padding()
+                .background(Styling.color(.Button))
+                .foregroundColor(Styling.color(.ButtonFont))
+                .cornerRadius(Styling.cornerRadius)
+                .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
+                
             }
+            .frame(width: 400)
+
         }
     }
 }
