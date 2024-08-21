@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct ViewServices: View {
+    @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
     @EnvironmentObject var vm: ViewModelServices
     
     @StateObject private var location: LocationManager = LocationManager.instance
     
-    var services: [Service]? {
-        return vm.services
+    var services: [Page] {
+        return Page.services.submenu
     }
     
     var body: some View {
-        if vmModal.show {
             ZStack {
-                if let services = services {
+                if vmModal.show {
                     ComponentCardFixed {
-                        ForEach(services, id: \.id) { service in
-                            if let type = service.type {
-                                ComponentButtonBar(page: Page.serviceType(type: type))
+                        VStack(spacing: 15) {
+                            ForEach(services) { service in
+                                ComponentButtonHNav(page: service)
                             }
                         }
                     }
@@ -38,17 +38,18 @@ struct ViewServices: View {
                             cautionMessage: vm.cautionMessage)
                     }
                 }
-                
             }
-            .onAppear {
-                Task {
-                    await vm.getServices()
-                }
-                
-                if let services = services,
-                   let service = services.first,
-                   let coordinates = service.mapLocation?.coordinates {
-                    location.changeCamera(coordinates: coordinates)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        if let icon = navigation.isPage?.icon {
+                            Image(systemName: icon)
+                        }
+                        
+                        Text(navigation.isPage?.title ?? "No title")
+                            .font(.title)
+                            .fontWeight(.bold)
+                    }
                 }
             }
             .alert(isPresented: $vm.showingAlert) {
@@ -59,7 +60,6 @@ struct ViewServices: View {
                 )
             }
             
-        }
     }
 }
 
@@ -69,12 +69,16 @@ struct ViewServices_Previews: PreviewProvider {
             ViewServices()
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
+                .environmentObject(Navigation())
                 .environmentObject(ViewModelModal())
+                .environmentObject(ViewModelServices())
             
             ViewServices()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
+                .environmentObject(Navigation())
                 .environmentObject(ViewModelModal())
+                .environmentObject(ViewModelServices())
         }
     }
 }

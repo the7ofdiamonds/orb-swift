@@ -15,8 +15,10 @@ struct ComponentButtonHome: View {
             navigation.change(page: .home(successMessage: nil))
         },
                label: {
-            Image(systemName: Page.home(successMessage: nil).icon)
-                .font(Styling.font(component: .icon))
+            if let icon = Page.home(successMessage: nil).icon {
+                Image(systemName: icon)
+                    .font(Styling.font(component: .icon))
+            }
         })
     }
 }

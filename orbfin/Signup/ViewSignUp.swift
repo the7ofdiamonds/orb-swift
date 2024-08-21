@@ -68,7 +68,7 @@ struct ViewSignUp: View {
                 ComponentInputTextField(placeholder: "Last Name", text: $lastname)
                 ComponentInputTextField(placeholder: "Phone Number", text: $phone)
                 
-                ComponentButtonH(label: Page.signup.label, icon: Page.signup.icon) {
+                ComponentButtonH(label: Page.signup.label, icon: Page.signup.icon ?? "") {
                     Task {
                         await vm.signup(username: username,
                                         email: email,

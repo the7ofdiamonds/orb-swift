@@ -8,11 +8,11 @@
 import Foundation
 import MapKit
 
-struct Service: Identifiable, Codable {
+struct Service: Identifiable, Codable, Equatable {
     var id: String
     var created: String?
     var updated: String?
-    var type: String?
+    var type: String
     var name: String?
     var content: String?
     var description: String?
@@ -39,7 +39,7 @@ struct Service: Identifiable, Codable {
         id = try container.decode(String.self, forKey: .id)
         created = try? container.decode(String.self, forKey: .created)
         updated = try? container.decode(String.self, forKey: .updated)
-        type = try? container.decode(String.self, forKey: .type)
+        type = try container.decode(String.self, forKey: .type)
         name = try? container.decode(String.self, forKey: .name)
         content = try? container.decode(String.self, forKey: .content)
         description = try? container.decode(String.self, forKey: .description)
@@ -55,5 +55,9 @@ struct Service: Identifiable, Codable {
         address = try? container.decode(Address.self, forKey: .address)
         coordinates = try? container.decode(Coordinates.self, forKey: .coordinates)
         mapLocation = try? container.decode(MapLocation.self, forKey: .mapLocation)
+    }
+    
+    static func == (lhs: Service, rhs: Service) -> Bool {
+        lhs.id == rhs.id
     }
 }

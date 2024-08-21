@@ -11,7 +11,7 @@ struct ComponentDivider: View {
     var body: some View {
         Divider()
             .background(Styling.color(.CardFont))
-            .padding()
+            .padding(5)
     }
 }
 

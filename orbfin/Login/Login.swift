@@ -23,7 +23,7 @@ actor Login {
             let jsonData = try JSONSerialization.data(withJSONObject: requestLoginDict, options: [])
             let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: jsonData)
             let responseLogin: ResponseLogin = try JSONDecoder().decode(ResponseLogin.self, from: serverResponse.data)
-            
+
             return responseLogin
         } catch {
             throw error

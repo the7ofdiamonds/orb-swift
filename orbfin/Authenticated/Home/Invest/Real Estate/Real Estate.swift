@@ -55,6 +55,7 @@ actor RealEstate {
 
             return response
         } catch {
+            print(error)
             throw error
         }
     }

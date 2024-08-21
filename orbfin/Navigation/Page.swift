@@ -44,9 +44,9 @@ enum Page: CaseIterable, Identifiable, Equatable {
     case invest
     case realestate
     case commercial
-    case commercialproperty(property: RealEstateProperty)
+    case commercialproperty(property: RealEstateProperty?)
     case residential
-    case residentialproperty(property: RealEstateProperty)
+    case residentialproperty(property: RealEstateProperty?)
     case tangibleassets
     case tangibleassetsrealestate
     case tangibleassetscommercial
@@ -55,9 +55,12 @@ enum Page: CaseIterable, Identifiable, Equatable {
     case paperassets
     
     case services
-    case serviceType(type: String)
+    case serviceType(type: ServiceType)
     case service(service: Service)
     case servicerequest(service: Service)
+    case notary
+    case appraisal
+    case realestateappraisal
     
     case blank
 }
@@ -95,9 +98,9 @@ extension Page {
             .invest,
             .realestate,
             .commercial,
-            .commercialproperty(property: RealEstateProperty(id: String())),
+            .commercialproperty(property: nil),
             .residential,
-            .residentialproperty(property: RealEstateProperty(id: String())),
+            .residentialproperty(property: nil),
             .tangibleassets,
             .tangibleassetsrealestate,
             .tangibleassetscommercial,
@@ -125,11 +128,11 @@ extension Page {
             "1.1"
         case .commercial:
             "1.10"
-        case .commercialproperty(_):
+        case .commercialproperty:
             "1.100"
         case .residential:
             "1.11"
-        case .residentialproperty(_):
+        case .residentialproperty:
             "1.110"
         case .tangibleassets:
             "1.2"
@@ -140,7 +143,7 @@ extension Page {
         }
     }
     
-    var title: String {
+    var title: String? {
         switch self {
         case .home:
             return "Home"
@@ -207,20 +210,8 @@ extension Page {
             return "Real Estate"
         case .commercial:
             return "Commercial"
-        case .commercialproperty(let property):
-            if let address = property.address {
-                return address.toString()
-            } else {
-                return "Commercial Property #\(property.id)"
-            }
         case .residential:
             return "Residential"
-        case .residentialproperty(let property):
-            if let address = property.address {
-                return address.toString()
-            } else {
-                return "Residential Property#\(property.id)"
-            }
         case .tangibleassets:
             return "Tangible Assets"
         case .tangibleassetsrealestate:
@@ -237,7 +228,7 @@ extension Page {
         case .services:
             return "Services"
         case .serviceType(let type):
-            return type.capitalized
+            return type.title
         case .service(let service):
             if let title = service.name {
                 return title
@@ -251,8 +242,8 @@ extension Page {
                 return "Service #\(service.id)"
             }
             
-        case .blank:
-            return ""
+        default:
+            return nil
         }
     }
     
@@ -323,20 +314,12 @@ extension Page {
             return "Real Estate"
         case .commercial:
             return "Commercial"
-        case .commercialproperty(let property):
-            if let address = property.address {
-                return address.toString()
-            } else {
-                return "Commercial Property #\(property.id)"
-            }
+        case .commercialproperty:
+            return "Commercial Property #"
         case .residential:
             return "Residential"
-        case .residentialproperty(let property):
-            if let address = property.address {
-                return address.toString()
-            } else {
-                return "Residential Property #\(property.id)"
-            }
+        case .residentialproperty:
+            return "Residential Property #"
         case .tangibleassets:
             return "Tangible Assets"
         case .tangibleassetsrealestate:
@@ -353,7 +336,7 @@ extension Page {
         case .services:
             return "Services"
         case .serviceType(let type):
-            return type.capitalized
+            return type.label
         case .service(let service):
             if let title = service.name {
                 return title
@@ -366,12 +349,19 @@ extension Page {
             } else {
                 return "Service #\(service.id)"
             }
+        case .appraisal:
+            return ServiceType.appraisal.label
+        case .realestateappraisal:
+            return ServiceType.realestateappraisal.label
+        case .notary:
+            return ServiceType.notary.label
+            
         case .blank:
             return "Show Map"
         }
     }
     
-    var icon: String {
+    var icon: String? {
         switch self {
         case .home:
             return "house"
@@ -407,7 +397,7 @@ extension Page {
             return "map"
             
         default:
-            return ""
+            return nil
         }
     }
     
@@ -461,7 +451,7 @@ extension Page {
                 .invest
         case .commercial:
                 .realestate
-        case .commercialproperty(_):
+        case .commercialproperty:
                 .commercial
         case .residential:
                 .realestate
@@ -525,12 +515,6 @@ extension Page {
                 .commercial,
                 .residential
             ]
-//        case .commercial:
-//            if let properties {
-//                return properties.map { Page.commercialproperty(property: $0) }
-//            } else {
-//                return []
-//            }
 
         case .tangibleassets:
             return [
@@ -544,7 +528,17 @@ extension Page {
             ]
         case .tangibleassetsbusiness:
             return []
-        
+      
+        case .services:
+            return [
+                .notary,
+                .appraisal
+            ]
+            
+        case .appraisal:
+            return [
+                .realestateappraisal
+            ]
         default:
             return []
         }
@@ -644,9 +638,15 @@ extension Page {
         case .serviceType(let type):
             AnyView(ViewServiceType(type: type))
         case .service(let service):
-            AnyView(ViewService(service: service))
+            AnyView(ViewServiceDetail(service: service))
         case .servicerequest(let service):
             AnyView(ViewServiceRequest(service: service))
+        case .notary:
+            AnyView(ViewServiceType(type: ServiceType.notary))
+        case .appraisal:
+            AnyView(ViewServiceType(type: ServiceType.appraisal))
+        case .realestateappraisal:
+            AnyView(ViewServiceType(type: ServiceType.realestateappraisal))
             
         case .blank:
             AnyView(EmptyView())
@@ -721,9 +721,11 @@ extension Page {
         case "Commercial":
             self = .commercial
         case "Commercial Property":
-            self = .commercialproperty(property: RealEstateProperty(id: String()))
+            self = .commercialproperty(property: nil)
         case "Residential":
             self = .residential
+        case "Residential Property":
+            self = .residentialproperty(property: nil)
         case "Tangible Assets":
             self = .tangibleassets
         case "Tangible Assets Real Estate":

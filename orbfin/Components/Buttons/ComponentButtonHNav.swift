@@ -19,9 +19,10 @@ struct ComponentButtonHNav: View {
             vmModal.show = true
         }, label: {
             HStack {
-                if page.icon != "" {
-                    Image(systemName: page.icon)
+                if let icon = page.icon {
+                    Image(systemName: icon)
                 }
+                
                 Text(page.label)
                     .font(Styling.font(component: .label))
             }

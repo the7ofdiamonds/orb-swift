@@ -13,7 +13,7 @@ struct ViewServiceRequest: View {
     @StateObject var vm = ViewModelServiceRequest()
     @StateObject private var locationManager: LocationManager = LocationManager.instance
     
-    var service: Service
+    @State var service: Service
     
     @State private var selectedDate: Date = Date()
     @State private var selectedTime: Date = Date()
@@ -58,7 +58,7 @@ struct ViewServiceRequest: View {
     }
     
     var request: RequestService {
-        return RequestService(id: service.id, date: formattedDate, time: formattedTime, address: address, coordinates: coordinates)
+        return RequestService(id: service.id, type: service.type, date: formattedDate, time: formattedTime, price: service.price, address: address, coordinates: coordinates)
     }
     
     var body: some View {

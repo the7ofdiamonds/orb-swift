@@ -19,9 +19,11 @@ struct ComponentButtonBack: View {
             Button(action: {
                 navigation.change(page: prevView)
             }, label: {
-                Image(systemName: prevView.icon)
-                    .font(Styling.font(component: .icon))
-                    .foregroundColor(Styling.color(.BarFont))
+                if let icon = prevView.icon {
+                    Image(systemName: icon)
+                        .font(Styling.font(component: .icon))
+                        .foregroundColor(Styling.color(.BarFont))
+                }
             })
         }
     }

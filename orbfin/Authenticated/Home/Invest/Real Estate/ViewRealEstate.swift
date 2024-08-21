@@ -18,7 +18,7 @@ struct ViewRealEstate: View {
         ZStack {
             if vmModal.show {
                 ScrollView {
-                    VStack(spacing: 25) {
+                    VStack(spacing: 30) {
                         ComponentSearchByPropertyID()
                         
                         ComponentSearchByAPN()
@@ -47,13 +47,13 @@ struct ViewRealEstate: View {
                 }
             }
         }
-        .onAppear {
+        .onChange(of: vm.properties, {
             if let properties = vm.properties,
                let property = properties.first,
                let coordinates = property.coordinates {
                 location.changeCamera(coordinates: coordinates)
             }
-        }
+        })
         .alert(isPresented: $vm.showingAlert) {
             Alert(
                 title: Text(vm.error?.title ?? "An Error has occured."),

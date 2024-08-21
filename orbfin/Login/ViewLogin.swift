@@ -87,8 +87,10 @@ struct ViewLogin: View {
                         showSignUp = true
                     } label: {
                         VStack {
-                            Image(systemName: Page.signup.icon)
-                                .font(Styling.font(component: .icon))
+                            if let icon = Page.signup.icon {
+                                Image(systemName: icon)
+                                    .font(Styling.font(component: .icon))
+                            }
                             
                             Text(Page.signup.label)
                                 .font(Styling.font(component: .label))
@@ -99,8 +101,10 @@ struct ViewLogin: View {
                         showForgot = true
                     } label: {
                         VStack {
-                            Image(systemName: Page.forgot.icon)
-                                .font(Styling.font(component: .icon))
+                            if let icon = Page.forgot.icon {
+                                Image(systemName: icon)
+                                    .font(Styling.font(component: .icon))
+                            }
                             
                             Text(Page.forgot.label)
                                 .font(Styling.font(component: .label))

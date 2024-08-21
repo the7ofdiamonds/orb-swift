@@ -10,39 +10,40 @@ import SwiftUI
 struct ViewCommercial: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
-    @EnvironmentObject var vm: ViewModelCommercial
+    @EnvironmentObject var vm: ViewModelRealEstate
 
     @StateObject private var location: LocationManager = LocationManager.instance
        
-    @State var initialized: Int = 0
-
     var body: some View {
-        Group {
+        ZStack {
             if vmModal.show {
                 ScrollView {
-                    VStack {
+                    VStack(spacing: 30) {
+                        ComponentSearchByPropertyID()
+                        
+                        ComponentSearchByAPN()
+                        
                         ComponentSearchBy()
                     }
                 }
-                
-                if vm.showStatus {
+            }
+            
+            if vm.showStatus {
+                ViewModal {
                     ViewStatus(
-                               successMessage: vm.successMessage,
-                               errorMessage: vm.errorMessage, cautionMessage: vm.cautionMessage)
+                        successMessage: vm.successMessage,
+                        errorMessage: vm.errorMessage,
+                        cautionMessage: vm.cautionMessage)
                 }
             }
         }
-        .onAppear {
-            Task {
-                await vm.getProperties(request: RequestProperties(propertyClass: .commercial))
-            }
-            
+        .onChange(of: vm.properties, {
             if let properties = vm.properties,
                let property = properties.first,
                let coordinates = property.coordinates {
                 location.changeCamera(coordinates: coordinates)
             }
-        }
+        })
         .alert(isPresented: $vm.showingAlert) {
             Alert(
                 title: Text(vm.error?.title ?? "An Error has occured."),
@@ -60,14 +61,16 @@ struct ViewCommercial_Previews: PreviewProvider {
             ViewCommercial()
                 .previewDisplayName("iPhone 15 Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
-                .environmentObject(ViewModelCommercial())
                 .environmentObject(Navigation())
+                .environmentObject(ViewModelModal())
+                .environmentObject(ViewModelRealEstate())
             
             ViewCommercial()
                 .previewDisplayName("iPad Pro")
                 .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
-                .environmentObject(ViewModelCommercial())
                 .environmentObject(Navigation())
+                .environmentObject(ViewModelModal())
+                .environmentObject(ViewModelRealEstate())
         }
     }
 }

@@ -238,8 +238,7 @@ struct ComponentSearchBy: View {
                 }
             }
 
-            ComponentCardResults(properties: vm.properties)
-                .id(initialized)
+            ComponentSearchResults(initialized: initialized)
         }
     }
 }

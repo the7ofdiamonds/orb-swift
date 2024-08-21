@@ -24,12 +24,21 @@ struct ViewContentMenu: View {
     }
         
     private var isHomeMenu: Bool {
-        if let menu = navigation.isPage {
-            let title = menu.title
+        if let menu = navigation.isPage, let title = menu.title {
+            var isManage = false
+            if let manageTitle = manage.title {
+                var isManage = titlesMatch(manageTitle, title)
+            }
             
-            let isManage = titlesMatch(manage.title, title)
-            let isInvest = titlesMatch(invest.title, title)
-            let isServices = titlesMatch(services.title, title)
+            var isInvest = false
+            if let investTitle = invest.title {
+                var isInvest = titlesMatch(investTitle, title)
+            }
+            
+            var isServices = false
+            if let servicesTitle = services.title {
+                var isServices = titlesMatch(servicesTitle, title)
+            }
                         
             return isManage || isInvest || isServices
         } else {

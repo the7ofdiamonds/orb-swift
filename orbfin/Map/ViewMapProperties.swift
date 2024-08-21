@@ -11,40 +11,45 @@ import MapKit
 struct ViewMapProperties: MapContent {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
-    @EnvironmentObject var vmRealEstate: ViewModelRealEstate
-    @EnvironmentObject var vmCommercial: ViewModelCommercial
-    @EnvironmentObject var vmResidential: ViewModelResidential
+    @EnvironmentObject var vm: ViewModelRealEstate
     
     @StateObject var location: LocationManager = LocationManager.instance
     
-    var properties: [RealEstateProperty]? {
-        switch navigation.isPage {
-        case .invest, .realestate:
-            return vmRealEstate.properties
-            
-        case .commercial, .commercialproperty(property: _):
-            return vmCommercial.properties
-            
-        case .residential, .residentialproperty(property: _):
-            return vmResidential.properties
-            
-        default:
-            return []
-        }
-    }
-    
     var body: some MapContent {
-        if let properties = properties {
+        if let properties = vm.properties {
             ForEach(properties, id: \.id) { property in
                 if let coordinates = property.coordinates {
-                    Annotation(property.address?.toString() ?? "", coordinate: coordinates) {
+                    Annotation(property.address?.toString() ?? "Address Not Available", coordinate: coordinates) {
                         Image(systemName: "mappin")
                             .onTapGesture {
-                                navigation.change(page: .commercialproperty(property: property))
+                                if let propertyType = property.propertyType {
+                                    if propertyType == "commercial" {
+                                        navigation.change(page: .commercialproperty(property: property))
+                                    } else if propertyType == "residential" {
+                                        navigation.change(page: .residentialproperty(property: property))
+                                    }
+                                }
                                 vmModal.show = true
                             }
                     }
                 }
+            }
+        }
+        
+        if let property = vm.property,
+           let coordinates = property.coordinates {
+            Annotation(property.address?.toString() ?? "Address Not Available", coordinate: coordinates) {
+                Image(systemName: "mappin")
+                    .onTapGesture {
+                        if let propertyType = property.propertyType {
+                            if propertyType == "commercial" {
+                                navigation.change(page: .commercialproperty(property: property))
+                            } else if propertyType == "residential" {
+                                navigation.change(page: .residentialproperty(property: property))
+                            }
+                        }
+                        vmModal.show = true
+                    }
             }
         }
     }

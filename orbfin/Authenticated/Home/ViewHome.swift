@@ -34,9 +34,6 @@ struct ViewHome: View {
                 }
             }
         }
-        
-        
-        
     }
 }
     

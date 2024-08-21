@@ -10,6 +10,7 @@ import SwiftUI
 
 @MainActor
 class ViewModelRealEstate: ObservableObject {
+    @Published var requestID: Int = 0
     @Published var id: String?
     @Published var property: RealEstateProperty?
     @Published var properties: [RealEstateProperty]?
@@ -97,6 +98,7 @@ class ViewModelRealEstate: ObservableObject {
                 }
 
                 self.properties = updatedProperties
+                self.requestID += 1
             }
         } catch {
             self.error = error as? NetworkError

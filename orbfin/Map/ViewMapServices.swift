@@ -11,22 +11,12 @@ import MapKit
 struct ViewMapServices: MapContent {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
-    @EnvironmentObject var vmServices: ViewModelServices
+    @EnvironmentObject var vm: ViewModelServices
 
     @StateObject var location: LocationManager = LocationManager.instance
     
-    var services: [Service]? {
-        switch navigation.isPage {
-        case .services:
-            return vmServices.services
-            
-        default:
-            return nil
-        }
-    }
-    
     var body: some MapContent {
-        if let services = services {
+        if let services = vm.services {
             ForEach(services, id: \.id) { service in
                 if let name = service.name,
                    let mapLocation = service.mapLocation,

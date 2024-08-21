@@ -19,9 +19,11 @@ struct ComponentButtonBar: View {
             vmModal.show = true
         }, label: {
             VStack {
-                Image(systemName: page.icon)
-                    .font(Styling.font(component: .icon))
-
+                if let icon = page.icon {
+                    Image(systemName: icon)
+                        .font(Styling.font(component: .icon))
+                }
+                
                 Text(page.label)
                     .font(Styling.font(component: .label))
 

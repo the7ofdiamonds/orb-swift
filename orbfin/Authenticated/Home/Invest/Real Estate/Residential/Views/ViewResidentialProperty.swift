@@ -10,19 +10,17 @@ import SwiftUI
 struct ViewResidentialProperty: View {
     @EnvironmentObject var navigation: Navigation
     @EnvironmentObject var vmModal: ViewModelModal
-    @EnvironmentObject var vmResidentialProperty: ViewModelResidentialProperty
+    @EnvironmentObject var vm: ViewModelRealEstate
     
     @StateObject private var location: LocationManager = LocationManager.instance
-
-    var property: RealEstateProperty
     
-    @State private var show: Bool = true
-
+    @State var property: RealEstateProperty?
+    
     var body: some View {
         ScrollView {
-            if vmModal.show {
+            if let property = property,
+               vmModal.show {
                 VStack(spacing: 25) {
-                    
                     if let images = property.images {
                         ComponentCardImages(images: images)
                     }
@@ -56,14 +54,15 @@ struct ViewResidentialProperty: View {
             }
         }
         .onAppear {
-            if let coordinates = property.coordinates {
-                vmResidentialProperty.property = property
+            if let property = property,
+               let coordinates = property.coordinates {
                 location.changeCamera(coordinates: coordinates)
             }
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
-                if let address = property.address?.toString() {
+                if let property = property,
+                   let address = property.address?.toString() {
                     HStack {
                         Spacer()
                         
@@ -78,11 +77,25 @@ struct ViewResidentialProperty: View {
                 }
             }
         }
-        
     }
 }
 
-#Preview {
-    ViewResidentialProperty(property: PreviewResidentialProperty.loadProperty())
-        .environmentObject(ViewModelResidentialProperty())
+struct ViewResidentialProperty_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ViewResidentialProperty()
+                .previewDisplayName("iPhone 15 Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
+                .environmentObject(Navigation())
+                .environmentObject(ViewModelModal())
+                .environmentObject(ViewModelRealEstate())
+            
+            ViewResidentialProperty()
+                .previewDisplayName("iPad Pro")
+                .previewDevice(PreviewDevice(rawValue: "iPad Air 11-inch (M2)"))
+                .environmentObject(Navigation())
+                .environmentObject(ViewModelModal())
+                .environmentObject(ViewModelRealEstate())
+        }
+    }
 }

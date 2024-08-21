@@ -13,20 +13,14 @@ struct ViewServiceType: View {
     
     @StateObject private var location: LocationManager = LocationManager.instance
     
-    var type: String
-    
-    var services: [Service]? {
-        return vm.services
-    }
+    @State var type: ServiceType
     
     var body: some View {
         ZStack {
-            if let services {
-                ComponentCardFixed {
-                    ForEach(services, id: \.id) { service in
-                        if service.type == type {
-                            ComponentButtonBar(page: .service(service: service))
-                        }
+            ComponentCardFixed {
+                if let services = vm.services {
+                    ForEach(services) { service in
+                        ComponentButtonHNav(page: .service(service: service))
                     }
                 }
             }
@@ -40,15 +34,16 @@ struct ViewServiceType: View {
                 }
             }
         }
-        .onAppear {
-            Task {
-                await vm.getServicesByType(type)
-            }
-            
-            if let services = services,
+        .onChange(of: vm.services, {
+            if let services = vm.services,
                let service = services.first,
                let coordinates = service.mapLocation?.coordinates {
                 location.changeCamera(coordinates: coordinates)
+            }
+        })
+        .onAppear {
+            Task {
+                await vm.getServicesByType(type.rawValue)
             }
         }
         .alert(isPresented: $vm.showingAlert) {
@@ -63,7 +58,7 @@ struct ViewServiceType: View {
 }
 
 #Preview {
-    ViewServiceType(type: "notary")
+    ViewServiceType(type: .notary)
         .environmentObject(ViewModelModal())
         .environmentObject(ViewModelServices())
 }
