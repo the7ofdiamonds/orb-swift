@@ -166,6 +166,13 @@
 		A49C0BF12C4A139800968AFB /* ViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BF02C4A139800968AFB /* ViewSettings.swift */; };
 		A49C0BF62C4A1BEB00968AFB /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BF52C4A1BEA00968AFB /* Format.swift */; };
 		A49C0BF92C4A1EF500968AFB /* ManageSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C0BF82C4A1EF500968AFB /* ManageSummary.swift */; };
+		A49DC99E2C7E2C4D00118828 /* ComponentCardContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49DC99D2C7E2C4D00118828 /* ComponentCardContact.swift */; };
+		A49DC9A02C7E2DA900118828 /* ComponentButtonContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49DC99F2C7E2DA900118828 /* ComponentButtonContact.swift */; };
+		A49DC9A32C7E315E00118828 /* Communications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49DC9A22C7E315E00118828 /* Communications.swift */; };
+		A49DC9A52C7E33D800118828 /* ResponseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49DC9A42C7E33D800118828 /* ResponseProvider.swift */; };
+		A4A223112C7EB19200A30F7A /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A223102C7EB19200A30F7A /* RequestProvider.swift */; };
+		A4A223132C8148ED00A30F7A /* ComponentSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A223122C8148ED00A30F7A /* ComponentSchedule.swift */; };
+		A4A223162C814C6400A30F7A /* ViewModelSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A223152C814C6400A30F7A /* ViewModelSchedule.swift */; };
 		A4A7ACF42C3B3BE100EE9B48 /* ViewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A7ACF32C3B3BE100EE9B48 /* ViewLogin.swift */; };
 		A4A7ACF72C3B432900EE9B48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A7ACF62C3B432900EE9B48 /* LocationManager.swift */; };
 		A4D407262B4D100D00D97AB1 /* orbfinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D407252B4D100D00D97AB1 /* orbfinApp.swift */; };
@@ -351,6 +358,13 @@
 		A49C0BF02C4A139800968AFB /* ViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSettings.swift; sourceTree = "<group>"; };
 		A49C0BF52C4A1BEA00968AFB /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		A49C0BF82C4A1EF500968AFB /* ManageSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageSummary.swift; sourceTree = "<group>"; };
+		A49DC99D2C7E2C4D00118828 /* ComponentCardContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCardContact.swift; sourceTree = "<group>"; };
+		A49DC99F2C7E2DA900118828 /* ComponentButtonContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentButtonContact.swift; sourceTree = "<group>"; };
+		A49DC9A22C7E315E00118828 /* Communications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communications.swift; sourceTree = "<group>"; };
+		A49DC9A42C7E33D800118828 /* ResponseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseProvider.swift; sourceTree = "<group>"; };
+		A4A223102C7EB19200A30F7A /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestProvider.swift; path = ../../Communications/RequestProvider.swift; sourceTree = "<group>"; };
+		A4A223122C8148ED00A30F7A /* ComponentSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSchedule.swift; sourceTree = "<group>"; };
+		A4A223152C814C6400A30F7A /* ViewModelSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelSchedule.swift; sourceTree = "<group>"; };
 		A4A7ACF32C3B3BE100EE9B48 /* ViewLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLogin.swift; sourceTree = "<group>"; };
 		A4A7ACF62C3B432900EE9B48 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A4D407222B4D100D00D97AB1 /* orbfin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orbfin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -492,6 +506,7 @@
 		A4041C922C5806CF001FD37B /* Card */ = {
 			isa = PBXGroup;
 			children = (
+				A49DC99C2C7E2C2300118828 /* Real Estate */,
 				A43C29E82C40F44A002BF1AE /* ComponentCard.swift */,
 				A41778102C5B47CE009C1353 /* ComponentCardFixed.swift */,
 				A4041C932C580710001FD37B /* ComponentCardOverview.swift */,
@@ -501,6 +516,7 @@
 				A41777F92C583E2F009C1353 /* ComponentCardLandDetails.swift */,
 				A41777FB2C583E8D009C1353 /* ComponentCardBuildingDetails.swift */,
 				A41778032C5926B3009C1353 /* ComponentCardImages.swift */,
+				A49DC99D2C7E2C4D00118828 /* ComponentCardContact.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -676,6 +692,7 @@
 		A44B01AF2C6D731000D6E90D /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				A4A223102C7EB19200A30F7A /* RequestProvider.swift */,
 				A44306112C6A995D00F9B883 /* RequestServices.swift */,
 				A44B01A52C6D610800D6E90D /* RequestService.swift */,
 			);
@@ -688,6 +705,7 @@
 				A44306132C6A996F00F9B883 /* ResponseServices.swift */,
 				A44B019F2C6D237B00D6E90D /* ResponseService.swift */,
 				A44B01AD2C6D666600D6E90D /* ResponseServiceRequest.swift */,
+				A49DC9A42C7E33D800118828 /* ResponseProvider.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -977,6 +995,30 @@
 			path = Format;
 			sourceTree = "<group>";
 		};
+		A49DC99C2C7E2C2300118828 /* Real Estate */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Real Estate";
+			sourceTree = "<group>";
+		};
+		A49DC9A12C7E312E00118828 /* Communications */ = {
+			isa = PBXGroup;
+			children = (
+				A49DC9A22C7E315E00118828 /* Communications.swift */,
+			);
+			path = Communications;
+			sourceTree = "<group>";
+		};
+		A4A223142C814C4400A30F7A /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				A4A223122C8148ED00A30F7A /* ComponentSchedule.swift */,
+				A4A223152C814C6400A30F7A /* ViewModelSchedule.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
 		A4A7ACEC2C3B3B0A00EE9B48 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1024,6 +1066,7 @@
 		A4A7ACF02C3B3B6B00EE9B48 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A4A223142C814C4400A30F7A /* Schedule */,
 				A40741AB2C684F4F00FB1770 /* Image */,
 				A4880FA92C658F730080C5E0 /* Search */,
 				A4041C922C5806CF001FD37B /* Card */,
@@ -1045,6 +1088,7 @@
 				A47FC8B62C5468970096D557 /* ComponentButtonHome.swift */,
 				A4041C822C56ECD1001FD37B /* ComponentButtonBack.swift */,
 				A42CC9132C5EAFA7004845AB /* ComponentButtonMenu.swift */,
+				A49DC99F2C7E2DA900118828 /* ComponentButtonContact.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -1076,10 +1120,11 @@
 		A4D407242B4D100D00D97AB1 /* orbfin */ = {
 			isa = PBXGroup;
 			children = (
+				A4EA3D032C53E04600CEFCFF /* Authenticated */,
+				A49DC9A12C7E312E00118828 /* Communications */,
 				A49C0BF72C4A1BFC00968AFB /* Format */,
 				A4A7ACED2C3B3B4600EE9B48 /* Layers */,
 				A4A7ACEC2C3B3B0A00EE9B48 /* Models */,
-				A4EA3D032C53E04600CEFCFF /* Authenticated */,
 				A41778092C59BBD2009C1353 /* Map */,
 				A42CC9172C5EFDC0004845AB /* Menu */,
 				A43C29F92C41A7FA002BF1AE /* Navigation */,
@@ -1227,6 +1272,7 @@
 				A4880FA22C652E200080C5E0 /* Commercial.swift in Sources */,
 				A43C29DB2C405A98002BF1AE /* RequestForgot.swift in Sources */,
 				A49C0BF62C4A1BEB00968AFB /* Format.swift in Sources */,
+				A4A223132C8148ED00A30F7A /* ComponentSchedule.swift in Sources */,
 				A4EA3CE62C4C41D300CEFCFF /* ViewLayoutExperience.swift in Sources */,
 				A42CC93D2C6173B5004845AB /* Real Estate.swift in Sources */,
 				A43C29EB2C40FEC8002BF1AE /* ViewLogout.swift in Sources */,
@@ -1236,9 +1282,11 @@
 				A43C29D52C404E16002BF1AE /* ResponseLogout.swift in Sources */,
 				A44306012C69057900F9B883 /* PreviewManageBusiness.swift in Sources */,
 				A44B01A62C6D610800D6E90D /* RequestService.swift in Sources */,
+				A49DC9A32C7E315E00118828 /* Communications.swift in Sources */,
 				A43C29CC2C4005C2002BF1AE /* NetworkManager.swift in Sources */,
 				A49C0BE32C4A028700968AFB /* ViewTangibleAssetsBusiness.swift in Sources */,
 				A49C0BB22C4765E800968AFB /* ComponentButtonHNav.swift in Sources */,
+				A4A223162C814C6400A30F7A /* ViewModelSchedule.swift in Sources */,
 				A49C0BD12C489CD300968AFB /* Transaction.swift in Sources */,
 				A4880FA82C6584160080C5E0 /* PropertyClass.swift in Sources */,
 				A43C29FB2C41A82C002BF1AE /* Navigation.swift in Sources */,
@@ -1246,6 +1294,7 @@
 				A43C29E52C407658002BF1AE /* StorageUserDefaults.swift in Sources */,
 				A4041C762C557C03001FD37B /* RequestChangeName.swift in Sources */,
 				A4EA3CEC2C4C7F8000CEFCFF /* ViewLayoutExperienceSelection.swift in Sources */,
+				A49DC99E2C7E2C4D00118828 /* ComponentCardContact.swift in Sources */,
 				A49C0BC62C4775E900968AFB /* ViewManageTransactions.swift in Sources */,
 				A40741AD2C684F9200FB1770 /* ComponentImageIcon.swift in Sources */,
 				A47FC8B72C5468970096D557 /* ComponentButtonHome.swift in Sources */,
@@ -1267,6 +1316,7 @@
 				A4880FAB2C658FE10080C5E0 /* ComponentSearchByPropertyID.swift in Sources */,
 				A4041C662C557888001FD37B /* ViewChangePassword.swift in Sources */,
 				A44306032C690F5A00F9B883 /* ViewMapTransactions.swift in Sources */,
+				A49DC9A02C7E2DA900118828 /* ComponentButtonContact.swift in Sources */,
 				A4605E9A2C4228160091CC52 /* ComponentBarStatus.swift in Sources */,
 				A41778082C59A423009C1353 /* PreviewCommercial.swift in Sources */,
 				A43C29D92C4054F2002BF1AE /* ViewModelLogout.swift in Sources */,
@@ -1281,6 +1331,7 @@
 				A443060E2C699C4E00F9B883 /* ViewModelServices.swift in Sources */,
 				A42CC9422C617734004845AB /* RequestProperties.swift in Sources */,
 				A44305FF2C69056000F9B883 /* PreviewManagePersonal.swift in Sources */,
+				A49DC9A52C7E33D800118828 /* ResponseProvider.swift in Sources */,
 				A49C0BF92C4A1EF500968AFB /* ManageSummary.swift in Sources */,
 				A43C29ED2C4103AF002BF1AE /* Authentication.swift in Sources */,
 				A4880F9E2C6506500080C5E0 /* ViewModelModal.swift in Sources */,
@@ -1312,6 +1363,7 @@
 				A45676362C5C43A00025A730 /* ViewModelHome.swift in Sources */,
 				A43C29F82C4199FD002BF1AE /* ComponentButtonBar.swift in Sources */,
 				A40741AA2C683BE900FB1770 /* ResponseTransactions.swift in Sources */,
+				A4A223112C7EB19200A30F7A /* RequestProvider.swift in Sources */,
 				A44306082C698CEB00F9B883 /* ViewMapServices.swift in Sources */,
 				A435415E2C3EC20B00B32BC1 /* Coordinates.swift in Sources */,
 				A44B01A22C6D2C3000D6E90D /* ViewServiceDetail.swift in Sources */,

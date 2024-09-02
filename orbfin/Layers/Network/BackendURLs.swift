@@ -18,5 +18,6 @@ struct BackendURLs {
     public static var realEstate: String = "http://localhost:8084"
     public static var realEstateCommercial: String = "http://localhost:8084/commercial"
     public static var realEstateResidential: String = "http://localhost:8084/residential"
-    public static var services: String = "http://localhost:8082"
+    public static var services: String = "http://localhost:8082/services"
+    public static var provider: String = "http://localhost:8082/providers"
 }

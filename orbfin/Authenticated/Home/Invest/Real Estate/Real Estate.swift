@@ -55,7 +55,6 @@ actor RealEstate {
 
             return response
         } catch {
-            print(error)
             throw error
         }
     }
@@ -92,6 +91,31 @@ actor RealEstate {
             let response: ResponseRealEstateProperty = try JSONDecoder().decode(ResponseRealEstateProperty.self, from: serverResponse.data)
             
             return response
+        } catch {
+            throw error
+        }
+    }
+    
+    func request(request: RequestProperty) async throws -> ResponseProvider {
+        do {
+            if let providerID = request.providerID {
+                let providerURL: String = BackendURLs.realEstate + "/request/\(providerID)"
+                guard let url = URL(string: providerURL) else {
+                    throw NetworkError.invalidURL
+                }
+                guard let requestDict = request.dictionary else {
+                    throw NetworkError.invalidData
+                }
+                let jsonData = try JSONSerialization.data(withJSONObject: requestDict, options: [])
+                let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: jsonData)
+                let response: ResponseProvider = try JSONDecoder().decode(ResponseProvider.self, from: serverResponse.data)
+                
+                return response
+            } else {
+                let response = ResponseProvider(errorMessage: "No provider ID provided.", statusCode: 400)
+
+                return response
+            }
         } catch {
             throw error
         }

@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 struct Service: Identifiable, Codable, Equatable {
-    var id: String
+    var id: Int
     var created: String?
     var updated: String?
     var type: String
@@ -36,7 +36,7 @@ struct Service: Identifiable, Codable, Equatable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        id = try container.decode(String.self, forKey: .id)
+        id = try container.decode(Int.self, forKey: .id)
         created = try? container.decode(String.self, forKey: .created)
         updated = try? container.decode(String.self, forKey: .updated)
         type = try container.decode(String.self, forKey: .type)

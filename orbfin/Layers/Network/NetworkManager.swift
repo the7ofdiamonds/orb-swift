@@ -67,7 +67,6 @@ actor NetworkManager {
             if let jsonData = jsonData {
                 request.httpBody = jsonData
             }
-            
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             
             return try await self.request(request: request)

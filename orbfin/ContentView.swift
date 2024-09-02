@@ -22,7 +22,8 @@ struct ContentView: View {
     @EnvironmentObject var vmManagePersonal: ViewModelManagePersonal
     @EnvironmentObject var vmManageBusiness: ViewModelManageBusiness
     @EnvironmentObject var vmServices: ViewModelServices
-    
+    @EnvironmentObject var vmSchedule: ViewModelSchedule
+
     @AppStorage("layoutExperience") var selectedLayoutExperience: String?
 
     var isLoggedIn: Bool {
@@ -80,6 +81,7 @@ struct ContentView: View {
         .environmentObject(vmManagePersonal)
         .environmentObject(vmManageBusiness)
         .environmentObject(vmServices)
+        .environmentObject(vmSchedule)
     }
 }
 
@@ -107,5 +109,6 @@ struct ContentView_Previews: PreviewProvider {
         .environmentObject(ViewModelManagePersonal())
         .environmentObject(ViewModelManageBusiness())
         .environmentObject(ViewModelServices())
+        .environmentObject(ViewModelSchedule())
     }
 }

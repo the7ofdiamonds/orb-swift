@@ -106,7 +106,7 @@ class ViewModelServices: ObservableObject {
         }
     }
         
-    func getServiceByID(_ id: String) async throws {
+    func getServiceByID(_ id: Int) async throws {
         do {
             let response: ResponseService = try await Services().byID(id)
 

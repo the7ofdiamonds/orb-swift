@@ -37,8 +37,8 @@ struct ComponentCardLocation: View {
                 }
             }
             
-            if let county = address.county {
-                Text("\(county)")
+            if let country = address.country {
+                Text("\(country)")
             }
             
             Button {

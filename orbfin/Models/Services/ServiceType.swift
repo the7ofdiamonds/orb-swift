@@ -11,6 +11,7 @@ enum ServiceType: String, CaseIterable, Identifiable, Equatable {
     case notary
     case appraisal
     case realestateappraisal
+    case realestatesales
 }
 
 extension ServiceType {
@@ -22,6 +23,8 @@ extension ServiceType {
             "1"
         case .realestateappraisal:
             "1.1"
+        case .realestatesales:
+            "2"
         }
     }
     
@@ -33,6 +36,8 @@ extension ServiceType {
             "Appraisal"
         case .realestateappraisal:
             "Real Estate Appraisal"
+        case .realestatesales:
+            "Real Estate Sales"
         }
     }
     
@@ -44,6 +49,8 @@ extension ServiceType {
             "Appraisal"
         case .realestateappraisal:
             "Real Estate Appraisal"
+        case .realestatesales:
+            "Real Estate Sales"
         }
     }
     
@@ -56,6 +63,8 @@ extension ServiceType {
                     .realestateappraisal
                 ]
         case .realestateappraisal:
+            nil
+        case .realestatesales:
             nil
         }
     }

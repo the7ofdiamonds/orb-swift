@@ -7,7 +7,15 @@
 
 import Foundation
 
-struct RequestProperty: Codable {
-    let id: String?
+struct RequestProperty: Encodable {
+    let id: Int64
     let apn: String?
+    let propertyClass: String?
+    let location: Location?
+    let saleDetails: SaleDetails?
+    let buildingDetails: BuildingDetails?
+    let landDetails: LandDetails?
+    let providerID: Int64?
+    let date: String?
+    let time: String?
 }

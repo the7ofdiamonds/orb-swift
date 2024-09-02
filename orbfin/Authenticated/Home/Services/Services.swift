@@ -56,11 +56,12 @@ actor Services {
 
             return response
         } catch {
+            print(error)
             throw error
         }
     }
     
-    func byID (_ id: String) async throws -> ResponseService {
+    func byID (_ id: Int) async throws -> ResponseService {
         do {
             let idURL: String = "\(BackendURLs.services)/\(id)"
             guard let url = URL(string: idURL) else {
@@ -72,26 +73,34 @@ actor Services {
             
             return response
         } catch {
+            print(error)
             throw error
         }
     }
     
     func request(request: RequestService) async throws -> ResponseServiceRequest {
         do {
-            let requestURL: String = "\(BackendURLs.services)/request/\(request.id)"
-
-            guard let url = URL(string: requestURL) else {
-                throw NetworkError.invalidURL
+            if let id = request.id {
+                let requestURL: String = "\(BackendURLs.services)/\(id)/request"
+                
+                guard let url = URL(string: requestURL) else {
+                    throw NetworkError.invalidURL
+                }
+                guard let requestDict = request.dictionary else {
+                    throw NetworkError.invalidData
+                }
+                
+                let jsonData = try JSONSerialization.data(withJSONObject: requestDict, options: [])
+                let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: jsonData)
+                print(serverResponse)
+                let response: ResponseServiceRequest = try JSONDecoder().decode(ResponseServiceRequest.self, from: serverResponse.data)
+                print(response)
+                return response
+            } else {
+                var response = ResponseServiceRequest( errorMessage: "A service id is required to make a request.", statusCode: 400)
+                
+                return response
             }
-            guard let requestDict = request.dictionary else {
-                throw NetworkError.invalidData
-            }
-
-            let jsonData = try JSONSerialization.data(withJSONObject: requestDict, options: [])
-            let serverResponse: ResponseServer = try await NetworkManager.instance.post(url: url, jsonData: jsonData)
-            let response: ResponseServiceRequest = try JSONDecoder().decode(ResponseServiceRequest.self, from: serverResponse.data)
-print(response)
-            return response
         } catch {
             print(error)
             throw error

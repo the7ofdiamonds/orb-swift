@@ -11,21 +11,23 @@ struct ViewServiceRequest: View {
     @EnvironmentObject var vmModal: ViewModelModal
 
     @StateObject var vm = ViewModelServiceRequest()
+    @StateObject var vmSchedule = ViewModelSchedule()
     @StateObject private var locationManager: LocationManager = LocationManager.instance
     
     @State var service: Service
     
     @State private var selectedDate: Date = Date()
     @State private var selectedTime: Date = Date()
+    
     @State private var streetAddress: String = ""
     @State private var city: String = ""
     @State private var state: String = ""
     @State private var zipcode: String = ""
-    @State private var county: String = ""
+    @State private var country: String = ""
     @State private var isCurrentLocation: Bool = false
     
     private var address: Address? {
-        return Address(streetAddress: streetAddress, city: city, state: state, zipcode: zipcode, county: county)
+        return Address(streetAddress: streetAddress, city: city, state: state, zipcode: zipcode, country: country)
     }
     private var coordinates: Coordinates? {
         if let coordinates = locationManager.location {
@@ -37,53 +39,22 @@ struct ViewServiceRequest: View {
         }
     }
     
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter
-    }
-    
-    private var timeFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter
-    }
-    
     private var formattedDate: String {
-        return dateFormatter.string(from: selectedDate)
+        return Format.dateFormatter.string(from: selectedDate)
     }
     
     private var formattedTime: String {
-        return timeFormatter.string(from: selectedTime)
+        return Format.timeFormatter.string(from: selectedTime)
     }
     
     var request: RequestService {
-        return RequestService(id: service.id, type: service.type, date: formattedDate, time: formattedTime, price: service.price, address: address, coordinates: coordinates)
+        return RequestService(id: service.id, type: service.type, date: vmSchedule.date, time: vmSchedule.time, price: service.price, address: address, coordinates: coordinates)
     }
     
     var body: some View {
         ZStack {
             VStack(spacing: 30) {
-                ComponentCardFixed {
-                    VStack {
-                        DatePicker(
-                            "Select Date",
-                            selection: $selectedDate,
-                            displayedComponents: [.date]
-                        )
-                        .datePickerStyle(GraphicalDatePickerStyle())
-                        .padding()
-                        .frame(width: 300)
-                        
-                        DatePicker(
-                            "Select Time",
-                            selection: $selectedTime,
-                            displayedComponents: [.hourAndMinute]
-                        )
-                        .datePickerStyle(GraphicalDatePickerStyle())
-                        .padding()
-                    }
-                }
+//                At this current location? Checkbox (Use coordinates)
                 
                 ComponentCardFixed {
                     if !isCurrentLocation {
@@ -91,40 +62,19 @@ struct ViewServiceRequest: View {
                         TextField("City", text: $city)
                         TextField("State", text: $state)
                         TextField("Zipcode", text: $zipcode)
-                        TextField("County", text: $county)
+                        TextField("Country", text: $country)
                     }
                 }
                 
-                ComponentCardFixed {
-                    VStack {
-                        Text("Selected Date: \(formattedDate)")
-                            .padding()
-                        
-                        Text("Selected Time: \(formattedTime)")
-                            .padding()
-                        
-                        Button(action: {
-                            Task {
-                                do {
-                                    try await vm.requestService(request: request)
-                                } catch {
-                                    print("Failed to request service: \(error)")
-                                }
-                            }
-                        }, label: {
-                            Text("Request")
-                        })
-                        .fontWeight(.bold)
-                        .kerning(Styling.kerning)
-                        .padding()
-                        .background(Styling.color(.Button))
-                        .foregroundColor(Styling.color(.ButtonFont))
-                        .cornerRadius(Styling.cornerRadius)
-                        .shadow(color: Styling.shadow.color, radius: Styling.shadow.radius, x: Styling.shadow.x, y: Styling.shadow.y)
-                        
+                ComponentSchedule {
+                    Task {
+                        do {
+                            try await vm.requestService(request: request)
+                        } catch {
+                            print("Failed to request service: \(error)")
+                        }
                     }
                 }
-                
             }
             
             if vm.showStatus && vmModal.showModal {

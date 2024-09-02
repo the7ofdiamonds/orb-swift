@@ -14,6 +14,7 @@ extension Encodable {
               let dictionary = json as? [String: Any] else {
             return nil
         }
+        print(dictionary)
         return dictionary
     }
 }

@@ -9,16 +9,16 @@ import Foundation
 import MapKit
 
 struct RealEstateProperty: Identifiable, Equatable, Codable {
-    var id: String
+    var id: Int64
     var propertyClass: String?
     var images: [String]?
     var streetAddress: String?
     var city: String?
     var state: String?
     var zipcode: String?
-    var county: String?
+    var country: String?
     var address: Address? {
-        return Address(streetAddress: streetAddress, city: city, state: state, zipcode: zipcode, county: county)
+        return Address(streetAddress: streetAddress, city: city, state: state, zipcode: zipcode, country: country)
     }
     var coordinates: CLLocationCoordinate2D?
     var price: Int?
@@ -50,6 +50,7 @@ struct RealEstateProperty: Identifiable, Equatable, Codable {
     }
     var highlights: [String]?
     var overview: String?
+    var providerID: Int64?
     
     static func == (lhs: RealEstateProperty, rhs: RealEstateProperty) -> Bool {
         lhs.id == rhs.id

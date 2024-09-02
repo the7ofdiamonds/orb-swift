@@ -45,6 +45,33 @@ class ViewModelCommercialProperty: ObservableObject {
             self.showingAlert = true
         }
         
-        return RealEstateProperty(id: String())
+        return RealEstateProperty(id: 1, providerID: 1)
+    }
+    
+    func request(request: RequestProperty) async throws -> ResponseProvider {
+        do {
+            let response: ResponseProvider = try await RealEstate().request(request: request)
+            
+            if let errorMessage = response.errorMessage {
+                self.errorMessage = errorMessage
+                print(errorMessage)
+            }
+            
+            if let cautionMessage = response.cautionMessage {
+                self.cautionMessage = cautionMessage
+                print(cautionMessage)
+            }
+            
+            if let successMessage = response.successMessage {
+                self.successMessage = successMessage
+                print(successMessage)
+            }
+            
+            return response
+        } catch {
+            self.error = error as? NetworkError
+            self.showingAlert = true
+            throw error
+        }
     }
 }

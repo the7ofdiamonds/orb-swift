@@ -21,7 +21,7 @@ struct ComponentSearchBy: View {
     @State private var city: String = ""
     @State private var state: String = ""
     @State private var zipcode: String = ""
-    @State private var county: String = ""
+    @State private var country: String = ""
     @State private var price: Int = 0
     @State private var priceSF: Int = 0
     @State private var capRate: Double = 0.0
@@ -58,7 +58,7 @@ struct ComponentSearchBy: View {
                 city: city,
                 state: state,
                 zipcode: zipcode,
-                county: county
+                country: country
             ), coordinates: coordinates),
             saleDetails: SaleDetails(
                 price: price,
@@ -109,8 +109,8 @@ struct ComponentSearchBy: View {
                             }
                             
                             HStack {
-                                Text("County")
-                                TextField("County", text: $county)
+                                Text("Country")
+                                TextField("Country", text: $country)
                             }
                             
                             ComponentDivider()

@@ -16,6 +16,8 @@ struct ViewCommercialProperty: View {
     
     @State var property: RealEstateProperty?
     
+    let serviceType: String = ServiceType.realestatesales.rawValue
+
     var body: some View {
         ScrollView {
             if let property = property,
@@ -49,6 +51,28 @@ struct ViewCommercialProperty: View {
                     
                     if let landDetails = property.landDetails {
                         ComponentCardLandDetails(landDetails: landDetails)
+                    }
+                    
+                    if let providerID = property.providerID {
+                        ComponentCardContact {_ in
+                            Task {
+                                try await vm.request(request: RequestProperty(
+                                    id: property.id,
+                                    apn: property.apnParcelID,
+                                    propertyClass: property.propertyClass,
+                                    location: Location(
+                                        address: property.address,
+                                        coordinates: Coordinates(
+                                            latitude: property.coordinates?.latitude ?? 0.0,
+                                            longitude: property.coordinates?.longitude ?? 0.0)),
+                                    saleDetails: property.saleDetails,
+                                    buildingDetails: property.buildingDetails,
+                                    landDetails: property.landDetails,
+                                    providerID: providerID,
+                                    date: "9/2/24",
+                                    time: "12:00"))
+                            }
+                        }
                     }
                 }
             }
